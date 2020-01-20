@@ -3,29 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1706FBFA23D4F12700962AED /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706FBF923D4F12700962AED /* Pager+Buildable.swift */; };
-		1706FBFC23D4FA0C00962AED /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706FBFB23D4FA0C00962AED /* Pager+Helper.swift */; };
-		1706FBFE23D4FB9E00962AED /* SizeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706FBFD23D4FB9E00962AED /* SizeViewModifier.swift */; };
-		1706FC0123D4FDA800962AED /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706FC0023D4FDA800962AED /* View+Helper.swift */; };
+		1706BA8823D6509D00A6A56C /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 1706BA8723D6509D00A6A56C /* SwiftUIPager */; };
 		17D9E0F423D4CF6700C5AE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */; };
 		17D9E0F623D4CF6700C5AE93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */; };
 		17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F723D4CF6700C5AE93 /* ContentView.swift */; };
 		17D9E0FA23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0F923D4CF6900C5AE93 /* Assets.xcassets */; };
 		17D9E0FD23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */; };
 		17D9E10023D4CF6900C5AE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FE23D4CF6900C5AE93 /* LaunchScreen.storyboard */; };
-		17D9E10823D4CF9600C5AE93 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E10723D4CF9600C5AE93 /* Pager.swift */; };
-		17D9E10A23D4D19D00C5AE93 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E10923D4D19D00C5AE93 /* Buildable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1706FBF923D4F12700962AED /* Pager+Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pager+Buildable.swift"; sourceTree = "<group>"; };
-		1706FBFB23D4FA0C00962AED /* Pager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pager+Helper.swift"; sourceTree = "<group>"; };
-		1706FBFD23D4FB9E00962AED /* SizeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeViewModifier.swift; sourceTree = "<group>"; };
-		1706FC0023D4FDA800962AED /* View+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Helper.swift"; sourceTree = "<group>"; };
 		17D9E0F023D4CF6700C5AE93 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,8 +25,6 @@
 		17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		17D9E0FF23D4CF6900C5AE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D9E10123D4CF6900C5AE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17D9E10723D4CF9600C5AE93 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
-		17D9E10923D4D19D00C5AE93 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,22 +32,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1706BA8823D6509D00A6A56C /* SwiftUIPager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1706FBFF23D4FD2500962AED /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				17D9E10923D4D19D00C5AE93 /* Buildable.swift */,
-				1706FBFD23D4FB9E00962AED /* SizeViewModifier.swift */,
-				1706FC0023D4FDA800962AED /* View+Helper.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		17D9E0E723D4CF6700C5AE93 = {
 			isa = PBXGroup;
 			children = (
@@ -85,7 +65,6 @@
 				17D9E0FE23D4CF6900C5AE93 /* LaunchScreen.storyboard */,
 				17D9E10123D4CF6900C5AE93 /* Info.plist */,
 				17D9E0FB23D4CF6900C5AE93 /* Preview Content */,
-				17D9E10B23D4D4CB00C5AE93 /* Pager */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -96,17 +75,6 @@
 				17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		17D9E10B23D4D4CB00C5AE93 /* Pager */ = {
-			isa = PBXGroup;
-			children = (
-				1706FBFF23D4FD2500962AED /* Helpers */,
-				17D9E10723D4CF9600C5AE93 /* Pager.swift */,
-				1706FBF923D4F12700962AED /* Pager+Buildable.swift */,
-				1706FBFB23D4FA0C00962AED /* Pager+Helper.swift */,
-			);
-			path = Pager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +93,9 @@
 			dependencies = (
 			);
 			name = Sample;
+			packageProductDependencies = (
+				1706BA8723D6509D00A6A56C /* SwiftUIPager */,
+			);
 			productName = SwiftUIPager;
 			productReference = 17D9E0F023D4CF6700C5AE93 /* Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 17D9E0E723D4CF6700C5AE93;
+			packageReferences = (
+				1706BA8623D6509D00A6A56C /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+			);
 			productRefGroup = 17D9E0F123D4CF6700C5AE93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,14 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				17D9E0F423D4CF6700C5AE93 /* AppDelegate.swift in Sources */,
-				1706FBFE23D4FB9E00962AED /* SizeViewModifier.swift in Sources */,
-				17D9E10823D4CF9600C5AE93 /* Pager.swift in Sources */,
 				17D9E0F623D4CF6700C5AE93 /* SceneDelegate.swift in Sources */,
-				1706FBFA23D4F12700962AED /* Pager+Buildable.swift in Sources */,
-				17D9E10A23D4D19D00C5AE93 /* Buildable.swift in Sources */,
 				17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */,
-				1706FC0123D4FDA800962AED /* View+Helper.swift in Sources */,
-				1706FBFC23D4FA0C00962AED /* Pager+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +350,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1706BA8623D6509D00A6A56C /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1706BA8723D6509D00A6A56C /* SwiftUIPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1706BA8623D6509D00A6A56C /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			productName = SwiftUIPager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 17D9E0E823D4CF6700C5AE93 /* Project object */;
 }

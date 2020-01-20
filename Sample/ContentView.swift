@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIPager
 
 extension Int: Identifiable {
     public var id: Int { return self }

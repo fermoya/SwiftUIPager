@@ -8,23 +8,30 @@
 
 import SwiftUI
 
+/**
+ Horizontal
+ */
 public struct Pager<Data, Content>: View  where Content: View, Data: Identifiable & Equatable {
 
+    /// `Direction` determines the direction of the swipe gesture
     enum Direction {
         case forward, backward
     }
 
-    /** Constants **/
+    /*** Constants ***/
 
-    /// Should be greather than 1
+    /// Manages the number of items that should be displayed in the screen.
+    /// A ratio of 3, for instance, would mean the items held in memory are enough
+    /// to cover 3 times the size of the pager
     let recyclingRatio = 4
 
-    /** Dependencies **/
+    /*** Dependencies ***/
     
+    ///
     let content: (Data) -> Content
     var data: [Data]
 
-    /** ViewModified properties **/
+    /*** ViewModified properties ***/
     
     var interactiveScale: CGFloat = 1
     var contentOffset: CGFloat = 0
@@ -34,7 +41,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     var itemSpacing: CGFloat = 0
     var pageAspectRatio: CGFloat = 1
     
-    /** Dragging offset **/
+    /*** Dragging offset ***/
     
     @State var size: CGSize = .zero
     @State var draggingOffset: CGFloat = 0
@@ -45,7 +52,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
         }
     }
 
-    public init(page: Binding<Int>, data: [Data], pageAspectRatio: CGFloat = 1, content: @escaping (Data) -> Content) {
+    public init(page: Binding<Int>, data: [Data], pageAspectRatio: CGFloat = 1, @ViewBuilder content: @escaping (Data) -> Content) {
         self._page = page
         self.pageAspectRatio = max(0, pageAspectRatio)
         self.data = data
