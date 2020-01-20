@@ -15,7 +15,7 @@
 		17D9E0F623D4CF6700C5AE93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */; };
 		17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F723D4CF6700C5AE93 /* ContentView.swift */; };
 		17D9E0FA23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0F923D4CF6900C5AE93 /* Assets.xcassets */; };
-		17D9E0FD23D4CF6900C5AE93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FC23D4CF6900C5AE93 /* Preview Assets.xcassets */; };
+		17D9E0FD23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */; };
 		17D9E10023D4CF6900C5AE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FE23D4CF6900C5AE93 /* LaunchScreen.storyboard */; };
 		17D9E10823D4CF9600C5AE93 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E10723D4CF9600C5AE93 /* Pager.swift */; };
 		17D9E10A23D4D19D00C5AE93 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E10923D4D19D00C5AE93 /* Buildable.swift */; };
@@ -26,12 +26,12 @@
 		1706FBFB23D4FA0C00962AED /* Pager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pager+Helper.swift"; sourceTree = "<group>"; };
 		1706FBFD23D4FB9E00962AED /* SizeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeViewModifier.swift; sourceTree = "<group>"; };
 		1706FC0023D4FDA800962AED /* View+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Helper.swift"; sourceTree = "<group>"; };
-		17D9E0F023D4CF6700C5AE93 /* SwiftUIPager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D9E0F023D4CF6700C5AE93 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		17D9E0F723D4CF6700C5AE93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		17D9E0F923D4CF6900C5AE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		17D9E0FC23D4CF6900C5AE93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		17D9E0FF23D4CF6900C5AE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D9E10123D4CF6900C5AE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D9E10723D4CF9600C5AE93 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		17D9E0E723D4CF6700C5AE93 = {
 			isa = PBXGroup;
 			children = (
-				17D9E0F223D4CF6700C5AE93 /* SwiftUIPager */,
+				17D9E0F223D4CF6700C5AE93 /* Sample */,
 				17D9E0F123D4CF6700C5AE93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,12 +70,12 @@
 		17D9E0F123D4CF6700C5AE93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17D9E0F023D4CF6700C5AE93 /* SwiftUIPager.app */,
+				17D9E0F023D4CF6700C5AE93 /* Sample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		17D9E0F223D4CF6700C5AE93 /* SwiftUIPager */ = {
+		17D9E0F223D4CF6700C5AE93 /* Sample */ = {
 			isa = PBXGroup;
 			children = (
 				17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */,
@@ -87,13 +87,13 @@
 				17D9E0FB23D4CF6900C5AE93 /* Preview Content */,
 				17D9E10B23D4D4CB00C5AE93 /* Pager */,
 			);
-			path = SwiftUIPager;
+			path = Sample;
 			sourceTree = "<group>";
 		};
 		17D9E0FB23D4CF6900C5AE93 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				17D9E0FC23D4CF6900C5AE93 /* Preview Assets.xcassets */,
+				17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -112,9 +112,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17D9E0EF23D4CF6700C5AE93 /* SwiftUIPager */ = {
+		17D9E0EF23D4CF6700C5AE93 /* Sample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "SwiftUIPager" */;
+			buildConfigurationList = 17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "Sample" */;
 			buildPhases = (
 				17D9E0EC23D4CF6700C5AE93 /* Sources */,
 				17D9E0ED23D4CF6700C5AE93 /* Frameworks */,
@@ -124,9 +124,9 @@
 			);
 			dependencies = (
 			);
-			name = SwiftUIPager;
+			name = Sample;
 			productName = SwiftUIPager;
-			productReference = 17D9E0F023D4CF6700C5AE93 /* SwiftUIPager.app */;
+			productReference = 17D9E0F023D4CF6700C5AE93 /* Sample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +144,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "SwiftUIPager" */;
+			buildConfigurationList = 17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "Sample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -157,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17D9E0EF23D4CF6700C5AE93 /* SwiftUIPager */,
+				17D9E0EF23D4CF6700C5AE93 /* Sample */,
 			);
 		};
 /* End PBXProject section */
@@ -168,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17D9E10023D4CF6900C5AE93 /* LaunchScreen.storyboard in Resources */,
-				17D9E0FD23D4CF6900C5AE93 /* Preview Assets.xcassets in Resources */,
+				17D9E0FD23D4CF6900C5AE93 /* Assets.xcassets in Resources */,
 				17D9E0FA23D4CF6900C5AE93 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,15 +325,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIPager/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Sample/Preview Content\"";
 				DEVELOPMENT_TEAM = LPBB5C5CRP;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SwiftUIPager/Info.plist;
+				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fermoya.challenge.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fermoya.sample.SwiftUIPager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -345,15 +345,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIPager/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Sample/Preview Content\"";
 				DEVELOPMENT_TEAM = LPBB5C5CRP;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SwiftUIPager/Info.plist;
+				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fermoya.challenge.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fermoya.sample.SwiftUIPager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -363,7 +363,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "SwiftUIPager" */ = {
+		17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "Sample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17D9E10223D4CF6900C5AE93 /* Debug */,
@@ -372,7 +372,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "SwiftUIPager" */ = {
+		17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "Sample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17D9E10523D4CF6900C5AE93 /* Debug */,
