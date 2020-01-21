@@ -8,7 +8,7 @@ SwiftUIPager provides  a `Pager` component built with SwiftUI native components.
 
 <img src="resources/example-of-usage.gif" alt="Example of usage"/>
 
-## Requirement
+## Requirements
 * iOS 13.0+
 * macOS 10.15+
 * watchOS 6.0+
@@ -38,9 +38,10 @@ Creating a `Pager` is very simple. You just need to pass:
 
 ```swift
  Pager(page: self.$pageIndex,
-       data: self.data,
-       content: { index in
-           self.pageView(index)
+       data: self.items,
+       content: { item in
+           // create a page based on the data passed
+           self.pageView(item)
  })
 ```
 
@@ -56,11 +57,11 @@ Pager(...)
 ```
 `pageAspectRatio` will change the look of the page. Use a value lower than 1 to make the page look like a card:
 
-<img src="resources/page_aspect_ratio_lower_than_1.png" alt="PageAspectRatio lower than 1"/>
+<img src="resources/page_aspect_ratio_lower_than_1.png" alt="PageAspectRatio lower than 1" height="640"/>
 
 whereas a value greater than one will make it look like a box:
 
-<img src="resources/page_aspect_ratio_greater_than_1.png" alt="PageAspectRatio greater than 1"/>
+<img src="resources/page_aspect_ratio_greater_than_1.png" alt="PageAspectRatio greater than 1" height="640"/>
 
 You can also use `interactive` to pass a shrink ratio that will be applied to those components that are not focused, that is, those elements whose index is different from `pageIndex` binding:
 
