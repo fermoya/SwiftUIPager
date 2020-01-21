@@ -8,14 +8,35 @@
 
 import SwiftUI
 
-/**
- Horizontal
- */
+///
+/// `Pager` is a horizontal pager built with native SwiftUI components. Given a `ViewBuilder` and some `Identifiable` and `Equatable` data,
+/// this view will create a scrollable container to display a handful of pages. The pages are recycled on scroll. `Pager` is easily customizable through a number
+/// of view-modifier functions.  You can change the vertical insets, spacing between items, ... You can also make the pages size interactive.
+///
+/// # Example #
+///
+///     Pager(page: self.$pageIndex,
+///           data: self.data,
+///           content: { index in
+///               self.pageView(index)
+///     }).interactive(0.8)
+///         .itemSpacing(10)
+///         .padding(30)
+///         .pageAspectRatio(0.6)
+///
+/// This snippet creates a pager with:
+/// - 10 px beetween pages
+/// - 30 px of vertical insets
+/// - 0.6 shrink ratio for items that aren't focused.
+///
 public struct Pager<Data, Content>: View  where Content: View, Data: Identifiable & Equatable {
 
     /// `Direction` determines the direction of the swipe gesture
     enum Direction {
-        case forward, backward
+        /// Swiping  from left to right
+        case forward
+        /// Swiping from right to left
+        case backward
     }
 
     /*** Constants ***/
@@ -27,34 +48,57 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 
     /*** Dependencies ***/
     
-    ///
+    /// `ViewBuilder` block to create each page
     let content: (Data) -> Content
+
+    /// Array of items that will populate each page
     var data: [Data]
 
     /*** ViewModified properties ***/
-    
+
+    /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
+
+    /// Used to modify `Pager` offset outside this view
     var contentOffset: CGFloat = 0
-    var shadowColor: Color = .clear
-    var onPageChanged: ((Int) -> Void)?
+
+    /// Vertical padding
     var verticalInsets: CGFloat = 0
+
+    /// Space between pages
     var itemSpacing: CGFloat = 0
-    var pageAspectRatio: CGFloat = 1
+
+    /// Will apply this ratio to each page item. The aspect ratio follows the formula _width / height_
+    var itemAspectRatio: CGFloat = 1
+
+    /// Callback for every new page
+    var onPageChanged: ((Int) -> Void)?
     
-    /*** Dragging offset ***/
-    
+    /*** State and Binding properties ***/
+
+    /// Size of the view
     @State var size: CGSize = .zero
+
+    /// Translation on the X-Axis
     @State var draggingOffset: CGFloat = 0
+
+    /// The moment when the dragging gesture started
     @State var draggingStartTime: Date! = nil
+
+    /// Page index
     @Binding var page: Int {
         didSet {
             onPageChanged?(page)
         }
     }
 
-    public init(page: Binding<Int>, data: [Data], pageAspectRatio: CGFloat = 1, @ViewBuilder content: @escaping (Data) -> Content) {
+    /// Initializes a new Pager.
+    ///
+    /// - Parameter page:       Binding to the index of the focused page
+    /// - Parameter data:       Array of items to populate the content
+    /// - Parameter content:    Factory method to build new pages
+    public init(page: Binding<Int>, data: [Data], @ViewBuilder content: @escaping (Data) -> Content) {
         self._page = page
-        self.pageAspectRatio = max(0, pageAspectRatio)
         self.data = data
         self.content = content
     }
@@ -69,8 +113,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                         withAnimation(.spring()) {
                             self.scrollToItem(item)
                         }
-                    }).shadow(color: self.shadowColor, radius: 5)
-                    .transition(.identity)
+                    })
             }
             .offset(x: self.xOffset, y : 0)
         }
@@ -83,12 +126,14 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 // MARK: Gestures
 
 extension Pager {
-    
+
+    /// Helper function to scroll to a specific item.
     func scrollToItem(_ item: Data) {
         guard let index = data.firstIndex(of: item) else { return }
         self.page = index
     }
 
+    /// `DragGesture` customized to work with `Pager`
     var swipeGesture: some Gesture {
         DragGesture()
             .onChanged({ value in

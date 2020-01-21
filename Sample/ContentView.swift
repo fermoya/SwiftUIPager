@@ -25,12 +25,14 @@ struct ContentView: View {
                       data: self.data,
                       content: { index in
                         self.pageView(index)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
                 })
-                    .interactive(0.2)
+                    .interactive(0.8)
                     .itemSpacing(10)
-                    .padding(30)
-                    .pageAspectRatio(0.6)
-                    .background(Color.red)
+                    .padding(8)
+                    .itemAspectRatio(0.6)
+                    .border(Color.red, width: 2)
                     .frame(width: min(proxy.size.width,
                                       proxy.size.height),
                            height: min(proxy.size.width,
@@ -49,11 +51,9 @@ extension ContentView {
         ZStack {
             Rectangle()
                 .fill(Color.yellow)
-                .border(Color.black)
             Text("Page: \(page)")
                 .bold()
-                .background(Color.white)
-        }
+            }
     }
 }
 

@@ -9,74 +9,93 @@
 import SwiftUI
 
 extension Pager {
-    
+
+    /// Size increment to be applied to a unfocs item when it comes to focus
     var scaleIncrement: CGFloat { 1 - interactiveScale }
+
+    /// Total space between items. The spacing will be larger when `Pager` is interactive
     var interactiveItemSpacing: CGFloat { itemSpacing - (pageSize.width * scaleIncrement) / 2 }
+
+    /// `True` if the the user is dragging or some event is changing `contentOffset`
     var isDragging: Bool { abs(totalOffset) > 0 }
 
+    /// The direction of the swipe gesture
     var direction: Direction? {
         guard totalOffset != 0 else { return nil }
         return totalOffset < 0 ? .forward : .backward
     }
 
+    /// The current page index. Will equal `page` if not dragging
     var currentPage: Int {
         guard isDragging else { return page }
         let newPage = -Int((totalOffset / self.pageDistance).rounded()) + self.page
         return max(min(newPage, self.numberOfPages - 1), 0)
     }
-    
+
+    /// Minimum offset allowed. This allows a bounce offset
     var offsetLowerbound: CGFloat {
         guard currentPage == 0 else { return CGFloat(numberOfPages) * self.size.width }
         return CGFloat(numberOfPagesDisplayed) / 2 * pageDistance - pageDistance / 4
     }
-    
+
+    /// Maximum offset allowed. This allows a bounce offset
     var offsetUpperbound: CGFloat {
         guard currentPage == numberOfPages - 1 else { return -CGFloat(numberOfPages) * self.size.width }
         return -CGFloat(numberOfPagesDisplayed) / 2 * pageDistance + pageDistance / 4
     }
 
+    /// Addition of `draggingOffset` and `contentOffset`
     var totalOffset: CGFloat {
         draggingOffset + contentOffset
     }
-    
+
+    /// Size of each item. Takes into account `pageAspectRatio` and `verticalInsets` to fit the page into its container
     var pageSize: CGSize {
         let size = CGSize(width: self.size.width - 2 * verticalInsets,
                           height: self.size.height - 2 * verticalInsets)
         let side = min(size.width, size.height)
-        if pageAspectRatio > 1 {
-            return CGSize(width: side, height: side / pageAspectRatio)
+        if itemAspectRatio > 1 {
+            return CGSize(width: side, height: side / itemAspectRatio)
         } else {
-            return CGSize(width: side * pageAspectRatio, height: side)
+            return CGSize(width: side * itemAspectRatio, height: side)
         }
     }
 
+    /// Total distance between items
     var pageDistance: CGFloat {
         pageSize.width + self.interactiveItemSpacing
     }
-    
+
+    /// Total number of pages
     var numberOfPages: Int { data.count }
 
+    /// Maximum number in memory at the same time
     var maximumNumberOfPages: Int {
         guard pageDistance != 0 else { return 0 }
         return Int((CGFloat(recyclingRatio) * size.width / pageDistance / 2).rounded(.up))
     }
 
+    /// Number of pages displayed at the moment
     var numberOfPagesDisplayed: Int {
         upperPageDisplayed - lowerPageDisplayed
     }
 
+    /// Data that is being displayed at the moment
     var dataDisplayed: [Data] {
         Array(data[lowerPageDisplayed..<upperPageDisplayed])
     }
 
+    /// Lower bound of the data displaed
     var lowerPageDisplayed: Int {
         return max(0, page - maximumNumberOfPages)
     }
 
+    /// Upper bound of the data displaed
     var upperPageDisplayed: Int {
         return min(numberOfPages, maximumNumberOfPages + page)
     }
 
+    /// Offset applied to `HStack`. It's limitted by `offsetUpperbound` and `offsetUpperbound`
     var xOffset: CGFloat {
         let page = CGFloat(self.page - lowerPageDisplayed)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)
@@ -84,7 +103,8 @@ extension Pager {
         let offset = (numberOfPages / 2 - page) * pageDistance - xIncrement + totalOffset
         return max(offsetUpperbound, min(offsetLowerbound, offset))
     }
-    
+
+    /// Scale that applies to a particular item
     func scale(for item: Data) -> CGFloat {
         guard isDragging else { return isFocused(item) ? 1 : interactiveScale }
 
@@ -106,6 +126,7 @@ extension Pager {
             : 1 - (scaleIncrement * increment)
     }
 
+    /// Returns true if the item is focused on the screen.
     func isFocused(_ item: Data) -> Bool {
         data.firstIndex(of: item) == currentPage
     }

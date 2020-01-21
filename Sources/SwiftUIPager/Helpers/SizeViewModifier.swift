@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Tracks the size of the view
 struct SizePreferenceKey: PreferenceKey {
     static var defaultValue: CGSize = .zero
 
@@ -16,6 +17,7 @@ struct SizePreferenceKey: PreferenceKey {
     }
 }
 
+/// This modifier wraps a view into a `GeometryReader` and tracks the available space by using `SizePreferenceKey` on the content
 struct SizeViewModifier: ViewModifier {
     
     @Binding var size: CGSize
@@ -32,7 +34,10 @@ struct SizeViewModifier: ViewModifier {
 }
 
 extension View {
-    
+
+    /// Tracks the size available for the view
+    ///
+    /// - Parameter size:   This binding will receive the size updates
     func sizeTrackable(_ size: Binding<CGSize>) -> some View {
         self.modifier(SizeViewModifier(size: size))
     }
