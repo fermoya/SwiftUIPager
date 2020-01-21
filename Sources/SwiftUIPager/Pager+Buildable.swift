@@ -12,11 +12,21 @@ extension Pager: Buildable {
 
     /// Call this method to provide a shrink ratio that will apply to the items that are not focused.
     ///
-    /// - Parameter scale:      shrink ratio
-    /// - Note:                 `scale` must be lower than _1_, otherwise it defaults to _1_
+    /// - Parameter scale: shrink ratio
+    /// - Note: `scale` must be lower than _1_, otherwise it defaults to _1_
     public func interactive(_ scale: CGFloat) -> Self {
+        guard !shouldRotate else { return self }
         let scale = min(1, abs(scale))
         return mutating(keyPath: \.interactiveScale, value: scale)
+    }
+    
+    /// Call this method to add a 3D rotation effect.
+    ///
+    /// - Parameter value: `true` if the pages should have a 3D rotation effect
+    /// - Note: If you call this method, any previous or later call to `interactive` will have no effect.
+    public func rotation3D(_ value: Bool) -> Self {
+        mutating(keyPath: \.interactiveScale, value: rotationInteractiveScale)
+            .mutating(keyPath: \.shouldRotate, value: value)
     }
 
     /// Provides an offset to modify the

@@ -45,6 +45,15 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     /// A ratio of 3, for instance, would mean the items held in memory are enough
     /// to cover 3 times the size of the pager
     let recyclingRatio = 4
+    
+    /// Angle of rotation when should rotate
+    let rotationDegrees: Double = 20
+    
+    /// Angle of rotation when should rotate
+    let rotationInteractiveScale: CGFloat = 0.7
+    
+    /// Axis of rotation when should rotate
+    let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0.2, 1, 0)
 
     /*** Dependencies ***/
     
@@ -58,6 +67,9 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 
     /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
+    
+    /// `true` if pages should have a 3D rotation effect
+    var shouldRotate: Bool = false
 
     /// Used to modify `Pager` offset outside this view
     var contentOffset: CGFloat = 0
@@ -94,9 +106,9 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 
     /// Initializes a new Pager.
     ///
-    /// - Parameter page:       Binding to the index of the focused page
-    /// - Parameter data:       Array of items to populate the content
-    /// - Parameter content:    Factory method to build new pages
+    /// - Parameter page: Binding to the index of the focused page
+    /// - Parameter data: Array of items to populate the content
+    /// - Parameter content: Factory method to build new pages
     public init(page: Binding<Int>, data: [Data], @ViewBuilder content: @escaping (Data) -> Content) {
         self._page = page
         self.data = data
@@ -109,6 +121,8 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
+                    .rotation3DEffect(self.angle(for: item),
+                                      axis: self.axis(for: item))
                     .onTapGesture (perform: {
                         withAnimation(.spring()) {
                             self.scrollToItem(item)
