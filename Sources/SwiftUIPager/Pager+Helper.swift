@@ -104,6 +104,31 @@ extension Pager {
         return max(offsetUpperbound, min(offsetLowerbound, offset))
     }
 
+    /// Angle for the 3D rotation effect
+    func angle(for item: Data) -> Angle {
+        guard shouldRotate else { return .zero }
+        guard let index = data.firstIndex(of: item) else { return .zero }
+        
+        let totalIncrement = abs(totalOffset / pageDistance)
+        
+        let currentAngle = index == page ? .zero : index < page ? Angle(degrees: rotationDegrees) : Angle(degrees: -rotationDegrees)
+        guard isDragging else {
+            return currentAngle
+        }
+        
+        let newAngle = direction == .forward ? Angle(degrees: currentAngle.degrees + rotationDegrees * Double(totalIncrement)) : Angle(degrees: currentAngle.degrees - rotationDegrees * Double(totalIncrement) )
+        return newAngle
+    }
+    
+    /// Axis for the rotations effect
+    func axis(for item: Data) -> (CGFloat, CGFloat, CGFloat) {
+        guard shouldRotate else { return (0, 0, 0) }
+        guard let index = data.firstIndex(of: item) else { return (0, 0, 0) }
+                
+        let currentXAxis: CGFloat = index == page ? 0 : index < page ? rotationAxis.x : -rotationAxis.x
+        return (currentXAxis, rotationAxis.y, rotationAxis.z)
+    }
+    
     /// Scale that applies to a particular item
     func scale(for item: Data) -> CGFloat {
         guard isDragging else { return isFocused(item) ? 1 : interactiveScale }
