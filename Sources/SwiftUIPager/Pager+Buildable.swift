@@ -24,7 +24,7 @@ extension Pager: Buildable {
     ///
     /// - Parameter value: `true` if the pages should have a 3D rotation effect
     /// - Note: If you call this method, any previous or later call to `interactive` will have no effect.
-    public func rotation3D(_ value: Bool) -> Self {
+    public func rotation3D(_ value: Bool = true) -> Self {
         mutating(keyPath: \.interactiveScale, value: rotationInteractiveScale)
             .mutating(keyPath: \.shouldRotate, value: value)
     }

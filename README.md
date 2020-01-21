@@ -63,7 +63,9 @@ whereas a value greater than one will make it look like a box:
 
 <img src="resources/page_aspect_ratio_greater_than_1.png" alt="PageAspectRatio greater than 1" height="640"/>
 
-You can also use `interactive` to pass a shrink ratio that will be applied to those components that are not focused, that is, those elements whose index is different from `pageIndex` binding:
+### Animations
+
+Use `interactive` to pass a shrink ratio that will be applied to those components that are not focused, that is, those elements whose index is different from `pageIndex` binding:
 
 ```swift
 Pager(...)
@@ -71,6 +73,16 @@ Pager(...)
 ```
 
 <img src="resources/interactive-pager.gif" alt="Interactive pager"/>
+
+You can also use `rotation3D` to add a rotation effect to your pages:
+
+```swift
+Pager(...)
+    .itemSpacing(10)
+    .rotation3D()
+```
+
+<img src="resources/rotation3D.gif" alt="PageAspectRatio lower than 1" height="640"/>
 
 ### Gestures
 
