@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1706BA8823D6509D00A6A56C /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 1706BA8723D6509D00A6A56C /* SwiftUIPager */; };
 		17D9E0F423D4CF6700C5AE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */; };
 		17D9E0F623D4CF6700C5AE93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */; };
 		17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F723D4CF6700C5AE93 /* ContentView.swift */; };
 		17D9E0FA23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0F923D4CF6900C5AE93 /* Assets.xcassets */; };
 		17D9E0FD23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */; };
 		17D9E10023D4CF6900C5AE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FE23D4CF6900C5AE93 /* LaunchScreen.storyboard */; };
+		6B3489B923D764D5002601D8 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 6B3489B823D764D5002601D8 /* SwiftUIPager */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1706BA8823D6509D00A6A56C /* SwiftUIPager in Frameworks */,
+				6B3489B923D764D5002601D8 /* SwiftUIPager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +94,7 @@
 			);
 			name = Sample;
 			packageProductDependencies = (
-				1706BA8723D6509D00A6A56C /* SwiftUIPager */,
+				6B3489B823D764D5002601D8 /* SwiftUIPager */,
 			);
 			productName = SwiftUIPager;
 			productReference = 17D9E0F023D4CF6700C5AE93 /* Sample.app */;
@@ -125,7 +125,7 @@
 			);
 			mainGroup = 17D9E0E723D4CF6700C5AE93;
 			packageReferences = (
-				1706BA8623D6509D00A6A56C /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				6B3489B723D764D5002601D8 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = 17D9E0F123D4CF6700C5AE93 /* Products */;
 			projectDirPath = "";
@@ -352,9 +352,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1706BA8623D6509D00A6A56C /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+		6B3489B723D764D5002601D8 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fermoya/SwiftUIPager";
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -363,9 +363,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1706BA8723D6509D00A6A56C /* SwiftUIPager */ = {
+		6B3489B823D764D5002601D8 /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1706BA8623D6509D00A6A56C /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			package = 6B3489B723D764D5002601D8 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
 			productName = SwiftUIPager;
 		};
 /* End XCSwiftPackageProductDependency section */

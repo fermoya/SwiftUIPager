@@ -72,10 +72,11 @@ Pager(...)
 
 <img src="resources/interactive-pager.gif" alt="Interactive pager"/>
 
-For more information, please check the [sample app](/Sample).
+### Gestures
 
-If you have any issues or feedback, please open an issue or reach out to me at [fmdr.ct@gmail.com](mailto:fmdr.ct@gmail.com).  
-Please feel free to collaborate and make this framework better. 
+`Pager` comes with the following built-in gestures:
+- Tap on any item to bring it to focus.
+- Swipe acroos the items
 
 ### Events
 
@@ -87,6 +88,17 @@ Pager(...)
          // do something
      })
 ```
+
+### Sample projects
+
+You can use `Pager` to implement cool effects as in [iPod](https://github.com/fermoya/iPod)
+
+<img src="resources/cool-sample.gif" alt="Cool sample with Pager"/>
+
+For more information, please check the [sample app](/Sample).
+
+If you have any issues or feedback, please open an issue or reach out to me at [fmdr.ct@gmail.com](mailto:fmdr.ct@gmail.com).  
+Please feel free to collaborate and make this framework better. 
 
 ## License  
 
