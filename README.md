@@ -67,8 +67,10 @@ By default, `Pager` will create a horizontal container. Use `vertical` to create
 
 ```swift
 Pager(...)
-.
+    .vertical()
 ```
+
+<img src="resources/vertical-pager.gif" alt="PageAspectRatio greater than 1" height="640"/>
 
 ### Animations
 
