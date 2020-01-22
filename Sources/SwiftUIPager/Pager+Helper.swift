@@ -19,7 +19,7 @@ extension Pager {
     var scaleIncrement: CGFloat { 1 - interactiveScale }
 
     /// Total space between items. The spacing will be larger when `Pager` is interactive
-    var interactiveItemSpacing: CGFloat { itemSpacing - (pageSize.width * scaleIncrement) / 2 }
+    var interactiveItemSpacing: CGFloat { itemSpacing - ((isHorizontal ? pageSize.width : pageSize.height) * scaleIncrement) / 2 }
 
     /// `True` if the the user is dragging or some event is changing `contentOffset`
     var isDragging: Bool { abs(totalOffset) > 0 }
@@ -68,9 +68,7 @@ extension Pager {
 
     /// Total distance between items
     var pageDistance: CGFloat {
-        let pageDistance = (isHorizontal ? pageSize.width : pageSize.height) + self.interactiveItemSpacing
-        print("Page distance: \(pageDistance), pageSize \(pageSize)")
-        return pageDistance
+        pageSize.width + self.interactiveItemSpacing
     }
 
     /// Total number of pages
