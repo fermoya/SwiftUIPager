@@ -123,10 +123,10 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
-                    .rotation3DEffect(self.angle(for: item),
-                                      axis: self.axis(for: item))
                     .rotation3DEffect(self.isHorizontal ? Angle(degrees: 0) : Angle(degrees: -90),
                                       axis: (0, 0, 1))
+                    .rotation3DEffect(self.angle(for: item),
+                                      axis: self.axis(for: item))
                     .onTapGesture (perform: {
                         withAnimation(.spring()) {
                             self.scrollToItem(item)
@@ -135,10 +135,10 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
             }
             .offset(x: self.xOffset, y : 0)
         }
+        .gesture(self.swipeGesture)
         .rotation3DEffect(isHorizontal ? Angle(degrees: 0) : Angle(degrees: -90),
                           axis: (0, 0, 1))
-        .clipped()
-        .gesture(self.swipeGesture)
+//        .clipped()
         .sizeTrackable($size)
     }
 }
