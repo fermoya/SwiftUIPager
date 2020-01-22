@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "SwiftUIPager",
-        "repositoryURL": "https://github.com/fermoya/SwiftUIPager.git",
+        "repositoryURL": "https://github.com/fermoya/SwiftUIPager",
         "state": {
-          "branch": "master",
-          "revision": "1d22a5878394697884a4b15215522e04a68f835c",
+          "branch": "feat/vertical-pagintation",
+          "revision": "824efeeaac08717ef7d1aefc5037c3e3f32736e6",
           "version": null
         }
       }

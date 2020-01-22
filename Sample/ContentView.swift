@@ -31,7 +31,8 @@ struct ContentView: View {
                     .interactive(0.8)
                     .itemSpacing(10)
                     .padding(8)
-                    .itemAspectRatio(0.6)
+                    .itemAspectRatio(1.5)
+                    .vertical()
                     .border(Color.red, width: 2)
                     .frame(width: min(proxy.size.width,
                                       proxy.size.height),
