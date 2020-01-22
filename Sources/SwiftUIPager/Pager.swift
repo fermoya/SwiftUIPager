@@ -9,7 +9,7 @@
 import SwiftUI
 
 ///
-/// `Pager` is a horizontal pager built with native SwiftUI components. Given a `ViewBuilder` and some `Identifiable` and `Equatable` data,
+/// `Pager` is a view built on top of native SwiftUI components. Given a `ViewBuilder` and some `Identifiable` and `Equatable` data,
 /// this view will create a scrollable container to display a handful of pages. The pages are recycled on scroll. `Pager` is easily customizable through a number
 /// of view-modifier functions.  You can change the vertical insets, spacing between items, ... You can also make the pages size interactive.
 ///
@@ -53,7 +53,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     let rotationInteractiveScale: CGFloat = 0.7
     
     /// Axis of rotation when should rotate
-    let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0.2, 1, 0)
+    let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0, 1, 0)
 
     /*** Dependencies ***/
     
@@ -65,7 +65,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 
     /*** ViewModified properties ***/
 
-    var isHorizontal: Bool = false
+    var isHorizontal: Bool = true
 
     /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
@@ -123,7 +123,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
-                    .rotation3DEffect(self.isHorizontal ? Angle(degrees: 0) : Angle(degrees: -90),
+                    .rotation3DEffect(self.isHorizontal ? .zero : Angle(degrees: -90),
                                       axis: (0, 0, 1))
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
@@ -136,9 +136,8 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
             .offset(x: self.xOffset, y : 0)
         }
         .gesture(self.swipeGesture)
-        .rotation3DEffect(isHorizontal ? Angle(degrees: 0) : Angle(degrees: 90),
+        .rotation3DEffect(isHorizontal ? .zero : Angle(degrees: 90),
                           axis: (0, 0, 1))
-//        .clipped()
         .sizeTrackable($size)
     }
 }

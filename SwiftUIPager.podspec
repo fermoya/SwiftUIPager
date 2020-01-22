@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftUIPager"
-  s.version      = "1.0.0"
-  s.summary      = "Native horizontal pager for SwiftUI. Easily to use, easy to customize."
+  s.version      = "1.1.0"
+  s.summary      = "Native pager for SwiftUI. Easily to use, easy to customize."
 
   s.description  = <<-DESC
-  This framework provides a horizontal pager build with native SwiftUI views. Views are recycled, so you do not have to worry about memory issues. It is very easy to use and lets you customize it. For example, you can change the aspect ratio of the page displayed, the spacing between pages or you can make it interactive.
+  This framework provides a pager build on top of SwiftUI native components. Views are recycled, so you do not have to worry about memory issues. It is very easy to use and lets you customize it. For example, you can change the aspect ratio of the page displayed, the spacing between pages or you can make it interactive.
                    DESC
 
   s.homepage     = "https://medium.com/@fmdr.ct"

@@ -4,7 +4,7 @@
 [![CocoaPods platforms](https://img.shields.io/cocoapods/p/SwiftUIPager.svg)](https://cocoapods.org/pods/SwiftUIPager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-SwiftUIPager provides  a `Pager` component built with SwiftUI native components. `Pager` is a horizontal view that will create a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. 
+SwiftUIPager provides  a `Pager` component built with SwiftUI native components. `Pager` is a view that renders a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. 
 
 <img src="resources/example-of-usage.gif" alt="Example of usage"/>
 
@@ -62,6 +62,13 @@ Pager(...)
 whereas a value greater than one will make it look like a box:
 
 <img src="resources/page_aspect_ratio_greater_than_1.png" alt="PageAspectRatio greater than 1" height="640"/>
+
+By default, `Pager` will create a horizontal container. Use `vertical` to create a vertical pager:
+
+```swift
+Pager(...)
+.
+```
 
 ### Animations
 
