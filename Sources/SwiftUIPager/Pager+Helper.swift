@@ -20,7 +20,7 @@ extension Pager {
 
     /// Total space between items. The spacing will be larger when `Pager` is interactive
     var interactiveItemSpacing: CGFloat {
-        itemSpacing - (pageSize.width * scaleIncrement) / 2 + (isHorizontal ? 0 : pageSize.height - pageSize.width)
+        itemSpacing - (pageSize.width * scaleIncrement) / 2 + (isHorizontal ? 0 : (pageSize.height - pageSize.width) * (1 - scaleIncrement / 2))
     }
 
     /// `True` if the the user is dragging or some event is changing `contentOffset`
