@@ -10,6 +10,11 @@ import SwiftUI
 
 extension Pager {
 
+    /// `true` if `Pager` is vertical
+    var isVertical: Bool {
+        return !isHorizontal
+    }
+
     /// Size increment to be applied to a unfocs item when it comes to focus
     var scaleIncrement: CGFloat { 1 - interactiveScale }
 
@@ -51,8 +56,9 @@ extension Pager {
 
     /// Size of each item. Takes into account `pageAspectRatio` and `verticalInsets` to fit the page into its container
     var pageSize: CGSize {
-        let size = CGSize(width: self.size.width - 2 * verticalInsets,
-                          height: self.size.height - 2 * verticalInsets)
+        let itemAspectRatio = isHorizontal ? self.itemAspectRatio : 1 / self.itemAspectRatio
+        let size = CGSize(width: self.size.width - 2 * sideInsets,
+                          height: self.size.height - 2 * sideInsets)
         let side = min(size.width, size.height)
         if itemAspectRatio > 1 {
             return CGSize(width: side, height: side / itemAspectRatio)
@@ -63,7 +69,7 @@ extension Pager {
 
     /// Total distance between items
     var pageDistance: CGFloat {
-        pageSize.width + self.interactiveItemSpacing
+        (isHorizontal ? pageSize.width : pageSize.height) + self.interactiveItemSpacing
     }
 
     /// Total number of pages

@@ -65,6 +65,8 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 
     /*** ViewModified properties ***/
 
+    var isHorizontal: Bool = false
+
     /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
     
@@ -75,7 +77,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     var contentOffset: CGFloat = 0
 
     /// Vertical padding
-    var verticalInsets: CGFloat = 0
+    var sideInsets: CGFloat = 0
 
     /// Space between pages
     var itemSpacing: CGFloat = 0
@@ -123,6 +125,8 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                     .scaleEffect(self.scale(for: item))
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
+                    .rotation3DEffect(self.isHorizontal ? Angle(degrees: 0) : Angle(degrees: -90),
+                                      axis: (0, 0, 1))
                     .onTapGesture (perform: {
                         withAnimation(.spring()) {
                             self.scrollToItem(item)
@@ -131,6 +135,8 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
             }
             .offset(x: self.xOffset, y : 0)
         }
+        .rotation3DEffect(isHorizontal ? Angle(degrees: 0) : Angle(degrees: -90),
+                          axis: (0, 0, 1))
         .clipped()
         .gesture(self.swipeGesture)
         .sizeTrackable($size)

@@ -10,6 +10,16 @@ import SwiftUI
 
 extension Pager: Buildable {
 
+    /// Returns a horizontal pager
+    public func horizontal() -> Self {
+        mutating(keyPath: \.isHorizontal, value: true)
+    }
+
+    /// Returns a vertical pager
+    public func vertical() -> Self {
+        mutating(keyPath: \.isHorizontal, value: false)
+    }
+
     /// Call this method to provide a shrink ratio that will apply to the items that are not focused.
     ///
     /// - Parameter scale: shrink ratio
@@ -43,9 +53,12 @@ extension Pager: Buildable {
     /// Configures the aspect ratio of each page. This value is considered to be _width / height_.
     ///
     /// - `value > 1` will make the page spread horizontally and have a width larger than its height.
-    /// - `value < 0` will give the page a larger height.
+    /// - `value < 1` will give the page a larger height.
+    ///
+    /// Note: `value` should be greater than 0
     public func itemAspectRatio(_ value: CGFloat) -> Self {
-        mutating(keyPath: \.itemAspectRatio, value: value)
+        guard value > 0 else { return self }
+        return mutating(keyPath: \.itemAspectRatio, value: value)
     }
 
     /// Adds a callback to react to every change on the page index.
@@ -59,12 +72,14 @@ extension Pager: Buildable {
     
     public func padding(_ insets: EdgeInsets) -> Self {
         let length = min(insets.top, insets.bottom)
-        return padding(.vertical, length)
+        let edges: Edge.Set = isHorizontal ? .vertical : .horizontal
+        return padding(edges, length)
     }
     
     public func padding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> Self {
-        guard edges == .all || edges == .vertical else { return self }
-        return mutating(keyPath: \.verticalInsets, value: length ?? 8)
+        let allowedEdges: Edge.Set = isHorizontal ? .vertical : .horizontal
+        guard edges == .all || edges == allowedEdges else { return self }
+        return mutating(keyPath: \.sideInsets, value: length ?? 8)
     }
 
 }
