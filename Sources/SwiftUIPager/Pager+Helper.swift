@@ -68,7 +68,7 @@ extension Pager {
 
     /// Total distance between items
     var pageDistance: CGFloat {
-        (isHorizontal ? pageSize.width : pageSize.height) + self.interactiveItemSpacing
+        pageSize.width + self.interactiveItemSpacing
     }
 
     /// Total number of pages
