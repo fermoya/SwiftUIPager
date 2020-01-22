@@ -39,10 +39,9 @@ extension Pager: Buildable {
             .mutating(keyPath: \.shouldRotate, value: value)
     }
 
-    /// Provides an offset to modify the
-    public func contentOffset(_ pageOffset: Double) -> Self {
-        let contentOffset = CGFloat(pageOffset) * pageDistance
-        return mutating(keyPath: \.contentOffset, value: contentOffset)
+    /// Provides an increment to the page index offset. Use this to modify the scroll offset
+    public func pageOffset(_ pageOffset: Double) -> Self {
+        mutating(keyPath: \.pageOffset, value: pageOffset)
     }
 
     /// Adds space between each page

@@ -74,7 +74,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     var shouldRotate: Bool = false
 
     /// Used to modify `Pager` offset outside this view
-    var contentOffset: CGFloat = 0
+    var pageOffset: Double = 0
 
     /// Vertical padding
     var sideInsets: CGFloat = 0
