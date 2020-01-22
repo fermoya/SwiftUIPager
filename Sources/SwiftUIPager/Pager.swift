@@ -123,7 +123,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
-                    .rotation3DEffect(self.isHorizontal ? Angle(degrees: 0) : Angle(degrees: -90),
+                    .rotation3DEffect(self.isHorizontal ? Angle(degrees: 0) : Angle(degrees: 90),
                                       axis: (0, 0, 1))
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
