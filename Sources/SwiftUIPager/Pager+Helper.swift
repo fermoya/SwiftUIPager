@@ -47,13 +47,13 @@ extension Pager {
     /// Minimum offset allowed. This allows a bounce offset
     var offsetLowerbound: CGFloat {
         guard currentPage == 0 else { return CGFloat(numberOfPages) * self.size.width }
-        return CGFloat(numberOfPagesDisplayed) / 2 * pageDistance - pageDistance / 4
+        return CGFloat(numberOfPagesDisplayed) / 2 * pageDistance - pageDistance / 4 + alignmentOffset
     }
 
     /// Maximum offset allowed. This allows a bounce offset
     var offsetUpperbound: CGFloat {
         guard currentPage == numberOfPages - 1 else { return -CGFloat(numberOfPages) * self.size.width }
-        return -CGFloat(numberOfPagesDisplayed) / 2 * pageDistance + pageDistance / 4
+        return -CGFloat(numberOfPagesDisplayed) / 2 * pageDistance + pageDistance / 4 + alignmentOffset
     }
 
     /// Addition of `draggingOffset` and `contentOffset`
@@ -107,12 +107,24 @@ extension Pager {
         return min(numberOfPages, maximumNumberOfPages + page)
     }
 
+    /// Extra offset to complentate the alignment
+    var alignmentOffset: CGFloat {
+        switch alignment {
+        case .center:
+            return 0
+        case .end(let insets):
+            return (size.width - pageSize.width) / 2 - insets
+        case .start(let insets):
+            return -(size.width - pageSize.width) / 2 + insets
+        }
+    }
+
     /// Offset applied to `HStack`. It's limitted by `offsetUpperbound` and `offsetUpperbound`
     var xOffset: CGFloat {
         let page = CGFloat(self.page - lowerPageDisplayed)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)
         let xIncrement = pageDistance / 2
-        let offset = (numberOfPages / 2 - page) * pageDistance - xIncrement + totalOffset
+        let offset = (numberOfPages / 2 - page) * pageDistance - xIncrement + totalOffset + alignmentOffset
         return max(offsetUpperbound, min(offsetLowerbound, offset))
     }
 
@@ -120,27 +132,27 @@ extension Pager {
     func angle(for item: Element) -> Angle {
         guard shouldRotate else { return .zero }
         guard let index = data.firstIndex(of: item) else { return .zero }
-        
+
         let totalIncrement = abs(totalOffset / pageDistance)
-        
+
         let currentAngle = index == page ? .zero : index < page ? Angle(degrees: rotationDegrees) : Angle(degrees: -rotationDegrees)
         guard isDragging else {
             return currentAngle
         }
-        
+
         let newAngle = direction == .forward ? Angle(degrees: currentAngle.degrees + rotationDegrees * Double(totalIncrement)) : Angle(degrees: currentAngle.degrees - rotationDegrees * Double(totalIncrement) )
         return newAngle
     }
-    
+
     /// Axis for the rotations effect
     func axis(for item: Element) -> (CGFloat, CGFloat, CGFloat) {
         guard shouldRotate else { return (0, 0, 0) }
         guard let index = data.firstIndex(of: item) else { return (0, 0, 0) }
-                
+
         let currentXAxis: CGFloat = index == page ? 0 : index < page ? rotationAxis.x : -rotationAxis.x
         return (currentXAxis, rotationAxis.y, rotationAxis.z)
     }
-    
+
     /// Scale that applies to a particular item
     func scale(for item: Element) -> CGFloat {
         guard isDragging else { return isFocused(item) ? 1 : interactiveScale }
