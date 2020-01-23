@@ -14,34 +14,48 @@ extension Int: Identifiable {
 }
 
 struct ContentView: View {
-    
+
+    @State var isPresented: Bool = false
     @State var pageIndex: Int = 0
     var data: [Int] = Array((0...20))
     
     var body: some View {
+        Button(action: {
+            self.isPresented.toggle()
+        }, label: {
+            Text("Tap me")
+        }).sheet(isPresented: $isPresented, content: {
+            self.presentedView
+        })
+    }
+
+    var presentedView: some View {
         GeometryReader { proxy in
-            VStack {
-                Pager(page: self.$pageIndex,
-                      data: self.data,
-                      content: { index in
-                        self.pageView(index)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                })
-                    .interactive(0.8)
-                    .itemSpacing(10)
-                    .padding(8)
-                    .itemAspectRatio(1.5)
-                    .vertical()
-                    .border(Color.red, width: 2)
-                    .frame(width: min(proxy.size.width,
-                                      proxy.size.height),
-                           height: min(proxy.size.width,
-                                       proxy.size.height))
-                Spacer()
-                Text("Page: \(self.pageIndex)")
-                    .bold()
-                Spacer()
+            ScrollView {
+                VStack {
+                    Pager(page: self.$pageIndex,
+                          data: self.data,
+                          content: { index in
+                            self.pageView(index)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
+                    })
+                        .interactive(0.8)
+                        .itemSpacing(10)
+                        .padding(8)
+                        .itemAspectRatio(0.8)
+                        .itemTappable(true)
+                        .frame(width: min(proxy.size.width,
+                                          proxy.size.height),
+                               height: min(proxy.size.width,
+                                           proxy.size.height))
+                        .border(Color.red, width: 2)
+                    ForEach(self.data) { i in
+                        Text("Page: \(i)")
+                            .bold()
+                            .padding()
+                    }
+                }
             }
         }
     }

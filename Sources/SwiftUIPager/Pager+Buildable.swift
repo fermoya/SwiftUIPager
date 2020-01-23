@@ -10,6 +10,11 @@ import SwiftUI
 
 extension Pager: Buildable {
 
+    /// Adds a `TapGesture` to the items to bring them to focus
+    public func itemTappable(_ value: Bool) -> Self {
+        mutating(keyPath: \.isItemTappable, value: value)
+    }
+
     /// Returns a horizontal pager
     public func horizontal() -> Self {
         mutating(keyPath: \.isHorizontal, value: true)
@@ -39,10 +44,9 @@ extension Pager: Buildable {
             .mutating(keyPath: \.shouldRotate, value: value)
     }
 
-    /// Provides an offset to modify the
-    public func contentOffset(_ pageOffset: Double) -> Self {
-        let contentOffset = CGFloat(pageOffset) * pageDistance
-        return mutating(keyPath: \.contentOffset, value: contentOffset)
+    /// Provides an increment to the page index offset. Use this to modify the scroll offset
+    public func pageOffset(_ pageOffset: Double) -> Self {
+        mutating(keyPath: \.pageOffset, value: pageOffset)
     }
 
     /// Adds space between each page

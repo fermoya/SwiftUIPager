@@ -29,7 +29,7 @@ import SwiftUI
 /// - 30 px of vertical insets
 /// - 0.6 shrink ratio for items that aren't focused.
 ///
-public struct Pager<Data, Content>: View  where Content: View, Data: Identifiable & Equatable {
+public struct Pager<Element, PageView>: View  where PageView: View, Element: Identifiable & Equatable {
 
     /// `Direction` determines the direction of the swipe gesture
     enum Direction {
@@ -58,13 +58,17 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     /*** Dependencies ***/
     
     /// `ViewBuilder` block to create each page
-    let content: (Data) -> Content
+    let content: (Element) -> PageView
 
     /// Array of items that will populate each page
-    var data: [Data]
+    var data: [Element]
 
     /*** ViewModified properties ***/
 
+    /// `true` if items are tapable
+    var isItemTappable: Bool = false
+
+    /// `true` if the pager is horizontal
     var isHorizontal: Bool = true
 
     /// Shrink ratio that affects the items that aren't focused
@@ -74,7 +78,7 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     var shouldRotate: Bool = false
 
     /// Used to modify `Pager` offset outside this view
-    var contentOffset: CGFloat = 0
+    var pageOffset: Double = 0
 
     /// Vertical padding
     var sideInsets: CGFloat = 0
@@ -111,12 +115,12 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
     /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Data], @ViewBuilder content: @escaping (Data) -> Content) {
+    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
         self._page = page
         self.data = data
         self.content = content
     }
-    
+
     public var body: some View {
         HStack(spacing: self.interactiveItemSpacing) {
             ForEach(self.dataDisplayed) { item in
@@ -127,11 +131,8 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
                                       axis: (0, 0, 1))
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
-                    .onTapGesture (perform: {
-                        withAnimation(.spring()) {
-                            self.scrollToItem(item)
-                        }
-                    })
+                    .gesture(self.tapGesture(for: item))
+                    .disabled(self.isFocused(item) || !self.isItemTappable)
             }
             .offset(x: self.xOffset, y : 0)
         }
@@ -147,9 +148,18 @@ public struct Pager<Data, Content>: View  where Content: View, Data: Identifiabl
 extension Pager {
 
     /// Helper function to scroll to a specific item.
-    func scrollToItem(_ item: Data) {
+    func scrollToItem(_ item: Element) {
         guard let index = data.firstIndex(of: item) else { return }
         self.page = index
+    }
+
+    func tapGesture(for item: Element) -> some Gesture {
+        TapGesture(count: 1)
+            .onEnded({ _ in
+                withAnimation(.spring()) {
+                    self.scrollToItem(item)
+                }
+            })
     }
 
     /// `DragGesture` customized to work with `Pager`
