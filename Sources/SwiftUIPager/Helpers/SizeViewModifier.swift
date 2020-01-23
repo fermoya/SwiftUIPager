@@ -14,9 +14,7 @@ struct SizePreferenceKey: PreferenceKey {
 
     static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         let newValue = nextValue()
-        print("newvalue: \(newValue)")
         guard value != newValue else { return }
-        print("updated")
         value = newValue
     }
 }
@@ -31,10 +29,10 @@ struct SizeViewModifier: ViewModifier {
             content
                 .preference(key: SizePreferenceKey.self,
                             value: proxy.size)
+                .onPreferenceChange(SizePreferenceKey.self, perform: { (newSize) in
+                    self.size = newSize
+                })
         }
-        .onPreferenceChange(SizePreferenceKey.self, perform: { (newSize) in
-            self.size = newSize
-        })
         .clipped()
     }
 }
