@@ -9,15 +9,11 @@
 import SwiftUI
 import SwiftUIPager
 
-extension Int: Identifiable {
-    public var id: Int { return self }
-}
-
 struct ContentView: View {
 
     @State var isPresented: Bool = false
     @State var pageIndex: Int = 0
-    var data: [Int] = Array((0...20))
+    var data: [Int] = Array((0...5))
     
     var body: some View {
         Button(action: {
@@ -35,6 +31,7 @@ struct ContentView: View {
                 VStack {
                     Pager(page: self.$pageIndex,
                           data: self.data,
+                          id: \.self,
                           content: { index in
                             self.pageView(index)
                                 .cornerRadius(10)
@@ -43,14 +40,16 @@ struct ContentView: View {
                         .interactive(0.8)
                         .itemSpacing(10)
                         .padding(8)
-                        .itemAspectRatio(0.8)
+                        .alignment(.start(30))
+                        .horizontal()
+                        .itemAspectRatio(1)
                         .itemTappable(true)
                         .frame(width: min(proxy.size.width,
                                           proxy.size.height),
                                height: min(proxy.size.width,
                                            proxy.size.height))
                         .border(Color.red, width: 2)
-                    ForEach(self.data) { i in
+                    ForEach(self.data, id: \.self) { i in
                         Text("Page: \(i)")
                             .bold()
                             .padding()

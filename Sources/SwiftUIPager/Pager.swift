@@ -225,7 +225,7 @@ extension Pager {
                 let velocity = -Double(value.translation.width) / value.time.timeIntervalSince(self.draggingStartTime ?? Date())
                 var newPage = self.currentPage
                 if newPage == self.page, abs(velocity) > 1000 {
-                    newPage = newPage + Int(velocity / velocity) * (self.isVertical ? -1 : 1)
+                    newPage = newPage + Int(velocity / abs(velocity))
                 }
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
                 withAnimation(.easeOut) {
