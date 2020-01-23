@@ -93,7 +93,7 @@ extension Pager {
     }
 
     /// Data that is being displayed at the moment
-    var dataDisplayed: [Data] {
+    var dataDisplayed: [Element] {
         Array(data[lowerPageDisplayed..<upperPageDisplayed])
     }
 
@@ -117,7 +117,7 @@ extension Pager {
     }
 
     /// Angle for the 3D rotation effect
-    func angle(for item: Data) -> Angle {
+    func angle(for item: Element) -> Angle {
         guard shouldRotate else { return .zero }
         guard let index = data.firstIndex(of: item) else { return .zero }
         
@@ -133,7 +133,7 @@ extension Pager {
     }
     
     /// Axis for the rotations effect
-    func axis(for item: Data) -> (CGFloat, CGFloat, CGFloat) {
+    func axis(for item: Element) -> (CGFloat, CGFloat, CGFloat) {
         guard shouldRotate else { return (0, 0, 0) }
         guard let index = data.firstIndex(of: item) else { return (0, 0, 0) }
                 
@@ -142,7 +142,7 @@ extension Pager {
     }
     
     /// Scale that applies to a particular item
-    func scale(for item: Data) -> CGFloat {
+    func scale(for item: Element) -> CGFloat {
         guard isDragging else { return isFocused(item) ? 1 : interactiveScale }
 
         let totalIncrement = abs(totalOffset / pageDistance)
@@ -164,7 +164,7 @@ extension Pager {
     }
 
     /// Returns true if the item is focused on the screen.
-    func isFocused(_ item: Data) -> Bool {
+    func isFocused(_ item: Element) -> Bool {
         data.firstIndex(of: item) == currentPage
     }
 

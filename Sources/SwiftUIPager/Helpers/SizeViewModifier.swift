@@ -8,17 +8,6 @@
 
 import SwiftUI
 
-/// Tracks the size of the view
-struct SizePreferenceKey: PreferenceKey {
-    static var defaultValue: CGSize = .zero
-
-    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
-        let newValue = nextValue()
-        guard value != newValue else { return }
-        value = newValue
-    }
-}
-
 /// This modifier wraps a view into a `GeometryReader` and tracks the available space by using `SizePreferenceKey` on the content
 struct SizeViewModifier: ViewModifier {
     
@@ -27,8 +16,6 @@ struct SizeViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { proxy in
             content
-                .preference(key: SizePreferenceKey.self,
-                            value: proxy.size)
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .onAppear (perform: {
                     self.size = proxy.size

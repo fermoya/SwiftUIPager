@@ -10,6 +10,11 @@ import SwiftUI
 
 extension Pager: Buildable {
 
+    /// Adds a `TapGesture` to the items to bring them to focus
+    public func itemTappable(_ value: Bool) -> Self {
+        mutating(keyPath: \.isItemTappable, value: value)
+    }
+
     /// Returns a horizontal pager
     public func horizontal() -> Self {
         mutating(keyPath: \.isHorizontal, value: true)
