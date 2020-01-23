@@ -109,13 +109,14 @@ extension Pager {
 
     /// Extra offset to complentate the alignment
     var alignmentOffset: CGFloat {
+        let multiplier: CGFloat = isHorizontal ? 1 : -1
         switch alignment {
         case .center:
             return 0
         case .end(let insets):
-            return (size.width - pageSize.width) / 2 - insets
+            return ((size.width - pageSize.width) / 2 - insets) * multiplier
         case .start(let insets):
-            return -(size.width - pageSize.width) / 2 + insets
+            return -((size.width - pageSize.width) / 2 + insets) * multiplier
         }
     }
 

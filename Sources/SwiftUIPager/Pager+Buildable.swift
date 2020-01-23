@@ -10,6 +10,11 @@ import SwiftUI
 
 extension Pager: Buildable {
 
+    /// Changes the a the  alignment of the pages relative to their container
+    public func alignment(_ value: Alignment) -> Self {
+        mutating(keyPath: \.alignment, value: value)
+    }
+
     /// Adds a `TapGesture` to the items to bring them to focus
     public func itemTappable(_ value: Bool) -> Self {
         mutating(keyPath: \.isItemTappable, value: value)

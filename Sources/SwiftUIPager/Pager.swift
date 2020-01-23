@@ -81,10 +81,10 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
     /// Array of items that will populate each page
     var data: [Element]
 
-    /// The elements alignment relative to the container
-    var alignment: Alignment
-
     /*** ViewModified properties ***/
+
+    /// The elements alignment relative to the container
+    var alignment: Alignment = .center
 
     /// `true` if items are tapable
     var isItemTappable: Bool = false
@@ -135,13 +135,11 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
     ///
     /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content
-    /// - Parameter alignment: The page alignment relative to `Pager`
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], alignment: Alignment = .center, @ViewBuilder content: @escaping (Element) -> PageView) {
+    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
         self._page = page
         self.data = data
         self.content = content
-        self.alignment = alignment
     }
 
     public var body: some View {
