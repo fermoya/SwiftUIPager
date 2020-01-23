@@ -55,6 +55,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         /// - Right, if horizontal
         /// - Bottom, if vertical
         case end(CGFloat)
+
+        /// Sets the alignment at the start, with 0 px of margin
+        public static var start: Alignment { .start(0) }
+
+        /// Sets the alignment at the end, with 0 px of margin
+        public static var end: Alignment { .end(0) }
     }
 
     /*** Constants ***/
@@ -74,6 +80,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0, 1, 0)
 
     /*** Dependencies ***/
+
+    /// Angle to dermine the direction of the scroll
+    var scrollDirectionAngle: Angle = .zero
 
     /// `ViewBuilder` block to create each page
     let content: (Element) -> PageView
@@ -153,7 +162,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
-                    .rotation3DEffect(self.isHorizontal ? .zero : Angle(degrees: -90),
+                    .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
                                       axis: (0, 0, 1))
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
@@ -163,7 +172,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .offset(x: self.xOffset, y : 0)
         }
         .gesture(self.swipeGesture)
-        .rotation3DEffect(isHorizontal ? .zero : Angle(degrees: 90),
+        .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                           axis: (0, 0, 1))
         .sizeTrackable($size)
     }
@@ -216,7 +225,7 @@ extension Pager {
                 let velocity = -Double(value.translation.width) / value.time.timeIntervalSince(self.draggingStartTime ?? Date())
                 var newPage = self.currentPage
                 if newPage == self.page, abs(velocity) > 1000 {
-                    newPage = newPage + Int(velocity / velocity)
+                    newPage = newPage + Int(velocity / velocity) * (self.isVertical ? -1 : 1)
                 }
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
                 withAnimation(.easeOut) {

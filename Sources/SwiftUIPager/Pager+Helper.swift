@@ -109,15 +109,17 @@ extension Pager {
 
     /// Extra offset to complentate the alignment
     var alignmentOffset: CGFloat {
-        let multiplier: CGFloat = isHorizontal ? 1 : -1
+        let offset: CGFloat
         switch alignment {
         case .center:
-            return 0
+            offset = 0
         case .end(let insets):
-            return ((size.width - pageSize.width) / 2 - insets) * multiplier
+            offset = (size.width - pageSize.width) / 2 - insets
         case .start(let insets):
-            return -((size.width - pageSize.width) / 2 + insets) * multiplier
+            offset = (size.width - pageSize.width) / 2 + insets
         }
+
+        return offset
     }
 
     /// Offset applied to `HStack`. It's limitted by `offsetUpperbound` and `offsetUpperbound`
