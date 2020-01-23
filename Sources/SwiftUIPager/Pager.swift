@@ -29,7 +29,7 @@ import SwiftUI
 /// - 30 px of vertical insets
 /// - 0.6 shrink ratio for items that aren't focused.
 ///
-public struct Pager<Element, PageView>: View  where PageView: View, Element: Identifiable & Equatable {
+public struct Pager<Element, ID, PageView>: View  where PageView: View, Element: Equatable, ID: Hashable {
 
     /// `Direction` determines the direction of the swipe gesture
     enum Direction {
@@ -77,6 +77,9 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
 
     /// `ViewBuilder` block to create each page
     let content: (Element) -> PageView
+
+    /// `KeyPath` to data id property
+    let id: KeyPath<Element, ID>
 
     /// Array of items that will populate each page
     var data: [Element]
@@ -135,16 +138,18 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
     ///
     /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content
+    /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
+    public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
         self._page = page
         self.data = data
+        self.id = id
         self.content = content
     }
 
     public var body: some View {
         HStack(spacing: self.interactiveItemSpacing) {
-            ForEach(self.dataDisplayed) { item in
+            ForEach(self.dataDisplayed, id: id) { item in
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
@@ -162,6 +167,22 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
                           axis: (0, 0, 1))
         .sizeTrackable($size)
     }
+}
+
+extension Pager where ID == Element.ID, Element : Identifiable {
+
+    /// Initializes a new Pager.
+    ///
+    /// - Parameter page: Binding to the index of the focused page
+    /// - Parameter data: Array of items to populate the content
+    /// - Parameter content: Factory method to build new pages
+    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
+        self._page = page
+        self.data = data
+        self.id = \Element.id
+        self.content = content
+    }
+
 }
 
 // MARK: Gestures
