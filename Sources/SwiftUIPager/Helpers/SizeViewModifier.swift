@@ -29,10 +29,11 @@ struct SizeViewModifier: ViewModifier {
             content
                 .preference(key: SizePreferenceKey.self,
                             value: proxy.size)
+                .frame(width: proxy.size.width, height: proxy.size.height)
+                .onAppear (perform: {
+                    self.size = proxy.size
+            })
         }
-        .onPreferenceChange(SizePreferenceKey.self, perform: { (newSize) in
-            self.size = newSize
-        })
         .clipped()
     }
 }
