@@ -39,29 +39,50 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
         case backward
     }
 
+    /// `Alignment` determines the focused page alignment inside `Pager`
+    public enum Alignment {
+        /// Sets the alignment to be centered
+        case center
+
+        /// Sets the alignment to be at the start of the container with the specified insets:
+        ///
+        /// - Left, if horizontal
+        /// - Top, if vertical
+        case start(CGFloat)
+
+        /// Sets the alignment to be at the start of the container with the specified insets:
+        ///
+        /// - Right, if horizontal
+        /// - Bottom, if vertical
+        case end(CGFloat)
+    }
+
     /*** Constants ***/
 
     /// Manages the number of items that should be displayed in the screen.
     /// A ratio of 3, for instance, would mean the items held in memory are enough
     /// to cover 3 times the size of the pager
     let recyclingRatio = 4
-    
+
     /// Angle of rotation when should rotate
     let rotationDegrees: Double = 20
-    
+
     /// Angle of rotation when should rotate
     let rotationInteractiveScale: CGFloat = 0.7
-    
+
     /// Axis of rotation when should rotate
     let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0, 1, 0)
 
     /*** Dependencies ***/
-    
+
     /// `ViewBuilder` block to create each page
     let content: (Element) -> PageView
 
     /// Array of items that will populate each page
     var data: [Element]
+
+    /// The elements alignment relative to the container
+    var alignment: Alignment
 
     /*** ViewModified properties ***/
 
@@ -73,7 +94,7 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
 
     /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
-    
+
     /// `true` if pages should have a 3D rotation effect
     var shouldRotate: Bool = false
 
@@ -91,7 +112,7 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
 
     /// Callback for every new page
     var onPageChanged: ((Int) -> Void)?
-    
+
     /*** State and Binding properties ***/
 
     /// Size of the view
@@ -114,11 +135,13 @@ public struct Pager<Element, PageView>: View  where PageView: View, Element: Ide
     ///
     /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content
+    /// - Parameter alignment: The page alignment relative to `Pager`
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
+    public init(page: Binding<Int>, data: [Element], alignment: Alignment = .center, @ViewBuilder content: @escaping (Element) -> PageView) {
         self._page = page
         self.data = data
         self.content = content
+        self.alignment = alignment
     }
 
     public var body: some View {

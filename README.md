@@ -96,7 +96,7 @@ Pager(...)
 ### Gestures
 
 `Pager` comes with the following built-in gestures:
-- Tap on any item to bring it to focus.
+- Tap on any item to bring it to focus. Need to call `itemTappable`
 - Swipe acroos the items
 
 ### Events
