@@ -17,7 +17,7 @@ extension Pager {
 
     /// `pageOffset` converted to scrollable offset
     var contentOffset: CGFloat {
-        CGFloat(pageOffset) * pageDistance
+        -CGFloat(pageOffset) * pageDistance
     }
 
     /// Size increment to be applied to a unfocs item when it comes to focus
