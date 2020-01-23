@@ -114,9 +114,17 @@ extension Pager {
         case .center:
             offset = 0
         case .end(let insets):
-            offset = (size.width - pageSize.width) / 2 - insets
+            if isVertical {
+                offset = (size.height - pageSize.height) / 2 - insets
+            } else {
+                offset = (size.width - pageSize.width) / 2 - insets
+            }
         case .start(let insets):
-            offset = (size.width - pageSize.width) / 2 + insets
+            if isVertical {
+                offset = -(size.height - pageSize.height) / 2 + insets
+            } else {
+                offset = -(size.width - pageSize.width) / 2 + insets
+            }
         }
 
         return offset
