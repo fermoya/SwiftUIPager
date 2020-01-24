@@ -16,48 +16,33 @@ struct ContentView: View {
     var data: [Int] = Array((0...5))
     
     var body: some View {
-        Button(action: {
-            self.isPresented.toggle()
-        }, label: {
-            Text("Tap me")
-        }).sheet(isPresented: $isPresented, content: {
-            self.presentedView
-        })
-    }
-
-    var presentedView: some View {
         GeometryReader { proxy in
-            ScrollView {
-                VStack {
-                    Pager(page: self.$pageIndex,
-                          data: self.data,
-                          id: \.self,
-                          content: { index in
-                            self.pageView(index)
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                    })
-                        .interactive(0.8)
-                        .itemSpacing(10)
-                        .padding(8)
-                        .alignment(.start(30))
-                        .horizontal()
-                        .itemAspectRatio(1)
-                        .itemTappable(true)
-                        .frame(width: min(proxy.size.width,
-                                          proxy.size.height),
-                               height: min(proxy.size.width,
-                                           proxy.size.height))
-                        .border(Color.red, width: 2)
-                    ForEach(self.data, id: \.self) { i in
-                        Text("Page: \(i)")
-                            .bold()
-                            .padding()
-                    }
-                }
+            VStack {
+                Pager(page: self.$pageIndex,
+                      data: self.data,
+                      id: \.self,
+                      content: { index in
+                        self.pageView(index)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                })
+                    .itemSpacing(10)
+                    .alignment(.start)
+                    .horizontal(.rightToLeft)
+                    .itemAspectRatio(0.6)
+                    .frame(width: min(proxy.size.width,
+                                      proxy.size.height),
+                           height: min(proxy.size.width,
+                                       proxy.size.height))
+                    .border(Color.red, width: 2)
+                Spacer()
+                Text("Page: \(self.pageIndex)")
+                    .bold()
+                Spacer()
             }
         }
     }
+
 }
 
 extension ContentView {

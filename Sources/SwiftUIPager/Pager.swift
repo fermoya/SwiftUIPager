@@ -101,6 +101,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// `true` if items are tapable
     var isItemTappable: Bool = false
 
+    /// `true` if items user interaction is enabled
+    var isUserInteractionEnabled: Bool = true
+
     /// `true` if the pager is horizontal
     var isHorizontal: Bool = true
 
@@ -157,8 +160,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     }
 
     public var body: some View {
-        HStack(spacing: self.interactiveItemSpacing) {
-            ForEach(self.dataDisplayed, id: id) { item in
+        HStack(spacing: interactiveItemSpacing) {
+            ForEach(dataDisplayed, id: id) { item in
                 self.content(item)
                     .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
@@ -167,11 +170,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
                     .gesture(self.tapGesture(for: item))
-                    .disabled(self.isFocused(item) || !self.isItemTappable)
+                    .disabled(self.isFocused(item) || !self.isItemTappable || !self.isUserInteractionEnabled)
             }
             .offset(x: self.xOffset, y : 0)
         }
-        .gesture(self.swipeGesture)
+        .gesture(swipeGesture)
+        .disabled(!isUserInteractionEnabled)
         .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                           axis: (0, 0, 1))
         .sizeTrackable($size)

@@ -5,8 +5,8 @@
         "package": "SwiftUIPager",
         "repositoryURL": "https://github.com/fermoya/SwiftUIPager",
         "state": {
-          "branch": "fix/page-offset",
-          "revision": "3b05829020ec5e10a0997455b2a7fb18dfb4af53",
+          "branch": "feat/adding-alignment",
+          "revision": "0d5ce99d889b105b600baeb5219d3b90f90667f8",
           "version": null
         }
       }

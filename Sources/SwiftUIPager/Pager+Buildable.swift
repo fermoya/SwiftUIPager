@@ -40,6 +40,11 @@ extension Pager: Buildable {
         mutating(keyPath: \.isItemTappable, value: value)
     }
 
+    /// Disables any gesture interaction
+    public func disableInteraction(_ value: Bool) -> Self {
+        mutating(keyPath: \.isUserInteractionEnabled, value: value)
+    }
+
     /// Returns a horizontal pager
     public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
         let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)
