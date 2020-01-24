@@ -6,6 +6,8 @@
 
 SwiftUIPager provides  a `Pager` component built with SwiftUI native components. `Pager` is a view that renders a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. 
 
+Create vertical or horizontal pagers, align the cards, change the direction of the scroll, animate the pagintation... `Pager` lets you do anything you want.
+
 <img src="resources/example-of-usage.gif" alt="Example of usage"/>
 
 ## Requirements
@@ -33,12 +35,14 @@ Go to XCode:
 
 Creating a `Pager` is very simple. You just need to pass:
 - `Binding` to page index
-- Array of items that conform to `Equatable` and `Identifiable` 
+- `Array` of items 
+- `KeyPath` to an identifier.
 - `ViewBuilder` factory method to create each page
 
 ```swift
  Pager(page: self.$pageIndex,
        data: self.items,
+       id: \.identifier,
        content: { item in
            // create a page based on the data passed
            self.pageView(item)
@@ -47,7 +51,7 @@ Creating a `Pager` is very simple. You just need to pass:
 
 ### UI customization
 
-`Pager` is easily customizable through a number of view-modifier functions.  You can change the vertical insets, spacing between items or the page aspect ratio, among others:
+`Pager` is easily customizable through a number of view-modifier functions.  You can change the orientation, the direction of the scroll, the alignment, the space between items or the page aspect ratio, among others:
 
 ```swift
 Pager(...)
@@ -72,9 +76,21 @@ Pager(...)
 
 <img src="resources/vertical-pager.gif" alt="PageAspectRatio greater than 1" height="640"/>
 
+You can customize the alignment and the direction of the scroll. For instance, you can have a horizontal `Pager` that scrolls right-to-left that it's aligned at the start of the scroll:
+
+```swift
+Pager(...)
+    .itemSpacing(10)
+    .alignment(.start)
+    .horizontal(.rightToLeft)
+    .itemAspectRatio(0.6)
+```
+
+<img src="resources/orientation-alignment.gif" alt="PageAspectRatio greater than 1" height="640"/>
+
 ### Animations
 
-Use `interactive` to pass a shrink ratio that will be applied to those components that are not focused, that is, those elements whose index is different from `pageIndex` binding:
+Use `interactive` add a scale animation effect to those pages that are unfocused, that is, those elements whose index is different from `pageIndex`:
 
 ```swift
 Pager(...)
@@ -96,8 +112,10 @@ Pager(...)
 ### Gestures
 
 `Pager` comes with the following built-in gestures:
-- Tap on any item to bring it to focus.
+- Tap on any item to bring it to focus. Enable this gesture with `itemTappable`
 - Swipe acroos the items
+
+You can disable any interaction by calling `disableInteraction`.
 
 ### Events
 

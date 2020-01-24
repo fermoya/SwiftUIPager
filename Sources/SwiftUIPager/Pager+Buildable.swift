@@ -10,19 +10,53 @@ import SwiftUI
 
 extension Pager: Buildable {
 
+    /// Swipe direction for a vertical `Pager`
+    public enum HorizontalSwipeDirection {
+
+        /// Pages move from left to right
+        case leftToRight
+
+        /// Pages move from right to left
+        case rightToLeft
+    }
+
+    /// Swipe direction for a horizontal `Pager`
+    public enum VerticalSwipeDirection {
+
+        /// Pages move from top left to bottom
+        case topToBottom
+
+        /// Pages move from bottom to top
+        case bottomToTop
+    }
+
+    /// Changes the a the  alignment of the pages relative to their container
+    public func alignment(_ value: Alignment) -> Self {
+        mutating(keyPath: \.alignment, value: value)
+    }
+
     /// Adds a `TapGesture` to the items to bring them to focus
     public func itemTappable(_ value: Bool) -> Self {
         mutating(keyPath: \.isItemTappable, value: value)
     }
 
+    /// Disables any gesture interaction
+    public func disableInteraction(_ value: Bool) -> Self {
+        mutating(keyPath: \.isUserInteractionEnabled, value: value)
+    }
+
     /// Returns a horizontal pager
-    public func horizontal() -> Self {
-        mutating(keyPath: \.isHorizontal, value: true)
+    public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
+        let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)
+        return mutating(keyPath: \.isHorizontal, value: true)
+            .mutating(keyPath: \.scrollDirectionAngle, value: scrollDirectionAngle)
     }
 
     /// Returns a vertical pager
-    public func vertical() -> Self {
-        mutating(keyPath: \.isHorizontal, value: false)
+    public func vertical(_ swipeDirection: VerticalSwipeDirection = .topToBottom) -> Self {
+        let scrollDirectionAngle: Angle = swipeDirection == .topToBottom ? .zero : Angle(degrees: 180)
+        return mutating(keyPath: \.isHorizontal, value: false)
+            .mutating(keyPath: \.scrollDirectionAngle, value: scrollDirectionAngle)
     }
 
     /// Call this method to provide a shrink ratio that will apply to the items that are not focused.
