@@ -16,8 +16,21 @@
 		6BEA272523DA3596001A2082 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 6BEA272423DA3596001A2082 /* SwiftUIPager */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6BDE440C23DE10200022A2F7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		17D9E0F023D4CF6700C5AE93 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D9E0F023D4CF6700C5AE93 /* SwiftUIPagerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPagerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		17D9E0F723D4CF6700C5AE93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,7 +55,7 @@
 		17D9E0E723D4CF6700C5AE93 = {
 			isa = PBXGroup;
 			children = (
-				17D9E0F223D4CF6700C5AE93 /* Sample */,
+				17D9E0F223D4CF6700C5AE93 /* SwiftUIPagerExample */,
 				17D9E0F123D4CF6700C5AE93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +63,12 @@
 		17D9E0F123D4CF6700C5AE93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17D9E0F023D4CF6700C5AE93 /* Sample.app */,
+				17D9E0F023D4CF6700C5AE93 /* SwiftUIPagerExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		17D9E0F223D4CF6700C5AE93 /* Sample */ = {
+		17D9E0F223D4CF6700C5AE93 /* SwiftUIPagerExample */ = {
 			isa = PBXGroup;
 			children = (
 				17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */,
@@ -66,7 +79,7 @@
 				17D9E10123D4CF6900C5AE93 /* Info.plist */,
 				17D9E0FB23D4CF6900C5AE93 /* Preview Content */,
 			);
-			path = Sample;
+			path = SwiftUIPagerExample;
 			sourceTree = "<group>";
 		};
 		17D9E0FB23D4CF6900C5AE93 /* Preview Content */ = {
@@ -80,24 +93,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17D9E0EF23D4CF6700C5AE93 /* Sample */ = {
+		17D9E0EF23D4CF6700C5AE93 /* SwiftUIPagerExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "Sample" */;
+			buildConfigurationList = 17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "SwiftUIPagerExample" */;
 			buildPhases = (
 				17D9E0EC23D4CF6700C5AE93 /* Sources */,
 				17D9E0ED23D4CF6700C5AE93 /* Frameworks */,
 				17D9E0EE23D4CF6700C5AE93 /* Resources */,
+				6BDE440C23DE10200022A2F7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Sample;
+			name = SwiftUIPagerExample;
 			packageProductDependencies = (
 				6BEA272423DA3596001A2082 /* SwiftUIPager */,
 			);
 			productName = SwiftUIPager;
-			productReference = 17D9E0F023D4CF6700C5AE93 /* Sample.app */;
+			productReference = 17D9E0F023D4CF6700C5AE93 /* SwiftUIPagerExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "Sample" */;
+			buildConfigurationList = 17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "SwiftUIPagerExample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -131,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17D9E0EF23D4CF6700C5AE93 /* Sample */,
+				17D9E0EF23D4CF6700C5AE93 /* SwiftUIPagerExample */,
 			);
 		};
 /* End PBXProject section */
@@ -293,10 +307,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Sample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIPagerExample/Preview Content\"";
 				DEVELOPMENT_TEAM = LPBB5C5CRP;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Sample/Info.plist;
+				INFOPLIST_FILE = SwiftUIPagerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,10 +327,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Sample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIPagerExample/Preview Content\"";
 				DEVELOPMENT_TEAM = LPBB5C5CRP;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Sample/Info.plist;
+				INFOPLIST_FILE = SwiftUIPagerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,7 +345,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "Sample" */ = {
+		17D9E0EB23D4CF6700C5AE93 /* Build configuration list for PBXProject "SwiftUIPagerExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17D9E10223D4CF6900C5AE93 /* Debug */,
@@ -340,7 +354,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "Sample" */ = {
+		17D9E10423D4CF6900C5AE93 /* Build configuration list for PBXNativeTarget "SwiftUIPagerExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17D9E10523D4CF6900C5AE93 /* Debug */,
@@ -356,8 +370,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager";
 			requirement = {
-				branch = "feat/adding-alignment";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

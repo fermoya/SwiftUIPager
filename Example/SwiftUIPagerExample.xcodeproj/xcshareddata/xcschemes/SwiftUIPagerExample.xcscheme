@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17D9E0EF23D4CF6700C5AE93"
-            BuildableName = "Sample.app"
-            BlueprintName = "Sample"
-            ReferencedContainer = "container:Sample.xcodeproj">
+            BuildableName = "SwiftUIPagerExample.app"
+            BlueprintName = "SwiftUIPagerExample"
+            ReferencedContainer = "container:SwiftUIPagerExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <MacroExpansion>
