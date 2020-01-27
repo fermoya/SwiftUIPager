@@ -53,7 +53,9 @@ extension Pager {
     /// Maximum offset allowed. This allows a bounce offset
     var offsetUpperbound: CGFloat {
         guard currentPage == numberOfPages - 1 else { return -CGFloat(numberOfPages) * self.size.width }
-        return -CGFloat(numberOfPagesDisplayed) / 2 * pageDistance + pageDistance / 4 + alignmentOffset
+        let a = -CGFloat(numberOfPagesDisplayed) / 2
+        let b = pageDistance / 4
+        return a * pageDistance + b + alignmentOffset
     }
 
     /// Addition of `draggingOffset` and `contentOffset`
