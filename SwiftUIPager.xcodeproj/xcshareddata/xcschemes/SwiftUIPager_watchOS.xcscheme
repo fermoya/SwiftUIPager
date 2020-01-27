@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1120"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BDE441623DE10C10022A2F7"
-               BuildableName = "SwiftUIPager.framework"
-               BlueprintName = "SwiftUIPager"
+               BlueprintIdentifier = "172F4D7723DF8A6400FD2F15"
+               BuildableName = "SwiftUIPager_watchOS.framework"
+               BlueprintName = "SwiftUIPager_watchOS"
                ReferencedContainer = "container:SwiftUIPager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6BDE441623DE10C10022A2F7"
-            BuildableName = "SwiftUIPager.framework"
-            BlueprintName = "SwiftUIPager"
+            BlueprintIdentifier = "172F4D7723DF8A6400FD2F15"
+            BuildableName = "SwiftUIPager_watchOS.framework"
+            BlueprintName = "SwiftUIPager_watchOS"
             ReferencedContainer = "container:SwiftUIPager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
