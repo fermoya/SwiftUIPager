@@ -82,7 +82,7 @@ extension Pager: Buildable {
     ///
     /// - `value > 1` will make the page spread horizontally and have a width larger than its height.
     /// - `value < 1` will give the page a larger height.
-    ///
+    /// - `nil` will reset to the _default_ value and the page will take up all the available space
     /// Note: `value` should be greater than 0
     public func itemAspectRatio(_ value: CGFloat?) -> Self {
         guard (value ?? 0) > 0 else { return self }
