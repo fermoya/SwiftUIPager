@@ -117,7 +117,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var itemSpacing: CGFloat = 0
 
     /// Will apply this ratio to each page item. The aspect ratio follows the formula _width / height_
-    var itemAspectRatio: CGFloat = 1
+    var itemAspectRatio: CGFloat?
 
     /// Callback for every new page
     var onPageChanged: ((Int) -> Void)?

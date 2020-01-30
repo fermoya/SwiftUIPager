@@ -84,8 +84,8 @@ extension Pager: Buildable {
     /// - `value < 1` will give the page a larger height.
     ///
     /// Note: `value` should be greater than 0
-    public func itemAspectRatio(_ value: CGFloat) -> Self {
-        guard value > 0 else { return self }
+    public func itemAspectRatio(_ value: CGFloat?) -> Self {
+        guard (value ?? 0) > 0 else { return self }
         return mutating(keyPath: \.itemAspectRatio, value: value)
     }
 
