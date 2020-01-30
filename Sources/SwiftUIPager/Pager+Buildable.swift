@@ -35,16 +35,6 @@ extension Pager: Buildable {
         mutating(keyPath: \.alignment, value: value)
     }
 
-    /// Adds a `TapGesture` to the items to bring them to focus
-    public func itemTappable(_ value: Bool) -> Self {
-        mutating(keyPath: \.isItemTappable, value: value)
-    }
-
-    /// Disables any gesture interaction
-    public func disableInteraction(_ value: Bool) -> Self {
-        mutating(keyPath: \.isUserInteractionEnabled, value: value)
-    }
-
     /// Returns a horizontal pager
     public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
         let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)
@@ -92,10 +82,10 @@ extension Pager: Buildable {
     ///
     /// - `value > 1` will make the page spread horizontally and have a width larger than its height.
     /// - `value < 1` will give the page a larger height.
-    ///
+    /// - `nil` will reset to the _default_ value and the page will take up all the available space
     /// Note: `value` should be greater than 0
-    public func itemAspectRatio(_ value: CGFloat) -> Self {
-        guard value > 0 else { return self }
+    public func itemAspectRatio(_ value: CGFloat?) -> Self {
+        guard (value ?? 0) > 0 else { return self }
         return mutating(keyPath: \.itemAspectRatio, value: value)
     }
 
