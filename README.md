@@ -116,14 +116,6 @@ Pager(...)
 
 <img src="resources/rotation3D.gif" alt="PageAspectRatio lower than 1" height="640"/>
 
-### Gestures
-
-`Pager` comes with the following built-in gestures:
-- Tap on any item to bring it to focus. Enable this gesture with `itemTappable`
-- Swipe acroos the items
-
-You can disable any interaction by calling `disableInteraction`.
-
 ### Events
 
 Use `onPageChanged` to react to any change on the page index:

@@ -35,16 +35,6 @@ extension Pager: Buildable {
         mutating(keyPath: \.alignment, value: value)
     }
 
-    /// Adds a `TapGesture` to the items to bring them to focus
-    public func itemTappable(_ value: Bool) -> Self {
-        mutating(keyPath: \.isItemTappable, value: value)
-    }
-
-    /// Disables any gesture interaction
-    public func disableInteraction(_ value: Bool) -> Self {
-        mutating(keyPath: \.isUserInteractionEnabled, value: value)
-    }
-
     /// Returns a horizontal pager
     public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
         let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)

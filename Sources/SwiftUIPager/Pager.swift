@@ -98,12 +98,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// The elements alignment relative to the container
     var alignment: Alignment = .center
 
-    /// `true` if items are tapable
-    var isItemTappable: Bool = false
-
-    /// `true` if items user interaction is enabled
-    var isUserInteractionEnabled: Bool = true
-
     /// `true` if the pager is horizontal
     var isHorizontal: Bool = true
 
@@ -169,13 +163,10 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                                       axis: (0, 0, 1))
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
-                    .gesture(self.tapGesture(for: item))
-                    .disabled(self.isFocused(item) || !self.isItemTappable || !self.isUserInteractionEnabled)
             }
             .offset(x: self.xOffset, y : 0)
         }
-        .gesture(swipeGesture)
-        .disabled(!isUserInteractionEnabled)
+        .highPriorityGesture(swipeGesture, including: .all)
         .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                           axis: (0, 0, 1))
         .sizeTrackable($size)
