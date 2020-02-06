@@ -52,10 +52,10 @@ extension Pager: Buildable {
     /// Call this method to provide a shrink ratio that will apply to the items that are not focused.
     ///
     /// - Parameter scale: shrink ratio
-    /// - Note: `scale` must be lower than _1_, otherwise it defaults to _1_
+    /// - Note: `scale` must be lower than _1_ and greather than _0_, otherwise it defaults to the previous value
     public func interactive(_ scale: CGFloat) -> Self {
         guard !shouldRotate else { return self }
-        let scale = min(1, abs(scale))
+        guard scale > 0, scale < 1 else { return self }
         return mutating(keyPath: \.interactiveScale, value: scale)
     }
     
@@ -64,7 +64,7 @@ extension Pager: Buildable {
     /// - Parameter value: `true` if the pages should have a 3D rotation effect
     /// - Note: If you call this method, any previous or later call to `interactive` will have no effect.
     public func rotation3D(_ value: Bool = true) -> Self {
-        mutating(keyPath: \.interactiveScale, value: rotationInteractiveScale)
+        mutating(keyPath: \.interactiveScale, value: value ? rotationInteractiveScale : 1)
             .mutating(keyPath: \.shouldRotate, value: value)
     }
 
@@ -85,8 +85,13 @@ extension Pager: Buildable {
     /// - `nil` will reset to the _default_ value and the page will take up all the available space
     /// Note: `value` should be greater than 0
     public func itemAspectRatio(_ value: CGFloat?) -> Self {
-        guard (value ?? 0) > 0 else { return self }
+        guard (value ?? 1) > 0 else { return self }
         return mutating(keyPath: \.itemAspectRatio, value: value)
+    }
+    
+    /// Sets the `itemAspectRatio` to take up all the space available
+    public func expandPageToEdges() -> Self {
+        itemAspectRatio(nil)
     }
 
     /// Adds a callback to react to every change on the page index.
@@ -99,7 +104,7 @@ extension Pager: Buildable {
     }
     
     public func padding(_ insets: EdgeInsets) -> Self {
-        let length = min(insets.top, insets.bottom)
+        let length = isHorizontal ? min(insets.top, insets.bottom) : min(insets.leading, insets.trailing)
         let edges: Edge.Set = isHorizontal ? .vertical : .horizontal
         return padding(edges, length)
     }
