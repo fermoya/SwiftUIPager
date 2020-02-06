@@ -140,7 +140,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         }
     }
 
-    /// Initializes a new Pager.
+    /// Initializes a new `Pager`.
     ///
     /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content

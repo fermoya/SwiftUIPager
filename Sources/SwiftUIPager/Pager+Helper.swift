@@ -163,10 +163,7 @@ extension Pager {
     /// Axis for the rotations effect
     func axis(for item: Element) -> (CGFloat, CGFloat, CGFloat) {
         guard shouldRotate else { return (0, 0, 0) }
-        guard let index = data.firstIndex(of: item) else { return (0, 0, 0) }
-
-        let currentXAxis: CGFloat = index == page ? 0 : index < page ? rotationAxis.x : -rotationAxis.x
-        return (currentXAxis, rotationAxis.y, rotationAxis.z)
+        return rotationAxis
     }
 
     /// Scale that applies to a particular item
