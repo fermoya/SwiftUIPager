@@ -68,7 +68,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Manages the number of items that should be displayed in the screen.
     /// A ratio of 3, for instance, would mean the items held in memory are enough
     /// to cover 3 times the size of the pager
-    let recyclingRatio = 4
+    let recyclingRatio = 5
 
     /// Angle of rotation when should rotate
     let rotationDegrees: Double = 20

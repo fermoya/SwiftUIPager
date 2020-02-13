@@ -42,17 +42,6 @@ final class Pager_Helper_Tests: XCTestCase {
         XCTAssertEqual(y, pager.rotationAxis.y)
         XCTAssertEqual(z, pager.rotationAxis.z)
     }
-
-//    func test_GivenPager_WhenDraggingOffset_ThenIsDragging() {
-//        let pager = givenPager
-//        pager.draggingOffset = 10
-//        XCTAssertTrue(pager.isDragging)
-//    }
-//
-//    func test_GivenPager_WhenPageOffset_ThenIsDragging() {
-//        let pager = givenPager.pageOffset(1.2)
-//        XCTAssertTrue(pager.isDragging)
-//    }
     
     static var allTests = [
         ("test_GivenPager_WhenScaleIncrement_ThenZero", test_GivenPager_WhenScaleIncrement_ThenZero),

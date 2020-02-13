@@ -65,7 +65,9 @@ extension Pager {
 
     /// Size of each item. Takes into account `pageAspectRatio` and `verticalInsets` to fit the page into its container
     var pageSize: CGSize {
-        guard let itemAspectRatio = self.itemAspectRatio else { return size }
+        guard let itemAspectRatio = self.itemAspectRatio else {
+            return CGSize(width: size.width - 2 * sideInsets, height: size.height - 2 * sideInsets)
+        }
 
         let size = CGSize(width: self.size.width - 2 * sideInsets,
                           height: self.size.height - 2 * sideInsets)
@@ -89,7 +91,8 @@ extension Pager {
     /// Maximum number in memory at the same time
     var maximumNumberOfPages: Int {
         guard pageDistance != 0 else { return 0 }
-        return Int((CGFloat(recyclingRatio) * size.width / pageDistance / 2).rounded(.up))
+        let side = isHorizontal ? size.width : size.height
+        return Int((CGFloat(recyclingRatio) * side / pageDistance / 2).rounded(.up))
     }
 
     /// Number of pages displayed at the moment
