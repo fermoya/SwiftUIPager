@@ -80,13 +80,19 @@ extension Pager: Buildable {
 
     /// Configures the aspect ratio of each page. This value is considered to be _width / height_.
     ///
+    /// - Parameter value: aspect ratio to be applied to the page
+    /// - Parameter alignment: page position inside `Pager` when there's available space
+    ///
+    ///
+    /// # Important Notes #
     /// - `value > 1` will make the page spread horizontally and have a width larger than its height.
     /// - `value < 1` will give the page a larger height.
     /// - `nil` will reset to the _default_ value and the page will take up all the available space
     /// Note: `value` should be greater than 0
-    public func itemAspectRatio(_ value: CGFloat?) -> Self {
+    public func itemAspectRatio(_ value: CGFloat?, alignment: Alignment = .center) -> Self {
         guard (value ?? 1) > 0 else { return self }
         return mutating(keyPath: \.itemAspectRatio, value: value)
+            .mutating(keyPath: \.itemAlignment, value: alignment)
     }
     
     /// Sets the `itemAspectRatio` to take up all the space available

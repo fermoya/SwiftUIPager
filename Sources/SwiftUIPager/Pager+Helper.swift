@@ -138,7 +138,19 @@ extension Pager {
         return offset
     }
 
-    /// Offset applied to `HStack`. It's limitted by `offsetUpperbound` and `offsetUpperbound`
+    /// Offset applied to `HStack` along the Y-Axis. Used to aligned the pages
+    var yOffset: CGFloat {
+        guard !itemAlignment.equalsIgnoreValues(.center) else { return 0 }
+        guard itemAspectRatio != nil else { return 0 }
+
+        let availableSpace = ((isHorizontal ? size.height - pageSize.height : size.width - pageSize.width) - sideInsets) / 2 - itemAlignment.insets
+        guard availableSpace > 0 else { return 0 }
+
+        let multiplier: CGFloat = isVertical ? -1 : 1
+        return (itemAlignment.equalsIgnoreValues(.start) ? -availableSpace : availableSpace) * multiplier
+    }
+
+    /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetUpperbound` and `offsetUpperbound`
     var xOffset: CGFloat {
         let page = CGFloat(self.page - lowerPageDisplayed)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)

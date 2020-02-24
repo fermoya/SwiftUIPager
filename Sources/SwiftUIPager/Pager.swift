@@ -56,6 +56,26 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         /// - Bottom, if vertical
         case end(CGFloat)
 
+        /// Returns the alignment insets
+        var insets: CGFloat {
+            switch self {
+            case .center:
+                return 0
+            case .end(let insets), .start(let insets):
+                return insets
+            }
+        }
+
+        /// Helper to compare `Alignment`
+        func equalsIgnoreValues(_ alignment: Alignment) -> Bool {
+            switch (self, alignment) {
+            case (.center, .center), (.start, .start), (.end, .end):
+                return true
+            default:
+                return false
+            }
+        }
+
         /// Sets the alignment at the start, with 0 px of margin
         public static var start: Alignment { .start(0) }
 
@@ -94,6 +114,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var data: [Element]
 
     /*** ViewModified properties ***/
+
+    /// Item alignment inside `Pager`
+    var itemAlignment: Alignment = .center
 
     /// The elements alignment relative to the container
     var alignment: Alignment = .center
@@ -164,7 +187,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
             }
-            .offset(x: self.xOffset, y : 0)
+            .offset(x: self.xOffset, y : self.yOffset)
         }
         .highPriorityGesture(swipeGesture, including: .all)
         .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
