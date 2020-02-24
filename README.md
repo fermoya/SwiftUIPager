@@ -81,7 +81,7 @@ Pager(...)
      .itemAspectRatio(1.5, alignment: .end)
 ```
 
-<img src="resources/item_alignment_start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
+<img src="resources/item-alignment-start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
 
 By default, `Pager` will create a horizontal container. Use `vertical` to create a vertical pager:
 
@@ -102,7 +102,7 @@ Pager(...)
     .itemAspectRatio(0.6)
 ```
 
-<img src="resources/orientation-alignment.gif" alt="Pages aligned to the start of the pager" height="640"/>
+<img src="resources/orientation-alignment-start.gif" alt="Pages aligned to the start of the pager" height="640"/>
 
 ### Animations
 
@@ -113,7 +113,7 @@ Pager(...)
     .interactive(0.8)
 ```
 
-<img src="resources/interactive-pager.gif" alt="Interactive pager" height="640"/>
+<img src="resources/interactive-pagers.gif" alt="Interactive pager" height="640"/>
 
 You can also use `rotation3D` to add a rotation effect to your pages:
 
@@ -123,7 +123,7 @@ Pager(...)
     .rotation3D()
 ```
 
-<img src="resources/rotation3D.gif" alt="Rotation 3D" height="640"/>
+<img src="resources/pager-rotation3D.gif" alt="Rotation 3D" height="640"/>
 
 ### Events
 
