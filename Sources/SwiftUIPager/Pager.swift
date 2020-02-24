@@ -15,8 +15,7 @@ import SwiftUI
 ///
 /// # Example #
 ///
-///     Pager(page: self.$pageIndex,
-///           data: self.data,
+///     Pager(data: self.data,
 ///           content: { index in
 ///               self.pageView(index)
 ///     }).interactive(0.8)
@@ -39,36 +38,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         case backward
     }
 
-    /// `Alignment` determines the focused page alignment inside `Pager`
-    public enum Alignment {
-        /// Sets the alignment to be centered
-        case center
-
-        /// Sets the alignment to be at the start of the container with the specified insets:
-        ///
-        /// - Left, if horizontal
-        /// - Top, if vertical
-        case start(CGFloat)
-
-        /// Sets the alignment to be at the start of the container with the specified insets:
-        ///
-        /// - Right, if horizontal
-        /// - Bottom, if vertical
-        case end(CGFloat)
-
-        /// Sets the alignment at the start, with 0 px of margin
-        public static var start: Alignment { .start(0) }
-
-        /// Sets the alignment at the end, with 0 px of margin
-        public static var end: Alignment { .end(0) }
-    }
-
     /*** Constants ***/
 
     /// Manages the number of items that should be displayed in the screen.
     /// A ratio of 3, for instance, would mean the items held in memory are enough
     /// to cover 3 times the size of the pager
-    let recyclingRatio = 4
+    let recyclingRatio = 5
 
     /// Angle of rotation when should rotate
     let rotationDegrees: Double = 20
@@ -95,8 +70,14 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** ViewModified properties ***/
 
+    /// First page that `Pager` will display once it transitions into the screen
+    var initialPage: Int = 0
+
+    /// Item alignment inside `Pager`
+    var itemAlignment: PositionAlignment = .center
+
     /// The elements alignment relative to the container
-    var alignment: Alignment = .center
+    var alignment: PositionAlignment = .center
 
     /// `true` if the pager is horizontal
     var isHorizontal: Bool = true
@@ -133,21 +114,22 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// The moment when the dragging gesture started
     @State var draggingStartTime: Date! = nil
 
+    /// `true` if `Pager` already appeared in the screen at least once
+    @State var isInitialized = false
+
     /// Page index
-    @Binding var page: Int {
+    @State var page: Int = 0 {
         didSet {
             onPageChanged?(page)
         }
     }
 
-    /// Initializes a new Pager.
+    /// Initializes a new `Pager`.
     ///
-    /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content
     /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
-        self._page = page
+    public init(data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
         self.data = data
         self.id = id
         self.content = content
@@ -164,12 +146,18 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                     .rotation3DEffect(self.angle(for: item),
                                       axis: self.axis(for: item))
             }
-            .offset(x: self.xOffset, y : 0)
+            .offset(x: self.xOffset, y : self.yOffset)
         }
         .highPriorityGesture(swipeGesture, including: .all)
         .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                           axis: (0, 0, 1))
         .sizeTrackable($size)
+        .onAppear(perform: {
+            if !self.isInitialized {
+                self.page = self.initialPage
+                self.isInitialized = false
+            }
+        })
     }
 }
 
@@ -177,11 +165,9 @@ extension Pager where ID == Element.ID, Element : Identifiable {
 
     /// Initializes a new Pager.
     ///
-    /// - Parameter page: Binding to the index of the focused page
     /// - Parameter data: Array of items to populate the content
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
-        self._page = page
+    public init(data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
         self.data = data
         self.id = \Element.id
         self.content = content
@@ -224,9 +210,9 @@ extension Pager {
                 }
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
                 withAnimation(.easeOut) {
-                    self.page = newPage
                     self.draggingOffset = 0
                     self.draggingStartTime = nil
+                    self.page = newPage
                 }
             }
         )

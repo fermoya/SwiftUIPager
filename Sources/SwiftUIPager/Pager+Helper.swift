@@ -65,7 +65,9 @@ extension Pager {
 
     /// Size of each item. Takes into account `pageAspectRatio` and `verticalInsets` to fit the page into its container
     var pageSize: CGSize {
-        guard let itemAspectRatio = self.itemAspectRatio else { return size }
+        guard let itemAspectRatio = self.itemAspectRatio else {
+            return CGSize(width: size.width - 2 * sideInsets, height: size.height - 2 * sideInsets)
+        }
 
         let size = CGSize(width: self.size.width - 2 * sideInsets,
                           height: self.size.height - 2 * sideInsets)
@@ -89,7 +91,8 @@ extension Pager {
     /// Maximum number in memory at the same time
     var maximumNumberOfPages: Int {
         guard pageDistance != 0 else { return 0 }
-        return Int((CGFloat(recyclingRatio) * size.width / pageDistance / 2).rounded(.up))
+        let side = isHorizontal ? size.width : size.height
+        return Int((CGFloat(recyclingRatio) * side / pageDistance / 2).rounded(.up))
     }
 
     /// Number of pages displayed at the moment
@@ -135,7 +138,19 @@ extension Pager {
         return offset
     }
 
-    /// Offset applied to `HStack`. It's limitted by `offsetUpperbound` and `offsetUpperbound`
+    /// Offset applied to `HStack` along the Y-Axis. Used to aligned the pages
+    var yOffset: CGFloat {
+        guard !itemAlignment.equalsIgnoreValues(.center) else { return 0 }
+        guard itemAspectRatio != nil else { return 0 }
+
+        let availableSpace = ((isHorizontal ? size.height - pageSize.height : size.width - pageSize.width) - sideInsets) / 2 - itemAlignment.insets
+        guard availableSpace > 0 else { return 0 }
+
+        let multiplier: CGFloat = isVertical ? -1 : 1
+        return (itemAlignment.equalsIgnoreValues(.start) ? -availableSpace : availableSpace) * multiplier
+    }
+
+    /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetUpperbound` and `offsetUpperbound`
     var xOffset: CGFloat {
         let page = CGFloat(self.page - lowerPageDisplayed)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)
@@ -163,10 +178,7 @@ extension Pager {
     /// Axis for the rotations effect
     func axis(for item: Element) -> (CGFloat, CGFloat, CGFloat) {
         guard shouldRotate else { return (0, 0, 0) }
-        guard let index = data.firstIndex(of: item) else { return (0, 0, 0) }
-
-        let currentXAxis: CGFloat = index == page ? 0 : index < page ? rotationAxis.x : -rotationAxis.x
-        return (currentXAxis, rotationAxis.y, rotationAxis.z)
+        return rotationAxis
     }
 
     /// Scale that applies to a particular item

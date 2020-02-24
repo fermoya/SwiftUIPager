@@ -41,14 +41,12 @@ github "fermoya/SwiftUIPager"
 ### Initialization
 
 Creating a `Pager` is very simple. You just need to pass:
-- `Binding` to page index
 - `Array` of items 
 - `KeyPath` to an identifier.
 - `ViewBuilder` factory method to create each page
 
 ```swift
- Pager(page: self.$pageIndex,
-       data: self.items,
+ Pager(data: self.items,
        id: \.identifier,
        content: { item in
            // create a page based on the data passed
@@ -64,15 +62,26 @@ Creating a `Pager` is very simple. You just need to pass:
 Pager(...)
      .itemSpacing(10)
      .padding(8)
-     .pageAspectRatio(0.6)
+     .itemAspectRatio(0.6)
 ```
-`pageAspectRatio` will change the look of the page. Use a value lower than 1 to make the page look like a card:
+`itemAspectRatio` will change the look of the page. Use a value lower than 1 to make the page look like a card:
 
-<img src="resources/page_aspect_ratio_lower_than_1.png" alt="PageAspectRatio lower than 1" height="640"/>
+<img src="resources/page_aspect_ratio_lower_than_1.png" alt="itemAspectRatio lower than 1" height="640"/>
 
 whereas a value greater than one will make it look like a box:
 
-<img src="resources/page_aspect_ratio_greater_than_1.png" alt="PageAspectRatio greater than 1" height="640"/>
+<img src="resources/page_aspect_ratio_greater_than_1.png" alt="itemAspectRatio greater than 1" height="640"/>
+
+Add a position alignment to `itemAspectRatio` to specify the alignment inside `Pager`:
+
+```swift
+Pager(...)
+     .itemSpacing(10)
+     .padding(8)
+     .itemAspectRatio(1.5, alignment: .end)
+```
+
+<img src="resources/item_alignment_start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
 
 By default, `Pager` will create a horizontal container. Use `vertical` to create a vertical pager:
 
@@ -81,7 +90,7 @@ Pager(...)
     .vertical()
 ```
 
-<img src="resources/vertical-pager.gif" alt="PageAspectRatio greater than 1" height="640"/>
+<img src="resources/vertical-pager.gif" alt="Vertical pager" height="640"/>
 
 You can customize the alignment and the direction of the scroll. For instance, you can have a horizontal `Pager` that scrolls right-to-left that it's aligned at the start of the scroll:
 
@@ -93,7 +102,7 @@ Pager(...)
     .itemAspectRatio(0.6)
 ```
 
-<img src="resources/orientation-alignment.gif" alt="PageAspectRatio greater than 1" height="640"/>
+<img src="resources/orientation-alignment.gif" alt="Pages aligned to the start of the pager" height="640"/>
 
 ### Animations
 
@@ -114,7 +123,7 @@ Pager(...)
     .rotation3D()
 ```
 
-<img src="resources/rotation3D.gif" alt="PageAspectRatio lower than 1" height="640"/>
+<img src="resources/rotation3D.gif" alt="Rotation 3D" height="640"/>
 
 ### Events
 
@@ -133,7 +142,7 @@ You can use `Pager` to implement cool effects as in [iPod](https://github.com/fe
 
 <img src="resources/cool-sample.gif" alt="Cool sample with Pager"/>
 
-For more information, please check the [sample app](/Sample).
+For more information, please check the [sample app](/Example).
 
 If you have any issues or feedback, please open an issue or reach out to me at [fmdr.ct@gmail.com](mailto:fmdr.ct@gmail.com).  
 Please feel free to collaborate and make this framework better. 
