@@ -113,7 +113,7 @@ Pager(...)
     .interactive(0.8)
 ```
 
-<img src="resources/interactive-pager.gif" alt="Interactive pager"/>
+<img src="resources/interactive-pager.gif" alt="Interactive pager" height="640"/>
 
 You can also use `rotation3D` to add a rotation effect to your pages:
 
