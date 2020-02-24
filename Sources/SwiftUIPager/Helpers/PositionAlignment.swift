@@ -5,7 +5,7 @@
 //  Created by Fernando Moya de Rivas on 24/02/2020.
 //
 
-import Foundation
+import CoreGraphics
 
 /// `Alignment` determines the focused page alignment inside `Pager`
 public enum PositionAlignment {

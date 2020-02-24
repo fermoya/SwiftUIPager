@@ -20,6 +20,9 @@
 		172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
 		172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
 		172F4D8623DF8B4B00FD2F15 /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* Pager+Helper.swift */; };
+		6B609ACB24043E1700C098E7 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
+		6B609ACC24043E1700C098E7 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
+		6BBBB7D1240431370058EE56 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
 		6BDE441C23DE10C10022A2F7 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BDE442923DE12480022A2F7 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
 		6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
@@ -35,6 +38,7 @@
 		172F4D7223DF839000FD2F15 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-watchOS.plist"; path = "/Users/fermoya/Documents/Tests/SwiftUIPager/SwiftUIPager/Info-watchOS.plist"; sourceTree = "<absolute>"; };
 		172F4D7823DF8A6400FD2F15 /* SwiftUIPager_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		172F4D7B23DF8A6400FD2F15 /* Info_watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_watchOS.plist; sourceTree = "<group>"; };
+		6BBBB7D0240431370058EE56 /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionAlignment.swift; sourceTree = "<group>"; };
 		6BDE441723DE10C10022A2F7 /* SwiftUIPager_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIPager.h; sourceTree = "<group>"; };
 		6BDE441B23DE10C10022A2F7 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 		6BDE442423DE12480022A2F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6BBBB7D0240431370058EE56 /* PositionAlignment.swift */,
 				6BDE442523DE12480022A2F7 /* View+Helper.swift */,
 				6BDE442623DE12480022A2F7 /* Buildable.swift */,
 				6BDE442723DE12480022A2F7 /* SizeViewModifier.swift */,
@@ -270,6 +275,7 @@
 				172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */,
 				172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */,
 				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
+				6B609ACB24043E1700C098E7 /* PositionAlignment.swift in Sources */,
 				172F4D5923DF830600FD2F15 /* Pager.swift in Sources */,
 				172F4D5A23DF830600FD2F15 /* Pager+Helper.swift in Sources */,
 			);
@@ -283,6 +289,7 @@
 				172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */,
 				172F4D8223DF8B3F00FD2F15 /* SizeViewModifier.swift in Sources */,
 				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
+				6B609ACC24043E1700C098E7 /* PositionAlignment.swift in Sources */,
 				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
 				172F4D8623DF8B4B00FD2F15 /* Pager+Helper.swift in Sources */,
 			);
@@ -296,6 +303,7 @@
 				6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */,
 				6BDE442B23DE12480022A2F7 /* View+Helper.swift in Sources */,
 				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
+				6BBBB7D1240431370058EE56 /* PositionAlignment.swift in Sources */,
 				6BDE442923DE12480022A2F7 /* Pager.swift in Sources */,
 				6BDE442E23DE12480022A2F7 /* Pager+Helper.swift in Sources */,
 			);
@@ -321,6 +329,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -349,6 +358,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -376,6 +386,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fermoya.challenge.SwiftUIPager-watchOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
@@ -404,6 +415,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fermoya.challenge.SwiftUIPager-watchOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
@@ -559,6 +571,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -586,6 +599,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
