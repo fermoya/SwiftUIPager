@@ -31,7 +31,7 @@ extension Pager: Buildable {
     }
 
     /// Changes the a the  alignment of the pages relative to their container
-    public func alignment(_ value: Alignment) -> Self {
+    public func alignment(_ value: PositionAlignment) -> Self {
         mutating(keyPath: \.alignment, value: value)
     }
 
@@ -89,7 +89,7 @@ extension Pager: Buildable {
     /// - `value < 1` will give the page a larger height.
     /// - `nil` will reset to the _default_ value and the page will take up all the available space
     /// Note: `value` should be greater than 0
-    public func itemAspectRatio(_ value: CGFloat?, alignment: Alignment = .center) -> Self {
+    public func itemAspectRatio(_ value: CGFloat?, alignment: PositionAlignment = .center) -> Self {
         guard (value ?? 1) > 0 else { return self }
         return mutating(keyPath: \.itemAspectRatio, value: value)
             .mutating(keyPath: \.itemAlignment, value: alignment)
@@ -98,6 +98,12 @@ extension Pager: Buildable {
     /// Sets the `itemAspectRatio` to take up all the space available
     public func expandPageToEdges() -> Self {
         itemAspectRatio(nil)
+    }
+
+    /// Sets the first page to display once `Pager` transitions into the screen
+    public func firstPage(_ value: Int) -> Self {
+        guard value <= numberOfPages else { return self }
+        return mutating(keyPath: \.initialPage, value: value)
     }
 
     /// Adds a callback to react to every change on the page index.

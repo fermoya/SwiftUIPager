@@ -5,7 +5,7 @@ import SwiftUI
 final class Pager_Buildable_Tests: XCTestCase {
 
     var givenPager: Pager<Int, Int, Text> {
-        Pager(page: .constant(0), data: Array(1..<20), id: \.self) {
+        Pager(data: Array(1..<20), id: \.self) {
             Text("\($0)")
         }
     }
@@ -21,6 +21,20 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.pageOffset, 0)
         XCTAssertEqual(pager.sideInsets, 0)
         XCTAssertEqual(pager.itemSpacing, 0)
+    }
+
+    func test_GivenPager_WhenFirstPage_ThenInitialPageSet() {
+        var pager = givenPager
+        let firstPage = 4
+        pager = pager.firstPage(firstPage)
+        XCTAssertEqual(pager.initialPage, firstPage)
+    }
+
+    func test_GivenPager_WhenFirstPageOutOfBounds_ThenDoNotSet() {
+        var pager = givenPager
+        let firstPage = pager.numberOfPages * 2
+        pager = pager.firstPage(firstPage)
+        XCTAssertEqual(pager.initialPage, 0)
     }
 
     func test_GivenPager_WhenVertical_ThenIsVerticalTrue() {
@@ -109,8 +123,9 @@ final class Pager_Buildable_Tests: XCTestCase {
     
     func test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio() {
         var pager = givenPager
-        pager = pager.itemAspectRatio(1.2)
+        pager = pager.itemAspectRatio(1.2, alignment: .start(10))
         XCTAssertEqual(pager.itemAspectRatio, 1.2)
+        XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.start))
     }
     
     func test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio() {
@@ -194,6 +209,7 @@ final class Pager_Buildable_Tests: XCTestCase {
     }
 
     static var allTests = [
+        ("test_GivenPager_WhenFirstPage_ThenInitialPageSet", test_GivenPager_WhenFirstPage_ThenInitialPageSet),
         ("test_GivenPager_ThenDefaultValues", test_GivenPager_ThenDefaultValues),
         ("test_GivenPager_WhenVertical_ThenIsVerticalTrue", test_GivenPager_WhenVertical_ThenIsVerticalTrue),
         ("test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue", test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue),
@@ -219,6 +235,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenVerticalPager_WhenPaddingHorizontal_ThenMinLeadingAndTrailing", test_GivenVerticalPager_WhenPaddingHorizontal_ThenMinLeadingAndTrailing),
         ("test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets", test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets),
         ("test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets", test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets),
-        ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges)
+        ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges),
+        ("test_GivenPager_WhenFirstPageOutOfBounds_ThenDoNotSet", test_GivenPager_WhenFirstPageOutOfBounds_ThenDoNotSet)
     ]
 }

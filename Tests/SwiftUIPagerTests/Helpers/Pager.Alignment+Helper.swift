@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUIPager
 
-extension Pager.Alignment: Equatable {
+extension PositionAlignment: Equatable {
 
     public static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
