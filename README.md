@@ -81,7 +81,7 @@ Pager(...)
      .itemAspectRatio(1.5, alignment: .end)
 ```
 
-<img src="resources/item_alignment_start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
+<img src="resources/item_alignment_start.gif" alt="Item alignment start" height="640"/>
 
 By default, `Pager` will create a horizontal container. Use `vertical` to create a vertical pager:
 
@@ -102,7 +102,7 @@ Pager(...)
     .itemAspectRatio(0.6)
 ```
 
-<img src="resources/orientation-alignment.gif" alt="Pages aligned to the start of the pager" height="640"/>
+<img src="resources/orientation-alignment.gif" alt="Pager alignment start" height="640"/>
 
 ### Animations
 
