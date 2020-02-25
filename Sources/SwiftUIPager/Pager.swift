@@ -148,6 +148,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             }
             .offset(x: self.xOffset, y : self.yOffset)
         }
+        .contentShape(Rectangle())
         .highPriorityGesture(swipeGesture, including: .all)
         .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                           axis: (0, 0, 1))
