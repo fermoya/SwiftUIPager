@@ -10,6 +10,11 @@ import SwiftUI
 
 extension Pager {
 
+    /// Work around to avoid @State keeps wrong value
+    var page: Int {
+        return min(pageIndex, numberOfPages - 1)
+    }
+
     /// `true` if `Pager` is vertical
     var isVertical: Bool {
         return !isHorizontal

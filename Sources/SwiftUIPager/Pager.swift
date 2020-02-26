@@ -118,7 +118,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     @State var isInitialized = false
 
     /// Page index
-    @State var page: Int = 0 {
+    @State var pageIndex: Int = 0 {
         didSet {
             onPageChanged?(page)
         }
@@ -155,8 +155,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         .sizeTrackable($size)
         .onAppear(perform: {
             if !self.isInitialized {
-                self.page = self.initialPage
-                self.isInitialized = false
+                self.pageIndex = self.initialPage
+                self.isInitialized = true
             }
         })
     }
@@ -183,7 +183,7 @@ extension Pager {
     /// Helper function to scroll to a specific item.
     func scrollToItem(_ item: Element) {
         guard let index = data.firstIndex(of: item) else { return }
-        self.page = index
+        self.pageIndex = index
     }
 
     func tapGesture(for item: Element) -> some Gesture {
@@ -213,7 +213,7 @@ extension Pager {
                 withAnimation(.easeOut) {
                     self.draggingOffset = 0
                     self.draggingStartTime = nil
-                    self.page = newPage
+                    self.pageIndex = newPage
                 }
             }
         )
