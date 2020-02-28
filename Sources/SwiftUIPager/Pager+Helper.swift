@@ -171,7 +171,7 @@ extension Pager {
 
         let totalIncrement = abs(totalOffset / pageDistance)
 
-        let currentAngle = index == page ? .zero : index < page ? Angle(degrees: rotationDegrees) : Angle(degrees: -rotationDegrees)
+        let currentAngle = Angle(degrees: Double(page - index) * rotationDegrees)
         guard isDragging else {
             return currentAngle
         }
