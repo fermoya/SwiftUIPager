@@ -100,12 +100,6 @@ extension Pager: Buildable {
         itemAspectRatio(nil)
     }
 
-    /// Sets the first page to display once `Pager` transitions into the screen
-    public func firstPage(_ value: Int) -> Self {
-        guard value <= numberOfPages else { return self }
-        return mutating(keyPath: \.initialPage, value: value)
-    }
-
     /// Adds a callback to react to every change on the page index.
     public func onPageChanged(_ onPageChanged: ((Int) -> Void)?) -> Self {
         mutating(keyPath: \.onPageChanged, value: onPageChanged)

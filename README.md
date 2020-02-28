@@ -46,9 +46,10 @@ Creating a `Pager` is very simple. You just need to pass:
 - `ViewBuilder` factory method to create each page
 
 ```swift
- Pager(data: self.items,
-       id: \.identifier,
-       content: { item in
+Pager(page: $page
+      data: items,
+      id: \.identifier,
+      content: { item in
            // create a page based on the data passed
            self.pageView(item)
  })
