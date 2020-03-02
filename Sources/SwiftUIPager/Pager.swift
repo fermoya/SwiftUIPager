@@ -206,14 +206,12 @@ extension Pager {
                 }
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
 
-                // workaround to solve issue introduces in Xcode 11.3 where for some reason State variables were updated before bindings
-                DispatchQueue.main.async {
-                    withAnimation(.easeOut) {
-                        self.pageIndex = newPage
-                        self.draggingOffset = 0
-                        self.draggingStartTime = nil
-                    }
+                withAnimation(.easeOut) {
+                    self.pageIndex = newPage
+                    self.draggingOffset = 0
+                    self.draggingStartTime = nil
                 }
+
             }
         )
     }
