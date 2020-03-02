@@ -15,7 +15,8 @@ import SwiftUI
 ///
 /// # Example #
 ///
-///     Pager(data: self.data,
+///     Pager(page: $page
+///           data: data,
 ///           content: { index in
 ///               self.pageView(index)
 ///     }).interactive(0.8)
@@ -70,9 +71,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** ViewModified properties ***/
 
-    /// First page that `Pager` will display once it transitions into the screen
-    var initialPage: Int = 0
-
     /// Item alignment inside `Pager`
     var itemAlignment: PositionAlignment = .center
 
@@ -114,11 +112,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// The moment when the dragging gesture started
     @State var draggingStartTime: Date! = nil
 
-    /// `true` if `Pager` already appeared in the screen at least once
-    @State var isInitialized = false
-
     /// Page index
-    @State var page: Int = 0 {
+    @Binding var pageIndex: Int {
         didSet {
             onPageChanged?(page)
         }
@@ -126,10 +121,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Initializes a new `Pager`.
     ///
+    /// - Parameter page: Binding to the page index
     /// - Parameter data: Array of items to populate the content
     /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
-    public init(data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+    public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+        self._pageIndex = page
         self.data = data
         self.id = id
         self.content = content
@@ -148,15 +145,13 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             }
             .offset(x: self.xOffset, y : self.yOffset)
         }
+        .contentShape(Rectangle())
         .highPriorityGesture(swipeGesture, including: .all)
         .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                           axis: (0, 0, 1))
         .sizeTrackable($size)
         .onAppear(perform: {
-            if !self.isInitialized {
-                self.page = self.initialPage
-                self.isInitialized = false
-            }
+            self.onPageChanged?(self.page)
         })
     }
 }
@@ -167,7 +162,8 @@ extension Pager where ID == Element.ID, Element : Identifiable {
     ///
     /// - Parameter data: Array of items to populate the content
     /// - Parameter content: Factory method to build new pages
-    public init(data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
+    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
+        self._pageIndex = page
         self.data = data
         self.id = \Element.id
         self.content = content
@@ -182,7 +178,7 @@ extension Pager {
     /// Helper function to scroll to a specific item.
     func scrollToItem(_ item: Element) {
         guard let index = data.firstIndex(of: item) else { return }
-        self.page = index
+        self.pageIndex = index
     }
 
     func tapGesture(for item: Element) -> some Gesture {
@@ -209,11 +205,13 @@ extension Pager {
                     newPage = newPage + Int(velocity / abs(velocity))
                 }
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
+
                 withAnimation(.easeOut) {
+                    self.pageIndex = newPage
                     self.draggingOffset = 0
                     self.draggingStartTime = nil
-                    self.page = newPage
                 }
+
             }
         )
     }
