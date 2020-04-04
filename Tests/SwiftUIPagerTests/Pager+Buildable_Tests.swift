@@ -22,19 +22,19 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.sideInsets, 0)
         XCTAssertEqual(pager.itemSpacing, 0)
         XCTAssertEqual(pager.itemAlignment, .center)
-        XCTAssertEqual(pager.swipeableArea, .page)
+        XCTAssertEqual(pager.swipeInteractionArea, .page)
     }
 
-    func test_GivenPager_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet() {
+    func test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable() {
         var pager = givenPager
-        pager = pager.swipeableArea(.allAvailable)
-        XCTAssertEqual(pager.swipeableArea, .allAvailable)
+        pager = pager.swipeInteractionArea(.allAvailable)
+        XCTAssertEqual(pager.swipeInteractionArea, .allAvailable)
     }
 
-    func test_GivenPagerAllSwipeable_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet() {
-        var pager = givenPager.swipeableArea(.allAvailable)
-        pager = pager.swipeableArea(.page)
-        XCTAssertEqual(pager.swipeableArea, .page)
+    func test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage() {
+        var pager = givenPager.swipeInteractionArea(.allAvailable)
+        pager = pager.swipeInteractionArea(.page)
+        XCTAssertEqual(pager.swipeInteractionArea, .page)
     }
 
     func test_GivenPager_WhenVertical_ThenIsVerticalTrue() {
@@ -247,8 +247,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets", test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets),
         ("test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets", test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets),
         ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges),
-        ("test_GivenPager_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet", test_GivenPager_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet),
-        ("test_GivenPagerAllSwipeable_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet", test_GivenPagerAllSwipeable_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet),
+        ("test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable", test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable),
+        ("test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage", test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage),
         ("test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd", test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd),
         ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart)
     ]
