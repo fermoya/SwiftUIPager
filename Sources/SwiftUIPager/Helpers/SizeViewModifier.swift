@@ -12,17 +12,30 @@ import SwiftUI
 struct SizeViewModifier: ViewModifier {
     
     @Binding var size: CGSize
-    
+
     func body(content: Content) -> some View {
         GeometryReader { proxy in
             content
                 .frame(width: proxy.size.width, height: proxy.size.height)
-                .onAppear (perform: {
+                .onReload (perform: {
                     self.size = proxy.size
-            })
+                })
         }
         .clipped()
     }
+
+}
+
+extension View {
+
+    func onReload(perform: @escaping () -> Void) -> some View {
+        DispatchQueue.main.async {
+            perform()
+        }
+
+        return self
+    }
+
 }
 
 extension View {
