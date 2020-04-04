@@ -5,7 +5,7 @@ import SwiftUI
 final class Pager_Buildable_Tests: XCTestCase {
 
     var givenPager: Pager<Int, Int, Text> {
-        Pager(data: Array(1..<20), id: \.self) {
+        Pager(page: .constant(0), data: Array(1..<20), id: \.self) {
             Text("\($0)")
         }
     }
@@ -21,20 +21,20 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.pageOffset, 0)
         XCTAssertEqual(pager.sideInsets, 0)
         XCTAssertEqual(pager.itemSpacing, 0)
+        XCTAssertEqual(pager.itemAlignment, .center)
+        XCTAssertEqual(pager.swipeableArea, .page)
     }
 
-    func test_GivenPager_WhenFirstPage_ThenInitialPageSet() {
+    func test_GivenPager_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet() {
         var pager = givenPager
-        let firstPage = 4
-        pager = pager.firstPage(firstPage)
-        XCTAssertEqual(pager.initialPage, firstPage)
+        pager = pager.swipeableArea(.allAvailable)
+        XCTAssertEqual(pager.swipeableArea, .allAvailable)
     }
 
-    func test_GivenPager_WhenFirstPageOutOfBounds_ThenDoNotSet() {
-        var pager = givenPager
-        let firstPage = pager.numberOfPages * 2
-        pager = pager.firstPage(firstPage)
-        XCTAssertEqual(pager.initialPage, 0)
+    func test_GivenPagerAllSwipeable_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet() {
+        var pager = givenPager.swipeableArea(.allAvailable)
+        pager = pager.swipeableArea(.page)
+        XCTAssertEqual(pager.swipeableArea, .page)
     }
 
     func test_GivenPager_WhenVertical_ThenIsVerticalTrue() {
@@ -127,6 +127,18 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.itemAspectRatio, 1.2)
         XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.start))
     }
+
+    func test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd() {
+        var pager = givenPager
+        pager = pager.itemAspectRatio(1, alignment: .end)
+        XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.end))
+    }
+
+    func test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart() {
+        var pager = givenPager
+        pager = pager.itemAspectRatio(1, alignment: .start(10))
+        XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.start))
+    }
     
     func test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio() {
         var pager = givenPager
@@ -202,14 +214,13 @@ final class Pager_Buildable_Tests: XCTestCase {
             newPage = page
         })
         
-        pager.page = 3
+        pager.pageIndex = 3
         
         XCTAssertNotNil(newPage)
         XCTAssertEqual(pager.page, newPage)
     }
 
     static var allTests = [
-        ("test_GivenPager_WhenFirstPage_ThenInitialPageSet", test_GivenPager_WhenFirstPage_ThenInitialPageSet),
         ("test_GivenPager_ThenDefaultValues", test_GivenPager_ThenDefaultValues),
         ("test_GivenPager_WhenVertical_ThenIsVerticalTrue", test_GivenPager_WhenVertical_ThenIsVerticalTrue),
         ("test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue", test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue),
@@ -236,6 +247,9 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets", test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets),
         ("test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets", test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets),
         ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges),
-        ("test_GivenPager_WhenFirstPageOutOfBounds_ThenDoNotSet", test_GivenPager_WhenFirstPageOutOfBounds_ThenDoNotSet)
+        ("test_GivenPager_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet", test_GivenPager_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet),
+        ("test_GivenPagerAllSwipeable_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet", test_GivenPagerAllSwipeable_WhenSwipeableAreaAllAvailable_ThenSwipeableAreaSet),
+        ("test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd", test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd),
+        ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart)
     ]
 }

@@ -71,6 +71,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** ViewModified properties ***/
 
+    /// Hittable area
+    var swipeableArea: SwipeableArea = .page
+
     /// Item alignment inside `Pager`
     var itemAlignment: PositionAlignment = .center
 
@@ -133,7 +136,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     }
 
     public var body: some View {
-        HStack(spacing: interactiveItemSpacing) {
+        let stack = HStack(spacing: interactiveItemSpacing) {
             ForEach(dataDisplayed, id: id) { item in
                 self.content(item)
                     .frame(size: self.pageSize)
@@ -146,15 +149,18 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .offset(x: self.xOffset, y : self.yOffset)
         }
         .frame(size: size)
-        .contentShape(Rectangle())
-        .highPriorityGesture(swipeGesture, including: .all)
-        .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
-                          axis: (0, 0, 1))
-        .sizeTrackable($size)
-        .onAppear(perform: {
-            self.onPageChanged?(self.page)
-        })
+
+        let wrappedView: AnyView = swipeableArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
+
+        return wrappedView.highPriorityGesture(swipeGesture, including: .all)
+            .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
+                              axis: (0, 0, 1))
+            .sizeTrackable($size)
+            .onAppear(perform: {
+                self.onPageChanged?(self.page)
+            })
     }
+
 }
 
 extension Pager where ID == Element.ID, Element : Identifiable {

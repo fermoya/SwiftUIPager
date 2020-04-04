@@ -5,7 +5,7 @@ import SwiftUI
 final class Pager_Helper_Tests: XCTestCase {
     
     var givenPager: Pager<Int, Int, Text> {
-        Pager(data: Array(1..<20), id: \.self) {
+        Pager(page: .constant(0), data: Array(1..<20), id: \.self) {
             Text("\($0)")
         }
     }
