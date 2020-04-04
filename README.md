@@ -59,13 +59,13 @@ Pager(page: $page
 
 `Pager` is easily customizable through a number of view-modifier functions.  You can change the orientation, the direction of the scroll, the alignment, the space between items or the page aspect ratio, among others:
 
-```swift
-Pager(...)
-     .itemSpacing(10)
-     .padding(8)
-     .itemAspectRatio(0.6)
-```
-`itemAspectRatio` will change the look of the page. Use a value lower than 1 to make the page look like a card:
+By default, `Pager` is configured as:
+- Horizontal, left to right direction.
+- Items have center alignment inside `Pager` and take all the space available
+- Current page is centered in the scroll
+- Only the page is hittable and reacts to swipes
+
+Use `itemAspectRatio` to change the look of the page. Pass a value lower than 1 to make the page look like a card:
 
 <img src="resources/page_aspect_ratio_lower_than_1.png" alt="itemAspectRatio lower than 1" height="640"/>
 
