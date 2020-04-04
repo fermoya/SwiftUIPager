@@ -63,7 +63,7 @@ By default, `Pager` is configured as:
 - Horizontal, left to right direction.
 - Items have center alignment inside `Pager` and take all the space available
 - Current page is centered in the scroll
-- Only the page is swipeable
+- Only the page is hittable and reacts to swipes
 
 Use `itemAspectRatio` to change the look of the page. Pass a value lower than 1 to make the page look like a card:
 

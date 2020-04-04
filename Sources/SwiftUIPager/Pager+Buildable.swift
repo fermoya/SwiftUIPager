@@ -30,8 +30,8 @@ extension Pager: Buildable {
         case bottomToTop
     }
 
-    /// Area that will be hittable and listen to touches
-    public enum SwipeableArea {
+    /// Defines the area in `Pager` that allows hits and listens to swipes
+    public enum SwipeInteractionArea {
 
         /// All available space inside `Pager`
         case allAvailable
@@ -40,9 +40,9 @@ extension Pager: Buildable {
         case page
     }
 
-    /// Indicates which area should allow hits and be swipeable
-    public func swipeableArea(_ value: SwipeableArea) -> Self {
-        mutating(keyPath: \.swipeableArea, value: value)
+    /// Indicates which area should allow hits and react to swipes
+    public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
+        mutating(keyPath: \.swipeInteractionArea, value: value)
     }
 
     /// Changes the a the  alignment of the pages relative to their container
