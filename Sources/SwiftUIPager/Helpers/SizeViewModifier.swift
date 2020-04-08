@@ -12,14 +12,22 @@ import SwiftUI
 struct SizeViewModifier: ViewModifier {
     
     @Binding var size: CGSize
+    @State private var isAppeared = false
 
     func body(content: Content) -> some View {
         GeometryReader { proxy in
             content
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .onReload (perform: {
+                    guard self.isAppeared else { return }
                     self.size = proxy.size
                 })
+                .onAppear {
+                    self.size = proxy.size
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+                        self.isAppeared = true
+                    }
+                }
         }
         .clipped()
     }
