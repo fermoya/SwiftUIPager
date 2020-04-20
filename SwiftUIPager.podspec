@@ -18,7 +18,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/fermoya/SwiftUIPager.git", :tag => "#{s.version}" }
   s.source_files  = "Sources/SwiftUIPager/**/*.swift"
 
-  s.xcconfig = { "SWIFT_VERSION" => "5.1" }
   s.documentation_url = "https://github.com/fermoya/SwiftUIPager/blob/master/README.md"
 
 end
