@@ -101,6 +101,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Space between pages
     var itemSpacing: CGFloat = 0
 
+    /// Minimum distance for `Pager` to start scrolling
+    var minimumDistance: CGFloat = 15
+
     /// Will apply this ratio to each page item. The aspect ratio follows the formula _width / height_
     var itemAspectRatio: CGFloat?
 
@@ -202,7 +205,7 @@ extension Pager {
 
     /// `DragGesture` customized to work with `Pager`
     var swipeGesture: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: minimumDistance, coordinateSpace: .local)
             .onChanged({ value in
                 withAnimation {
                     self.draggingStartTime = self.draggingStartTime ?? value.time

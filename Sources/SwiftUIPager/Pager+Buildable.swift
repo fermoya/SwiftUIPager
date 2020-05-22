@@ -50,6 +50,10 @@ extension Pager: Buildable {
         mutating(keyPath: \.allowsDragging, value: value)
     }
 
+    public func highPriorityGesture() -> Self {
+        mutating(keyPath: \.minimumDistance, value: 0)
+    }
+
     /// Indicates which area should allow hits and react to swipes
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
