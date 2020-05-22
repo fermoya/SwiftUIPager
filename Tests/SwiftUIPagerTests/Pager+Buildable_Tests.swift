@@ -275,7 +275,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges),
         ("test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable", test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable),
         ("test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage", test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage),
-        ("test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero", test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero)
+        ("test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero", test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero),
         ("test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd", test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd),
         ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart),
         ("test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse", test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse),
