@@ -40,6 +40,16 @@ extension Pager: Buildable {
         case page
     }
 
+    /// Disables dragging on `Pager`
+    public func disableDragging() -> Self {
+        mutating(keyPath: \.allowsDragging, value: false)
+    }
+
+    /// Disables dragging on `Pager`
+    public func allowsDragging(_ value: Bool = true) -> Self {
+        mutating(keyPath: \.allowsDragging, value: value)
+    }
+
     /// Indicates which area should allow hits and react to swipes
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
