@@ -14,6 +14,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         let pager = givenPager
         XCTAssertNil(pager.itemAspectRatio)
         XCTAssertTrue(pager.isHorizontal)
+        XCTAssertTrue(pager.allowsDragging)
         XCTAssertEqual(pager.scrollDirectionAngle, .zero)
         XCTAssertEqual(pager.interactiveScale, 1)
         XCTAssertEqual(pager.alignment, .center)
@@ -23,6 +24,24 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.itemSpacing, 0)
         XCTAssertEqual(pager.itemAlignment, .center)
         XCTAssertEqual(pager.swipeInteractionArea, .page)
+    }
+
+    func test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse() {
+        var pager = givenPager
+        pager = pager.disableDragging()
+        XCTAssertFalse(pager.allowsDragging)
+    }
+
+    func test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue() {
+        var pager = givenPager
+        pager = pager.allowsDragging()
+        XCTAssertTrue(pager.allowsDragging)
+    }
+
+    func test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse() {
+        var pager = givenPager
+        pager = pager.allowsDragging(false)
+        XCTAssertFalse(pager.allowsDragging)
     }
 
     func test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable() {
@@ -250,6 +269,9 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable", test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable),
         ("test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage", test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage),
         ("test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd", test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd),
-        ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart)
+        ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart),
+        ("test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse", test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse),
+        ("test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue", test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue),
+        ("test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse", test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse)
     ]
 }

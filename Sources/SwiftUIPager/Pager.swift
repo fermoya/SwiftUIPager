@@ -57,9 +57,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** Dependencies ***/
 
-    /// Angle to dermine the direction of the scroll
-    var scrollDirectionAngle: Angle = .zero
-
     /// `ViewBuilder` block to create each page
     let content: (Element) -> PageView
 
@@ -70,6 +67,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var data: [Element]
 
     /*** ViewModified properties ***/
+
+    /// Angle to dermine the direction of the scroll
+    var scrollDirectionAngle: Angle = .zero
 
     /// Hittable area
     var swipeInteractionArea: SwipeInteractionArea = .page
@@ -85,6 +85,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
+
+    /// `true` if  `Pager` can be dragged
+    var allowsDragging: Bool = true
 
     /// `true` if pages should have a 3D rotation effect
     var shouldRotate: Bool = false
@@ -152,7 +155,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
         let wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
 
-        return wrappedView.highPriorityGesture(swipeGesture, including: .all)
+        return wrappedView.highPriorityGesture(allowsDragging ? swipeGesture : nil, including: .all)
             .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                               axis: (0, 0, 1))
             .sizeTrackable($size)
