@@ -114,8 +114,8 @@
 		6B4EC8A0240D0710001E7490 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				6B4EC8A1240D072B001E7490 /* ColorsExampleView.swift */,
 				6B4EC8A3240D07D5001E7490 /* SimpleExampleView.swift */,
+				6B4EC8A1240D072B001E7490 /* ColorsExampleView.swift */,
 				6B4EC8A5240D0918001E7490 /* PresentedExampleView.swift */,
 				6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */,
 			);

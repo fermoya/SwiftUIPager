@@ -45,19 +45,21 @@ extension Pager {
     /// The current page index. Will equal `page` if not dragging
     var currentPage: Int {
         guard isDragging else { return page }
-        let newPage = -Int((totalOffset / self.pageDistance).rounded()) + self.page
-        return max(min(newPage, self.numberOfPages - 1), 0)
+        let newPage = -Int((totalOffset / pageDistance).rounded()) + page
+
+        guard isInifinitePager else { return max(min(newPage, numberOfPages - 1), 0) }
+        return max((newPage + numberOfPages) % numberOfPages, 0)
     }
 
     /// Minimum offset allowed. This allows a bounce offset
     var offsetLowerbound: CGFloat {
-        guard currentPage == 0 else { return CGFloat(numberOfPages) * self.size.width }
+        guard currentPage == 0, !isInifinitePager else { return CGFloat(numberOfPages) * self.size.width }
         return CGFloat(numberOfPagesDisplayed) / 2 * pageDistance - pageDistance / 4 + alignmentOffset
     }
 
     /// Maximum offset allowed. This allows a bounce offset
     var offsetUpperbound: CGFloat {
-        guard currentPage == numberOfPages - 1 else { return -CGFloat(numberOfPages) * self.size.width }
+        guard currentPage == numberOfPages - 1, !isInifinitePager else { return -CGFloat(numberOfPages) * self.size.width }
         let a = -CGFloat(numberOfPagesDisplayed) / 2
         let b = pageDistance / 4
         return a * pageDistance + b + alignmentOffset
@@ -97,27 +99,38 @@ extension Pager {
     var maximumNumberOfPages: Int {
         guard pageDistance != 0 else { return 0 }
         let side = isHorizontal ? size.width : size.height
-        return Int((CGFloat(recyclingRatio) * side / pageDistance / 2).rounded(.up))
+        return min(numberOfPages, Int((CGFloat(recyclingRatio) * side / pageDistance).rounded(.up)))
     }
 
-    /// Number of pages displayed at the moment
+    /// Number of pages in memory at the moment
     var numberOfPagesDisplayed: Int {
-        upperPageDisplayed - lowerPageDisplayed
+        guard isInifinitePager else { return upperPageDisplayed - lowerPageDisplayed }
+        return maximumNumberOfPages
     }
 
     /// Data that is being displayed at the moment
     var dataDisplayed: [Element] {
-        Array(data[lowerPageDisplayed..<upperPageDisplayed])
+        var items: [Element] = []
+
+        var index = lowerPageDisplayed
+        while items.count < numberOfPagesDisplayed {
+            items.append(data[index])
+            index = (index + 1) % numberOfPages
+        }
+
+        return items
     }
 
     /// Lower bound of the data displaed
     var lowerPageDisplayed: Int {
-        return max(0, page - maximumNumberOfPages)
+        guard isInifinitePager else { return max(0, page - maximumNumberOfPages) }
+        return ((page - maximumNumberOfPages / 2) + numberOfPages) % numberOfPages
     }
 
     /// Upper bound of the data displaed
     var upperPageDisplayed: Int {
-        return min(numberOfPages, maximumNumberOfPages + page)
+        guard isInifinitePager else { return min(numberOfPages, maximumNumberOfPages + page) }
+        return (Int((Float(maximumNumberOfPages) / 2).rounded(.up)) + page) % numberOfPages
     }
 
     /// Extra offset to complentate the alignment
@@ -157,10 +170,11 @@ extension Pager {
 
     /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetUpperbound` and `offsetUpperbound`
     var xOffset: CGFloat {
-        let page = CGFloat(self.page - lowerPageDisplayed)
+        let indexOfPageFocused = CGFloat(dataDisplayed.firstIndex(where: { data.firstIndex(of: $0) == self.page }) ?? 0)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)
         let xIncrement = pageDistance / 2
-        let offset = (numberOfPages / 2 - page) * pageDistance - xIncrement + totalOffset + alignmentOffset
+        let offset = (numberOfPages / 2 - indexOfPageFocused) * pageDistance - xIncrement + totalOffset + alignmentOffset
+
         return max(offsetUpperbound, min(offsetLowerbound, offset))
     }
 
@@ -211,6 +225,19 @@ extension Pager {
     /// Returns true if the item is focused on the screen.
     func isFocused(_ item: Element) -> Bool {
         data.firstIndex(of: item) == currentPage
+    }
+
+    /// Returns true if the item is the first or last element in memory
+    func isEdgePage(_ item: Element) -> Bool {
+        let side = isHorizontal ? size.width : size.height
+        let numberOfElementsOnScreen = Int(((side - pageDistance) / pageDistance).rounded(.up)) * 2 + 1
+
+        guard numberOfElementsOnScreen < maximumNumberOfPages else { return false }
+        guard let index = dataDisplayed.firstIndex(of: item) else { return false }
+        guard dataDisplayed.count == maximumNumberOfPages else {
+            return false
+        }
+        return index == 0 || index == maximumNumberOfPages - 1
     }
 
 }
