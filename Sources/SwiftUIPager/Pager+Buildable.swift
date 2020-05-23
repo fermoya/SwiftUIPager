@@ -40,12 +40,17 @@ extension Pager: Buildable {
         case page
     }
 
+    /// Sets `Pager` to loop the items in a never-ending scroll
+    public func loopPages(_ value: Bool = true) -> Self {
+        mutating(keyPath: \.isInifinitePager, value: value)
+    }
+
     /// Disables dragging on `Pager`
     public func disableDragging() -> Self {
         mutating(keyPath: \.allowsDragging, value: false)
     }
 
-    /// Disables dragging on `Pager`
+    /// Sets whether the dragging is enabled or not
     public func allowsDragging(_ value: Bool = true) -> Self {
         mutating(keyPath: \.allowsDragging, value: value)
     }

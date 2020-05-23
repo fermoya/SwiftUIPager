@@ -42,8 +42,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /*** Constants ***/
 
     /// Manages the number of items that should be displayed in the screen.
-    /// A ratio of 3, for instance, would mean the items held in memory are enough
-    /// to cover 3 times the size of the pager
+    /// A ratio of 5, for instance, would mean the items held in memory are enough
+    /// to cover 5 times the size of the pager
     let recyclingRatio = 5
 
     /// Angle of rotation when should rotate
@@ -101,6 +101,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Space between pages
     var itemSpacing: CGFloat = 0
 
+    /// Whether the `Pager` loops endlessly
+    var isInifinitePager: Bool = false
+
     /// Minimum distance for `Pager` to start scrolling
     var minimumDistance: CGFloat = 15
 
@@ -146,6 +149,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             ForEach(dataDisplayed, id: id) { item in
                 self.content(item)
                     .frame(size: self.pageSize)
+                    .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
                     .scaleEffect(self.scale(for: item))
                     .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
                                       axis: (0, 0, 1))
@@ -212,11 +216,12 @@ extension Pager {
                     self.draggingOffset = value.translation.width
                 }
             }).onEnded({ (value) in
-                let velocity = -Double(value.translation.width) / value.time.timeIntervalSince(self.draggingStartTime ?? Date())
+                let velocity = -Double(self.draggingOffset) / value.time.timeIntervalSince(self.draggingStartTime ?? Date())
                 var newPage = self.currentPage
                 if newPage == self.page, abs(velocity) > 1000 {
                     newPage = newPage + Int(velocity / abs(velocity))
                 }
+
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
 
                 withAnimation(.easeOut) {
