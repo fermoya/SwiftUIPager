@@ -19,12 +19,17 @@ struct ColorsExampleView: View {
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
-                VStack {
+                VStack(spacing: 10) {
+                    Text("Use the controls below to move across the colors")
+                        .bold()
+                        .padding(10)
+                        .foregroundColor(.blue)
                     Pager(page: self.$pageIndex,
                           data: self.colors,
                           id: \.self) {
                             self.pageView($0)
                     }
+                    .disableDragging()
                     .itemSpacing(10)
                     .padding(20)
                     .onPageChanged({ page in

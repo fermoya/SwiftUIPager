@@ -18,17 +18,17 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            SimpleExampleView()
+            InfiniteExampleView()
                 .tabItem({
-                    Text("Basic")
+                    Text("Infinite")
                 }).tag(0)
             ColorsExampleView()
                 .tabItem({
-                    Text("Colors")
+                    Text("Manual")
                 }).tag(1)
-            PresentedExampleView()
+            EmbeddedExampleView()
                 .tabItem({
-                    Text("Presented")
+                    Text("In ScrollView")
                 }).tag(2)
             BizarreExampleView()
                 .tabItem({
