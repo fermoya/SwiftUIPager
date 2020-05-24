@@ -15,6 +15,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertNil(pager.itemAspectRatio)
         XCTAssertTrue(pager.isHorizontal)
         XCTAssertTrue(pager.allowsDragging)
+        XCTAssertFalse(pager.isInifinitePager)
         XCTAssertEqual(pager.scrollDirectionAngle, .zero)
         XCTAssertEqual(pager.interactiveScale, 1)
         XCTAssertEqual(pager.alignment, .center)
@@ -25,6 +26,12 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.itemAlignment, .center)
         XCTAssertEqual(pager.swipeInteractionArea, .page)
         XCTAssertEqual(pager.minimumDistance, 15)
+    }
+
+    func test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue() {
+        var pager = givenPager
+        pager = pager.loopPages()
+        XCTAssertTrue(pager.isInifinitePager)
     }
 
     func test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero() {
@@ -280,6 +287,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart),
         ("test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse", test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse),
         ("test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue", test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue),
-        ("test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse", test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse)
+        ("test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse", test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse),
+        ("test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue", test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue)
     ]
 }

@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct SimpleExampleView: View {
+struct InfiniteExampleView: View {
 
     @State var page: Int = 0
-    @State var data = Array(0..<5)
+    @State var data = Array(0..<10)
 
     var body: some View {
         GeometryReader { proxy in
@@ -20,7 +20,12 @@ struct SimpleExampleView: View {
                   id: \.self) {
                     self.pageView($0)
             }
-            .loopPages()
+            .onPageChanged({ page in
+                guard page == self.data.count - 2 else { return }
+                guard let last = self.data.last else { return }
+                let newData = (1...10).map { last + $0 }
+                self.data.append(contentsOf: newData)
+            })
             .itemSpacing(10)
             .itemAspectRatio(1.3, alignment: .end)
             .padding(20)

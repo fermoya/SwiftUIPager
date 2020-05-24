@@ -40,7 +40,7 @@ extension Pager: Buildable {
         case page
     }
 
-    /// Sets `Pager` to loop the items in a never-ending scroll
+    /// Sets `Pager` to loop the items in a never-ending scroll. To have a nice experience, ensure that `numberOfPages >= numberOfPagesDisplayed`
     public func loopPages(_ value: Bool = true) -> Self {
         mutating(keyPath: \.isInifinitePager, value: value)
     }

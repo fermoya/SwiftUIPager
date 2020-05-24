@@ -1,5 +1,5 @@
 //
-//  PresentedExampleView.swift
+//  EmbeddedExampleView.swift
 //  SwiftUIPagerExample
 //
 //  Created by Fernando Moya de Rivas on 02/03/2020.
@@ -24,9 +24,7 @@ struct EmbeddedExampleView: View {
                         Pager(page: self.$page,
                               data: self.data,
                               id: \.self) { page in
-                                NavigationLink(destination: Text("Page \(page) tapped"), label: {
-                                    self.pageView(page)
-                                })
+                                self.pageView(page)
                         }
                         .rotation3D()
                         .itemSpacing(10)

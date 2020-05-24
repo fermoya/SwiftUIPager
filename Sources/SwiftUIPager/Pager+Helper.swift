@@ -95,16 +95,19 @@ extension Pager {
     /// Total number of pages
     var numberOfPages: Int { data.count }
 
-    /// Maximum number in memory at the same time
+    /// Maximum number in memory at the same time. Always an even number.
     var maximumNumberOfPages: Int {
         guard pageDistance != 0 else { return 0 }
         let side = isHorizontal ? size.width : size.height
-        return min(numberOfPages, Int((CGFloat(recyclingRatio) * side / pageDistance).rounded(.up)))
+        let number = Int((CGFloat(recyclingRatio) * side / pageDistance).rounded(.up))
+        return number.isMultiple(of: 2) ? (recyclingRatio.isMultiple(of: 2) ? number + 1 : number - 1) : number
     }
 
     /// Number of pages in memory at the moment
     var numberOfPagesDisplayed: Int {
-        guard isInifinitePager else { return upperPageDisplayed - lowerPageDisplayed }
+        guard isInifinitePager else {
+            return (lowerPageDisplayed...upperPageDisplayed).count
+        }
         return maximumNumberOfPages
     }
 
@@ -123,13 +126,13 @@ extension Pager {
 
     /// Lower bound of the data displaed
     var lowerPageDisplayed: Int {
-        guard isInifinitePager else { return max(0, page - maximumNumberOfPages) }
+        guard isInifinitePager else { return max(0, page - maximumNumberOfPages / 2) }
         return ((page - maximumNumberOfPages / 2) + numberOfPages) % numberOfPages
     }
 
     /// Upper bound of the data displaed
     var upperPageDisplayed: Int {
-        guard isInifinitePager else { return min(numberOfPages, maximumNumberOfPages + page) }
+        guard isInifinitePager else { return min(numberOfPages - 1, page + maximumNumberOfPages / 2) }
         return (Int((Float(maximumNumberOfPages) / 2).rounded(.up)) + page) % numberOfPages
     }
 
@@ -227,16 +230,11 @@ extension Pager {
         data.firstIndex(of: item) == currentPage
     }
 
-    /// Returns true if the item is the first or last element in memory
+    /// Returns true if the item is the first or last element in memory. Just used when `isInfinitePager` is set to `true` to hide elements being resorted.
     func isEdgePage(_ item: Element) -> Bool {
-        let side = isHorizontal ? size.width : size.height
-        let numberOfElementsOnScreen = Int(((side - pageDistance) / pageDistance).rounded(.up)) * 2 + 1
-
-        guard numberOfElementsOnScreen < maximumNumberOfPages else { return false }
+        guard numberOfPagesDisplayed <= numberOfPages else { return false }
         guard let index = dataDisplayed.firstIndex(of: item) else { return false }
-        guard dataDisplayed.count == maximumNumberOfPages else {
-            return false
-        }
+        guard dataDisplayed.count == maximumNumberOfPages else { return false }
         return index == 0 || index == maximumNumberOfPages - 1
     }
 

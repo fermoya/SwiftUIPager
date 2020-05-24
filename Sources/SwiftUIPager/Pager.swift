@@ -192,21 +192,6 @@ extension Pager where ID == Element.ID, Element : Identifiable {
 
 extension Pager {
 
-    /// Helper function to scroll to a specific item.
-    func scrollToItem(_ item: Element) {
-        guard let index = data.firstIndex(of: item) else { return }
-        self.pageIndex = index
-    }
-
-    func tapGesture(for item: Element) -> some Gesture {
-        TapGesture(count: 1)
-            .onEnded({ _ in
-                withAnimation(.spring()) {
-                    self.scrollToItem(item)
-                }
-            })
-    }
-
     /// `DragGesture` customized to work with `Pager`
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .local)
@@ -225,8 +210,8 @@ extension Pager {
                 newPage = max(0, min(self.numberOfPages - 1, newPage))
 
                 withAnimation(.easeOut) {
-                    self.pageIndex = newPage
                     self.draggingOffset = 0
+                    self.pageIndex = newPage
                     self.draggingStartTime = nil
                 }
 
