@@ -14,7 +14,7 @@ struct InfiniteExampleView: View {
     @State var page2: Int = 0
     @State var data1 = Array(0..<5)
     @State var isPresented: Bool = false
-    var data2 = Array(0..<7)
+    var data2 = Array(0..<5)
 
     var body: some View {
         GeometryReader { proxy in

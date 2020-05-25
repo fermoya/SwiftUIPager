@@ -97,10 +97,14 @@ extension Pager {
 
     /// Maximum number in memory at the same time. Always an even number.
     var maximumNumberOfPages: Int {
-        guard pageDistance != 0 else { return 0 }
+        guard pageDistance != 0, numberOfPages > 0 else { return 0 }
         let side = isHorizontal ? size.width : size.height
-        let number = Int((CGFloat(recyclingRatio) * side / pageDistance).rounded(.up))
-        return number.isMultiple(of: 2) ? (recyclingRatio.isMultiple(of: 2) ? number + 1 : number - 1) : number
+        var number = Int((CGFloat(recyclingRatio) * side / pageDistance).rounded(.up))
+        number = number.isMultiple(of: 2) ? (recyclingRatio.isMultiple(of: 2) ? number + 1 : number - 1) : number
+
+        guard isInifinitePager else { return number }
+        number = min(number, numberOfPages)
+        return number.isMultiple(of: 2) ? number - 1 : number
     }
 
     /// Number of pages in memory at the moment
@@ -232,10 +236,9 @@ extension Pager {
 
     /// Returns true if the item is the first or last element in memory. Just used when `isInfinitePager` is set to `true` to hide elements being resorted.
     func isEdgePage(_ item: Element) -> Bool {
-        guard numberOfPagesDisplayed <= numberOfPages else { return false }
+        guard numberOfPages >= 3 else { return false }
         guard let index = dataDisplayed.firstIndex(of: item) else { return false }
-        guard dataDisplayed.count == maximumNumberOfPages else { return false }
-        return index == 0 || index == maximumNumberOfPages - 1
+        return index == 0 || index == dataDisplayed.count - 1
     }
 
 }
