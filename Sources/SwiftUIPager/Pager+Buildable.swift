@@ -40,7 +40,13 @@ extension Pager: Buildable {
         case page
     }
 
-    /// Sets `Pager` to loop the items in a never-ending scroll. To have a nice experience, ensure that `numberOfPages >= numberOfPagesDisplayed`
+    /// Sets `Pager` to loop the items in a never-ending scroll.
+    ///
+    /// - Parameter value: `true` if `Pager` should loop the pages. `false`, otherwise.
+    ///
+    /// To have a nice experience, ensure that  the `data` passed in the intializer has enough elements to fill enough
+    /// pages on both the screen and the sides.
+    /// - Note: You can try experimenting with the `itemAspectRatio` or the `itemSpacing`.
     public func loopPages(_ value: Bool = true) -> Self {
         mutating(keyPath: \.isInifinitePager, value: value)
     }
@@ -51,6 +57,8 @@ extension Pager: Buildable {
     }
 
     /// Sets whether the dragging is enabled or not
+    ///
+    /// - Parameter value: `true` if  dragging is allowed, `false`, otherwise. Defaults to `true`
     public func allowsDragging(_ value: Bool = true) -> Self {
         mutating(keyPath: \.allowsDragging, value: value)
     }
@@ -61,16 +69,22 @@ extension Pager: Buildable {
     }
 
     /// Indicates which area should allow hits and react to swipes
+    ///
+    /// - Parameter value: area of interaction
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
     }
 
     /// Changes the a the  alignment of the pages relative to their container
+    ///
+    /// - Parameter value: alignment of the pages inside the scroll
     public func alignment(_ value: PositionAlignment) -> Self {
         mutating(keyPath: \.alignment, value: value)
     }
 
     /// Returns a horizontal pager
+    ///
+    /// - Parameter swipeDirection: direction of the swipe. Defaults to `.leftToRight`
     public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
         let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)
         return mutating(keyPath: \.isHorizontal, value: true)
@@ -78,6 +92,8 @@ extension Pager: Buildable {
     }
 
     /// Returns a vertical pager
+    ///
+    /// - Parameter swipeDirection: direction of the swipe. Defaults to `.topToBottom`
     public func vertical(_ swipeDirection: VerticalSwipeDirection = .topToBottom) -> Self {
         let scrollDirectionAngle: Angle = swipeDirection == .topToBottom ? .zero : Angle(degrees: 180)
         return mutating(keyPath: \.isHorizontal, value: false)
@@ -104,11 +120,15 @@ extension Pager: Buildable {
     }
 
     /// Provides an increment to the page index offset. Use this to modify the scroll offset
-    public func pageOffset(_ pageOffset: Double) -> Self {
-        mutating(keyPath: \.pageOffset, value: pageOffset)
+    ///
+    /// - Parameter value: manual offset applied to `Pager`
+    public func pageOffset(_ value: Double) -> Self {
+        mutating(keyPath: \.pageOffset, value: value)
     }
 
     /// Adds space between each page
+    ///
+    /// - Parameter value: spacing between elements
     public func itemSpacing(_ value: CGFloat) -> Self {
         mutating(keyPath: \.itemSpacing, value: value)
     }
@@ -136,20 +156,34 @@ extension Pager: Buildable {
     }
 
     /// Adds a callback to react to every change on the page index.
-    public func onPageChanged(_ onPageChanged: ((Int) -> Void)?) -> Self {
-        mutating(keyPath: \.onPageChanged, value: onPageChanged)
+    ///
+    /// - Parameter callback: block to be called when `page` changes
+    public func onPageChanged(_ callback: ((Int) -> Void)?) -> Self {
+        mutating(keyPath: \.onPageChanged, value: callback)
     }
 
+    /// Sets some padding on the non-scroll axis
+    ///
+    /// - Parameter lenght: padding
     public func padding(_ length: CGFloat) -> Self {
         padding(.all, length)
     }
-    
+
+    /// Sets some padding on the non-scroll axis. It will take the minimum value passed for the vertical insets on an horizontal `Pager`,
+    /// and the horizontal insets in case `Pager` is vertical
+    ///
+    /// - Parameter insets: insets to add as padding
     public func padding(_ insets: EdgeInsets) -> Self {
         let length = isHorizontal ? min(insets.top, insets.bottom) : min(insets.leading, insets.trailing)
         let edges: Edge.Set = isHorizontal ? .vertical : .horizontal
         return padding(edges, length)
     }
-    
+
+    /// Sets some padding on the non-scroll axis. Will be set in case edges is `.all`, `.vertical` for a horizontal `Pager`
+    /// or `.horizontal` for a horizontal `Pager`.
+    ///
+    /// - Parameter edges: edges the padding should be applied along. Defaults to `.all`
+    /// - Parameter lenght: padding to be applied. Default to `8`.
     public func padding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> Self {
         let allowedEdges: Edge.Set = isHorizontal ? .vertical : .horizontal
         guard edges == .all || edges == allowedEdges else { return self }

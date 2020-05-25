@@ -198,7 +198,8 @@ extension Pager {
             .onChanged({ value in
                 withAnimation {
                     self.draggingStartTime = self.draggingStartTime ?? value.time
-                    self.draggingOffset = value.translation.width
+                    let side = self.isHorizontal ? self.size.width : self.size.height
+                    self.draggingOffset = value.translation.width * (self.pageDistance / side)
                 }
             }).onEnded({ (value) in
                 let velocity = -Double(self.draggingOffset) / value.time.timeIntervalSince(self.draggingStartTime ?? Date())
