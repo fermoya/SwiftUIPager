@@ -162,7 +162,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
         let wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
 
-        return wrappedView.highPriorityGesture(allowsDragging ? swipeGesture : nil, including: .all)
+        return wrappedView.highPriorityGesture(allowsDragging ? swipeGesture : nil, including: .subviews)
             .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                               axis: (0, 0, 1))
             .sizeTrackable($size)
