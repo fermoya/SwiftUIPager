@@ -70,7 +70,7 @@ extension Pager {
         draggingOffset + contentOffset
     }
 
-    /// Size of each item. Takes into account `pageAspectRatio` and `verticalInsets` to fit the page into its container
+    /// Size of each item. Takes into account `itemAspectRatio` and `verticalInsets` to fit the page into its container
     var pageSize: CGSize {
         guard let itemAspectRatio = self.itemAspectRatio else {
             return CGSize(width: size.width - 2 * sideInsets, height: size.height - 2 * sideInsets)
