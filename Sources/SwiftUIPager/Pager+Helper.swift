@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension Pager {
 
     /// Work around to avoid @State keeps wrong value

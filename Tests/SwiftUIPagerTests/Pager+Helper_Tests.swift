@@ -2,6 +2,7 @@ import XCTest
 import SwiftUI
 @testable import SwiftUIPager
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 final class Pager_Helper_Tests: XCTestCase {
     
     var givenPager: Pager<Int, Int, Text> {

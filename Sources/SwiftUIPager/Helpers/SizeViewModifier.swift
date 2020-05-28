@@ -9,6 +9,7 @@
 import SwiftUI
 
 /// This modifier wraps a view into a `GeometryReader` and tracks the available space by using `SizePreferenceKey` on the content
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 struct SizeViewModifier: ViewModifier {
     
     @Binding var size: CGSize
@@ -34,6 +35,7 @@ struct SizeViewModifier: ViewModifier {
 
 }
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension View {
 
     func onReload(perform: @escaping () -> Void) -> some View {
@@ -46,6 +48,7 @@ extension View {
 
 }
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, *)
 extension View {
 
     /// Tracks the size available for the view

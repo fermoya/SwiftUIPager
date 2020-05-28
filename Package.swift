@@ -7,7 +7,7 @@ let package = Package(
     name: "SwiftUIPager",
     platforms: [
         .macOS(.v10_15),
-        .iOS(.v13),
+        .iOS(.v10),
         .watchOS(.v6)
     ],
     products: [
