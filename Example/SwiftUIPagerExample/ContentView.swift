@@ -30,10 +30,14 @@ struct ContentView: View {
                 .tabItem({
                     Text("In ScrollView")
                 }).tag(2)
+            NestedExampleView()
+                .tabItem({
+                    Text("Nested")
+                }).tag(3)
             BizarreExampleView()
                 .tabItem({
                     Text("More")
-                }).tag(3)
+                }).tag(4)
         }
     }
     
