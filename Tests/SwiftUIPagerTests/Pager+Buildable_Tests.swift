@@ -28,6 +28,14 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.minimumDistance, 15)
     }
 
+    func test_GivenPager_WhenPreferredItemSize_ThenNotNil() {
+        var pager = givenPager.itemAspectRatio(0.7)
+        pager = pager.preferredItemSize(CGSize(width: 50, height: 50))
+        XCTAssertNil(pager.itemAspectRatio)
+        XCTAssertNotNil(pager.preferredItemSize)
+        XCTAssertEqual(pager.sideInsets, 0)
+    }
+
     func test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue() {
         var pager = givenPager
         pager = pager.loopPages()
@@ -155,9 +163,10 @@ final class Pager_Buildable_Tests: XCTestCase {
     }
     
     func test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio() {
-        var pager = givenPager
+        var pager = givenPager.preferredItemSize(CGSize(width: 50, height: 50))
         pager = pager.itemAspectRatio(1.2, alignment: .start(10))
         XCTAssertEqual(pager.itemAspectRatio, 1.2)
+        XCTAssertNil(pager.preferredItemSize)
         XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.start))
     }
 
@@ -189,6 +198,12 @@ final class Pager_Buildable_Tests: XCTestCase {
         var pager = givenPager.itemAspectRatio(1.2)
         pager = pager.expandPageToEdges()
         XCTAssertNil(pager.itemAspectRatio)
+    }
+
+    func test_GivenPagerWithPreferredPageSize_WhenPadding_ThenNoInsets() {
+        var pager = givenPager.preferredItemSize(CGSize(width: 50, height: 50))
+        pager = pager.padding(8)
+        XCTAssertEqual(pager.sideInsets, 0)
     }
     
     func test_GivenHorizontalPager_WhenPaddingHorizontal_ThenNoInsets() {

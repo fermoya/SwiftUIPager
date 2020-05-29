@@ -143,11 +143,28 @@ extension Pager: Buildable {
     /// - `value > 1` will make the page spread horizontally and have a width larger than its height.
     /// - `value < 1` will give the page a larger height.
     /// - `nil` will reset to the _default_ value and the page will take up all the available space
-    /// Note: `value` should be greater than 0
+    /// - By calling this modifier, you'll be invalidating the previous values of `preferredItemSize`
+    ///
+    /// - Note: `value` should be greater than 0
+    ///
     public func itemAspectRatio(_ value: CGFloat?, alignment: PositionAlignment = .center) -> Self {
         guard (value ?? 1) > 0 else { return self }
-        return mutating(keyPath: \.itemAspectRatio, value: value)
+        return mutating(keyPath: \.preferredItemSize, value: nil)
+            .mutating(keyPath: \.itemAspectRatio, value: value)
             .mutating(keyPath: \.itemAlignment, value: alignment)
+    }
+
+    /// Sets the preferred size for the items.
+    ///
+    /// - Parameter value: size
+    /// - Parameter alignment: page position inside `Pager` when there's available spacer
+    ///
+    /// - Note: This will invalidate previous values of `padding` and `itemAspectRatio`
+    public func preferredItemSize(_ value: CGSize, alignment: PositionAlignment = .center) -> Self {
+        mutating(keyPath: \.sideInsets, value: 0)
+            .mutating(keyPath: \.itemAspectRatio, value: nil)
+            .mutating(keyPath: \.itemAlignment, value: alignment)
+            .mutating(keyPath: \.preferredItemSize, value: value)
     }
     
     /// Sets the `itemAspectRatio` to take up all the space available
@@ -185,6 +202,7 @@ extension Pager: Buildable {
     /// - Parameter edges: edges the padding should be applied along. Defaults to `.all`
     /// - Parameter lenght: padding to be applied. Default to `8`.
     public func padding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> Self {
+        guard preferredItemSize == nil else { return self }
         let allowedEdges: Edge.Set = isHorizontal ? .vertical : .horizontal
         guard edges == .all || edges == allowedEdges else { return self }
         return mutating(keyPath: \.sideInsets, value: length ?? 8)

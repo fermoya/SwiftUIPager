@@ -73,6 +73,11 @@ extension Pager {
     /// Size of each item. Takes into account `pageAspectRatio` and `verticalInsets` to fit the page into its container
     var pageSize: CGSize {
         guard size != .zero else { return .zero }
+        if let preferredItemSize = preferredItemSize {
+            return CGSize(width: min(preferredItemSize.width, size.width),
+                          height: min(preferredItemSize.height, size.height))
+        }
+
         guard let itemAspectRatio = self.itemAspectRatio else {
             return CGSize(width: size.width - 2 * sideInsets, height: size.height - 2 * sideInsets)
         }
@@ -168,7 +173,7 @@ extension Pager {
     /// Offset applied to `HStack` along the Y-Axis. Used to aligned the pages
     var yOffset: CGFloat {
         guard !itemAlignment.equalsIgnoreValues(.center) else { return 0 }
-        guard itemAspectRatio != nil else { return 0 }
+        guard itemAspectRatio != nil || preferredItemSize != nil else { return 0 }
 
         let availableSpace = ((isHorizontal ? size.height - pageSize.height : size.width - pageSize.width) - sideInsets) / 2 - itemAlignment.insets
         guard availableSpace > 0 else { return 0 }
