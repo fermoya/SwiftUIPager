@@ -12,6 +12,11 @@ public enum PositionAlignment {
     /// Sets the alignment to be centered
     case center
 
+    /// Sets the alignment to be centered, but first and last pages snapping to the sides with the specified insets:
+    /// - Left, Right if horizontal
+    /// - Top, Bottom if vertical
+    case justified(CGFloat)
+
     /// Sets the alignment to be at the start of the container with the specified insets:
     ///
     /// - Left, if horizontal
@@ -29,7 +34,7 @@ public enum PositionAlignment {
         switch self {
         case .center:
             return 0
-        case .end(let insets), .start(let insets):
+        case .end(let insets), .start(let insets), .justified(let insets):
             return insets
         }
     }
@@ -37,7 +42,7 @@ public enum PositionAlignment {
     /// Helper to compare `Alignment` ignoring associated values
     func equalsIgnoreValues(_ alignment: PositionAlignment) -> Bool {
         switch (self, alignment) {
-        case (.center, .center), (.start, .start), (.end, .end):
+        case (.center, .center), (.justified, .justified), (.start, .start), (.end, .end):
             return true
         default:
             return false
@@ -49,4 +54,7 @@ public enum PositionAlignment {
 
     /// Sets the alignment at the end, with 0 px of margin
     public static var end: PositionAlignment { .end(0) }
+
+    /// Sets the alignment justified, with 0 px of margin
+    public static var justified: PositionAlignment { .justified(0) }
 }

@@ -149,22 +149,24 @@ extension Pager {
 
     /// Extra offset to complentate the alignment
     var alignmentOffset: CGFloat {
+        let indexOfPageFocused = dataDisplayed.firstIndex(where: { data.firstIndex(of: $0) == self.page }) ?? 0
+
         let offset: CGFloat
-        switch alignment {
-        case .center:
-            offset = 0
-        case .end(let insets):
+        switch (alignment, indexOfPageFocused) {
+        case (.end(let insets), _), (.justified(let insets), dataDisplayed.count - 1):
             if isVertical {
                 offset = (size.height - pageSize.height) / 2 - insets
             } else {
                 offset = (size.width - pageSize.width) / 2 - insets
             }
-        case .start(let insets):
+        case (.start(let insets), _), (.justified(let insets), 0):
             if isVertical {
                 offset = -(size.height - pageSize.height) / 2 + insets
             } else {
                 offset = -(size.width - pageSize.width) / 2 + insets
             }
+        case (.center, _), (.justified, _):
+            offset = 0
         }
 
         return offset
