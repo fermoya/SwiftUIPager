@@ -22,7 +22,7 @@ import SwiftUI
 ///     }).interactive(0.8)
 ///         .itemSpacing(10)
 ///         .padding(30)
-///         .pageAspectRatio(0.6)
+///         .itemAspectRatio(0.6)
 ///
 /// This snippet creates a pager with:
 /// - 10 px beetween pages
