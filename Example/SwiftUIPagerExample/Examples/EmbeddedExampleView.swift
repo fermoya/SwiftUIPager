@@ -42,7 +42,7 @@ struct EmbeddedExampleView: View {
                     }
                 }
             }.navigationBarTitle("SwiftUIPager", displayMode: .inline)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 
     func pageView(_ page: Int) -> some View {

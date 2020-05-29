@@ -34,9 +34,8 @@ struct InfiniteExampleView: View {
                         self.data1.append(contentsOf: newData)
                     }
                 })
+                .preferredItemSize(CGSize(width: 300, height: 50))
                 .itemSpacing(10)
-                .itemAspectRatio(1.3, alignment: .end)
-                .padding(20)
                 .background(Color.gray.opacity(0.2))
                 .alert(isPresented: self.$isPresented, content: {
                     Alert(title: Text("Congratulations!"),

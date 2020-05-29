@@ -37,10 +37,10 @@ struct ColorsExampleView: View {
                             self.pageIndex = page
                         }
                     })
-                        .frame(width: min(proxy.size.height, proxy.size.width),
-                               height: min(proxy.size.height, proxy.size.width))
-                        .background(Color.gray.opacity(0.3))
-                        .navigationBarTitle("Color Picker", displayMode: .inline)
+                    .frame(width: min(proxy.size.height, proxy.size.width),
+                           height: min(proxy.size.height, proxy.size.width))
+                    .background(Color.gray.opacity(0.3))
+                    .navigationBarTitle("Color Picker", displayMode: .inline)
                     
                     Spacer()
                     
@@ -89,6 +89,7 @@ struct ColorsExampleView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     func pageView(_ color: Color) -> some View {
