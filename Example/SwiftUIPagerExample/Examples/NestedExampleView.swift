@@ -23,9 +23,6 @@ struct NestedExampleView: View {
                 self.nestedPager(page)
         }
         .swipeInteractionArea(.allAvailable)
-//        .onAppear {
-//            self.page = 0
-//        }
         .background(Color.gray.opacity(0.2))
     }
 
