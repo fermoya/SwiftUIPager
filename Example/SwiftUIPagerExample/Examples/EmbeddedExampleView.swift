@@ -21,7 +21,7 @@ struct EmbeddedExampleView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack {
-                        Pager(page: self.$page, 
+                        Pager(page: self.$page,
                               data: self.data,
                               id: \.self) { page in
                                 self.pageView(page)
