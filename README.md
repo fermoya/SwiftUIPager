@@ -41,9 +41,9 @@ github "fermoya/SwiftUIPager"
 ### Manually
 * Download _[SwiftUIPager.xcframework](SwiftUIPager.xcframework)_
 * Create a group _Frameworks_ inside your project and drag and drop _SwiftUIPager.xcframework_
-<img src="resources/manual-installation-1.png" alt="Manual Installation Step 1" width="229"/>
+<img src="resources/manual-installation-step-1.png" alt="Manual Installation Step 1" width="229"/>
 * Make sure in your target's build phases that it's embedded and signed:
-<img src="resources/manual-installation-2.png" alt="Manual Installation Step 2" width="755"/>
+<img src="resources/manual-installation-step-2.png" alt="Manual Installation Step 2" width="755"/>
 
 ## Usage
 
