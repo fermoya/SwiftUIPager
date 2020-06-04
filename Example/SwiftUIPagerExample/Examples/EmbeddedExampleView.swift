@@ -10,11 +10,11 @@ import SwiftUI
 
 struct EmbeddedExampleView: View {
     @State var page: Int = 0
+    @State var page2: Int = 0
     var data = Array(0..<10)
 
-    var colors: [Color] = [
-        .red, .blue, .black, .gray, .purple, .green, .orange, .pink, .yellow, .white
-    ]
+
+    @State var alignment: ExamplePositionAlignment = .start
 
     var body: some View {
         NavigationView {
@@ -32,16 +32,34 @@ struct EmbeddedExampleView: View {
                         .padding(8)
                         .frame(width: min(proxy.size.height, proxy.size.width),
                                height: min(proxy.size.height, proxy.size.width))
-                            .background(Color.gray.opacity(0.2))
+                        .background(Color.gray.opacity(0.2))
 
-                        ForEach(self.colors, id: \.self) { color in
-                            Text("Some View")
-                                .foregroundColor(color)
-                                .padding()
+                        Text("Other alignments")
+                        .bold()
+                        .padding(.top, 40)
+
+                        Picker(selection: self.$alignment, label: Text("Position Alignment")) {
+                            ForEach(ExamplePositionAlignment.allCases, id: \.self) {
+                                Text($0.rawValue)
+                            }
                         }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+
+                        Pager(page: self.$page2,
+                              data: self.data,
+                              id: \.self) { page in
+                                self.pageView(page)
+                        }
+                        .alignment(PositionAlignment(alignment: self.alignment))
+                        .itemSpacing(10)
+                        .itemAspectRatio(0.8, alignment: .end)
+                        .padding(8)
+                        .frame(width: proxy.size.width, height: 300)
+                        .background(Color.gray.opacity(0.2))
                     }
                 }
-            }.navigationBarTitle("SwiftUIPager", displayMode: .inline)
+            }.navigationBarTitle("Inside a Scrollview", displayMode: .inline)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 
@@ -56,4 +74,23 @@ struct EmbeddedExampleView: View {
         .shadow(radius: 5)
     }
 
+}
+
+enum ExamplePositionAlignment: String, CaseIterable {
+    case start
+    case justified
+    case end
+}
+
+extension PositionAlignment {
+    init(alignment: ExamplePositionAlignment) {
+        switch alignment {
+            case .start:
+                self = .start(10)
+            case .end:
+                self = .end(10)
+            case .justified:
+                self = .justified(10)
+        }
+    }
 }
