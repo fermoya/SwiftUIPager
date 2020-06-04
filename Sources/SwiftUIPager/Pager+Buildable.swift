@@ -52,6 +52,7 @@ extension Pager: Buildable {
     }
 
     /// Disables dragging on `Pager`
+    #if !os(tvOS)
     public func disableDragging() -> Self {
         mutating(keyPath: \.allowsDragging, value: false)
     }
@@ -74,6 +75,7 @@ extension Pager: Buildable {
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
     }
+    #endif
 
     /// Changes the a the  alignment of the pages relative to their container
     ///

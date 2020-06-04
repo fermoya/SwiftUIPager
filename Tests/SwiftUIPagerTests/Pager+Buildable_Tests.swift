@@ -303,6 +303,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse", test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse),
         ("test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue", test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue),
         ("test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse", test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse),
-        ("test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue", test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue)
+        ("test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue", test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue),
+        ("test_GivenPager_WhenPreferredItemSize_ThenNotNil", test_GivenPager_WhenPreferredItemSize_ThenNotNil)
     ]
 }

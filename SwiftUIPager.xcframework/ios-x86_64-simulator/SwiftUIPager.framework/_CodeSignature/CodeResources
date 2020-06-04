@@ -18,27 +18,27 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		sZ6T+H3OV1XqUc6JvBCQ89v5xSU=
+		b3o2pzrnH7JLnHpWxLkB7sgVbNM=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		dV83wgMYlEOTT72CjfGG2RyZRXM=
+		wGWqpPXDjWruUPrYPGZBhV+u7qM=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		JNpoSLHgLJ+OxgmqN52aqDAHw6M=
+		sN661PUVlKqAzOtOyeaaEffdIlY=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		sZ6T+H3OV1XqUc6JvBCQ89v5xSU=
+		b3o2pzrnH7JLnHpWxLkB7sgVbNM=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		dV83wgMYlEOTT72CjfGG2RyZRXM=
+		wGWqpPXDjWruUPrYPGZBhV+u7qM=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		JNpoSLHgLJ+OxgmqN52aqDAHw6M=
+		sN661PUVlKqAzOtOyeaaEffdIlY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -65,42 +65,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FT/4y9l1xsEhYLncBwFwu3UQuDEZvlHa3WUo3XGiwWU=
+			u5OeZXOUs/jXSpCXiVO6N8SXQWtPzDum9BbX7AV6inA=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XQtv97BqFd6dJ28PmK72Fr4VGpYwO2xq+74/Q0WH1F0=
+			2QrLZtIgNXKC4cm+PWFYuohid/061Tr85lKDIkgnh4Q=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L5rDliNzv3tP2mCm06itZQ6HTJs868lO9WIslr6LXYs=
+			+3z0uLOFreMJ0K7lBQdOr65SThk7qcGjHKJkTfcdyA8=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FT/4y9l1xsEhYLncBwFwu3UQuDEZvlHa3WUo3XGiwWU=
+			u5OeZXOUs/jXSpCXiVO6N8SXQWtPzDum9BbX7AV6inA=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XQtv97BqFd6dJ28PmK72Fr4VGpYwO2xq+74/Q0WH1F0=
+			2QrLZtIgNXKC4cm+PWFYuohid/061Tr85lKDIkgnh4Q=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L5rDliNzv3tP2mCm06itZQ6HTJs868lO9WIslr6LXYs=
+			+3z0uLOFreMJ0K7lBQdOr65SThk7qcGjHKJkTfcdyA8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

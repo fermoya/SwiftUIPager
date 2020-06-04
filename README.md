@@ -16,6 +16,7 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
 * iOS 13.0+
 * macOS 10.15+
 * watchOS 6.0+
+* tvOS 13.0+
 * Swift 5.1+
 
 *Note*: For legacy projects, install manually and use `#if available(iOS 13, *) // or other platform / version`. 
