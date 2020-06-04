@@ -175,6 +175,7 @@ extension Pager {
     /// Offset applied to `HStack` along the Y-Axis. Used to aligned the pages
     var yOffset: CGFloat {
         guard !itemAlignment.equalsIgnoreValues(.center) else { return 0 }
+        guard !itemAlignment.equalsIgnoreValues(.justified) else { return 0 }
         guard itemAspectRatio != nil || preferredItemSize != nil else { return 0 }
 
         let availableSpace = ((isHorizontal ? size.height - pageSize.height : size.width - pageSize.width) - sideInsets) / 2 - itemAlignment.insets
