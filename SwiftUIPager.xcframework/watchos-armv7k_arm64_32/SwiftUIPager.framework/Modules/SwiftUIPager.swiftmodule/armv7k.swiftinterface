@@ -15,6 +15,8 @@ public struct Pager<Element, ID, PageView> : SwiftUI.View where Element : Swift.
 extension Pager where Element : Swift.Identifiable, ID == Element.ID {
   public init(page: SwiftUI.Binding<Swift.Int>, data: [Element], @SwiftUI.ViewBuilder content: @escaping (Element) -> PageView)
 }
+extension Pager {
+}
 public enum PositionAlignment {
   case center
   case start(CoreGraphics.CGFloat)

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6BDE441623DE10C10022A2F7"
-               BuildableName = "SwiftUIPager_iOS.framework"
+               BuildableName = "SwiftUIPager.framework"
                BlueprintName = "SwiftUIPager_iOS"
                ReferencedContainer = "container:SwiftUIPager.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6BDE441623DE10C10022A2F7"
-            BuildableName = "SwiftUIPager_iOS.framework"
+            BuildableName = "SwiftUIPager.framework"
             BlueprintName = "SwiftUIPager_iOS"
             ReferencedContainer = "container:SwiftUIPager.xcodeproj">
          </BuildableReference>

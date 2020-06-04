@@ -163,9 +163,14 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         }
         .frame(size: size)
 
-        let wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
+        #if !os(tvOS)
+        var wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
+        wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil))
+        #else
+        let wrappedView = stack
+        #endif
 
-        return wrappedView.gesture(allowsDragging ? swipeGesture : nil)
+        return wrappedView
             .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                               axis: (0, 0, 1))
             .sizeTrackable($size)
@@ -196,6 +201,7 @@ extension Pager where ID == Element.ID, Element : Identifiable {
 extension Pager {
 
     /// `DragGesture` customized to work with `Pager`
+    #if !os(tvOS)
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .local)
             .onChanged({ value in
@@ -222,5 +228,6 @@ extension Pager {
             }
         )
     }
+    #endif
 
 }
