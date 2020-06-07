@@ -1,10 +1,11 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
-// swift-module-flags: -target arm64-apple-tvos13.4 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SwiftUIPager
+// swift-module-flags: -target arm64-apple-tvos13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SwiftUIPager
 import CoreGraphics
 import Foundation
 import Swift
 import SwiftUI
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct Pager<Element, ID, PageView> : SwiftUI.View where Element : Swift.Equatable, ID : Swift.Hashable, PageView : SwiftUI.View {
   public init(page: SwiftUI.Binding<Swift.Int>, data: [Element], id: Swift.KeyPath<Element, ID>, @SwiftUI.ViewBuilder content: @escaping (Element) -> PageView)
   public var body: some SwiftUI.View {
@@ -12,11 +13,14 @@ public struct Pager<Element, ID, PageView> : SwiftUI.View where Element : Swift.
   }
   public typealias Body = @_opaqueReturnTypeOf("$s12SwiftUIPager5PagerV4bodyQrvp", 0) 🦸<Element, ID, PageView>
 }
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager where Element : Swift.Identifiable, ID == Element.ID {
   public init(page: SwiftUI.Binding<Swift.Int>, data: [Element], @SwiftUI.ViewBuilder content: @escaping (Element) -> PageView)
 }
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
 }
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
   public enum HorizontalSwipeDirection {
     case leftToRight
@@ -61,8 +65,10 @@ extension Pager {
   public func padding(_ insets: SwiftUI.EdgeInsets) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func padding(_ edges: SwiftUI.Edge.Set = .all, _ length: CoreGraphics.CGFloat? = nil) -> SwiftUIPager.Pager<Element, ID, PageView>
 }
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum PositionAlignment {
   case center
+  case justified(CoreGraphics.CGFloat)
   case start(CoreGraphics.CGFloat)
   case end(CoreGraphics.CGFloat)
   public static var start: SwiftUIPager.PositionAlignment {
@@ -71,10 +77,19 @@ public enum PositionAlignment {
   public static var end: SwiftUIPager.PositionAlignment {
     get
   }
+  public static var justified: SwiftUIPager.PositionAlignment {
+    get
+  }
 }
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUIPager.Pager.HorizontalSwipeDirection : Swift.Equatable {}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUIPager.Pager.HorizontalSwipeDirection : Swift.Hashable {}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUIPager.Pager.VerticalSwipeDirection : Swift.Equatable {}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUIPager.Pager.VerticalSwipeDirection : Swift.Hashable {}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUIPager.Pager.SwipeInteractionArea : Swift.Equatable {}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUIPager.Pager.SwipeInteractionArea : Swift.Hashable {}

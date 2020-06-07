@@ -29,6 +29,7 @@ import SwiftUI
 /// - 30 px of vertical insets
 /// - 0.6 shrink ratio for items that aren't focused.
 ///
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct Pager<Element, ID, PageView>: View  where PageView: View, Element: Equatable, ID: Hashable {
 
     /// `Direction` determines the direction of the swipe gesture
@@ -181,6 +182,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
 }
 
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager where ID == Element.ID, Element : Identifiable {
 
     /// Initializes a new Pager.
@@ -198,6 +200,7 @@ extension Pager where ID == Element.ID, Element : Identifiable {
 
 // MARK: Gestures
 
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
 
     /// `DragGesture` customized to work with `Pager`
