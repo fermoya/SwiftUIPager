@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		rqK1UCdL4DxjKQ/Enpwq0SvD3ZQ=
+		nkGILBFFk7rRoXzPg0ltzQLZTvc=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -29,42 +29,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4xOwljg+hJZ0D3BCeJdZrRyY6NLDAZTGdau+1k3nsHc=
+			zi1xHyteMW2f2mBIGCbhXlUgJVLgNnXYWk/r1n/6kAU=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-macos.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SPeVyA2dTQ7KCIFCHedbZcYunGYWTOkxvnAp58R1VtQ=
+			yAS4XXNqTVrGcsUza0CbUSFVuAd1CFAc46SutAZJG5Q=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-macos.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QtW9udDtD46u+ZAN9kiF2++QLiQ1z9xecTPHLRZIjA4=
+			pXeQ7pugx6HoeZ8FoL4csj1hc/iTjYIHfCxcNDJody4=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4xOwljg+hJZ0D3BCeJdZrRyY6NLDAZTGdau+1k3nsHc=
+			zi1xHyteMW2f2mBIGCbhXlUgJVLgNnXYWk/r1n/6kAU=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SPeVyA2dTQ7KCIFCHedbZcYunGYWTOkxvnAp58R1VtQ=
+			yAS4XXNqTVrGcsUza0CbUSFVuAd1CFAc46SutAZJG5Q=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QtW9udDtD46u+ZAN9kiF2++QLiQ1z9xecTPHLRZIjA4=
+			pXeQ7pugx6HoeZ8FoL4csj1hc/iTjYIHfCxcNDJody4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -78,7 +78,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QEuf0RMqwb5lC3hEXPq1CZUrpDoUtms85s04czd8tgo=
+			GGctNG7h+aAmIYYfEE2dOr/zGs3Ss0C15crk/DwBlgQ=
 			</data>
 		</dict>
 	</dict>
