@@ -19,7 +19,7 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
 * tvOS 13.0+
 * Swift 5.1+
 
-*Note*: For legacy projects, install manually and use `#if available(iOS 13, *) // or other platform / version`. 
+**Note**: For legacy projects, install [manually](#manually) and use `#if available(iOS 13, *) // or any other platform / version`. 
 
 ## Installation
 

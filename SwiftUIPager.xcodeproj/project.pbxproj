@@ -42,6 +42,16 @@
 		6B2C2FFE248D590E00E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3000248D591800E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFF248D591800E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3002248D592100E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C3001248D592100E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6B2C3057248D740800E528F9 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B2C3059248D740800E528F9 /* SizeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442723DE12480022A2F7 /* SizeViewModifier.swift */; };
+		6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
+		6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
+		6B2C305C248D740800E528F9 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
+		6B2C305D248D740800E528F9 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
+		6B2C305E248D740800E528F9 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
+		6B2C305F248D740800E528F9 /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* Pager+Helper.swift */; };
+		6B2C3061248D740800E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6B2C3062248D740800E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B609ACB24043E1700C098E7 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
 		6B609ACC24043E1700C098E7 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
 		6BBBB7D1240431370058EE56 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
@@ -72,11 +82,11 @@
 		6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6B2C2FFF248D591800E528F9 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6B2C3001248D592100E528F9 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
+		6B2C3067248D740800E528F9 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2C3069248D747700E528F9 /* Info-Catalyst.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Catalyst.plist"; sourceTree = "<group>"; };
 		6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		6BBBB7D0240431370058EE56 /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionAlignment.swift; sourceTree = "<group>"; };
 		6BBC3D6B2488DBE8004194BD /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BBC3D6D2488DBE8004194BD /* SwiftUIPager_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIPager_tvOS.h; sourceTree = "<group>"; };
-		6BBC3D6E2488DBE8004194BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BDE441723DE10C10022A2F7 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIPager.h; sourceTree = "<group>"; };
 		6BDE441B23DE10C10022A2F7 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -104,6 +114,15 @@
 			files = (
 				6B2C3000248D591800E528F9 /* libswiftCore.tbd in Frameworks */,
 				6B2C2FE3248D37C100E528F9 /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B2C3060248D740800E528F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B2C3061248D740800E528F9 /* libswiftCore.tbd in Frameworks */,
+				6B2C3062248D740800E528F9 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,20 +160,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6BBC3D6C2488DBE8004194BD /* SwiftUIPager_tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				6BBC3D6D2488DBE8004194BD /* SwiftUIPager_tvOS.h */,
-				6BBC3D6E2488DBE8004194BD /* Info.plist */,
-			);
-			path = SwiftUIPager_tvOS;
-			sourceTree = "<group>";
-		};
 		6BDE440D23DE10C10022A2F7 = {
 			isa = PBXGroup;
 			children = (
 				6BDE441923DE10C10022A2F7 /* SwiftUIPager */,
-				6BBC3D6C2488DBE8004194BD /* SwiftUIPager_tvOS */,
 				6BDE441823DE10C10022A2F7 /* Products */,
 				6B2C2FDD248D379D00E528F9 /* Frameworks */,
 			);
@@ -167,6 +176,7 @@
 				172F4D6023DF830600FD2F15 /* SwiftUIPager.framework */,
 				172F4D7823DF8A6400FD2F15 /* SwiftUIPager.framework */,
 				6BBC3D6B2488DBE8004194BD /* SwiftUIPager.framework */,
+				6B2C3067248D740800E528F9 /* SwiftUIPager.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,6 +184,7 @@
 		6BDE441923DE10C10022A2F7 /* SwiftUIPager */ = {
 			isa = PBXGroup;
 			children = (
+				6B2C3069248D747700E528F9 /* Info-Catalyst.plist */,
 				6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */,
 				6BDE442423DE12480022A2F7 /* Helpers */,
 				6BDE442223DE12470022A2F7 /* Pager.swift */,
@@ -214,6 +225,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B2C3056248D740800E528F9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B2C3057248D740800E528F9 /* SwiftUIPager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +288,24 @@
 			name = SwiftUIPager_watchOS;
 			productName = SwiftUIPager_watchOS;
 			productReference = 172F4D7823DF8A6400FD2F15 /* SwiftUIPager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6B2C3055248D740800E528F9 /* SwiftUIPager_Catalyst */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B2C3064248D740800E528F9 /* Build configuration list for PBXNativeTarget "SwiftUIPager_Catalyst" */;
+			buildPhases = (
+				6B2C3056248D740800E528F9 /* Headers */,
+				6B2C3058248D740800E528F9 /* Sources */,
+				6B2C3060248D740800E528F9 /* Frameworks */,
+				6B2C3063248D740800E528F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftUIPager_Catalyst;
+			productName = SwiftUIPager;
+			productReference = 6B2C3067248D740800E528F9 /* SwiftUIPager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6BBC3D6A2488DBE8004194BD /* SwiftUIPager_tvOS */ = {
@@ -345,6 +382,7 @@
 			projectRoot = "";
 			targets = (
 				6BDE441623DE10C10022A2F7 /* SwiftUIPager_iOS */,
+				6B2C3055248D740800E528F9 /* SwiftUIPager_Catalyst */,
 				172F4D5123DF830600FD2F15 /* SwiftUIPager_macOS */,
 				172F4D7723DF8A6400FD2F15 /* SwiftUIPager_watchOS */,
 				6BBC3D6A2488DBE8004194BD /* SwiftUIPager_tvOS */,
@@ -362,6 +400,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		172F4D7623DF8A6400FD2F15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B2C3063248D740800E528F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -400,7 +445,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rd \"SwiftUIPager.xcframework\"\nxcodebuild archive -scheme SwiftUIPager_macOS \\\n                   -destination \"platform=macOS\" \\\n                   -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macOS.xcarchive\" \\\n                   SKIP_INSTALL=NO \\\n                   BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_iOS \\\n                    -destination \"generic/platform=iOS\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_iOS \\\n                    -destination \"generic/platform=iOS Simulator\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS-simulator.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_iOS \\\n                    -destination \"platform=macOS,variant=Mac Catalyst\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macCatalyst.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_watchOS \\\n                    -destination \"generic/platform=watchOS\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager//SwiftUIPager.watchOS.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_watchOS \\\n                    -destination \"generic/platform=watchOS Simulator\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager//SwiftUIPager.watchOS-simulator.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_tvOS \\\n                    -destination \"generic/platform=tvOS\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_tvOS \\\n                    -destination \"generic/platform=tvOS Simulator\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS-simulator.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild -create-xcframework \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS-simulator.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macCatalyst.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.watchOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.watchOS-simulator.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS-simulator.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -output \"SwiftUIPager.xcframework\"\n";
+			shellScript = "rm -rd \"SwiftUIPager.xcframework\"\nxcodebuild archive -scheme SwiftUIPager_macOS \\\n                   -destination \"platform=macOS\" \\\n                   -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macOS.xcarchive\" \\\n                   SKIP_INSTALL=NO \\\n                   BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_iOS \\\n                    -destination \"generic/platform=iOS\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_iOS \\\n                    -destination \"generic/platform=iOS Simulator\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS-simulator.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_Catalyst \\\n                    -destination \"platform=macOS,variant=Mac Catalyst\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macCatalyst.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_watchOS \\\n                    -destination \"generic/platform=watchOS\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager//SwiftUIPager.watchOS.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_watchOS \\\n                    -destination \"generic/platform=watchOS Simulator\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager//SwiftUIPager.watchOS-simulator.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_tvOS \\\n                    -destination \"generic/platform=tvOS\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild archive  -scheme SwiftUIPager_tvOS \\\n                    -destination \"generic/platform=tvOS Simulator\" \\\n                    -archivePath \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS-simulator.xcarchive\" \\\n                    SKIP_INSTALL=NO \\\n                    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\n\nxcodebuild -create-xcframework \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.iOS-simulator.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.macCatalyst.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.watchOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.watchOS-simulator.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -framework \"$TEMP_DIR/SwiftUIPager/SwiftUIPager.tvOS-simulator.xcarchive/Products/Library/Frameworks/SwiftUIPager.framework\" \\\n           -output \"SwiftUIPager.xcframework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -430,6 +475,20 @@
 				6B609ACC24043E1700C098E7 /* PositionAlignment.swift in Sources */,
 				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
 				172F4D8623DF8B4B00FD2F15 /* Pager+Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B2C3058248D740800E528F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B2C3059248D740800E528F9 /* SizeViewModifier.swift in Sources */,
+				6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */,
+				6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */,
+				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
+				6B2C305D248D740800E528F9 /* PositionAlignment.swift in Sources */,
+				6B2C305E248D740800E528F9 /* Pager.swift in Sources */,
+				6B2C305F248D740800E528F9 /* Pager+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +651,63 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		6B2C3065248D740800E528F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "SwiftUIPager/Info-Catalyst.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_NAME = SwiftUIPager;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6B2C3066248D740800E528F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "SwiftUIPager/Info-Catalyst.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_NAME = SwiftUIPager;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -828,6 +944,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -857,6 +974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -879,6 +997,15 @@
 			buildConfigurations = (
 				172F4D7E23DF8A6400FD2F15 /* Debug */,
 				172F4D7F23DF8A6400FD2F15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B2C3064248D740800E528F9 /* Build configuration list for PBXNativeTarget "SwiftUIPager_Catalyst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B2C3065248D740800E528F9 /* Debug */,
+				6B2C3066248D740800E528F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
