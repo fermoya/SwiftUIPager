@@ -485,7 +485,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = macosx;
@@ -518,7 +518,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = macosx;
@@ -550,7 +550,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fermoya.challenge.SwiftUIPager-watchOS";
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = watchos;
@@ -583,7 +583,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fermoya.challenge.SwiftUIPager-watchOS";
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = watchos;
@@ -615,7 +615,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fmoyader.example.SwiftUIPager-tvOS";
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = appletvos;
@@ -647,7 +647,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fmoyader.example.SwiftUIPager-tvOS";
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = appletvos;
@@ -824,7 +824,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
@@ -853,7 +853,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
