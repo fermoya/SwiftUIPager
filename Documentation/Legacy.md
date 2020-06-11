@@ -1,16 +1,16 @@
-## Legacy projects support
+# Legacy support
 If your App doesn't comply with the system version [requirements](/README.md#requirements), no worries: you can still use _SwiftUIPager_. 
 
 All you need to do is:
 - Install the frameworks as specified in the following sections.
 - Wrap your any reference to `Pager` with `if #available(iOS 13, *)` or any other platform and version you may require.
 
-### Cocoapods
+## Cocoapods
 ```ruby
 pod 'SwiftUIPager', :git => 'https://github.com/fermoya/SwiftUIPager.git', :branch => 'legacy-projects'
 ```
 
-### Swift Package Manager
+## Swift Package Manager
 * File ⭢ Swift Packages ⭢ Add Package Dependency...
 * Use the URL https://github.com/fermoya/SwiftUIPager.git
 * **IMPORTANT:** Select branch _legacy-projects_
@@ -18,11 +18,11 @@ pod 'SwiftUIPager', :git => 'https://github.com/fermoya/SwiftUIPager.git', :bran
 <img src="/resources/installation/legacy-spm-1.png" alt="Legacy projects with SPM" width="728" />
 <img src="/resources/installation/legacy-spm-2.png" alt="Legacy projects with SPM" width="208" />
 
-### Carthage
+## Carthage
 ```swift
 github "fermoya/SwiftUIPager" "legacy-projects"
 
 ```
 
-### Manually
+## Manually
 Please, refer to [manual installation](/README.md#manually).

@@ -1,6 +1,6 @@
-## Usage
+# Usage
 
-### Initialization
+## Initialization
 
 Creating a `Pager` is very simple. You just need to pass:
 - `Binding` to the current page
@@ -25,7 +25,7 @@ var body: some View {
 
 > **Note:** All examples require `import SwiftUIPager` at the top of the source file.
 
-### UI customization
+## UI customization
 
 `Pager` is easily customizable through a number of view-modifier functions.  You can change the orientation, the direction of the scroll, the alignment, the space between items or the page aspect ratio, among others:
 
@@ -40,7 +40,7 @@ By default, `Pager` is configured as:
 >
 > If you're using the [leacy support](/Documentation/Legacy.md), you'll need to wrap any reference to `Pager` with `if #available(iOS 13, *)` or any other platform and version you may require.
 
-#### Configure your page size
+### Configure your page size
 
 There are two ways to achieve this. You can use `preferredItemSize` to let `Pager` know which size your items should have. The framework will automatically calculate the `itemAspectRatio` and the necessary `padding` for you. You can also use `itemAspectRatio` to change the look of the page. Pass a value lower than 1 to make the page look like a card:
 
@@ -50,7 +50,7 @@ whereas a value greater than one will make it look like a box:
 
 <img src="/resources/usage/page_aspect_ratio_greater_than_1.png" alt="itemAspectRatio greater than 1" height="640"/>
 
-#### Orientation and direction
+### Orientation and direction
 
 By default, `Pager` will create a horizontal container. Use `vertical` to create a vertical pager:
 
@@ -73,7 +73,7 @@ Pager(...)
 
 <img src="/resources/usage/orientation-alignment-start.gif" alt="Pages aligned to the start of the pager" height="640"/>
 
-#### Alignment
+### Alignment
 
 Pass a position to `itemAspectRatio` or `preferredItemSize` to specify the alignment along the vertical / horizontal axis for a horizontal / vertical `Pager`. Change its position along the horizontal / vertical  axis of a horizontal / vertical `Pager` by using `alignment`: 
 
@@ -88,9 +88,9 @@ Pager(...)
 
 <img src="/resources/usage/item-alignment-start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
 
-### Animations
+## Animations
 
-#### Scale
+### Scale
 
 Use `interactive` to add a scale animation effect to those pages that are unfocused, that is, those elements whose index is different from `pageIndex`:
 
@@ -101,7 +101,7 @@ Pager(...)
 
 <img src="/resources/usage/interactive-pagers.gif" alt="Interactive pager" height="640"/>
 
-#### Rotation
+### Rotation
 
 You can also use `rotation3D` to add a rotation effect to your pages:
 
@@ -113,13 +113,13 @@ Pager(...)
 
 <img src="/resources/usage/pager-rotation3D.gif" alt="Rotation 3D" height="640"/>
 
-#### Loop
+### Loop
 
 Transform your `Pager` into an endless sroll by using `loopPages`:
 
 <img src="/resources/usage/endless-pager.gif" alt="Endless pager" height="640"/>
 
-### Events
+## Events
 
 Use `onPageChanged` to react to any change on the page index:
 
@@ -130,7 +130,7 @@ Pager(...)
      })
 ```
 
-### Add pages on demand
+## Add pages on demand
 
 You can use `onPageChanged` to add new items on demand whenever the user is getting to the last page:
 
@@ -152,7 +152,7 @@ var body: some View {
 }
 ```
 
-### Examples
+## Examples
 
 For more information, please check the [sample app](/Example). There are included several common use-cases:
 
