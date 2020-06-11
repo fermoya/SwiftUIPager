@@ -6,20 +6,39 @@
 [![CocoaPods platforms](https://img.shields.io/cocoapods/p/SwiftUIPager.svg)](https://cocoapods.org/pods/SwiftUIPager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-SwiftUIPager provides  a `Pager` component built with SwiftUI native components. `Pager` is a view that renders a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. `Pager` will load just a handful of items, enough to beatifully scroll along.
+_SwiftUIPager_ provides  a `Pager` component built with SwiftUI native components. `Pager` is a view that renders a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. `Pager` will load just a handful of items, enough to beatifully scroll along.
 
 Create vertical or horizontal pagers, align the cards, change the direction of the scroll, animate the pagintation... `Pager` lets you do anything you want.
 
 <img src="resources/example-of-usage.gif" alt="Example of usage"/>
 
+- [Requirements](#requirements)
+- [Installation](#installation)
+    - [Cocoapods](#cocoapods)
+    - [Swift Package Manager](#swift-package-manager)
+    - [Carthage](#carthage)
+    - [Manually](#manually)
+- [Legacy projects support](#legacy-projects-support)
+- [Usage](#usage)
+    - [Initialization](#initialization)
+    - [UI customization](#ui-customization)
+    - [Configure your page size](#configure-your-page-size)
+    - [Orientation and direction](#orientation-and-direction)
+    - [Alignment](#alignment)
+    - [Animations](#animations)
+        - [Scale](#scale)
+        - [Rotation](#rotation)
+        - [Loop](#loop)
+    - [Add pages on demand](#add-pages-on-demand)
+    - [Examples](#examples)
+- [Support Open Source](#support-open-source)
+        
 ## Requirements
 * iOS 13.0+
 * macOS 10.15+
 * watchOS 6.0+
 * tvOS 13.0+
 * Swift 5.1+
-
-**Note**: For legacy projects, install [manually](#manually) and use `#if available(iOS 13, *) // or any other platform / version`. 
 
 ## Installation
 
@@ -46,6 +65,22 @@ github "fermoya/SwiftUIPager"
 
 * Make sure in your target's build phases that it's embedded and signed:
 <img src="resources/manual-installation-step-2.png" alt="Manual Installation Step 2" width="755"/>
+
+## Legacy projects support
+If your App doesn't comply with the system version [requirements](#requirements), you can still use _SwiftUIPager_.
+
+**Cocoapods**
+```
+pod 'SwiftUIPager', :git => 'https://github.com/fermoya/SwiftUIPager.git', :branch => 'legacy-projects'
+```
+
+**Swift Package Manager**
+* File ⭢ Swift Packages ⭢ Add Package Dependency...
+* Use the URL https://github.com/fermoya/SwiftUIPager.git
+* Select branch _legacy-projects_
+
+<img src="resources/legacy-spm-1.png" alt="Legacy projects with SPM" width="728" />
+<img src="resources/legacy-spm-2.png" alt="Legacy projects with SPM" width="208" />
 
 ## Usage
 
@@ -110,7 +145,7 @@ Pager(...)
 
 <img src="resources/orientation-alignment-start.gif" alt="Pages aligned to the start of the pager" height="640"/>
 
-#### Align your items
+#### Alignment
 
 Pass a position to `itemAspectRatio` or `preferredItemSize` to specify the alignment along the vertical / horizontal axis for a horizontal / vertical `Pager`. Change its position along the horizontal / vertical  axis of a horizontal / vertical `Pager` by using `alignment`: 
 
@@ -189,7 +224,7 @@ var body: some View {
 }
 ```
 
-### Sample projects
+### Examples
 
 For more information, please check the [sample app](/Example). There are included several common use-cases:
 
