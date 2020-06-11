@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "fermoya" => "fmdr.ct@gmail.com" }
 
-  s.platforms = { :ios => "13.0", :osx => "10.15", :watchos => "6.0", :tvos => "13.0" }
+  s.platforms = { :ios => "10.0", :osx => "10.10", :watchos => "4.0", :tvos => "10.0" }
   s.swift_version = "5.1"
 
   s.source       = { :git => "https://github.com/fermoya/SwiftUIPager.git", :tag => "#{s.version}" }
