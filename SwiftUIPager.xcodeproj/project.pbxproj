@@ -545,7 +545,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -578,7 +578,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -610,7 +610,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fermoya.challenge.SwiftUIPager-watchOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -643,7 +643,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fermoya.challenge.SwiftUIPager-watchOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -674,7 +674,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -703,7 +703,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -732,7 +732,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fmoyader.example.SwiftUIPager-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -764,7 +764,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fmoyader.example.SwiftUIPager-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -941,7 +941,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -971,7 +971,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.6.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.example.SwiftUIPager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
