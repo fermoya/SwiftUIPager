@@ -3,19 +3,27 @@
 ### Initialization
 
 Creating a `Pager` is very simple. You just need to pass:
+- `Binding` to the current page
 - `Array` of items 
-- `KeyPath` to an identifier.
+- `KeyPath` to an identifier
 - `ViewBuilder` factory method to create each page
 
 ```swift
-Pager(page: $page
-      data: items,
-      id: \.identifier,
-      content: { item in
-           // create a page based on the data passed
-           self.pageView(item)
- })
+@State var page: Int = 0
+var items = Array(0..<10)
+
+var body: some View {
+    Pager(page: $page
+          data: items,
+          id: \.identifier,
+          content: { index in
+              // create a page based on the data passed
+              Text("Page: \(index)")
+     })
+ }
 ```
+
+> **Note:** All examples require `import SwiftUIPager` at the top of the source file.
 
 ### UI customization
 
@@ -27,6 +35,10 @@ By default, `Pager` is configured as:
 - Current page is centered in the scroll
 - Only the page is hittable and reacts to swipes
 - Finite, that is, it doesn't loop the pages
+
+> **Note** `Pager` has no intrinsic size. This means that its size depends on the available space or the extrinsic size specified with `frame` modifier.
+>
+> If you're using the [leacy support](/Documentation/Legacy.md), you'll need to wrap any reference to `Pager` with `if #available(iOS 13, *)` or any other platform and version you may require.
 
 #### Configure your page size
 
