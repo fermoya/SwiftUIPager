@@ -153,6 +153,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             ForEach(dataDisplayed, id: id) { item in
                 self.content(item)
                     .frame(size: self.pageSize)
+                    .animation(nil, value: self.pageSize)
                     .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
                     .scaleEffect(self.scale(for: item))
                     .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
