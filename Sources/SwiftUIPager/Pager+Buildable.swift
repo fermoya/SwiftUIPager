@@ -11,36 +11,6 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager: Buildable {
 
-    /// Swipe direction for a vertical `Pager`
-    public enum HorizontalSwipeDirection {
-
-        /// Pages move from left to right
-        case leftToRight
-
-        /// Pages move from right to left
-        case rightToLeft
-    }
-
-    /// Swipe direction for a horizontal `Pager`
-    public enum VerticalSwipeDirection {
-
-        /// Pages move from top left to bottom
-        case topToBottom
-
-        /// Pages move from bottom to top
-        case bottomToTop
-    }
-
-    /// Defines the area in `Pager` that allows hits and listens to swipes
-    public enum SwipeInteractionArea {
-
-        /// All available space inside `Pager`
-        case allAvailable
-
-        /// Just the page frame
-        case page
-    }
-
     /// Sets `Pager` to loop the items in a never-ending scroll.
     ///
     /// - Parameter value: `true` if `Pager` should loop the pages. `false`, otherwise.
@@ -65,9 +35,15 @@ extension Pager: Buildable {
         mutating(keyPath: \.allowsDragging, value: value)
     }
 
-    /// Sets the `DragGesture`'s minimumDistance to zero. Useful when embedded inside an interactive modal
-    public func highPriorityGesture() -> Self {
-        mutating(keyPath: \.minimumDistance, value: 0)
+    /// Sets the priority used for paging the items
+    ///
+    /// - Parameter value: priority to receive touches
+    ///
+    /// By default, touches in a page may be blocked if the they occur on top a `View` with a `Gesture`.
+    /// For instance, a `NavigationLink` or a `MagnificationGesture` inside a page can "break" the swiping in `Pager`.
+    /// To solve this issue, use `pagingPriority(.simultaneous)` to let the touch be received for both the page content and `Pager`.
+    public func pagingPriority(_ value: GesturePriority) -> Self {
+        mutating(keyPath: \.gesturePriority, value: value)
     }
 
     /// Indicates which area should allow hits and react to swipes

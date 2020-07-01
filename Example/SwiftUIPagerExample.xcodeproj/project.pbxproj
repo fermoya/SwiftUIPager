@@ -18,12 +18,15 @@
 		6B4EC8A6240D0918001E7490 /* EmbeddedExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC8A5240D0918001E7490 /* EmbeddedExampleView.swift */; };
 		6B4EC8A8240D1182001E7490 /* BizarreExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */; };
 		6BC5EDFC24866D9500E1E78C /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF424866D9500E1E78C /* Pager+Buildable.swift */; };
-		6BC5EDFD24866D9500E1E78C /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF624866D9500E1E78C /* PositionAlignment.swift */; };
 		6BC5EDFE24866D9500E1E78C /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF724866D9500E1E78C /* View+Helper.swift */; };
 		6BC5EDFF24866D9500E1E78C /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF824866D9500E1E78C /* Buildable.swift */; };
 		6BC5EE0024866D9500E1E78C /* SizeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF924866D9500E1E78C /* SizeViewModifier.swift */; };
 		6BC5EE0124866D9500E1E78C /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDFA24866D9500E1E78C /* Pager.swift */; };
 		6BC5EE0224866D9500E1E78C /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDFB24866D9500E1E78C /* Pager+Helper.swift */; };
+		6BEA731324ACF8D7007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA730F24ACF8D7007EA8DC /* PositionAlignment.swift */; };
+		6BEA731424ACF8D7007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731024ACF8D7007EA8DC /* SwipeDirection.swift */; };
+		6BEA731524ACF8D7007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731124ACF8D7007EA8DC /* SwipeInteractionArea.swift */; };
+		6BEA731624ACF8D7007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731224ACF8D7007EA8DC /* GesturePriority.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,12 +57,15 @@
 		6B4EC8A5240D0918001E7490 /* EmbeddedExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedExampleView.swift; sourceTree = "<group>"; };
 		6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BizarreExampleView.swift; sourceTree = "<group>"; };
 		6BC5EDF424866D9500E1E78C /* Pager+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pager+Buildable.swift"; path = "../../Sources/SwiftUIPager/Pager+Buildable.swift"; sourceTree = "<group>"; };
-		6BC5EDF624866D9500E1E78C /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionAlignment.swift; sourceTree = "<group>"; };
 		6BC5EDF724866D9500E1E78C /* View+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Helper.swift"; sourceTree = "<group>"; };
 		6BC5EDF824866D9500E1E78C /* Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 		6BC5EDF924866D9500E1E78C /* SizeViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeViewModifier.swift; sourceTree = "<group>"; };
 		6BC5EDFA24866D9500E1E78C /* Pager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pager.swift; path = ../../Sources/SwiftUIPager/Pager.swift; sourceTree = "<group>"; };
 		6BC5EDFB24866D9500E1E78C /* Pager+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pager+Helper.swift"; path = "../../Sources/SwiftUIPager/Pager+Helper.swift"; sourceTree = "<group>"; };
+		6BEA730F24ACF8D7007EA8DC /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PositionAlignment.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/PositionAlignment.swift; sourceTree = "<group>"; };
+		6BEA731024ACF8D7007EA8DC /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDirection.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/SwipeDirection.swift; sourceTree = "<group>"; };
+		6BEA731124ACF8D7007EA8DC /* SwipeInteractionArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeInteractionArea.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/SwipeInteractionArea.swift; sourceTree = "<group>"; };
+		6BEA731224ACF8D7007EA8DC /* GesturePriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GesturePriority.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/GesturePriority.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +101,8 @@
 				6BC5EDEB24866D6000E1E78C /* Pagination */,
 				6B4EC8A0240D0710001E7490 /* Examples */,
 				17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */,
-				17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */,
 				17D9E0F723D4CF6700C5AE93 /* ContentView.swift */,
+				17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */,
 				17D9E0F923D4CF6900C5AE93 /* Assets.xcassets */,
 				17D9E0FE23D4CF6900C5AE93 /* LaunchScreen.storyboard */,
 				17D9E10123D4CF6900C5AE93 /* Info.plist */,
@@ -116,11 +122,11 @@
 		6B4EC8A0240D0710001E7490 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				6B4EC8A3240D07D5001E7490 /* InfiniteExampleView.swift */,
+				6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */,
 				6B4EC8A1240D072B001E7490 /* ColorsExampleView.swift */,
 				6B4EC8A5240D0918001E7490 /* EmbeddedExampleView.swift */,
+				6B4EC8A3240D07D5001E7490 /* InfiniteExampleView.swift */,
 				6B22DC80247E5C9A00EF95C5 /* NestedExampleView.swift */,
-				6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -128,6 +134,7 @@
 		6BC5EDEB24866D6000E1E78C /* Pagination */ = {
 			isa = PBXGroup;
 			children = (
+				6BEA730E24ACF8BB007EA8DC /* PageConfiguration */,
 				6BC5EDF524866D9500E1E78C /* Helpers */,
 				6BC5EDFA24866D9500E1E78C /* Pager.swift */,
 				6BC5EDF424866D9500E1E78C /* Pager+Buildable.swift */,
@@ -139,13 +146,23 @@
 		6BC5EDF524866D9500E1E78C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6BC5EDF624866D9500E1E78C /* PositionAlignment.swift */,
-				6BC5EDF724866D9500E1E78C /* View+Helper.swift */,
 				6BC5EDF824866D9500E1E78C /* Buildable.swift */,
 				6BC5EDF924866D9500E1E78C /* SizeViewModifier.swift */,
+				6BC5EDF724866D9500E1E78C /* View+Helper.swift */,
 			);
 			name = Helpers;
 			path = ../../Sources/SwiftUIPager/Helpers;
+			sourceTree = "<group>";
+		};
+		6BEA730E24ACF8BB007EA8DC /* PageConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA731224ACF8D7007EA8DC /* GesturePriority.swift */,
+				6BEA730F24ACF8D7007EA8DC /* PositionAlignment.swift */,
+				6BEA731024ACF8D7007EA8DC /* SwipeDirection.swift */,
+				6BEA731124ACF8D7007EA8DC /* SwipeInteractionArea.swift */,
+			);
+			name = PageConfiguration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,18 +242,21 @@
 			files = (
 				6B4EC8A2240D072B001E7490 /* ColorsExampleView.swift in Sources */,
 				17D9E0F423D4CF6700C5AE93 /* AppDelegate.swift in Sources */,
-				6BC5EDFD24866D9500E1E78C /* PositionAlignment.swift in Sources */,
 				6B4EC8A6240D0918001E7490 /* EmbeddedExampleView.swift in Sources */,
 				6BC5EE0024866D9500E1E78C /* SizeViewModifier.swift in Sources */,
 				6B4EC8A8240D1182001E7490 /* BizarreExampleView.swift in Sources */,
 				17D9E0F623D4CF6700C5AE93 /* SceneDelegate.swift in Sources */,
 				6BC5EDFF24866D9500E1E78C /* Buildable.swift in Sources */,
+				6BEA731624ACF8D7007EA8DC /* GesturePriority.swift in Sources */,
+				6BEA731324ACF8D7007EA8DC /* PositionAlignment.swift in Sources */,
+				6BEA731424ACF8D7007EA8DC /* SwipeDirection.swift in Sources */,
 				6BC5EE0224866D9500E1E78C /* Pager+Helper.swift in Sources */,
 				6B4EC8A4240D07D5001E7490 /* InfiniteExampleView.swift in Sources */,
 				6BC5EDFE24866D9500E1E78C /* View+Helper.swift in Sources */,
 				6B22DC81247E5C9A00EF95C5 /* NestedExampleView.swift in Sources */,
 				17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */,
 				6BC5EDFC24866D9500E1E78C /* Pager+Buildable.swift in Sources */,
+				6BEA731524ACF8D7007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BC5EE0124866D9500E1E78C /* Pager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
