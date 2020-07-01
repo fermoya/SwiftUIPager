@@ -209,7 +209,7 @@ extension Pager {
     /// `DragGesture` customized to work with `Pager`
     #if !os(tvOS)
     var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: minimumDistance, coordinateSpace: .local)
+        DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
                 withAnimation {
                     self.draggingStartTime = self.draggingStartTime ?? value.time
