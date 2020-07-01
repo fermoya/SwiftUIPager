@@ -20,15 +20,17 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
 - [Usage](Documentation/Usage.md)
     - [Initialization](Documentation/Usage.md#initialization)
     - [UI customization](Documentation/Usage.md#ui-customization)
-    - [Configure your page size](Documentation/Usage.md#configure-your-page-size)
-    - [Orientation and direction](Documentation/Usage.md#orientation-and-direction)
-    - [Alignment](Documentation/Usage.md#alignment)
+        - [Configure your page size](Documentation/Usage.md#configure-your-page-size)
+        - [Orientation and direction](Documentation/Usage.md#orientation-and-direction)
+        - [Alignment](Documentation/Usage.md#alignment)
+    - [Paging Priority](Documentation/Usage.md#paging-priority)
     - [Animations](Documentation/Usage.md#animations)
         - [Scale](Documentation/Usage.md#scale)
         - [Rotation](Documentation/Usage.md#rotation)
         - [Loop](Documentation/Usage.md#loop)
     - [Add pages on demand](Documentation/Usage.md#add-pages-on-demand)
     - [Examples](Documentation/Usage.md#examples)
+- [Known Issues](#known-issues)
 - [Support Open Source](#support-open-source)
 - [License](#license)
 
@@ -67,6 +69,9 @@ github "fermoya/SwiftUIPager"
 * Make sure in your target's build phases that the option _Embed & Sign_ is selected:
 <img src="resources/installation/manual-installation-step-2.png" alt="Manual Installation Step 2" width="755"/>
 
+## Known Issues
+* Depending on the _Xcode_ version, you might run into a crash affecting _SwiftUI 1.0_ and _iOS 13_. This crash doesn't occur on _Xcode 12 beta_. For more information, see _Precondition failure: invalid value type for attribute [#60](https://github.com/fermoya/SwiftUIPager/issues/60)_ for more information about workarounds.
+* `NavigationLink` and `Button` might work oddly with `Pager` if `pagingPriority(.simultaneous)` is used in _SwiftUI 1.0_ and _iOS 13_. This issue isn't reproducible in _iOS 14 beta_. For more information, see this [link](https://stackoverflow.com/questions/58440469/swiftui-navigationlink-and-scrollview-drag-gesture-colliding).
 
 ## Support Open Source
 

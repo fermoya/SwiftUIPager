@@ -88,6 +88,43 @@ Pager(...)
 
 <img src="/resources/usage/item-alignment-start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
 
+## Paging Priority
+
+For complex pages where a `Gesture` might be used, or any other `View` that internally holds a `Gesture` like `Button` or `NavigationLink`, you might come across issues when trying to swipe on top of certain areas within the page. For these scenarios, use `pagingPriority` to select the option that best suits your purpose. For instance, a page containing a `NavigationLink` won't be scrollable over the link area unless `pagingPrioriry(.simultaneous)` is added:
+
+```swift
+var body: some View {
+    NavigationView {
+        Pager(page: self.$page2,
+              data: self.data2,
+              id: \.self) {
+                self.pageView($0)
+        }
+        .pagingPriority(.simultaneous)
+        .itemSpacing(10)
+        .padding(20)
+        .itemAspectRatio(1.3)
+        .background(Color.gray.opacity(0.2))
+        .navigationBarTitle("SwiftUIPager", displayMode: .inline)
+    }
+    .navigationViewStyle(StackNavigationViewStyle())
+}
+
+func pageView(_ page: Int) -> some View {
+    ZStack {
+        Rectangle()
+            .fill(Color.yellow)
+        NavigationLink(destination: Text("Page \(page)")) {
+            Text("Page \(page)")
+        }
+    }
+    .cornerRadius(5)
+    .shadow(radius: 5)
+}
+```
+
+<img src="/resources/usage/gesture-priorities.gif" alt="Paging priorities" height="640"/>
+
 ## Animations
 
 ### Scale
