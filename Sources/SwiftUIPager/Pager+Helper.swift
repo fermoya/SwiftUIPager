@@ -49,6 +49,7 @@ extension Pager {
         let newPage = -Int((totalOffset / pageDistance).rounded()) + page
 
         guard isInifinitePager else { return max(min(newPage, numberOfPages - 1), 0) }
+        guard numberOfPages > 0 else { return 0 }
         return max((newPage + numberOfPages) % numberOfPages, 0)
     }
 
@@ -139,12 +140,14 @@ extension Pager {
     /// Lower bound of the data displaed
     var lowerPageDisplayed: Int {
         guard isInifinitePager else { return max(0, page - maximumNumberOfPages / 2) }
+        guard numberOfPages > 0 else { return 0 }
         return ((page - maximumNumberOfPages / 2) + numberOfPages) % numberOfPages
     }
 
     /// Upper bound of the data displaed
     var upperPageDisplayed: Int {
         guard isInifinitePager else { return min(numberOfPages - 1, page + maximumNumberOfPages / 2) }
+        guard numberOfPages > 0 else { return 0 }
         return (Int((Float(maximumNumberOfPages) / 2).rounded(.up)) + page) % numberOfPages
     }
 
