@@ -198,6 +198,3 @@ For more information, please check the [sample app](/Example). There are include
 - See [`EmbeddedExampleView`](/Example/SwiftUIPagerExample/Examples/EmbeddedExampleView.swift) for more info about embedding `Pager` into a `ScrollView`.
 - See [`NestedExampleView`](/Example/SwiftUIPagerExample/Examples/NestedExampleView.swift) for more info about nesting `Pager`.
 - See [`BizarreExampleView`](/Example/SwiftUIPagerExample/Examples/BizarreExampleView.swift) for more info about other features of `Pager`.
-
-If you have any issues or feedback, please open an issue or reach out to me at [fmdr.ct@gmail.com](mailto:fmdr.ct@gmail.com).  
-Please feel free to collaborate and make this framework better. 
