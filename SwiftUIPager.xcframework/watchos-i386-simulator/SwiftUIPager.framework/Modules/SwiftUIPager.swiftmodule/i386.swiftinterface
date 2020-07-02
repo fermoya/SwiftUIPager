@@ -6,6 +6,27 @@ import Foundation
 import Swift
 import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+public enum GesturePriority {
+  case high
+  case simultaneous
+  case `default`
+  public static func == (a: SwiftUIPager.GesturePriority, b: SwiftUIPager.GesturePriority) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+public enum SwipeInteractionArea {
+  case allAvailable
+  case page
+  public static func == (a: SwiftUIPager.SwipeInteractionArea, b: SwiftUIPager.SwipeInteractionArea) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct Pager<Element, ID, PageView> : SwiftUI.View where Element : Swift.Equatable, ID : Swift.Hashable, PageView : SwiftUI.View {
   public init(page: SwiftUI.Binding<Swift.Int>, data: [Element], id: Swift.KeyPath<Element, ID>, @SwiftUI.ViewBuilder content: @escaping (Element) -> PageView)
   public var body: some SwiftUI.View {
@@ -19,6 +40,48 @@ extension Pager where Element : Swift.Identifiable, ID == Element.ID {
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
+}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+extension Pager {
+  public func loopPages(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func disableDragging() -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func allowsDragging(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func pagingPriority(_ value: SwiftUIPager.GesturePriority) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func swipeInteractionArea(_ value: SwiftUIPager.SwipeInteractionArea) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func alignment(_ value: SwiftUIPager.PositionAlignment) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func horizontal(_ swipeDirection: SwiftUIPager.HorizontalSwipeDirection = .leftToRight) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func vertical(_ swipeDirection: SwiftUIPager.VerticalSwipeDirection = .topToBottom) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func interactive(_ scale: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func rotation3D(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func pageOffset(_ value: Swift.Double) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func itemSpacing(_ value: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func itemAspectRatio(_ value: CoreGraphics.CGFloat?, alignment: SwiftUIPager.PositionAlignment = .center) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func preferredItemSize(_ value: CoreGraphics.CGSize, alignment: SwiftUIPager.PositionAlignment = .center) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func expandPageToEdges() -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func onPageChanged(_ callback: ((Swift.Int) -> Swift.Void)?) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func padding(_ length: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func padding(_ insets: SwiftUI.EdgeInsets) -> SwiftUIPager.Pager<Element, ID, PageView>
+  public func padding(_ edges: SwiftUI.Edge.Set = .all, _ length: CoreGraphics.CGFloat? = nil) -> SwiftUIPager.Pager<Element, ID, PageView>
+}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+public enum HorizontalSwipeDirection {
+  case leftToRight
+  case rightToLeft
+  public static func == (a: SwiftUIPager.HorizontalSwipeDirection, b: SwiftUIPager.HorizontalSwipeDirection) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+public enum VerticalSwipeDirection {
+  case topToBottom
+  case bottomToTop
+  public static func == (a: SwiftUIPager.VerticalSwipeDirection, b: SwiftUIPager.VerticalSwipeDirection) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum PositionAlignment {
@@ -37,63 +100,18 @@ public enum PositionAlignment {
   }
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Pager {
-  public enum HorizontalSwipeDirection {
-    case leftToRight
-    case rightToLeft
-    public static func == (a: SwiftUIPager.Pager<Element, ID, PageView>.HorizontalSwipeDirection, b: SwiftUIPager.Pager<Element, ID, PageView>.HorizontalSwipeDirection) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
-    public func hash(into hasher: inout Swift.Hasher)
-  }
-  public enum VerticalSwipeDirection {
-    case topToBottom
-    case bottomToTop
-    public static func == (a: SwiftUIPager.Pager<Element, ID, PageView>.VerticalSwipeDirection, b: SwiftUIPager.Pager<Element, ID, PageView>.VerticalSwipeDirection) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
-    public func hash(into hasher: inout Swift.Hasher)
-  }
-  public enum SwipeInteractionArea {
-    case allAvailable
-    case page
-    public static func == (a: SwiftUIPager.Pager<Element, ID, PageView>.SwipeInteractionArea, b: SwiftUIPager.Pager<Element, ID, PageView>.SwipeInteractionArea) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
-    public func hash(into hasher: inout Swift.Hasher)
-  }
-  public func loopPages(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func disableDragging() -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func allowsDragging(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func highPriorityGesture() -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func swipeInteractionArea(_ value: SwiftUIPager.Pager<Element, ID, PageView>.SwipeInteractionArea) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func alignment(_ value: SwiftUIPager.PositionAlignment) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func horizontal(_ swipeDirection: SwiftUIPager.Pager<Element, ID, PageView>.HorizontalSwipeDirection = .leftToRight) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func vertical(_ swipeDirection: SwiftUIPager.Pager<Element, ID, PageView>.VerticalSwipeDirection = .topToBottom) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func interactive(_ scale: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func rotation3D(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func pageOffset(_ value: Swift.Double) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func itemSpacing(_ value: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func itemAspectRatio(_ value: CoreGraphics.CGFloat?, alignment: SwiftUIPager.PositionAlignment = .center) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func preferredItemSize(_ value: CoreGraphics.CGSize, alignment: SwiftUIPager.PositionAlignment = .center) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func expandPageToEdges() -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func onPageChanged(_ callback: ((Swift.Int) -> Swift.Void)?) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func padding(_ length: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func padding(_ insets: SwiftUI.EdgeInsets) -> SwiftUIPager.Pager<Element, ID, PageView>
-  public func padding(_ edges: SwiftUI.Edge.Set = .all, _ length: CoreGraphics.CGFloat? = nil) -> SwiftUIPager.Pager<Element, ID, PageView>
-}
+extension SwiftUIPager.GesturePriority : Swift.Equatable {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension SwiftUIPager.Pager.HorizontalSwipeDirection : Swift.Equatable {}
+extension SwiftUIPager.GesturePriority : Swift.Hashable {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension SwiftUIPager.Pager.HorizontalSwipeDirection : Swift.Hashable {}
+extension SwiftUIPager.SwipeInteractionArea : Swift.Equatable {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension SwiftUIPager.Pager.VerticalSwipeDirection : Swift.Equatable {}
+extension SwiftUIPager.SwipeInteractionArea : Swift.Hashable {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension SwiftUIPager.Pager.VerticalSwipeDirection : Swift.Hashable {}
+extension SwiftUIPager.HorizontalSwipeDirection : Swift.Equatable {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension SwiftUIPager.Pager.SwipeInteractionArea : Swift.Equatable {}
+extension SwiftUIPager.HorizontalSwipeDirection : Swift.Hashable {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension SwiftUIPager.Pager.SwipeInteractionArea : Swift.Hashable {}
+extension SwiftUIPager.VerticalSwipeDirection : Swift.Equatable {}
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+extension SwiftUIPager.VerticalSwipeDirection : Swift.Hashable {}

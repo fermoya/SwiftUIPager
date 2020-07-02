@@ -6,6 +6,44 @@
 	<array>
 		<dict>
 			<key>LibraryIdentifier</key>
+			<string>ios-x86_64-maccatalyst</string>
+			<key>LibraryPath</key>
+			<string>SwiftUIPager.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>x86_64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>ios</string>
+			<key>SupportedPlatformVariant</key>
+			<string>maccatalyst</string>
+		</dict>
+		<dict>
+			<key>LibraryIdentifier</key>
+			<string>macos-x86_64</string>
+			<key>LibraryPath</key>
+			<string>SwiftUIPager.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>x86_64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>macos</string>
+		</dict>
+		<dict>
+			<key>LibraryIdentifier</key>
+			<string>tvos-arm64</string>
+			<key>LibraryPath</key>
+			<string>SwiftUIPager.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>tvos</string>
+		</dict>
+		<dict>
+			<key>LibraryIdentifier</key>
 			<string>tvos-x86_64-simulator</string>
 			<key>LibraryPath</key>
 			<string>SwiftUIPager.framework</string>
@@ -15,20 +53,6 @@
 			</array>
 			<key>SupportedPlatform</key>
 			<string>tvos</string>
-			<key>SupportedPlatformVariant</key>
-			<string>simulator</string>
-		</dict>
-		<dict>
-			<key>LibraryIdentifier</key>
-			<string>watchos-i386-simulator</string>
-			<key>LibraryPath</key>
-			<string>SwiftUIPager.framework</string>
-			<key>SupportedArchitectures</key>
-			<array>
-				<string>i386</string>
-			</array>
-			<key>SupportedPlatform</key>
-			<string>watchos</string>
 			<key>SupportedPlatformVariant</key>
 			<string>simulator</string>
 		</dict>
@@ -46,29 +70,30 @@
 		</dict>
 		<dict>
 			<key>LibraryIdentifier</key>
-			<string>ios-x86_64-maccatalyst</string>
+			<string>watchos-i386-simulator</string>
 			<key>LibraryPath</key>
 			<string>SwiftUIPager.framework</string>
 			<key>SupportedArchitectures</key>
 			<array>
-				<string>x86_64</string>
+				<string>i386</string>
 			</array>
 			<key>SupportedPlatform</key>
-			<string>ios</string>
+			<string>watchos</string>
 			<key>SupportedPlatformVariant</key>
-			<string>maccatalyst</string>
+			<string>simulator</string>
 		</dict>
 		<dict>
 			<key>LibraryIdentifier</key>
-			<string>tvos-arm64</string>
+			<string>watchos-armv7k_arm64_32</string>
 			<key>LibraryPath</key>
 			<string>SwiftUIPager.framework</string>
 			<key>SupportedArchitectures</key>
 			<array>
-				<string>arm64</string>
+				<string>armv7k</string>
+				<string>arm64_32</string>
 			</array>
 			<key>SupportedPlatform</key>
-			<string>tvos</string>
+			<string>watchos</string>
 		</dict>
 		<dict>
 			<key>LibraryIdentifier</key>
@@ -83,31 +108,6 @@
 			<string>ios</string>
 			<key>SupportedPlatformVariant</key>
 			<string>simulator</string>
-		</dict>
-		<dict>
-			<key>LibraryIdentifier</key>
-			<string>macos-x86_64</string>
-			<key>LibraryPath</key>
-			<string>SwiftUIPager.framework</string>
-			<key>SupportedArchitectures</key>
-			<array>
-				<string>x86_64</string>
-			</array>
-			<key>SupportedPlatform</key>
-			<string>macos</string>
-		</dict>
-		<dict>
-			<key>LibraryIdentifier</key>
-			<string>watchos-armv7k_arm64_32</string>
-			<key>LibraryPath</key>
-			<string>SwiftUIPager.framework</string>
-			<key>SupportedArchitectures</key>
-			<array>
-				<string>armv7k</string>
-				<string>arm64_32</string>
-			</array>
-			<key>SupportedPlatform</key>
-			<string>watchos</string>
 		</dict>
 	</array>
 	<key>CFBundlePackageType</key>
