@@ -10,31 +10,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		oAm/Wyn3azE5sZIUUrcU8PH+16E=
+		vh9rB7Ge4jUlEJ7f56YKUGKELlE=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftdoc</key>
 		<data>
-		E+lgb4JMeDtU+ytxSHVfvLPLUoI=
+		3KfTu8OBmdBMHqY5UD9FJD1ztp8=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftinterface</key>
 		<data>
-		xXnG/77KG7AkRL9NAne6s6V7X+w=
+		l2yzd6pEYeEt25N9w6mtZ9iJCkw=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftmodule</key>
 		<data>
-		7CPrZ0jhdlUF/o/fBIJpWS5d3nA=
+		HETVaG3mo6i0l2BIgdBPEU05IoQ=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		E+lgb4JMeDtU+ytxSHVfvLPLUoI=
+		3KfTu8OBmdBMHqY5UD9FJD1ztp8=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		xXnG/77KG7AkRL9NAne6s6V7X+w=
+		l2yzd6pEYeEt25N9w6mtZ9iJCkw=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		7CPrZ0jhdlUF/o/fBIJpWS5d3nA=
+		HETVaG3mo6i0l2BIgdBPEU05IoQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -54,42 +54,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			v1iuvaKPvQSTopj/4peL8Fh/8ju20facotD+RPwMuqg=
+			NmE64oCyYbgxMG2zRSdoI+crpgp0SGOfH1CTD4Rp/cE=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EOQtJOQ/ETx0K9fqbuHZ1Uw5OYcOctbemxBAgLaYteM=
+			ec6v2aKaXwTb2dwOlLHidi6YMUt9TNhvXYyO2TIAVIE=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cHZdyAsHXjpz0B1r4B1CY7OqM1sot3iJoGJlZvBEKS4=
+			GTXstSlbiYi5yBK36EcK/Rx+lJwPwrQZA7p7EsBYeBs=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v1iuvaKPvQSTopj/4peL8Fh/8ju20facotD+RPwMuqg=
+			NmE64oCyYbgxMG2zRSdoI+crpgp0SGOfH1CTD4Rp/cE=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EOQtJOQ/ETx0K9fqbuHZ1Uw5OYcOctbemxBAgLaYteM=
+			ec6v2aKaXwTb2dwOlLHidi6YMUt9TNhvXYyO2TIAVIE=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cHZdyAsHXjpz0B1r4B1CY7OqM1sot3iJoGJlZvBEKS4=
+			GTXstSlbiYi5yBK36EcK/Rx+lJwPwrQZA7p7EsBYeBs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

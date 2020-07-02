@@ -17,55 +17,64 @@ struct InfiniteExampleView: View {
     var data2 = Array(0..<5)
 
     var body: some View {
-        GeometryReader { proxy in
-            VStack(spacing: 10) {
-                Text("Appending on the fly").bold()
-                Pager(page: self.$page1,
-                      data: self.data1,
-                      id: \.self) {
-                        self.pageView($0)
-                }
-                .onPageChanged({ page in
-                    guard page == self.data1.count - 2 else { return }
-                    guard let last = self.data1.last else { return }
-                    let newData = (1...5).map { last + $0 }
-                    withAnimation {
-                        self.isPresented.toggle()
-                        self.data1.append(contentsOf: newData)
+        NavigationView {
+            GeometryReader { proxy in
+                VStack(spacing: 10) {
+                    Text("Appending on the fly")
+                        .bold()
+                        .padding(.top)
+                    Pager(page: self.$page1,
+                          data: self.data1,
+                          id: \.self) {
+                            self.pageView($0)
                     }
-                })
-                .preferredItemSize(CGSize(width: 300, height: 50))
-                .itemSpacing(10)
-                .background(Color.gray.opacity(0.2))
-                .alert(isPresented: self.$isPresented, content: {
-                    Alert(title: Text("Congratulations!"),
-                          message: Text("Five more elements were appended to your Pager"),
-                          dismissButton: .default(Text("Okay!")))
-                })
+                    .onPageChanged({ page in
+                        guard page == self.data1.count - 2 else { return }
+                        guard let last = self.data1.last else { return }
+                        let newData = (1...5).map { last + $0 }
+                        withAnimation {
+                            self.isPresented.toggle()
+                            self.data1.append(contentsOf: newData)
+                        }
+                    })
+                    .pagingPriority(.simultaneous)
+                    .preferredItemSize(CGSize(width: 300, height: 50))
+                    .itemSpacing(10)
+                    .background(Color.gray.opacity(0.2))
+                    .alert(isPresented: self.$isPresented, content: {
+                        Alert(title: Text("Congratulations!"),
+                              message: Text("Five more elements were appended to your Pager"),
+                              dismissButton: .default(Text("Okay!")))
+                    })
 
-                Spacer()
+                    Spacer()
 
-                Text("Looping Pager").bold()
-                Pager(page: self.$page2,
-                      data: self.data2,
-                      id: \.self) {
-                        self.pageView($0)
+                    Text("Looping Pager")
+                        .bold()
+                    Pager(page: self.$page2,
+                          data: self.data2,
+                          id: \.self) {
+                            self.pageView($0)
+                    }
+                    .pagingPriority(.simultaneous)
+                    .loopPages()
+                    .itemSpacing(10)
+                    .itemAspectRatio(1.3, alignment: .start)
+                    .padding(20)
+                    .background(Color.gray.opacity(0.2))
                 }
-                .loopPages()
-                .itemSpacing(10)
-                .itemAspectRatio(1.3, alignment: .start)
-                .padding(20)
-                .background(Color.gray.opacity(0.2))
+                .navigationBarTitle("Infinite Pagers", displayMode: .inline)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 
     func pageView(_ page: Int) -> some View {
         ZStack {
             Rectangle()
                 .fill(Color.yellow)
-            Text("Page: \(page)")
-                .bold()
+            NavigationLink(destination: Text("Page \(page)")) {
+                Text("Page \(page)")
+            }
         }
         .cornerRadius(5)
         .shadow(radius: 5)

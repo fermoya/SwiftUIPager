@@ -108,6 +108,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Minimum distance for `Pager` to start scrolling
     var minimumDistance: CGFloat = 15
 
+    /// Priority selected to add `swipeGesture`
+    var gesturePriority: GesturePriority = .default
+
     /// Will apply this ratio to each page item. The aspect ratio follows the formula _width / height_
     var itemAspectRatio: CGFloat?
 
@@ -166,7 +169,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
         #if !os(tvOS)
         var wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
-        wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil))
+        wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil, priority: gesturePriority))
         #else
         let wrappedView = stack
         #endif
@@ -206,7 +209,7 @@ extension Pager {
     /// `DragGesture` customized to work with `Pager`
     #if !os(tvOS)
     var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: minimumDistance, coordinateSpace: .local)
+        DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
                 withAnimation {
                     self.draggingStartTime = self.draggingStartTime ?? value.time
@@ -227,9 +230,7 @@ extension Pager {
                     self.pageIndex = newPage
                     self.draggingStartTime = nil
                 }
-
-            }
-        )
+            })
     }
     #endif
 

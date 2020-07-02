@@ -47,15 +47,10 @@
 		6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
 		6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
 		6B2C305C248D740800E528F9 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
-		6B2C305D248D740800E528F9 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
 		6B2C305E248D740800E528F9 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
 		6B2C305F248D740800E528F9 /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* Pager+Helper.swift */; };
 		6B2C3061248D740800E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3062248D740800E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6B609ACB24043E1700C098E7 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
-		6B609ACC24043E1700C098E7 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
-		6BBBB7D1240431370058EE56 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
-		6BBC3D732488DBFC004194BD /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBB7D0240431370058EE56 /* PositionAlignment.swift */; };
 		6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
 		6BBC3D752488DC04004194BD /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
 		6BBC3D762488DC07004194BD /* SizeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442723DE12480022A2F7 /* SizeViewModifier.swift */; };
@@ -69,6 +64,26 @@
 		6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
 		6BDE442D23DE12480022A2F7 /* SizeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442723DE12480022A2F7 /* SizeViewModifier.swift */; };
 		6BDE442E23DE12480022A2F7 /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* Pager+Helper.swift */; };
+		6BEA731B24ACF9F8007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
+		6BEA731C24ACF9F9007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
+		6BEA731D24ACF9F9007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
+		6BEA731E24ACF9FA007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
+		6BEA731F24ACF9FB007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
+		6BEA732024ACF9FE007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
+		6BEA732124ACF9FE007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
+		6BEA732224ACF9FF007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
+		6BEA732324ACF9FF007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
+		6BEA732424ACFA00007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
+		6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
+		6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
+		6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
+		6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
+		6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
+		6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
+		6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
+		6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
+		6BEA732D24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
+		6BEA732E24ACFA09007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +100,6 @@
 		6B2C3067248D740800E528F9 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2C3069248D747700E528F9 /* Info-Catalyst.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Catalyst.plist"; sourceTree = "<group>"; };
 		6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		6BBBB7D0240431370058EE56 /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionAlignment.swift; sourceTree = "<group>"; };
 		6BBC3D6B2488DBE8004194BD /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDE441723DE10C10022A2F7 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIPager.h; sourceTree = "<group>"; };
@@ -96,6 +110,10 @@
 		6BDE442623DE12480022A2F7 /* Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 		6BDE442723DE12480022A2F7 /* SizeViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeViewModifier.swift; sourceTree = "<group>"; };
 		6BDE442823DE12480022A2F7 /* Pager+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pager+Helper.swift"; path = "Sources/SwiftUIPager/Pager+Helper.swift"; sourceTree = SOURCE_ROOT; };
+		6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDirection.swift; path = Sources/SwiftUIPager/PageConfiguration/SwipeDirection.swift; sourceTree = SOURCE_ROOT; };
+		6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeInteractionArea.swift; path = Sources/SwiftUIPager/PageConfiguration/SwipeInteractionArea.swift; sourceTree = SOURCE_ROOT; };
+		6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PositionAlignment.swift; path = Sources/SwiftUIPager/PageConfiguration/PositionAlignment.swift; sourceTree = SOURCE_ROOT; };
+		6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GesturePriority.swift; path = Sources/SwiftUIPager/PageConfiguration/GesturePriority.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,16 +202,12 @@
 		6BDE441923DE10C10022A2F7 /* SwiftUIPager */ = {
 			isa = PBXGroup;
 			children = (
-				6B2C3069248D747700E528F9 /* Info-Catalyst.plist */,
-				6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */,
+				6BEA732F24ACFAB3007EA8DC /* SupportFiles */,
+				6BEA730D24ACF7FF007EA8DC /* PageConfiguration */,
 				6BDE442423DE12480022A2F7 /* Helpers */,
 				6BDE442223DE12470022A2F7 /* Pager.swift */,
 				6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */,
 				6BDE442823DE12480022A2F7 /* Pager+Helper.swift */,
-				6BDE441B23DE10C10022A2F7 /* Info-iOS.plist */,
-				172F4D6123DF830600FD2F15 /* Info-macOS.plist */,
-				6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */,
-				172F4D7B23DF8A6400FD2F15 /* Info-watchOS.plist */,
 			);
 			path = SwiftUIPager;
 			sourceTree = "<group>";
@@ -201,14 +215,37 @@
 		6BDE442423DE12480022A2F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6BBBB7D0240431370058EE56 /* PositionAlignment.swift */,
-				6BDE442523DE12480022A2F7 /* View+Helper.swift */,
 				6BDE442623DE12480022A2F7 /* Buildable.swift */,
+				6BDE442523DE12480022A2F7 /* View+Helper.swift */,
 				6BDE442723DE12480022A2F7 /* SizeViewModifier.swift */,
 			);
 			name = Helpers;
 			path = Sources/SwiftUIPager/Helpers;
 			sourceTree = SOURCE_ROOT;
+		};
+		6BEA730D24ACF7FF007EA8DC /* PageConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */,
+				6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */,
+				6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */,
+				6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */,
+			);
+			name = PageConfiguration;
+			sourceTree = "<group>";
+		};
+		6BEA732F24ACFAB3007EA8DC /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */,
+				6BDE441B23DE10C10022A2F7 /* Info-iOS.plist */,
+				6B2C3069248D747700E528F9 /* Info-Catalyst.plist */,
+				172F4D6123DF830600FD2F15 /* Info-macOS.plist */,
+				6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */,
+				172F4D7B23DF8A6400FD2F15 /* Info-watchOS.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -361,6 +398,7 @@
 					};
 					6BC5EE4E2487F5E000E1E78C = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 					6BDE441623DE10C10022A2F7 = {
 						CreatedOnToolsVersion = 11.3;
@@ -454,12 +492,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEA731D24ACF9F9007EA8DC /* GesturePriority.swift in Sources */,
 				172F4D5523DF830600FD2F15 /* SizeViewModifier.swift in Sources */,
+				6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */,
 				172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */,
 				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
-				6B609ACB24043E1700C098E7 /* PositionAlignment.swift in Sources */,
 				172F4D5923DF830600FD2F15 /* Pager.swift in Sources */,
+				6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
+				6BEA732224ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
 				172F4D5A23DF830600FD2F15 /* Pager+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,12 +509,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEA731E24ACF9FA007EA8DC /* GesturePriority.swift in Sources */,
 				172F4D8123DF8B3D00FD2F15 /* Buildable.swift in Sources */,
+				6BEA732D24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */,
 				172F4D8223DF8B3F00FD2F15 /* SizeViewModifier.swift in Sources */,
 				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
-				6B609ACC24043E1700C098E7 /* PositionAlignment.swift in Sources */,
 				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
+				6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
+				6BEA732324ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
 				172F4D8623DF8B4B00FD2F15 /* Pager+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,12 +526,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEA731C24ACF9F9007EA8DC /* GesturePriority.swift in Sources */,
 				6B2C3059248D740800E528F9 /* SizeViewModifier.swift in Sources */,
+				6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */,
 				6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */,
 				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
-				6B2C305D248D740800E528F9 /* PositionAlignment.swift in Sources */,
 				6B2C305E248D740800E528F9 /* Pager.swift in Sources */,
+				6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
+				6BEA732124ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
 				6B2C305F248D740800E528F9 /* Pager+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,13 +543,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEA731F24ACF9FB007EA8DC /* GesturePriority.swift in Sources */,
 				6BBC3D752488DC04004194BD /* Buildable.swift in Sources */,
+				6BEA732E24ACFA09007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BBC3D772488DC0B004194BD /* Pager.swift in Sources */,
 				6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */,
 				6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */,
 				6BBC3D762488DC07004194BD /* SizeViewModifier.swift in Sources */,
+				6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
+				6BEA732424ACFA00007EA8DC /* PositionAlignment.swift in Sources */,
 				6BBC3D792488DC11004194BD /* Pager+Helper.swift in Sources */,
-				6BBC3D732488DBFC004194BD /* PositionAlignment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,12 +560,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEA731B24ACF9F8007EA8DC /* GesturePriority.swift in Sources */,
 				6BDE442D23DE12480022A2F7 /* SizeViewModifier.swift in Sources */,
+				6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */,
 				6BDE442B23DE12480022A2F7 /* View+Helper.swift in Sources */,
 				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
-				6BBBB7D1240431370058EE56 /* PositionAlignment.swift in Sources */,
 				6BDE442923DE12480022A2F7 /* Pager.swift in Sources */,
+				6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */,
+				6BEA732024ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
 				6BDE442E23DE12480022A2F7 /* Pager+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,7 +586,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-macOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,7 +597,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = macosx;
@@ -566,7 +619,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-macOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -577,7 +630,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = macosx;
@@ -598,7 +651,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-watchOS.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -609,7 +662,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = watchos;
@@ -631,7 +684,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-watchOS.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,7 +695,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = watchos;
@@ -665,7 +718,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-Catalyst.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-Catalyst.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,10 +726,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -694,7 +748,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-Catalyst.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-Catalyst.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -702,10 +756,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -720,7 +775,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-tvOS.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,7 +786,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = appletvos;
@@ -752,7 +807,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-tvOS.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -763,7 +818,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SDKROOT = appletvos;
@@ -778,18 +833,33 @@
 		6BC5EE502487F5E000E1E78C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMMUM2Q3NC;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		6BC5EE512487F5E000E1E78C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMMUM2Q3NC;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -932,7 +1002,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-iOS.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -940,7 +1010,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;
@@ -962,7 +1032,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/Info-iOS.plist";
+				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -970,7 +1040,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.2;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fmoyader.SwiftUIPager;
 				PRODUCT_NAME = SwiftUIPager;
 				SKIP_INSTALL = YES;

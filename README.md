@@ -20,15 +20,18 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
 - [Usage](Documentation/Usage.md)
     - [Initialization](Documentation/Usage.md#initialization)
     - [UI customization](Documentation/Usage.md#ui-customization)
-    - [Configure your page size](Documentation/Usage.md#configure-your-page-size)
-    - [Orientation and direction](Documentation/Usage.md#orientation-and-direction)
-    - [Alignment](Documentation/Usage.md#alignment)
+        - [Configure your page size](Documentation/Usage.md#configure-your-page-size)
+        - [Orientation and direction](Documentation/Usage.md#orientation-and-direction)
+        - [Alignment](Documentation/Usage.md#alignment)
+    - [Paging Priority](Documentation/Usage.md#paging-priority)
     - [Animations](Documentation/Usage.md#animations)
         - [Scale](Documentation/Usage.md#scale)
         - [Rotation](Documentation/Usage.md#rotation)
         - [Loop](Documentation/Usage.md#loop)
     - [Add pages on demand](Documentation/Usage.md#add-pages-on-demand)
     - [Examples](Documentation/Usage.md#examples)
+- [Known Issues](#known-issues)
+- [Feedback](#feedback)
 - [Support Open Source](#support-open-source)
 - [License](#license)
 
@@ -67,14 +70,21 @@ github "fermoya/SwiftUIPager"
 * Make sure in your target's build phases that the option _Embed & Sign_ is selected:
 <img src="resources/installation/manual-installation-step-2.png" alt="Manual Installation Step 2" width="755"/>
 
+## Known Issues
+* `NavigationLink` and `Button` might work oddly with `Pager` if `pagingPriority(.simultaneous)` is used in _SwiftUI 1.0_ and _iOS 13_. This issue isn't reproducible in _iOS 14 beta_. For more information, follow this [link](https://stackoverflow.com/questions/58440469/swiftui-navigationlink-and-scrollview-drag-gesture-colliding).
+* Depending on the _Xcode_ version, you might run into a precondition failure affecting _SwiftUI 1.0_ and _iOS 13_. This issue doesn't occur on _Xcode 12 beta_. For more information about workarounds, see _Precondition failure: invalid value type for attribute [#60](https://github.com/fermoya/SwiftUIPager/issues/60)_.
+
+## Feedback
+If you happen to encounter any problem or you have any suggestion, please, don't hesitate to open an issue or reach out to me at [fmdr.ct@gmail.com](mailto:fmdr.ct@gmail.com).  
+This is an open source code project, so feel free to collaborate by raising a pull-request or sharing your feedback. 
 
 ## Support Open Source
 
-If you love the library, understand all the effort it takes to maintain it and would like to  support me, you can buy me a coffee by following this [link](https://www.buymeacoffee.com/fermoya):
+If you love this library, understand all the effort it takes to maintain it and would like to  support me, you can buy me a coffee by following this [link](https://www.buymeacoffee.com/fermoya):
 
 <a href="https://www.buymeacoffee.com/fermoya" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
 
-All help is very much appreciated.
+You can also sponsor me by hitting the [_GitHub Sponsor_](https://github.com/sponsors/fermoya) button. All help is very much appreciated.
 
 ## License  
 

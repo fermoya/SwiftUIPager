@@ -35,8 +35,8 @@ struct EmbeddedExampleView: View {
                         .background(Color.gray.opacity(0.2))
 
                         Text("Other alignments")
-                        .bold()
-                        .padding(.top, 40)
+                            .bold()
+                            .padding(.top, 40)
 
                         Picker(selection: self.$alignment, label: Text("Position Alignment")) {
                             ForEach(ExamplePositionAlignment.allCases, id: \.self) {

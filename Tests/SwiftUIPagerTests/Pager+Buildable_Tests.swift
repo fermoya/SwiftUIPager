@@ -26,6 +26,19 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.itemAlignment, .center)
         XCTAssertEqual(pager.swipeInteractionArea, .page)
         XCTAssertEqual(pager.minimumDistance, 15)
+        XCTAssertEqual(pager.gesturePriority, .default)
+    }
+
+    func test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous() {
+        var pager = givenPager
+        pager = pager.pagingPriority(.simultaneous)
+        XCTAssertEqual(pager.gesturePriority, .simultaneous)
+    }
+
+    func test_GivenPager_WhenPagingPriorityHigh_ThenHigh() {
+        var pager = givenPager
+        pager = pager.pagingPriority(.high)
+        XCTAssertEqual(pager.gesturePriority, .high)
     }
 
     func test_GivenPager_WhenPreferredItemSize_ThenNotNil() {
@@ -40,12 +53,6 @@ final class Pager_Buildable_Tests: XCTestCase {
         var pager = givenPager
         pager = pager.loopPages()
         XCTAssertTrue(pager.isInifinitePager)
-    }
-
-    func test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero() {
-        var pager = givenPager
-        pager = pager.highPriorityGesture()
-        XCTAssertEqual(pager.minimumDistance, 0)
     }
 
     func test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse() {
@@ -297,13 +304,14 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges),
         ("test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable", test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable),
         ("test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage", test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage),
-        ("test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero", test_GivenPager_WhenHighPriorityGesture_ThenMinimumDistanceZero),
         ("test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd", test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd),
         ("test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart", test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart),
         ("test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse", test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse),
         ("test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue", test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue),
         ("test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse", test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse),
         ("test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue", test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue),
-        ("test_GivenPager_WhenPreferredItemSize_ThenNotNil", test_GivenPager_WhenPreferredItemSize_ThenNotNil)
+        ("test_GivenPager_WhenPreferredItemSize_ThenNotNil", test_GivenPager_WhenPreferredItemSize_ThenNotNil),
+        ("test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous", test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous),
+        ("test_GivenPager_WhenPagingPriorityHigh_ThenHigh", test_GivenPager_WhenPagingPriorityHigh_ThenHigh)
     ]
 }
