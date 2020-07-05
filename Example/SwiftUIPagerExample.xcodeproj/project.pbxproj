@@ -23,6 +23,7 @@
 		6BC5EE0024866D9500E1E78C /* SizeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF924866D9500E1E78C /* SizeViewModifier.swift */; };
 		6BC5EE0124866D9500E1E78C /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDFA24866D9500E1E78C /* Pager.swift */; };
 		6BC5EE0224866D9500E1E78C /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDFB24866D9500E1E78C /* Pager+Helper.swift */; };
+		6BCF139224B2677B00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF139124B2677B00AADE74 /* ContentLoadingPolicy.swift */; };
 		6BEA731324ACF8D7007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA730F24ACF8D7007EA8DC /* PositionAlignment.swift */; };
 		6BEA731424ACF8D7007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731024ACF8D7007EA8DC /* SwipeDirection.swift */; };
 		6BEA731524ACF8D7007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731124ACF8D7007EA8DC /* SwipeInteractionArea.swift */; };
@@ -62,6 +63,7 @@
 		6BC5EDF924866D9500E1E78C /* SizeViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeViewModifier.swift; sourceTree = "<group>"; };
 		6BC5EDFA24866D9500E1E78C /* Pager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pager.swift; path = ../../Sources/SwiftUIPager/Pager.swift; sourceTree = "<group>"; };
 		6BC5EDFB24866D9500E1E78C /* Pager+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pager+Helper.swift"; path = "../../Sources/SwiftUIPager/Pager+Helper.swift"; sourceTree = "<group>"; };
+		6BCF139124B2677B00AADE74 /* ContentLoadingPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentLoadingPolicy.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/ContentLoadingPolicy.swift; sourceTree = "<group>"; };
 		6BEA730F24ACF8D7007EA8DC /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PositionAlignment.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/PositionAlignment.swift; sourceTree = "<group>"; };
 		6BEA731024ACF8D7007EA8DC /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDirection.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/SwipeDirection.swift; sourceTree = "<group>"; };
 		6BEA731124ACF8D7007EA8DC /* SwipeInteractionArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeInteractionArea.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/SwipeInteractionArea.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		6BEA730E24ACF8BB007EA8DC /* PageConfiguration */ = {
 			isa = PBXGroup;
 			children = (
+				6BCF139124B2677B00AADE74 /* ContentLoadingPolicy.swift */,
 				6BEA731224ACF8D7007EA8DC /* GesturePriority.swift */,
 				6BEA730F24ACF8D7007EA8DC /* PositionAlignment.swift */,
 				6BEA731024ACF8D7007EA8DC /* SwipeDirection.swift */,
@@ -256,6 +259,7 @@
 				6B22DC81247E5C9A00EF95C5 /* NestedExampleView.swift in Sources */,
 				17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */,
 				6BC5EDFC24866D9500E1E78C /* Pager+Buildable.swift in Sources */,
+				6BCF139224B2677B00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6BEA731524ACF8D7007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BC5EE0124866D9500E1E78C /* Pager.swift in Sources */,
 			);

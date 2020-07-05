@@ -27,6 +27,25 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.swipeInteractionArea, .page)
         XCTAssertEqual(pager.minimumDistance, 15)
         XCTAssertEqual(pager.gesturePriority, .default)
+        XCTAssertEqual(pager.contentLoadingPolicy, .default)
+    }
+
+    func test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1() {
+        var pager = givenPager
+        pager = pager.contentLoadingPolicy(.lazy(recyclingRatio: 0))
+        XCTAssertEqual(pager.recyclingRatio, 1)
+    }
+
+    func test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10() {
+        var pager = givenPager
+        pager = pager.contentLoadingPolicy(.lazy(recyclingRatio: 10))
+        XCTAssertEqual(pager.recyclingRatio, 10)
+    }
+
+    func test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax() {
+        var pager = givenPager
+        pager = pager.contentLoadingPolicy(.eager)
+        XCTAssertEqual(pager.recyclingRatio, pager.numberOfPages)
     }
 
     func test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous() {
@@ -312,6 +331,9 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue", test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue),
         ("test_GivenPager_WhenPreferredItemSize_ThenNotNil", test_GivenPager_WhenPreferredItemSize_ThenNotNil),
         ("test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous", test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous),
-        ("test_GivenPager_WhenPagingPriorityHigh_ThenHigh", test_GivenPager_WhenPagingPriorityHigh_ThenHigh)
+        ("test_GivenPager_WhenPagingPriorityHigh_ThenHigh", test_GivenPager_WhenPagingPriorityHigh_ThenHigh),
+        ("test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1", test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1),
+        ("test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10", test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10),
+        ("test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax", test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax)
     ]
 }

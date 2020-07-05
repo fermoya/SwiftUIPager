@@ -11,6 +11,16 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
 
+    /// Manages the number of items that should be displayed in the screen.
+    var recyclingRatio: Int {
+        switch contentLoadingPolicy {
+        case .eager:
+            return numberOfPages
+        case .lazy(let ratio):
+            return max(1, Int(ratio))
+        }
+    }
+
     /// Work around to avoid @State keeps wrong value
     var page: Int {
         return min(pageIndex, numberOfPages - 1)
@@ -106,6 +116,7 @@ extension Pager {
 
     /// Maximum number in memory at the same time. Always an even number.
     var maximumNumberOfPages: Int {
+        guard contentLoadingPolicy != .eager else { return numberOfPages }
         guard pageDistance != 0, numberOfPages > 0 else { return 0 }
         let side = isHorizontal ? size.width : size.height
         var number = Int((CGFloat(recyclingRatio) * side / pageDistance).rounded(.up))
@@ -139,14 +150,18 @@ extension Pager {
 
     /// Lower bound of the data displaed
     var lowerPageDisplayed: Int {
-        guard isInifinitePager else { return max(0, page - maximumNumberOfPages / 2) }
+        guard isInifinitePager else {
+            return contentLoadingPolicy == .eager ? 0 : max(0, page - maximumNumberOfPages / 2)
+        }
         guard numberOfPages > 0 else { return 0 }
         return ((page - maximumNumberOfPages / 2) + numberOfPages) % numberOfPages
     }
 
     /// Upper bound of the data displaed
     var upperPageDisplayed: Int {
-        guard isInifinitePager else { return min(numberOfPages - 1, page + maximumNumberOfPages / 2) }
+        guard isInifinitePager else {
+            return contentLoadingPolicy == .eager ? numberOfPages - 1 : min(numberOfPages - 1, page + maximumNumberOfPages / 2)
+        }
         guard numberOfPages > 0 else { return 0 }
         return (Int((Float(maximumNumberOfPages) / 2).rounded(.up)) + page) % numberOfPages
     }
