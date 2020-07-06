@@ -20,15 +20,12 @@ struct ColorsExampleView: View {
         NavigationView {
             GeometryReader { proxy in
                 VStack(spacing: 10) {
-                    Text("Use the controls below to move across the colors")
-                        .bold()
-                        .padding(10)
-                        .foregroundColor(.blue)
                     Pager(page: self.$pageIndex,
                           data: self.colors,
                           id: \.self) {
                             self.pageView($0)
                     }
+                    .contentLoadingPolicy(.eager)
                     .disableDragging()
                     .itemSpacing(10)
                     .padding(20)
@@ -61,13 +58,26 @@ struct ColorsExampleView: View {
                         Spacer()
                         Button(action: {
                             withAnimation {
+                                self.pageIndex = 0
+                            }
+                        }, label: {
+                            VStack(spacing: 4) {
+                                Image(systemName: "backward.end.alt.fill")
+                                    .padding()
+                                Text("Start")
+                                    .font(.subheadline)
+                            }
+                        }).disabled(self.pageIndex <= 0)
+                        Button(action: {
+                            withAnimation {
                                 self.pageIndex = max(0, self.pageIndex - 1)
                             }
                         }, label: {
-                            HStack(spacing: 10) {
-                                Image(systemName: "backward.fill")
+                            VStack(spacing: 4) {
+                                Image(systemName: "backward.end.fill")
                                     .padding()
                                 Text("Previous")
+                                    .font(.subheadline)
                             }
                         }).disabled(self.pageIndex <= 0)
                         Spacer()
@@ -76,10 +86,23 @@ struct ColorsExampleView: View {
                                 self.pageIndex = min(self.colors.count - 1, self.pageIndex + 1)
                             }
                         }, label: {
-                            HStack(spacing: 10) {
-                                Text("Next")
-                                Image(systemName: "forward.fill")
+                            VStack(spacing: 4) {
+                                Image(systemName: "forward.end.fill")
                                     .padding()
+                                Text("Next")
+                                    .font(.subheadline)
+                            }
+                        }).disabled(self.pageIndex >= self.colors.count - 1)
+                        Button(action: {
+                            withAnimation {
+                                self.pageIndex = self.colors.count - 1
+                            }
+                        }, label: {
+                            VStack(spacing: 4) {
+                                Image(systemName: "forward.end.alt.fill")
+                                    .padding()
+                                Text("End")
+                                    .font(.subheadline)
                             }
                         }).disabled(self.pageIndex >= self.colors.count - 1)
                         Spacer()
