@@ -13,7 +13,7 @@ Creating a `Pager` is very simple. You just need to pass:
 var items = Array(0..<10)
 
 var body: some View {
-    Pager(page: $page
+    Pager(page: $page,
           data: items,
           id: \.identifier,
           content: { index in
