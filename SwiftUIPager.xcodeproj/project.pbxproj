@@ -57,6 +57,11 @@
 		6BBC3D772488DC0B004194BD /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
 		6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
 		6BBC3D792488DC11004194BD /* Pager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* Pager+Helper.swift */; };
+		6BCF138C24B2674E00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
+		6BCF138D24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
+		6BCF138E24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
+		6BCF138F24B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
+		6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
 		6BDE441C23DE10C10022A2F7 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BDE442923DE12480022A2F7 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
 		6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
@@ -101,6 +106,7 @@
 		6B2C3069248D747700E528F9 /* Info-Catalyst.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Catalyst.plist"; sourceTree = "<group>"; };
 		6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		6BBC3D6B2488DBE8004194BD /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentLoadingPolicy.swift; path = Sources/SwiftUIPager/PageConfiguration/ContentLoadingPolicy.swift; sourceTree = SOURCE_ROOT; };
 		6BDE441723DE10C10022A2F7 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIPager.h; sourceTree = "<group>"; };
 		6BDE441B23DE10C10022A2F7 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 		6BEA730D24ACF7FF007EA8DC /* PageConfiguration */ = {
 			isa = PBXGroup;
 			children = (
+				6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */,
 				6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */,
 				6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */,
 				6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */,
@@ -497,6 +504,7 @@
 				6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */,
 				172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */,
+				6BCF138E24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
 				172F4D5923DF830600FD2F15 /* Pager.swift in Sources */,
 				6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
@@ -514,6 +522,7 @@
 				6BEA732D24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */,
 				172F4D8223DF8B3F00FD2F15 /* SizeViewModifier.swift in Sources */,
+				6BCF138F24B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
 				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
 				6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
@@ -531,6 +540,7 @@
 				6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */,
 				6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */,
+				6BCF138D24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
 				6B2C305E248D740800E528F9 /* Pager.swift in Sources */,
 				6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
@@ -548,6 +558,7 @@
 				6BEA732E24ACFA09007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BBC3D772488DC0B004194BD /* Pager.swift in Sources */,
 				6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */,
+				6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */,
 				6BBC3D762488DC07004194BD /* SizeViewModifier.swift in Sources */,
 				6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
@@ -565,6 +576,7 @@
 				6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */,
 				6BDE442B23DE12480022A2F7 /* View+Helper.swift in Sources */,
+				6BCF138C24B2674E00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
 				6BDE442923DE12480022A2F7 /* Pager.swift in Sources */,
 				6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */,

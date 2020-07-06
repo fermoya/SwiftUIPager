@@ -42,10 +42,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** Constants ***/
 
-    /// Manages the number of items that should be displayed in the screen.
-    /// A ratio of 5, for instance, would mean the items held in memory are enough
-    /// to cover 5 times the size of the pager
-    let recyclingRatio = 5
+    /// Policy to be applied when loading content
+    var contentLoadingPolicy: ContentLoadingPolicy = .default
 
     /// Angle of rotation when should rotate
     let rotationDegrees: Double = 20

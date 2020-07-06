@@ -11,6 +11,16 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager: Buildable {
 
+    /// Sets the policy followed to load `Pager` content.
+    ///
+    /// - Parameter value: policy to load the content.
+    ///
+    /// Choose `lazy` to load pages on demand so that the right amount of memory is used. Choose `eager` if
+    /// `Pager` won't hold many items or if memory isn't  an issue.
+    public func contentLoadingPolicy(_ value: ContentLoadingPolicy) -> Self {
+        mutating(keyPath: \.contentLoadingPolicy, value: value)
+    }
+
     /// Sets `Pager` to loop the items in a never-ending scroll.
     ///
     /// - Parameter value: `true` if `Pager` should loop the pages. `false`, otherwise.
