@@ -123,11 +123,14 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Size of the view
     @State var size: CGSize = .zero
 
-    /// Translation on the X-Axis
+    /// `swipeGesture` translation on the X-Axis
     @State var draggingOffset: CGFloat = 0
 
-    /// The moment when the dragging gesture started
-    @State var draggingStartTime: Date! = nil
+    /// `swipeGesture` velocity on the X-Axis
+    @State var draggingVelocity: Double = 0
+
+    /// Timestamp of the last `swipeGesture` entry
+    @State var draggingTimestamp: Date!
 
     /// Page index
     @Binding var pageIndex: Int {
@@ -179,6 +182,13 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .onAppear(perform: {
                 self.onPageChanged?(self.page)
             })
+            .onDeactivate(perform: {
+                if self.isDragging {
+                    #if !os(tvOS)
+                    self.onDragGestureEnded()
+                    #endif
+                }
+            })
     }
 
 }
@@ -210,25 +220,43 @@ extension Pager {
         DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
                 withAnimation {
-                    self.draggingStartTime = self.draggingStartTime ?? value.time
                     let side = self.isHorizontal ? self.size.width : self.size.height
-                    self.draggingOffset = value.translation.width * (self.pageDistance / side)
-                }
-            }).onEnded({ (value) in
-                let velocity = -Double(self.draggingOffset) / value.time.timeIntervalSince(self.draggingStartTime ?? Date())
-                var newPage = self.currentPage
-                if newPage == self.page, abs(velocity) > 1000 {
-                    newPage = newPage + Int(velocity / abs(velocity))
-                }
+                    let newOffset = value.translation.width * (self.pageDistance / side)
 
-                newPage = max(0, min(self.numberOfPages - 1, newPage))
+                    let timeIncrement = value.time.timeIntervalSince(self.draggingTimestamp ?? value.time)
+                    let offsetIncrement = (newOffset - self.draggingOffset) * (side / self.pageDistance)
+                    if timeIncrement != 0 {
+                        self.draggingVelocity = Double(offsetIncrement) / timeIncrement
+                    }
 
-                withAnimation(.easeOut) {
-                    self.draggingOffset = 0
-                    self.pageIndex = newPage
-                    self.draggingStartTime = nil
+                    self.draggingTimestamp = value.time
+                    self.draggingOffset = newOffset
                 }
             })
+            .onEnded({ (value) in
+                self.onDragGestureEnded()
+            })
+    }
+
+    private func onDragGestureEnded() {
+        let velocity = -self.draggingVelocity
+        var newPage = self.currentPage
+        if newPage == self.page, abs(velocity) > 500 {
+            if isInifinitePager {
+                newPage = (newPage + Int(velocity / abs(velocity)) + self.numberOfPages) % self.numberOfPages
+            } else {
+                newPage = newPage + Int(velocity / abs(velocity))
+            }
+        }
+
+        newPage = max(0, min(self.numberOfPages - 1, newPage))
+
+        withAnimation(.easeOut) {
+            self.draggingOffset = 0
+            self.pageIndex = newPage
+            self.draggingVelocity = 0
+            self.draggingTimestamp = nil
+        }
     }
     #endif
 
