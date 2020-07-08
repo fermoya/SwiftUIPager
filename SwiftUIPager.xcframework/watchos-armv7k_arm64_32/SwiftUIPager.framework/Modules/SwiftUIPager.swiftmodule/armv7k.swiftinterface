@@ -9,7 +9,7 @@ import SwiftUI
 public enum GesturePriority {
   case high
   case simultaneous
-  case `default`
+  case normal
   public static func == (a: SwiftUIPager.GesturePriority, b: SwiftUIPager.GesturePriority) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
@@ -41,8 +41,14 @@ extension Pager where Element : Swift.Identifiable, ID == Element.ID {
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
 }
+public enum ContentLoadingPolicy : Swift.Equatable {
+  case lazy(recyclingRatio: Swift.UInt)
+  case eager
+  public static func == (a: SwiftUIPager.ContentLoadingPolicy, b: SwiftUIPager.ContentLoadingPolicy) -> Swift.Bool
+}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
+  public func contentLoadingPolicy(_ value: SwiftUIPager.ContentLoadingPolicy) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func loopPages(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func disableDragging() -> SwiftUIPager.Pager<Element, ID, PageView>
   public func allowsDragging(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>

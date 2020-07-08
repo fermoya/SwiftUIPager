@@ -182,12 +182,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .onAppear(perform: {
                 self.onPageChanged?(self.page)
             })
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: { _ in
-                #if !os(tvOS)
+            .onDeactivate(perform: {
                 if self.isDragging {
+                    #if !os(tvOS)
                     self.onDragGestureEnded()
+                    #endif
                 }
-                #endif
             })
     }
 

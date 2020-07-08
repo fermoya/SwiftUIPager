@@ -10,7 +10,7 @@ import SwiftUI
 public enum GesturePriority {
   case high
   case simultaneous
-  case `default`
+  case normal
   public static func == (a: SwiftUIPager.GesturePriority, b: SwiftUIPager.GesturePriority) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
@@ -29,6 +29,7 @@ public enum SwipeInteractionArea {
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
+  public func contentLoadingPolicy(_ value: SwiftUIPager.ContentLoadingPolicy) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func loopPages(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func disableDragging() -> SwiftUIPager.Pager<Element, ID, PageView>
   public func allowsDragging(_ value: Swift.Bool = true) -> SwiftUIPager.Pager<Element, ID, PageView>
@@ -48,6 +49,11 @@ extension Pager {
   public func padding(_ length: CoreGraphics.CGFloat) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func padding(_ insets: SwiftUI.EdgeInsets) -> SwiftUIPager.Pager<Element, ID, PageView>
   public func padding(_ edges: SwiftUI.Edge.Set = .all, _ length: CoreGraphics.CGFloat? = nil) -> SwiftUIPager.Pager<Element, ID, PageView>
+}
+public enum ContentLoadingPolicy : Swift.Equatable {
+  case lazy(recyclingRatio: Swift.UInt)
+  case eager
+  public static func == (a: SwiftUIPager.ContentLoadingPolicy, b: SwiftUIPager.ContentLoadingPolicy) -> Swift.Bool
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct Pager<Element, ID, PageView> : SwiftUI.View where Element : Swift.Equatable, ID : Swift.Hashable, PageView : SwiftUI.View {
