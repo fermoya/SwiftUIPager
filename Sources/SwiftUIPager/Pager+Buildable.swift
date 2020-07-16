@@ -11,6 +11,14 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager: Buildable {
 
+    /// Allows to page more than one page at a time
+    ///
+    /// - Note: This will change `contentLoadingPolicy` to `.eager`. Modifying this value will result in an unpredictable UI.
+    public func multiplePagination() -> Self {
+        mutating(keyPath: \.allowsMultiplePagination, value: true)
+            .mutating(keyPath: \.contentLoadingPolicy, value: .eager)
+    }
+
     /// Sets the policy followed to load `Pager` content.
     ///
     /// - Parameter value: policy to load the content.

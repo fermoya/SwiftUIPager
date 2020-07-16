@@ -103,6 +103,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Whether the `Pager` loops endlessly
     var isInifinitePager: Bool = false
 
+    /// Whether the `Pager` should page multiple pages at once
+    var allowsMultiplePagination: Bool = false
+
     /// Minimum distance for `Pager` to start scrolling
     var minimumDistance: CGFloat = 15
 
@@ -241,17 +244,31 @@ extension Pager {
     private func onDragGestureEnded() {
         let velocity = -self.draggingVelocity
         var newPage = self.currentPage
-        if newPage == self.page, abs(velocity) > 500 {
+
+        if !allowsMultiplePagination {
+            if newPage == self.page, abs(velocity) > 500 {
+                if isInifinitePager {
+                    newPage = (newPage + Int(velocity / abs(velocity)) + self.numberOfPages) % self.numberOfPages
+                } else {
+                    newPage = newPage + Int(velocity / abs(velocity))
+                }
+            }
+        } else {
+            let side = self.isHorizontal ? self.size.width : self.size.height
+            let normalizedIncrement = Int(CGFloat(velocity) / (side / self.pageDistance) / 1000)
             if isInifinitePager {
-                newPage = (newPage + Int(velocity / abs(velocity)) + self.numberOfPages) % self.numberOfPages
+                newPage = (newPage + normalizedIncrement + self.numberOfPages) % self.numberOfPages
             } else {
-                newPage = newPage + Int(velocity / abs(velocity))
+                newPage = newPage + normalizedIncrement
             }
         }
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
 
-        withAnimation(.easeOut) {
+        let pageIncrement = self.direction == .forward ? newPage - self.pageIndex : self.pageIndex - newPage
+        let duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.3
+        let animation = self.allowsMultiplePagination ? Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration) : Animation.easeOut
+        withAnimation(animation) {
             self.draggingOffset = 0
             self.pageIndex = newPage
             self.draggingVelocity = 0

@@ -12,9 +12,9 @@ struct InfiniteExampleView: View {
 
     @State var page1: Int = 0
     @State var page2: Int = 0
-    @State var data1 = Array(0..<5)
+    @State var data1 = Array(0..<20)
     @State var isPresented: Bool = false
-    var data2 = Array(0..<5)
+    var data2 = Array(0..<20)
 
     var body: some View {
         NavigationView {
