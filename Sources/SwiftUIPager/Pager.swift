@@ -224,10 +224,11 @@ extension Pager {
             .onChanged({ value in
                 withAnimation {
                     let side = self.isHorizontal ? self.size.width : self.size.height
-                    let newOffset = value.translation.width * (self.pageDistance / side)
+                    let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
+                    let newOffset = value.translation.width * normalizedRatio
 
                     let timeIncrement = value.time.timeIntervalSince(self.draggingTimestamp ?? value.time)
-                    let offsetIncrement = (newOffset - self.draggingOffset) * (side / self.pageDistance)
+                    let offsetIncrement = (newOffset - self.draggingOffset) / normalizedRatio
                     if timeIncrement != 0 {
                         self.draggingVelocity = Double(offsetIncrement) / timeIncrement
                     }
@@ -255,7 +256,7 @@ extension Pager {
             }
         } else {
             let side = self.isHorizontal ? self.size.width : self.size.height
-            let normalizedIncrement = Int(CGFloat(velocity) / (side / self.pageDistance) / 1000)
+            let normalizedIncrement = Int(CGFloat(velocity) / (side / self.pageDistance) / 500)
             if isInifinitePager {
                 newPage = (newPage + normalizedIncrement + self.numberOfPages) % self.numberOfPages
             } else {
@@ -266,7 +267,8 @@ extension Pager {
         newPage = max(0, min(self.numberOfPages - 1, newPage))
 
         let pageIncrement = self.direction == .forward ? newPage - self.pageIndex : self.pageIndex - newPage
-        let duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.3
+        var duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.2
+        duration = min(0.8, duration)
         let animation = self.allowsMultiplePagination ? Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration) : Animation.easeOut
         withAnimation(animation) {
             self.draggingOffset = 0
