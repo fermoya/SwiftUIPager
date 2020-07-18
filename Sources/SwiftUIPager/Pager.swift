@@ -219,6 +219,16 @@ extension Pager {
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
+                
+                let verticalOffset = abs(value.translation.height)
+                let horizontalOffset = abs(value.translation.width)
+                
+                let shouldSkipGesture = (self.isHorizontal ? verticalOffset - horizontalOffset : horizontalOffset - verticalOffset) > -minimumDistance
+                // to fix partially visible views
+                if shouldSkipGesture {
+                    return
+                }
+                
                 withAnimation {
                     let side = self.isHorizontal ? self.size.width : self.size.height
                     let newOffset = value.translation.width * (self.pageDistance / side)
