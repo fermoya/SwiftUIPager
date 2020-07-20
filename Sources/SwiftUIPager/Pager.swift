@@ -60,10 +60,10 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     let content: (Element) -> PageView
 
     /// `KeyPath` to data id property
-    let id: KeyPath<Element, ID>
+    let id: KeyPath<Wrapper<Element, ID>, String>
 
     /// Array of items that will populate each page
-    var data: [Element]
+    var data: [Wrapper<Element, ID>]
 
     /*** ViewModified properties ***/
 
@@ -135,6 +135,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Timestamp of the last `swipeGesture` entry
     @State var draggingTimestamp: Date!
 
+    @State var pageIncrement = 1
+
     /// Page index
     @Binding var pageIndex: Int {
         didSet {
@@ -150,17 +152,18 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// - Parameter content: Factory method to build new pages
     public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
         self._pageIndex = page
-        self.data = data
-        self.id = id
+        self.data = data.map { Wrapper(batchId: 1, keyPath: id, element: $0) }
+        self.id = \Wrapper<Element, ID>.id
         self.content = content
     }
 
     public var body: some View {
         let stack = HStack(spacing: interactiveItemSpacing) {
             ForEach(dataDisplayed, id: id) { item in
-                self.content(item)
-                    .frame(size: self.pageSize)
+                self.content(item.element)
                     .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
+                    .animation(nil) // disable animation for opacity
+                    .frame(size: self.pageSize)
                     .scaleEffect(self.scale(for: item))
                     .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
                                       axis: (0, 0, 1))
@@ -204,10 +207,7 @@ extension Pager where ID == Element.ID, Element : Identifiable {
     /// - Parameter data: Array of items to populate the content
     /// - Parameter content: Factory method to build new pages
     public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
-        self._pageIndex = page
-        self.data = data
-        self.id = \Element.id
-        self.content = content
+        self.init(page: page, data: data, id: \Element.id, content: content)
     }
 
 }
@@ -243,39 +243,55 @@ extension Pager {
     }
 
     private func onDragGestureEnded() {
-        let velocity = -self.draggingVelocity
-        var newPage = self.currentPage
+        let draggingResult = self.draggingResult
+        let newPage = draggingResult.page
+        let pageIncrement = draggingResult.increment
 
-        if !allowsMultiplePagination {
-            if newPage == self.page, abs(velocity) > 500 {
+        var duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.2
+        duration = min(0.8, duration)
+        let animation = self.allowsMultiplePagination && pageIncrement > 1 ? Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration) : Animation.easeOut
+        withAnimation(animation) {
+            self.draggingOffset = 0
+            self.pageIncrement = pageIncrement
+            self.pageIndex = newPage
+            self.draggingVelocity = 0
+            self.draggingTimestamp = nil
+        }
+    }
+
+    private var draggingResult: (page: Int, increment: Int) {
+        let currentPage = self.currentPage
+        let velocity = -self.draggingVelocity
+
+        guard allowsMultiplePagination else {
+            var newPage = currentPage
+            if currentPage == self.page, abs(velocity) > 500 {
                 if isInifinitePager {
                     newPage = (newPage + Int(velocity / abs(velocity)) + self.numberOfPages) % self.numberOfPages
                 } else {
                     newPage = newPage + Int(velocity / abs(velocity))
                 }
             }
-        } else {
-            let side = self.isHorizontal ? self.size.width : self.size.height
-            let normalizedIncrement = Int(CGFloat(velocity) / (side / self.pageDistance) / 500)
-            if isInifinitePager {
-                newPage = (newPage + normalizedIncrement + self.numberOfPages) % self.numberOfPages
-            } else {
-                newPage = newPage + normalizedIncrement
-            }
+            return (newPage, 1)
+        }
+
+        let side = self.isHorizontal ? self.size.width : self.size.height
+        let maxIncrement = Int((Double(numberOfPages) * 0.25).rounded(.up))
+        let velocityPageIncrement = Int(CGFloat(abs(velocity)) / (side / self.pageDistance) / 500)
+
+        var offsetPageIncrement = self.direction == .forward ? currentPage - self.page : self.page - currentPage
+        if self.isInifinitePager {
+            offsetPageIncrement = (offsetPageIncrement + self.numberOfPages) % self.numberOfPages
+        }
+
+        let pageIncrement = min(velocityPageIncrement + offsetPageIncrement, maxIncrement)
+        var newPage = self.direction == .forward ? self.page + pageIncrement : self.page - pageIncrement
+        if isInifinitePager {
+            newPage = (newPage + self.numberOfPages) % self.numberOfPages
         }
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
-
-        let pageIncrement = self.direction == .forward ? newPage - self.pageIndex : self.pageIndex - newPage
-        var duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.2
-        duration = min(0.8, duration)
-        let animation = self.allowsMultiplePagination ? Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration) : Animation.easeOut
-        withAnimation(animation) {
-            self.draggingOffset = 0
-            self.pageIndex = newPage
-            self.draggingVelocity = 0
-            self.draggingTimestamp = nil
-        }
+        return (newPage, pageIncrement)
     }
     #endif
 

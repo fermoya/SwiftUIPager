@@ -8,6 +8,16 @@
 
 import SwiftUI
 
+struct Wrapper<Element, ID>: Equatable, Identifiable where Element: Equatable, ID: Hashable {
+    var batchId: UInt
+    var keyPath: KeyPath<Element, ID>
+    var element: Element
+
+    var id: String {
+        "\(batchId)-\(element[keyPath: keyPath])"
+    }
+}
+
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
 
@@ -136,8 +146,8 @@ extension Pager {
     }
 
     /// Data that is being displayed at the moment
-    var dataDisplayed: [Element] {
-        var items: [Element] = []
+    var dataDisplayed: [Wrapper<Element, ID>] {
+        var items: [Wrapper<Element, ID>] = []
 
         var index = lowerPageDisplayed
         while items.count < numberOfPagesDisplayed {
@@ -215,7 +225,7 @@ extension Pager {
     }
 
     /// Angle for the 3D rotation effect
-    func angle(for item: Element) -> Angle {
+    func angle(for item: Wrapper<Element, ID>) -> Angle {
         guard shouldRotate else { return .zero }
         guard let index = data.firstIndex(of: item) else { return .zero }
 
@@ -231,13 +241,13 @@ extension Pager {
     }
 
     /// Axis for the rotations effect
-    func axis(for item: Element) -> (CGFloat, CGFloat, CGFloat) {
+    func axis(for item: Wrapper<Element, ID>) -> (CGFloat, CGFloat, CGFloat) {
         guard shouldRotate else { return (0, 0, 0) }
         return rotationAxis
     }
 
     /// Scale that applies to a particular item
-    func scale(for item: Element) -> CGFloat {
+    func scale(for item: Wrapper<Element, ID>) -> CGFloat {
         guard isDragging else { return isFocused(item) ? 1 : interactiveScale }
 
         let totalIncrement = abs(totalOffset / pageDistance)
@@ -259,15 +269,17 @@ extension Pager {
     }
 
     /// Returns true if the item is focused on the screen.
-    func isFocused(_ item: Element) -> Bool {
+    func isFocused(_ item: Wrapper<Element, ID>) -> Bool {
         data.firstIndex(of: item) == currentPage
     }
 
     /// Returns true if the item is the first or last element in memory. Just used when `isInfinitePager` is set to `true` to hide elements being resorted.
-    func isEdgePage(_ item: Element) -> Bool {
-        guard numberOfPages >= 3 else { return false }
+    func isEdgePage(_ item: Wrapper<Element, ID>) -> Bool {
+        guard data.count >= 3 else { return false }
+        guard !isDragging else { return false }
         guard let index = dataDisplayed.firstIndex(of: item) else { return false }
-        return index == 0 || index == dataDisplayed.count - 1
+        let limit = max(pageIncrement, 1)
+        return index < limit || index > dataDisplayed.count - 1 - limit
     }
 
 }
