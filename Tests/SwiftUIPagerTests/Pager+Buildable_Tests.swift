@@ -28,6 +28,14 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.minimumDistance, 15)
         XCTAssertEqual(pager.gesturePriority, .default)
         XCTAssertEqual(pager.contentLoadingPolicy, .default)
+        XCTAssertEqual(pager.allowsMultiplePagination, false)
+    }
+
+    func test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination() {
+        var pager = givenPager
+        pager = pager.multiplePagination()
+        XCTAssertTrue(pager.allowsMultiplePagination)
+        XCTAssertEqual(pager.contentLoadingPolicy, .eager)
     }
 
     func test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1() {
@@ -72,6 +80,13 @@ final class Pager_Buildable_Tests: XCTestCase {
         var pager = givenPager
         pager = pager.loopPages()
         XCTAssertTrue(pager.isInifinitePager)
+    }
+
+    func test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger() {
+        var pager = givenPager
+        pager = pager.loopPages(repeating: 3)
+        XCTAssertTrue(pager.isInifinitePager)
+        XCTAssertGreaterThan(pager.data.count, 20)
     }
 
     func test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse() {
@@ -334,6 +349,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenPagingPriorityHigh_ThenHigh", test_GivenPager_WhenPagingPriorityHigh_ThenHigh),
         ("test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1", test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1),
         ("test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10", test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10),
-        ("test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax", test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax)
+        ("test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax", test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax),
+        ("test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger", test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger),
+        ("test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination", test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination)
     ]
 }
