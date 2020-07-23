@@ -225,11 +225,10 @@ extension Pager {
             .onChanged({ value in
                 withAnimation {
                     let lastLocation = self.lastDraggingValue?.location ?? value.location
-                    let swipeAngle = (value.location - lastLocation).angle.degrees
+                    let swipeAngle = (value.location - lastLocation).angle
 
-                    // Keeping swipe only if along the X-Axis ± 30 degrees
-                    let isInBounds = swipeAngle > 330 || swipeAngle < 30 || (swipeAngle > 150 && swipeAngle < 210)
-                    guard isInBounds else {
+                    // Ignore swipes that aren't on the X-Axis
+                    guard swipeAngle.isAlongXAxis else {
                         self.lastDraggingValue = value
                         return
                     }
@@ -238,13 +237,19 @@ extension Pager {
                     let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
                     let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
 
-                    let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
-                    if timeIncrement != 0 {
-                        self.draggingVelocity = Double(offsetIncrement) / timeIncrement
+                    // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
+                    let startAngle = (value.location - value.startLocation).angle
+                    guard self.draggingOffset != 0 || startAngle.isAlongXAxis else {
+                        return
                     }
 
                     self.draggingOffset += offsetIncrement
                     self.lastDraggingValue = value
+
+                    let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
+                    if timeIncrement != 0 {
+                        self.draggingVelocity = Double(offsetIncrement) / timeIncrement
+                    }
                 }
             })
             .onEnded({ (value) in

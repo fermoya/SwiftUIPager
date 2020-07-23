@@ -23,3 +23,9 @@ extension CGPoint {
     }
 
 }
+
+extension Angle {
+    var isAlongXAxis: Bool {
+        degrees > 335 || degrees < 25 || (degrees > 155 && degrees < 205)
+    }
+}
