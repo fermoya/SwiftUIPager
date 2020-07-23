@@ -99,7 +99,7 @@ Pager(...)
     .multiplePagination()
 ```
 
-<img src="/resources/usage/multiple-pagination.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
+<img src="/resources/usage/allow-multiple-pagination.gif" alt="Multiple pagination" height="640"/>
 
 Be aware that this modifier will change the loading policy. See [Content Loading Policy](#content-loading-policy) for more information.
 
