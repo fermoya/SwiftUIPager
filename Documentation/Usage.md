@@ -35,6 +35,7 @@ By default, `Pager` is configured as:
 - Current page is centered in the scroll
 - Only the page is hittable and reacts to swipes
 - Finite, that is, it doesn't loop the pages
+- Single pagination, one page per swipe.
 
 > **Note** `Pager` has no intrinsic size. This means that its size depends on the available space or the extrinsic size specified with `frame` modifier.
 >
@@ -87,6 +88,20 @@ Pager(...)
 ```
 
 <img src="/resources/usage/item-alignment-start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
+
+### Multiple pagination
+
+It's possible for `Pager` to swipe more than one page at a time. This is especially useful if your page size is small. Use `multiplePagination`.
+
+```
+Pager(...)
+    .preferredItemSize(CGSize(width: 300, height: 300)
+    .multiplePagination()
+```
+
+<img src="/resources/usage/allow-multiple-pagination.gif" alt="Multiple pagination" height="640"/>
+
+Be aware that this modifier will change the loading policy. See [Content Loading Policy](#content-loading-policy) for more information.
 
 ## Paging Priority
 
@@ -156,6 +171,8 @@ Transform your `Pager` into an endless sroll by using `loopPages`:
 
 <img src="/resources/usage/endless-pager.gif" alt="Endless pager" height="640"/>
 
+**Note**: You'll need a minimum number of elements to use this modifier based on the page size. If you need more items, use `loopPages(repeating:)` to let `Pager` know elements should be repeated in batches.
+
 ## Events
 
 Use `onPageChanged` to react to any change on the page index:
@@ -188,6 +205,10 @@ var body: some View {
         })
 }
 ```
+
+## Content Loading Policy
+
+`Pager` recycles views by default and won't have loaded all pages in memory at once. In some scenarios, this might be counterproductive, for example, if you're trying to manually scroll from the first page to the last. For these scenarios, use `.contentLoadingPolicy` and choose among the options available.
 
 ## Examples
 

@@ -11,6 +11,14 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager: Buildable {
 
+    /// Allows to page more than one page at a time.
+    ///
+    /// - Note: This will change `contentLoadingPolicy` to `.eager`. Modifying this value will result in an unpredictable UI.
+    public func multiplePagination() -> Self {
+        mutating(keyPath: \.allowsMultiplePagination, value: true)
+            .mutating(keyPath: \.contentLoadingPolicy, value: .eager)
+    }
+
     /// Sets the policy followed to load `Pager` content.
     ///
     /// - Parameter value: policy to load the content.
@@ -24,12 +32,21 @@ extension Pager: Buildable {
     /// Sets `Pager` to loop the items in a never-ending scroll.
     ///
     /// - Parameter value: `true` if `Pager` should loop the pages. `false`, otherwise.
+    /// - Parameter count: number of times the input data should be repeated in a looping `Pager`. Default is _1_.
     ///
-    /// To have a nice experience, ensure that  the `data` passed in the intializer has enough elements to fill enough
-    /// pages on both the screen and the sides.
-    /// - Note: You can try experimenting with the `itemAspectRatio` or the `itemSpacing`.
-    public func loopPages(_ value: Bool = true) -> Self {
-        mutating(keyPath: \.isInifinitePager, value: value)
+    /// To have a nice experience, ensure that  the `data` passed in the intializer has enough elements to fill
+    /// pages on both the screen and the sides. If your sequence is not large enough, use `count` to
+    /// repeat it and pass more elements.
+    public func loopPages(_ value: Bool = true, repeating count: UInt = 1) -> Self {
+        var newData = data
+        if let id = newData.first?.keyPath {
+            let count = max(1, count)
+            newData = (0..<count).map { it in
+                data.map { Wrapper(batchId: it, keyPath: id, element: $0.element) }
+            }.flatMap { $0 }
+        }
+        return mutating(keyPath: \.isInifinitePager, value: value)
+            .mutating(keyPath: \.data, value: newData)
     }
 
     /// Disables dragging on `Pager`
