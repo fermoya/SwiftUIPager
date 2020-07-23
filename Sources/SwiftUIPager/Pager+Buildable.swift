@@ -42,7 +42,7 @@ extension Pager: Buildable {
         if let id = newData.first?.keyPath {
             let count = max(1, count)
             newData = (0..<count).map { it in
-                data.map { Wrapper(batchId: it, keyPath: id, element: $0.element) }
+                data.map { PageWrapper(batchId: it, keyPath: id, element: $0.element) }
             }.flatMap { $0 }
         }
         return mutating(keyPath: \.isInifinitePager, value: value)
