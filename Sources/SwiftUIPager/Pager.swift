@@ -130,7 +130,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     @State var draggingOffset: CGFloat = 0
 
     /// `swipeGesture` last translation on the X-Axis
+    #if !os(tvOS)
     @State var lastDraggingValue: DragGesture.Value?
+    #endif
 
     /// `swipeGesture` velocity on the X-Axis
     @State var draggingVelocity: Double = 0
@@ -238,8 +240,8 @@ extension Pager {
                     let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
 
                     // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
-                    let startAngle = (value.location - value.startLocation).angle
-                    guard self.draggingOffset != 0 || startAngle.isAlongXAxis else {
+                    let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
+                    guard self.draggingOffset != 0 || isTranslationInXAxis else {
                         return
                     }
 
