@@ -2,10 +2,10 @@ import XCTest
 import SwiftUI
 @testable import SwiftUIPager
 
-final class Pager_Helper_Tests: XCTestCase {
-    
-    var givenPager: Pager<Int, Int, Text> {
-        Pager(page: .constant(0), data: Array(1..<20), id: \.self) {
+final class PagerContent_Helper_Tests: XCTestCase {
+
+    var givenPager: Pager<Int, Int, Text>.PagerContent {
+        Pager.PagerContent(size: CGSize(width: 300, height: 300), page: .constant(0), data: Array(1..<20), id: \.self) {
             Text("\($0)")
         }
     }

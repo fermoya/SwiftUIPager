@@ -1,15 +1,15 @@
 //
-//  Pager+Buildable.swift
-//  SwiftUIPagerExample
+//  PagerContent+Buildable.swift
+//  SwiftUIPager
 //
-//  Created by Fernando Moya de Rivas on 23/07/2020.
+//  Created by Fernando Moya de Rivas on 19/01/2020.
 //  Copyright © 2020 Fernando Moya de Rivas. All rights reserved.
 //
 
 import SwiftUI
 
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Pager: Buildable, PagerProxy {
+extension Pager.PagerContent: Buildable, PagerProxy {
 
     /// Allows to page more than one page at a time.
     ///
@@ -38,15 +38,18 @@ extension Pager: Buildable, PagerProxy {
     /// pages on both the screen and the sides. If your sequence is not large enough, use `count` to
     /// repeat it and pass more elements.
     public func loopPages(_ value: Bool = true, repeating count: UInt = 1) -> Self {
-        mutating(keyPath: \.isInifinitePager, value: value)
-            .mutating(keyPath: \.loopingCount, value: count)
+        var newData = data
+        if let id = newData.first?.keyPath {
+            let count = max(1, count)
+            newData = (0..<count).map { it in
+                data.map { PageWrapper(batchId: it, keyPath: id, element: $0.element) }
+            }.flatMap { $0 }
+        }
+        return mutating(keyPath: \.isInifinitePager, value: value)
+            .mutating(keyPath: \.data, value: newData)
     }
 
-    /// Disables dragging on `Pager`
     #if !os(tvOS)
-    public func disableDragging() -> Self {
-        mutating(keyPath: \.allowsDragging, value: false)
-    }
 
     /// Sets whether the dragging is enabled or not
     ///
@@ -72,6 +75,7 @@ extension Pager: Buildable, PagerProxy {
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
     }
+
     #endif
 
     /// Changes the a the  alignment of the pages relative to their container
@@ -85,16 +89,18 @@ extension Pager: Buildable, PagerProxy {
     ///
     /// - Parameter swipeDirection: direction of the swipe. Defaults to `.leftToRight`
     public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
-        mutating(keyPath: \.isHorizontal, value: true)
-            .mutating(keyPath: \.horizontalSwipeDirection, value: swipeDirection)
+        let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)
+        return mutating(keyPath: \.isHorizontal, value: true)
+            .mutating(keyPath: \.scrollDirectionAngle, value: scrollDirectionAngle)
     }
 
     /// Returns a vertical pager
     ///
     /// - Parameter swipeDirection: direction of the swipe. Defaults to `.topToBottom`
     public func vertical(_ swipeDirection: VerticalSwipeDirection = .topToBottom) -> Self {
-        mutating(keyPath: \.isHorizontal, value: false)
-            .mutating(keyPath: \.verticalSwipeDirection, value: swipeDirection)
+        let scrollDirectionAngle: Angle = swipeDirection == .topToBottom ? .zero : Angle(degrees: 180)
+        return mutating(keyPath: \.isHorizontal, value: false)
+            .mutating(keyPath: \.scrollDirectionAngle, value: scrollDirectionAngle)
     }
 
     /// Call this method to provide a shrink ratio that will apply to the items that are not focused.
@@ -106,7 +112,7 @@ extension Pager: Buildable, PagerProxy {
         guard scale > 0, scale < 1 else { return self }
         return mutating(keyPath: \.interactiveScale, value: scale)
     }
-
+    
     /// Call this method to add a 3D rotation effect.
     ///
     /// - Parameter value: `true` if the pages should have a 3D rotation effect
@@ -164,11 +170,6 @@ extension Pager: Buildable, PagerProxy {
             .mutating(keyPath: \.preferredItemSize, value: value)
     }
 
-    /// Sets the `itemAspectRatio` to take up all the space available
-    public func expandPageToEdges() -> Self {
-        itemAspectRatio(nil)
-    }
-
     /// Adds a callback to react to every change on the page index.
     ///
     /// - Parameter callback: block to be called when `page` changes
@@ -206,4 +207,3 @@ extension Pager: Buildable, PagerProxy {
     }
 
 }
-

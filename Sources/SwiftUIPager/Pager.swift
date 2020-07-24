@@ -60,15 +60,18 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     let content: (Element) -> PageView
 
     /// `KeyPath` to data id property
-    let id: KeyPath<PageWrapper<Element, ID>, String>
+    let id: KeyPath<Element, ID>
 
     /// Array of items that will populate each page
-    var data: [PageWrapper<Element, ID>]
+    var data: [Element]
 
     /*** ViewModified properties ***/
 
-    /// Angle to dermine the direction of the scroll
-    var scrollDirectionAngle: Angle = .zero
+    /// Swipe direction for horizontal `Pager`
+    var horizontalSwipeDirection: HorizontalSwipeDirection = .leftToRight
+
+    /// Swipe direction for vertical `Pager`
+    var verticalSwipeDirection: VerticalSwipeDirection = .topToBottom
 
     /// Hittable area
     var swipeInteractionArea: SwipeInteractionArea = .page
@@ -102,6 +105,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Whether the `Pager` loops endlessly
     var isInifinitePager: Bool = false
+
+    /// Number of times the input data should be repeated in a looping `Pager`
+    var loopingCount: UInt = 1
 
     /// Whether the `Pager` should page multiple pages at once
     var allowsMultiplePagination: Bool = false
@@ -141,7 +147,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     @State var pageIncrement = 1
 
     /// Page index
-    @Binding var pageIndex: Int {
+    @Binding var page: Int {
         didSet {
             onPageChanged?(page)
         }
@@ -154,50 +160,52 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
     public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
-        self._pageIndex = page
-        self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
-        self.id = \PageWrapper<Element, ID>.id
+        self._page = page
+        self.data = data
+        self.id = id
         self.content = content
     }
 
     public var body: some View {
-        let stack = HStack(spacing: interactiveItemSpacing) {
-            ForEach(dataDisplayed, id: id) { item in
-                self.content(item.element)
-                    .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
-                    .animation(nil) // disable animation for opacity
-                    .frame(size: self.pageSize)
-                    .scaleEffect(self.scale(for: item))
-                    .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
-                                      axis: (0, 0, 1))
-                    .rotation3DEffect(self.angle(for: item),
-                                      axis: self.axis(for: item))
-            }
-            .offset(x: self.xOffset, y : self.yOffset)
+        GeometryReader { proxy in
+            self.content(for: proxy.size)
         }
-        .frame(size: size)
+        .clipped()
+    }
+
+    func content(for size: CGSize) -> PagerContent {
+        var pagerContent =
+            PagerContent(size: size,
+                         page: $page,
+                         data: data,
+                         id: id,
+                         content: content)
+                .contentLoadingPolicy(contentLoadingPolicy)
+                .loopPages(isInifinitePager, repeating: loopingCount)
+                .alignment(alignment)
+                .interactive(interactiveScale)
+                .pageOffset(pageOffset)
+                .itemSpacing(itemSpacing)
+                .itemAspectRatio(itemAspectRatio, alignment: itemAlignment)
+                .onPageChanged(onPageChanged)
+                .padding(sideInsets)
 
         #if !os(tvOS)
-        var wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
-        wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil, priority: gesturePriority))
-        #else
-        let wrappedView = stack
-        #endif
+          pagerContent = pagerContent
+            .swipeInteractionArea(swipeInteractionArea)
+            .allowsDragging(allowsDragging)
+            .pagingPriority(gesturePriority)
+          #endif
 
-        return wrappedView
-            .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
-                              axis: (0, 0, 1))
-            .sizeTrackable($size)
-            .onAppear(perform: {
-                self.onPageChanged?(self.page)
-            })
-            .onDeactivate(perform: {
-                if self.isDragging {
-                    #if !os(tvOS)
-                    self.onDragGestureEnded()
-                    #endif
-                }
-            })
+        pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent
+        pagerContent = isHorizontal ? pagerContent.horizontal(horizontalSwipeDirection) : pagerContent.vertical(verticalSwipeDirection)
+        pagerContent = shouldRotate ? pagerContent.rotation3D() : pagerContent
+
+        if let preferredItemSize = preferredItemSize {
+            pagerContent = pagerContent.preferredItemSize(preferredItemSize)
+        }
+
+        return pagerContent
     }
 
 }
@@ -212,104 +220,5 @@ extension Pager where ID == Element.ID, Element : Identifiable {
     public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
         self.init(page: page, data: data, id: \Element.id, content: content)
     }
-
-}
-
-// MARK: Gestures
-
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Pager {
-
-    /// `DragGesture` customized to work with `Pager`
-    #if !os(tvOS)
-    var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: minimumDistance)
-            .onChanged({ value in
-                withAnimation {
-                    let lastLocation = self.lastDraggingValue?.location ?? value.location
-                    let swipeAngle = (value.location - lastLocation).angle
-
-                    // Ignore swipes that aren't on the X-Axis
-                    guard swipeAngle.isAlongXAxis else {
-                        self.lastDraggingValue = value
-                        return
-                    }
-
-                    let side = self.isHorizontal ? self.size.width : self.size.height
-                    let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
-                    let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
-
-                    // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
-                    let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
-                    guard self.draggingOffset != 0 || isTranslationInXAxis else {
-                        return
-                    }
-
-                    self.draggingOffset += offsetIncrement
-                    self.lastDraggingValue = value
-
-                    let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
-                    if timeIncrement != 0 {
-                        self.draggingVelocity = Double(offsetIncrement) / timeIncrement
-                    }
-                }
-            })
-            .onEnded({ (value) in
-                self.onDragGestureEnded()
-            })
-    }
-
-    private func onDragGestureEnded() {
-        let draggingResult = self.draggingResult
-        let newPage = draggingResult.page
-        let pageIncrement = draggingResult.increment
-
-        var duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.2
-        duration = min(0.8, duration)
-        let animation = self.allowsMultiplePagination && pageIncrement > 1 ? Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration) : Animation.easeOut
-        withAnimation(animation) {
-            self.draggingOffset = 0
-            self.pageIncrement = pageIncrement
-            self.pageIndex = newPage
-            self.draggingVelocity = 0
-            self.lastDraggingValue = nil
-        }
-    }
-
-    private var draggingResult: (page: Int, increment: Int) {
-        let currentPage = self.currentPage
-        let velocity = -self.draggingVelocity
-
-        guard allowsMultiplePagination else {
-            var newPage = currentPage
-            if currentPage == self.page, abs(velocity) > 500 {
-                if isInifinitePager {
-                    newPage = (newPage + Int(velocity / abs(velocity)) + self.numberOfPages) % self.numberOfPages
-                } else {
-                    newPage = newPage + Int(velocity / abs(velocity))
-                }
-            }
-            return (newPage, 1)
-        }
-
-        let side = self.isHorizontal ? self.size.width : self.size.height
-        let maxIncrement = Int((Double(numberOfPages) * 0.25).rounded(.up))
-        let velocityPageIncrement = Int(CGFloat(abs(velocity)) / (side / self.pageDistance) / 500)
-
-        var offsetPageIncrement = self.direction == .forward ? currentPage - self.page : self.page - currentPage
-        if self.isInifinitePager {
-            offsetPageIncrement = (offsetPageIncrement + self.numberOfPages) % self.numberOfPages
-        }
-
-        let pageIncrement = min(velocityPageIncrement + offsetPageIncrement, maxIncrement)
-        var newPage = self.direction == .forward ? self.page + pageIncrement : self.page - pageIncrement
-        if isInifinitePager {
-            newPage = (newPage + self.numberOfPages) % self.numberOfPages
-        }
-
-        newPage = max(0, min(self.numberOfPages - 1, newPage))
-        return (newPage, pageIncrement)
-    }
-    #endif
 
 }
