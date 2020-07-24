@@ -60,10 +60,10 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     let content: (Element) -> PageView
 
     /// `KeyPath` to data id property
-    let id: KeyPath<Wrapper<Element, ID>, String>
+    let id: KeyPath<PageWrapper<Element, ID>, String>
 
     /// Array of items that will populate each page
-    var data: [Wrapper<Element, ID>]
+    var data: [PageWrapper<Element, ID>]
 
     /*** ViewModified properties ***/
 
@@ -129,12 +129,15 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// `swipeGesture` translation on the X-Axis
     @State var draggingOffset: CGFloat = 0
 
+    /// `swipeGesture` last translation on the X-Axis
+    #if !os(tvOS)
+    @State var lastDraggingValue: DragGesture.Value?
+    #endif
+
     /// `swipeGesture` velocity on the X-Axis
     @State var draggingVelocity: Double = 0
 
-    /// Timestamp of the last `swipeGesture` entry
-    @State var draggingTimestamp: Date!
-
+    /// Increment resulting from the last swipe
     @State var pageIncrement = 1
 
     /// Page index
@@ -152,8 +155,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// - Parameter content: Factory method to build new pages
     public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
         self._pageIndex = page
-        self.data = data.map { Wrapper(batchId: 1, keyPath: id, element: $0) }
-        self.id = \Wrapper<Element, ID>.id
+        self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
+        self.id = \PageWrapper<Element, ID>.id
         self.content = content
     }
 
@@ -223,18 +226,32 @@ extension Pager {
         DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
                 withAnimation {
+                    let lastLocation = self.lastDraggingValue?.location ?? value.location
+                    let swipeAngle = (value.location - lastLocation).angle
+
+                    // Ignore swipes that aren't on the X-Axis
+                    guard swipeAngle.isAlongXAxis else {
+                        self.lastDraggingValue = value
+                        return
+                    }
+
                     let side = self.isHorizontal ? self.size.width : self.size.height
                     let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
-                    let newOffset = value.translation.width * normalizedRatio
+                    let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
 
-                    let timeIncrement = value.time.timeIntervalSince(self.draggingTimestamp ?? value.time)
-                    let offsetIncrement = (newOffset - self.draggingOffset) / normalizedRatio
+                    // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
+                    let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
+                    guard self.draggingOffset != 0 || isTranslationInXAxis else {
+                        return
+                    }
+
+                    self.draggingOffset += offsetIncrement
+                    self.lastDraggingValue = value
+
+                    let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
                     if timeIncrement != 0 {
                         self.draggingVelocity = Double(offsetIncrement) / timeIncrement
                     }
-
-                    self.draggingTimestamp = value.time
-                    self.draggingOffset = newOffset
                 }
             })
             .onEnded({ (value) in
@@ -255,7 +272,7 @@ extension Pager {
             self.pageIncrement = pageIncrement
             self.pageIndex = newPage
             self.draggingVelocity = 0
-            self.draggingTimestamp = nil
+            self.lastDraggingValue = nil
         }
     }
 
