@@ -16,7 +16,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pager.isHorizontal)
         XCTAssertTrue(pager.allowsDragging)
         XCTAssertFalse(pager.isInifinitePager)
-        XCTAssertEqual(pager.scrollDirectionAngle, .zero)
+        XCTAssertEqual(pager.horizontalSwipeDirection, HorizontalSwipeDirection.leftToRight)
+        XCTAssertEqual(pager.verticalSwipeDirection, VerticalSwipeDirection.topToBottom)
         XCTAssertEqual(pager.interactiveScale, 1)
         XCTAssertEqual(pager.alignment, .center)
         XCTAssertFalse(pager.shouldRotate)
@@ -34,265 +35,314 @@ final class Pager_Buildable_Tests: XCTestCase {
     func test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination() {
         var pager = givenPager
         pager = pager.multiplePagination()
-        XCTAssertTrue(pager.allowsMultiplePagination)
-        XCTAssertEqual(pager.contentLoadingPolicy, .eager)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.allowsMultiplePagination)
+        XCTAssertEqual(pagerContent.contentLoadingPolicy, .eager)
     }
 
     func test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1() {
         var pager = givenPager
         pager = pager.contentLoadingPolicy(.lazy(recyclingRatio: 0))
-        XCTAssertEqual(pager.recyclingRatio, 1)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.recyclingRatio, 1)
     }
 
     func test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10() {
         var pager = givenPager
         pager = pager.contentLoadingPolicy(.lazy(recyclingRatio: 10))
-        XCTAssertEqual(pager.recyclingRatio, 10)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.recyclingRatio, 10)
     }
 
     func test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax() {
         var pager = givenPager
         pager = pager.contentLoadingPolicy(.eager)
-        XCTAssertEqual(pager.recyclingRatio, pager.numberOfPages)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.recyclingRatio, pagerContent.numberOfPages)
     }
 
     func test_GivenPager_WhenPagingPrioritySimultaneous_ThenSimultaneous() {
         var pager = givenPager
         pager = pager.pagingPriority(.simultaneous)
-        XCTAssertEqual(pager.gesturePriority, .simultaneous)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.gesturePriority, .simultaneous)
     }
 
     func test_GivenPager_WhenPagingPriorityHigh_ThenHigh() {
         var pager = givenPager
         pager = pager.pagingPriority(.high)
-        XCTAssertEqual(pager.gesturePriority, .high)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.gesturePriority, .high)
     }
 
     func test_GivenPager_WhenPreferredItemSize_ThenNotNil() {
         var pager = givenPager.itemAspectRatio(0.7)
         pager = pager.preferredItemSize(CGSize(width: 50, height: 50))
-        XCTAssertNil(pager.itemAspectRatio)
-        XCTAssertNotNil(pager.preferredItemSize)
-        XCTAssertEqual(pager.sideInsets, 0)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNil(pagerContent.itemAspectRatio)
+        XCTAssertNotNil(pagerContent.preferredItemSize)
+        XCTAssertEqual(pagerContent.sideInsets, 0)
     }
 
     func test_GivenPager_WhenLoopPages_ThenIsInfinitePagerTrue() {
         var pager = givenPager
         pager = pager.loopPages()
-        XCTAssertTrue(pager.isInifinitePager)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.isInifinitePager)
     }
 
     func test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger() {
         var pager = givenPager
         pager = pager.loopPages(repeating: 3)
-        XCTAssertTrue(pager.isInifinitePager)
-        XCTAssertGreaterThan(pager.data.count, 20)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.isInifinitePager)
+        XCTAssertGreaterThan(pagerContent.data.count, 20)
     }
 
     func test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse() {
         var pager = givenPager
         pager = pager.disableDragging()
-        XCTAssertFalse(pager.allowsDragging)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertFalse(pagerContent.allowsDragging)
     }
 
     func test_GivenPager_WhenAllowsDragging_ThenAllowsDraggingTrue() {
         var pager = givenPager
         pager = pager.allowsDragging()
-        XCTAssertTrue(pager.allowsDragging)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.allowsDragging)
     }
 
     func test_GivenPager_WhenAllowsDraggingFalse_ThenAllowsDraggingFalse() {
         var pager = givenPager
         pager = pager.allowsDragging(false)
-        XCTAssertFalse(pager.allowsDragging)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertFalse(pagerContent.allowsDragging)
     }
 
     func test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable() {
         var pager = givenPager
         pager = pager.swipeInteractionArea(.allAvailable)
-        XCTAssertEqual(pager.swipeInteractionArea, .allAvailable)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.swipeInteractionArea, .allAvailable)
     }
 
     func test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage() {
         var pager = givenPager.swipeInteractionArea(.allAvailable)
         pager = pager.swipeInteractionArea(.page)
-        XCTAssertEqual(pager.swipeInteractionArea, .page)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.swipeInteractionArea, .page)
     }
 
     func test_GivenPager_WhenVertical_ThenIsVerticalTrue() {
         var pager = givenPager
         pager = pager.vertical()
-        XCTAssertTrue(pager.isVertical)
-        XCTAssertEqual(pager.scrollDirectionAngle, .zero)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.isVertical)
+        XCTAssertEqual(pagerContent.scrollDirectionAngle, .zero)
     }
     
     func test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue() {
         var pager = givenPager.vertical()
         pager = pager.horizontal()
-        XCTAssertTrue(pager.isHorizontal)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.isHorizontal)
     }
     
     func test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet() {
         let pager = givenPager
         let pagerInteractive = pager.interactive(-0.7)
-        XCTAssertEqual(pager.interactiveScale, pagerInteractive.interactiveScale)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        let pagerContentInteractive = pagerInteractive.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.interactiveScale, pagerContentInteractive.interactiveScale)
     }
     
     func test_GivenPager_WhenInteractiveGreaterThanOne_ThenNotSet() {
         let pager = givenPager
         let pagerInteractive = pager.interactive(1.5)
-        XCTAssertEqual(pager.interactiveScale, pagerInteractive.interactiveScale)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        let pagerContentInteractive = pagerInteractive.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.interactiveScale, pagerContentInteractive.interactiveScale)
     }
     
     func test_GivenPager_WhenInteractive_ThenInteractiveScaleIs() {
         var pager = givenPager
         pager = pager.interactive(0.7)
-        XCTAssertEqual(pager.interactiveScale, 0.7)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.interactiveScale, 0.7)
     }
     
     func test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged() {
         let pagerWithRotation = givenPager.rotation3D()
         let pagerInteractive = pagerWithRotation.interactive(0.8)
-        XCTAssertEqual(pagerInteractive.interactiveScale, pagerWithRotation.interactiveScale)
-        XCTAssertEqual(pagerInteractive.shouldRotate, pagerWithRotation.shouldRotate)
+        let pagerContentWithRotation = pagerWithRotation.content(for: CGSize(width: 100, height: 100))
+        let pagerContentInteractive = pagerInteractive.content(for: CGSize(width: 100, height: 100))
+
+        XCTAssertEqual(pagerContentInteractive.interactiveScale, pagerContentWithRotation.interactiveScale)
+        XCTAssertEqual(pagerContentInteractive.shouldRotate, pagerContentWithRotation.shouldRotate)
     }
     
     func test_GivenPager_When3DRotation_ThenShouldRotate() {
         var pager = givenPager
         pager = pager.rotation3D()
-        XCTAssertTrue(pager.shouldRotate)
-        XCTAssertEqual(pager.interactiveScale, pager.rotationInteractiveScale)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+
+        XCTAssertTrue(pagerContent.shouldRotate)
+        XCTAssertEqual(pagerContent.interactiveScale, pagerContent.rotationInteractiveScale)
     }
     
     func test_GivenPagerWith3DRotation_When3DRotationFalse_ThenShouldRotateFalse() {
         var pager = givenPager.rotation3D()
         pager = pager.rotation3D(false)
-        XCTAssertFalse(pager.shouldRotate)
-        XCTAssertEqual(pager.interactiveScale, 1)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+
+        XCTAssertFalse(pagerContent.shouldRotate)
+        XCTAssertEqual(pagerContent.interactiveScale, 1)
     }
     
     func test_GivenPager_WhenHorizontalRightToLeft_ThenScrollAngle() {
         var pager = givenPager.vertical()
         pager = pager.horizontal(.rightToLeft)
-        XCTAssertTrue(pager.isHorizontal)
-        XCTAssertEqual(pager.scrollDirectionAngle, Angle(degrees: 180))
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.isHorizontal)
+        XCTAssertEqual(pagerContent.scrollDirectionAngle, Angle(degrees: 180))
     }
 
     func test_GivenPager_WhenAlignment_ThenAlignmentSet() {
         var pager = givenPager
         pager = pager.alignment(.end(10))
-        XCTAssertEqual(pager.alignment, .end(10))
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.alignment, .end(10))
     }
 
     func test_GivenPager_WhenVerticalBottomToTop_ThenScrollAngle() {
         var pager = givenPager
         pager = pager.vertical(.bottomToTop)
-        XCTAssertTrue(pager.isVertical)
-        XCTAssertEqual(pager.scrollDirectionAngle, Angle(degrees: 180))
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.isVertical)
+        XCTAssertEqual(pagerContent.scrollDirectionAngle, Angle(degrees: 180))
     }
     
     func test_GivenPager_WhenPageOffset_ThenPageOffset() {
         var pager = givenPager
         pager = pager.pageOffset(1.2)
-        XCTAssertEqual(pager.pageOffset, 1.2)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.pageOffset, 1.2)
     }
     
     func test_GivenPager_WhenItemSpacing_ThenItemSpacing() {
         var pager = givenPager
         pager = pager.itemSpacing(30)
-        XCTAssertEqual(pager.itemSpacing, 30)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.itemSpacing, 30)
     }
     
     func test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio() {
         var pager = givenPager.preferredItemSize(CGSize(width: 50, height: 50))
         pager = pager.itemAspectRatio(1.2, alignment: .start(10))
-        XCTAssertEqual(pager.itemAspectRatio, 1.2)
-        XCTAssertNil(pager.preferredItemSize)
-        XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.start))
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.itemAspectRatio, 1.2)
+        XCTAssertNil(pagerContent.preferredItemSize)
+        XCTAssertTrue(pagerContent.itemAlignment.equalsIgnoreValues(.start))
     }
 
     func test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd() {
         var pager = givenPager
         pager = pager.itemAspectRatio(1, alignment: .end)
-        XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.end))
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.itemAlignment.equalsIgnoreValues(.end))
     }
 
     func test_GivenPager_WhenItemAspectAlignmentStart_ThenItemAlignmentStart() {
         var pager = givenPager
         pager = pager.itemAspectRatio(1, alignment: .start(10))
-        XCTAssertTrue(pager.itemAlignment.equalsIgnoreValues(.start))
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertTrue(pagerContent.itemAlignment.equalsIgnoreValues(.start))
     }
     
     func test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio() {
         var pager = givenPager
         pager = pager.itemAspectRatio(-1.2)
-        XCTAssertNil(pager.itemAspectRatio)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNil(pagerContent.itemAspectRatio)
     }
     
     func test_GivenPagerWithItemAspectRatio_WhenItemAspectRatioNil_ThenSetNil() {
         var pager = givenPager.itemAspectRatio(1.2)
         pager = pager.itemAspectRatio(nil)
-        XCTAssertNil(pager.itemAspectRatio)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNil(pagerContent.itemAspectRatio)
     }
     
     func test_GivenPagerWithItemAspectRatio_WhenExpandPageToEdges_ThenItemAspectRatioNil() {
         var pager = givenPager.itemAspectRatio(1.2)
         pager = pager.expandPageToEdges()
-        XCTAssertNil(pager.itemAspectRatio)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNil(pagerContent.itemAspectRatio)
     }
 
     func test_GivenPagerWithPreferredPageSize_WhenPadding_ThenNoInsets() {
         var pager = givenPager.preferredItemSize(CGSize(width: 50, height: 50))
         pager = pager.padding(8)
-        XCTAssertEqual(pager.sideInsets, 0)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 0)
     }
     
     func test_GivenHorizontalPager_WhenPaddingHorizontal_ThenNoInsets() {
         var pager = givenPager
         pager = pager.padding(.horizontal, 8)
-        XCTAssertEqual(pager.sideInsets, 0)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 0)
     }
     
     func test_GivenVerticalPager_WhenPaddingVertical_ThenNoInsets() {
         var pager = givenPager.vertical()
         pager = pager.padding(.vertical, 8)
-        XCTAssertEqual(pager.sideInsets, 0)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 0)
     }
     
     func test_GivenHorizontalPager_WhenPaddingVertical_ThenSideInsets() {
         var pager = givenPager
         pager = pager.padding(.vertical, 8)
-        XCTAssertEqual(pager.sideInsets, 8)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 8)
     }
     
     func test_GivenVerticalPager_WhenPaddingHorizontal_ThenSideInsets() {
         var pager = givenPager.vertical()
         pager = pager.padding(.horizontal, 8)
-        XCTAssertEqual(pager.sideInsets, 8)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 8)
     }
     
     func test_GivenHorizontalPager_WhenPaddingVertical_ThenMinTopAndBottom() {
         var pager = givenPager
         pager = pager.padding(EdgeInsets(top: 10, leading: 5, bottom: 15, trailing: 2))
-        XCTAssertEqual(pager.sideInsets, 10)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 10)
     }
     
     func test_GivenVerticalPager_WhenPaddingHorizontal_ThenMinLeadingAndTrailing() {
         var pager = givenPager.vertical()
         pager = pager.padding(EdgeInsets(top: 10, leading: 5, bottom: 15, trailing: 2))
-        XCTAssertEqual(pager.sideInsets, 2)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 2)
     }
     
     func test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets() {
         var pager = givenPager
         pager = pager.padding(.vertical)
-        XCTAssertEqual(pager.sideInsets, 8)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 8)
     }
     
     func test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets() {
         var pager = givenPager
         pager = pager.padding(5)
-        XCTAssertEqual(pager.sideInsets, 5)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sideInsets, 5)
     }
     
     func test_GivenPager_WhenOnPageChanged_ThenObservePageChanges() {
@@ -302,11 +352,13 @@ final class Pager_Buildable_Tests: XCTestCase {
         pager = pager.onPageChanged({ (page) in
             newPage = page
         })
-        
-        pager.pageIndex = 3
-        
+
+        pager.page = 3
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertNotNil(newPage)
         XCTAssertEqual(pager.page, newPage)
+        XCTAssertEqual(pagerContent.page, pager.page)
     }
 
     static var allTests = [

@@ -81,3 +81,10 @@ struct InfiniteExampleView: View {
     }
 
 }
+
+
+struct InfiniteExampleView_Previews: PreviewProvider {
+    static var previews: some View {
+        InfiniteExampleView()
+    }
+}
