@@ -157,7 +157,7 @@ extension Pager {
                         .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
                                           axis: (0, 0, 1))
                         .rotation3DEffect(self.angle(for: item),
-                                          axis: self.axis(for: item))
+                                          axis:  axis)
                 }
                 .offset(x: self.xOffset, y : self.yOffset)
             }

@@ -231,7 +231,7 @@ extension Pager.PagerContent {
     }
 
     /// Axis for the rotations effect
-    func axis(for item: PageWrapper<Element, ID>) -> (CGFloat, CGFloat, CGFloat) {
+    var axis: (CGFloat, CGFloat, CGFloat) {
         guard shouldRotate else { return (0, 0, 0) }
         return rotationAxis
     }
