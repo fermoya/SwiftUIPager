@@ -213,7 +213,6 @@ extension Pager.PagerContent {
                 withAnimation {
                     let lastLocation = self.lastDraggingValue?.location ?? value.location
                     let swipeAngle = (value.location - lastLocation).angle
-        print(swipeAngle.degrees)
                     // Ignore swipes that aren't on the X-Axis
                     guard swipeAngle.isAlongXAxis else {
                         self.lastDraggingValue = value
