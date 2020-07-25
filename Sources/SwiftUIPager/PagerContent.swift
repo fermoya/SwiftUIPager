@@ -157,7 +157,7 @@ extension Pager {
                         .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
                                           axis: (0, 0, 1))
                         .rotation3DEffect(self.angle(for: item),
-                                          axis: self.axis(for: item))
+                                          axis:  axis)
                 }
                 .offset(x: self.xOffset, y : self.yOffset)
             }
@@ -213,7 +213,6 @@ extension Pager.PagerContent {
                 withAnimation {
                     let lastLocation = self.lastDraggingValue?.location ?? value.location
                     let swipeAngle = (value.location - lastLocation).angle
-        print(swipeAngle.degrees)
                     // Ignore swipes that aren't on the X-Axis
                     guard swipeAngle.isAlongXAxis else {
                         self.lastDraggingValue = value
