@@ -23,6 +23,7 @@ If applicable, add screenshots to help explain your problem.
 **Environment:**
  - OSX: [e.g. iOS]
  - Device [e.g. iPhone6]
+- SwiftUIPager version
 
 **Additional context**
 Add any other context about the problem here.
