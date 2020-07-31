@@ -229,13 +229,13 @@ extension Pager.PagerContent {
                         return
                     }
 
-                    self.draggingOffset += offsetIncrement
-                    self.lastDraggingValue = value
-
                     let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
                     if timeIncrement != 0 {
                         self.draggingVelocity = Double(offsetIncrement) / timeIncrement
                     }
+
+                    self.draggingOffset += offsetIncrement
+                    self.lastDraggingValue = value
                 }
             })
             .onEnded({ (value) in
