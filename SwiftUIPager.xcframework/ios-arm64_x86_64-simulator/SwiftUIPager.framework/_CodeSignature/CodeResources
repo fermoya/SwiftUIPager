@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Ow667WVzxrCtspHUz7TTEXZ6T6Q=
+		FAd1qRwwXdwpRB5MUVPRKfk/Csc=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		lnrcxSYlAelq3hMl1e+7AULt0ck=
+		pmJziejs/XC48cWMRK24nSQWIGs=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		lnrcxSYlAelq3hMl1e+7AULt0ck=
+		pmJziejs/XC48cWMRK24nSQWIGs=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		0BhXf2aWYdR1gC3Y2Kq2eXExt4s=
+		iahgiWxoSM9C3ecpWBvg0+4LYIg=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		0BhXf2aWYdR1gC3Y2Kq2eXExt4s=
+		iahgiWxoSM9C3ecpWBvg0+4LYIg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			v0raeAQ36rM9UoQ2ah81AS7rri1mhZ9a0dggLid1llc=
+			pLXtX2PqlznRLj+c9d93saAUA3ij7ij2CNY/Y3wOO7w=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
@@ -124,7 +124,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			v0raeAQ36rM9UoQ2ah81AS7rri1mhZ9a0dggLid1llc=
+			pLXtX2PqlznRLj+c9d93saAUA3ij7ij2CNY/Y3wOO7w=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -145,7 +145,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vOQhVa+7DBkHR+0dl1E3dVgoRNYfxIwu9sJ1uPxWIP8=
+			4LGPwQC0fMIiWweu+37cd1A0ghRzlQORu+16ouQskbo=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
@@ -166,7 +166,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vOQhVa+7DBkHR+0dl1E3dVgoRNYfxIwu9sJ1uPxWIP8=
+			4LGPwQC0fMIiWweu+37cd1A0ghRzlQORu+16ouQskbo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
