@@ -8,7 +8,7 @@
 import XCTest
 @testable import SwiftUIPager
 
-final class PagerWrapper_Tests: XCTest {
+final class PagerWrapper_Tests: XCTestCase {
 
     func test_GivenPageWrapper_WhenBatchId_ThenBatchIdAndElementId() {
         let wrapper = PageWrapper(batchId: 1, keyPath: \.self, element: 2)

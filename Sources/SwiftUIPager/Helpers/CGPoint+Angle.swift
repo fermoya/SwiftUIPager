@@ -11,10 +11,22 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension CGPoint {
 
-    var angle: Angle {
-        var angle = atan(y / x) * 180 / .pi
-        angle = (x < 0 && y < 0) ? angle + 180 : angle
-        angle = angle < 0 ? (y < 0 ? 360 + angle : 180 + angle) : angle
+    var angle: Angle? {
+        guard x != 0 || y != 0 else { return nil }
+        guard x != 0 else { return y > 0 ? Angle(degrees: 90) : Angle(degrees: 270) }
+        guard y != 0 else { return x > 0 ? Angle(degrees: 0) : Angle(degrees: 180) }
+        var angle = atan(abs(y) / abs(x)) * 180 / .pi
+        switch (x, y) {
+        case (let x, let y) where x < 0 && y < 0:
+            angle = 180 + angle
+        case (let x, let y) where x < 0 && y > 0:
+            angle = 180 - angle
+        case (let x, let y) where x > 0 && y < 0:
+            angle = 360 - angle
+        default:
+            break
+        }
+
         return .init(degrees: Double(angle))
     }
 
@@ -26,6 +38,7 @@ extension CGPoint {
 
 extension Angle {
     var isAlongXAxis: Bool {
-        degrees > 330 || degrees < 30 || (degrees > 150 && degrees < 210)
+        let degrees = ((Int(self.degrees.rounded()) % 360) + 360) % 360
+        return degrees >= 330 || degrees <= 30 || (degrees >= 150 && degrees <= 210)
     }
 }

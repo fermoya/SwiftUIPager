@@ -29,7 +29,7 @@ final class PagerContent_Helper_Tests: XCTestCase {
 
     func test_GivenPager_WhenAxisForItem_ThenZero() {
         let pager = givenPager
-        let (x, y, z) = pager.axis(for: .init(batchId: 0, keyPath: \.self, element: 1))
+        let (x, y, z) = pager.axis
         XCTAssertEqual(x, 0)
         XCTAssertEqual(y, 0)
         XCTAssertEqual(z, 0)
@@ -37,7 +37,7 @@ final class PagerContent_Helper_Tests: XCTestCase {
 
     func test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis() {
         let pager = givenPager.rotation3D()
-        let (x, y, z) = pager.axis(for: .init(batchId: 0, keyPath: \.self, element: 1))
+        let (x, y, z) = pager.axis
         XCTAssertEqual(x, pager.rotationAxis.x)
         XCTAssertEqual(y, pager.rotationAxis.y)
         XCTAssertEqual(z, pager.rotationAxis.z)
