@@ -10,7 +10,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		/2mSxU74eNrMf9I5rpBwSqP6MYY=
+		kxL5U7t+YTXsISiKyGgmAoP4g7s=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		PJGskxJmLcwcv//qkQmYWZpj2Bk=
+		5WHCgOedZr+rW10POLWYnbFH/h8=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		PJGskxJmLcwcv//qkQmYWZpj2Bk=
+		5WHCgOedZr+rW10POLWYnbFH/h8=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/i386-apple-watchos-simulator.swiftdoc</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/i386-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		v/XQMDCnVl2xv73L5BSxztLHNng=
+		DTHEfr+qRPZObCTZwwnX71W5SU0=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/i386.swiftdoc</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/i386.swiftmodule</key>
 		<data>
-		v/XQMDCnVl2xv73L5BSxztLHNng=
+		DTHEfr+qRPZObCTZwwnX71W5SU0=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		C3s5tpbl436r+U0b8nYd0aIrmIA=
+		8zOetMjwNMpUPvZivlIDEhXorio=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		C3s5tpbl436r+U0b8nYd0aIrmIA=
+		8zOetMjwNMpUPvZivlIDEhXorio=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -116,7 +116,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Lt7swk1sEFB6O66dH692MEBea5VfQcpkkPgvU8kqx2I=
+			yJxFeMOLNJpIZOxDZsRgDZMoxB6qnwA65BXGtMLgiV0=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
@@ -137,7 +137,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Lt7swk1sEFB6O66dH692MEBea5VfQcpkkPgvU8kqx2I=
+			yJxFeMOLNJpIZOxDZsRgDZMoxB6qnwA65BXGtMLgiV0=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/i386-apple-watchos-simulator.swiftdoc</key>
@@ -158,7 +158,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sE7ltc+Bxw8wApGWca7sx7J3Rsq9ffwmG2R2uz23Utc=
+			R4GflBKwuTj/d4BSRv8Ote/wXyoernuj2G1z0ZK2FIM=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/i386.swiftdoc</key>
@@ -179,7 +179,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sE7ltc+Bxw8wApGWca7sx7J3Rsq9ffwmG2R2uz23Utc=
+			R4GflBKwuTj/d4BSRv8Ote/wXyoernuj2G1z0ZK2FIM=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
@@ -200,7 +200,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hroURtx7jPvrK7uW0/lahpRtiwT8dNlvzRb/Dr2V1d8=
+			JYWuAKYN3/NLCy5b+zlKUrHuaCHKLrTkMlEt8iwSEE8=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
@@ -221,7 +221,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hroURtx7jPvrK7uW0/lahpRtiwT8dNlvzRb/Dr2V1d8=
+			JYWuAKYN3/NLCy5b+zlKUrHuaCHKLrTkMlEt8iwSEE8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

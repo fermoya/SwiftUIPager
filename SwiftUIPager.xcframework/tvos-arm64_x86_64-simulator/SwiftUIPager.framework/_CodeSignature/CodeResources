@@ -10,7 +10,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		v1AbzWiKAnTwJdEjrMq8iMvQVbs=
+		xq2MWEBvI+BmaqhfSMDOz/5R7/M=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		OTtFRGuYv8zri3fcB2Dt3NJGcZg=
+		JXpqIGvBEmliR4fTl4CMsQJqZi4=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		OTtFRGuYv8zri3fcB2Dt3NJGcZg=
+		JXpqIGvBEmliR4fTl4CMsQJqZi4=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		pc3dylkmzERQyxMF49nycNHWkYU=
+		UDjguSeUZ+ftKDzM0IBUtOpirR4=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		pc3dylkmzERQyxMF49nycNHWkYU=
+		UDjguSeUZ+ftKDzM0IBUtOpirR4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -92,7 +92,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SINlCZ3Do1AOdXdGC9PqLn/HElPYoSlhlDRSIFwWaFY=
+			zMGpYgrx4wfX0BS5uc/B4PH3HAruT2UNGrBxylSPDWQ=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
@@ -113,7 +113,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SINlCZ3Do1AOdXdGC9PqLn/HElPYoSlhlDRSIFwWaFY=
+			zMGpYgrx4wfX0BS5uc/B4PH3HAruT2UNGrBxylSPDWQ=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
@@ -134,7 +134,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5a0J8GydcCxZ6IYOBOeVwSonMzXg3Tey26O/vfadv3g=
+			jODVVckcMYmMkVLLm6RfJN5zOwtfPUzYASM4jiqc6V4=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/x86_64.swiftdoc</key>
@@ -155,7 +155,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5a0J8GydcCxZ6IYOBOeVwSonMzXg3Tey26O/vfadv3g=
+			jODVVckcMYmMkVLLm6RfJN5zOwtfPUzYASM4jiqc6V4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

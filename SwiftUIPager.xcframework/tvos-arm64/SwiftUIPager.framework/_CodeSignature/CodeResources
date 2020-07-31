@@ -10,7 +10,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0pTfLcGXlDeVptZnw9CBzXjTA2s=
+		ngEB91Gtbrmp2u0j/h2H9fix5iA=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64-apple-tvos.swiftmodule</key>
 		<data>
-		Mjc90U0xwBAsalubtVOc+PoqutU=
+		4EkAWjz75G/gQbd8NJ5BoSsNR5s=
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		Mjc90U0xwBAsalubtVOc+PoqutU=
+		4EkAWjz75G/gQbd8NJ5BoSsNR5s=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -68,7 +68,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			glVr5AVB5RdWH09y43xfPTkSSPLJM9O2iciI2OgVlFM=
+			G0RMtVBJd/bwgLS22adGpUYPM5zLJMCinjLGb7KFePA=
 			</data>
 		</dict>
 		<key>Modules/SwiftUIPager.swiftmodule/arm64.swiftdoc</key>
@@ -89,7 +89,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			glVr5AVB5RdWH09y43xfPTkSSPLJM9O2iciI2OgVlFM=
+			G0RMtVBJd/bwgLS22adGpUYPM5zLJMCinjLGb7KFePA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
