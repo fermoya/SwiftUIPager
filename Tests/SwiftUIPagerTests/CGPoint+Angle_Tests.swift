@@ -112,4 +112,23 @@ final class CGPoint_Angle_Tests: XCTestCase {
         }
     }
 
+    static var allTests = [
+        ("test_GivenPoint_WhenAngle_Then45", test_GivenPoint_WhenAngle_Then45),
+        ("test_GivenPoint_WhenAngle_Then135", test_GivenPoint_WhenAngle_Then135),
+        ("test_GivenPoint_WhenAngle_Then225", test_GivenPoint_WhenAngle_Then225),
+        ("test_GivenPoint_WhenAngle_Then315", test_GivenPoint_WhenAngle_Then315),
+        ("test_GivenPoint_WhenAngle_Then30", test_GivenPoint_WhenAngle_Then30),
+        ("test_GivenPoint_WhenAngle_Then150", test_GivenPoint_WhenAngle_Then150),
+        ("test_GivenPoint_WhenAngle_Then60", test_GivenPoint_WhenAngle_Then60),
+        ("test_GivenPoint_WhenAngle_Then300", test_GivenPoint_WhenAngle_Then300),
+        ("test_GivenPoint_WhenAngle_Then0", test_GivenPoint_WhenAngle_Then0),
+        ("test_GivenPoint_WhenAngle_Then180", test_GivenPoint_WhenAngle_Then180),
+        ("test_GivenPoint_WhenAngle_Then90", test_GivenPoint_WhenAngle_Then90),
+        ("test_GivenPoint_WhenAngle_Then270", test_GivenPoint_WhenAngle_Then270),
+        ("test_GivenPoint_WhenAngle_ThenNil", test_GivenPoint_WhenAngle_ThenNil),
+        ("test_GivenTwoPoints_WhenSubstract_ThenCoordinatesSubtracted", test_GivenTwoPoints_WhenSubstract_ThenCoordinatesSubtracted),
+        ("test_GivenAngles_WhenIsAlongXAxis_ThenTrue", test_GivenAngles_WhenIsAlongXAxis_ThenTrue),
+        ("test_GivenAngles_WhenIsAlongXAxis_ThenFalse", test_GivenAngles_WhenIsAlongXAxis_ThenFalse)
+    ]
+
 }

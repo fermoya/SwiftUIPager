@@ -11,6 +11,15 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager: Buildable, PagerProxy {
 
+    public typealias DraggingResult = (page: Int, newPage: Int, translation: CGFloat, velocity: Double)
+
+    /// Sets the animation to be applied when the user stops dragging
+    ///
+    /// - Parameter value: callback to get an animation based on the result of dragging
+    public func pagingAnimation(_ value: ((DraggingResult) -> PagingAnimation)?) -> Self {
+        mutating(keyPath: \.pagingAnimation, value: value)
+    }
+
     /// Allows to page more than one page at a time.
     ///
     /// - Note: This will change `contentLoadingPolicy` to `.eager`. Modifying this value will result in an unpredictable UI.

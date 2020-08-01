@@ -30,6 +30,15 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.gesturePriority, .default)
         XCTAssertEqual(pager.contentLoadingPolicy, .default)
         XCTAssertEqual(pager.allowsMultiplePagination, false)
+        XCTAssertNil(pager.pagingAnimation)
+    }
+
+    func test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil() throws {
+        var pager = givenPager
+        pager = pager.pagingAnimation({ _ in .steep })
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        let pagingAnimation = try XCTUnwrap(pagerContent.pagingAnimation?((0, 0, 0, 0)))
+        XCTAssertEqual(pagingAnimation, PagingAnimation.steep)
     }
 
     func test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination() {
@@ -403,6 +412,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10", test_GivenPager_WhenContentLoadingPolicyLazy10_ThenRecyclingRatioIs10),
         ("test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax", test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax),
         ("test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger", test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger),
-        ("test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination", test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination)
+        ("test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination", test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination),
+        ("test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil", test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil)
     ]
 }

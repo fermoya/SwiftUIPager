@@ -13,7 +13,7 @@ import SwiftUI
 ///
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager {
-    public struct PagerContent: View {
+    struct PagerContent: View {
 
         /// `Direction` determines the direction of the swipe gesture
         enum Direction {
@@ -24,9 +24,6 @@ extension Pager {
         }
 
         /*** Constants ***/
-
-        /// Policy to be applied when loading content
-        var contentLoadingPolicy: ContentLoadingPolicy = .default
 
         /// Angle of rotation when should rotate
         let rotationDegrees: Double = 20
@@ -52,6 +49,12 @@ extension Pager {
         var data: [PageWrapper<Element, ID>]
 
         /*** ViewModified properties ***/
+
+        /// Animation to be applied when the user stops dragging
+        var pagingAnimation: ((DraggingResult) -> PagingAnimation)?
+
+        /// Policy to be applied when loading content
+        var contentLoadingPolicy: ContentLoadingPolicy = .default
 
         /// Angle to dermine the direction of the scroll
         var scrollDirectionAngle: Angle = .zero
@@ -138,7 +141,7 @@ extension Pager {
         /// - Parameter data: Array of items to populate the content
         /// - Parameter id: KeyPath to identifiable property
         /// - Parameter content: Factory method to build new pages
-        public init(size: CGSize, page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+        init(size: CGSize, page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
             self.size = size
             self._pageIndex = page
             self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
@@ -146,7 +149,7 @@ extension Pager {
             self.content = content
         }
 
-        public var body: some View {
+        var body: some View {
             let stack = HStack(spacing: interactiveItemSpacing) {
                 ForEach(dataDisplayed, id: id) { item in
                     self.content(item.element)
@@ -194,7 +197,7 @@ extension Pager.PagerContent where ID == Element.ID, Element : Identifiable {
     ///
     /// - Parameter data: Array of items to populate the content
     /// - Parameter content: Factory method to build new pages
-    public init(size: CGSize, page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
+    init(size: CGSize, page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
         self.init(size: size, page: page, data: data, id: \Element.id, content: content)
     }
 
@@ -248,9 +251,16 @@ extension Pager.PagerContent {
         let newPage = draggingResult.page
         let pageIncrement = draggingResult.increment
 
-        var duration = Double(max(1, (pageIncrement + self.numberOfPages) % self.numberOfPages)) * 0.2
-        duration = min(0.8, duration)
-        let animation = self.allowsMultiplePagination && pageIncrement > 1 ? Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration) : Animation.easeOut
+        var defaultPagingAnimation: PagingAnimation = .standard
+        var speed: Double = 1
+        if allowsMultiplePagination && pageIncrement > 1 {
+            defaultPagingAnimation = .steep
+            speed = 1 / min(4, Double(pageIncrement))
+        }
+
+        let pagingAnimation = self.pagingAnimation?((pageIndex, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
+
+        let animation = pagingAnimation.animation.speed(speed)
         withAnimation(animation) {
             self.draggingOffset = 0
             self.pageIncrement = pageIncrement

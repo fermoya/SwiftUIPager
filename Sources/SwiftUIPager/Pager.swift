@@ -42,9 +42,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** Constants ***/
 
-    /// Policy to be applied when loading content
-    var contentLoadingPolicy: ContentLoadingPolicy = .default
-
     /// Angle of rotation when should rotate
     let rotationDegrees: Double = 20
 
@@ -66,6 +63,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var data: [Element]
 
     /*** ViewModified properties ***/
+
+    /// Animation to be applied when the user stops dragging
+    var pagingAnimation: ((DraggingResult) -> PagingAnimation)?
+
+    /// Policy to be applied when loading content
+    var contentLoadingPolicy: ContentLoadingPolicy = .default
 
     /// Swipe direction for horizontal `Pager`
     var horizontalSwipeDirection: HorizontalSwipeDirection = .leftToRight
@@ -189,6 +192,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .itemAspectRatio(itemAspectRatio, alignment: itemAlignment)
                 .onPageChanged(onPageChanged)
                 .padding(sideInsets)
+                .pagingAnimation(pagingAnimation)
 
         #if !os(tvOS)
           pagerContent = pagerContent
