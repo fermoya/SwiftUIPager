@@ -283,6 +283,8 @@ extension Pager.PagerContent {
                     newPage = newPage + Int(velocity / abs(velocity))
                 }
             }
+
+            newPage = max(0, min(self.numberOfPages - 1, newPage))
             return (newPage, 1)
         }
 
