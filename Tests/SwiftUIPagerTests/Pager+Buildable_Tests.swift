@@ -9,7 +9,7 @@ extension Int: Identifiable {
 final class Pager_Buildable_Tests: XCTestCase {
 
     var givenPager: Pager<Int, Int, Text> {
-        Pager(page: .constant(0), data: Array(1..<20)) {
+        Pager(page: .constant(0), data: Array(0..<20)) {
             Text("\($0)")
         }
     }
@@ -56,6 +56,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pagerContent.allowsMultiplePagination)
         XCTAssertEqual(pagerContent.contentLoadingPolicy, .eager)
         XCTAssertEqual(pagerContent.maximumNumberOfPages, pagerContent.numberOfPages)
+        XCTAssertEqual(pagerContent.upperPageDisplayed, pagerContent.numberOfPages - 1)
     }
 
     func test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1() {
@@ -114,7 +115,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         pager = pager.loopPages(repeating: 3)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertTrue(pagerContent.isInifinitePager)
-        XCTAssertGreaterThan(pagerContent.data.count, 20)
+        XCTAssertEqual(pagerContent.data.count, 60)
     }
 
     func test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse() {

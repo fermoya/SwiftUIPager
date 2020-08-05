@@ -133,8 +133,154 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertEqual(pager.upperPageDisplayed, 3)
         XCTAssertEqual(pager.numberOfPagesDisplayed, 5)
     }
+
+    func test_GivenHorizontalPagerStartAligned_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.start(5)).padding(10).horizontal()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, -5)
+    }
+
+    func test_GivenVerticalPagerStartAligned_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.start).padding(10).vertical()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, -10)
+    }
+
+    func test_GivenHorizontalPagerEndAligned_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.end(5)).padding(10).horizontal()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, 5)
+    }
+
+    func test_GivenVerticalPagerEndAligned_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.end).padding(10).vertical()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, 10)
+    }
+
+    func test_GivenHorizontalPagerStartCenter_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.center).padding(10).horizontal()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, 0)
+    }
+
+    func test_GivenVerticalPagerStartCenter_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.center).padding(10).vertical()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, 0)
+    }
+
+    func test_GivenHorizontalPagerStartJustified_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.justified).padding(10).horizontal()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, -10)
+    }
+
+    func test_GivenVerticalPagerStartJustified_WhenAlignmentOffset_ThenExpectedValue() {
+        let pager = givenPager.alignment(.justified).padding(10).vertical()
+        let offset = pager.alignmentOffset
+        XCTAssertEqual(offset, -10)
+    }
+
+    func test_GivenPagerItemAlignedCenter_WhenYOffset_ThenZero() {
+        let pager = givenPager.itemAspectRatio(nil, alignment: .center)
+        let offset = pager.yOffset
+        XCTAssertEqual(offset, 0)
+    }
+
+    func test_GivenPagerItemAlignedJustified_WhenYOffset_ThenZero() {
+        let pager = givenPager.itemAspectRatio(nil, alignment: .justified)
+        let offset = pager.yOffset
+        XCTAssertEqual(offset, 0)
+    }
+
+    func test_GivenPagerItemAlignedStart_WhenYOffset_ThenExpectedValue() {
+        let pager = givenPager.preferredItemSize(CGSize(width: 100, height: 100), alignment: .start)
+        let offset = pager.yOffset
+        XCTAssertEqual(offset, -100)
+    }
+
+    func test_GivenPagerItemAlignedEnd_WhenYOffset_ThenExpectedValue() {
+        let pager = givenPager.preferredItemSize(CGSize(width: 150, height: 100), alignment: .end).vertical()
+        let offset = pager.yOffset
+        XCTAssertEqual(offset, -75)
+    }
+
+    func test_GivenPagerItemAlignedEnd_WhenYOffset_ThenZero() {
+        let pager = givenPager.preferredItemSize(CGSize(width: 300, height: 300), alignment: .end).vertical()
+        let offset = pager.yOffset
+        XCTAssertEqual(offset, 0)
+    }
+
+    func test_GivenPager_WhenXOffset_ThenExpectedValue() {
+        let pager = givenPager
+        let offset = pager.xOffset
+        XCTAssertEqual(offset, 300)
+    }
+
+    func test_GivenPagerOffset2_WhenXOffset_ThenExpectedValue() {
+        let pager = givenPager.pageOffset(2)
+        let offset = pager.xOffset
+        XCTAssertEqual(offset, -300)
+    }
+
+    func test_GivenPager_WhenAngle_ThenZero() {
+        let pager = givenPager
+        let angle = pager.angle(for: .init(batchId: 1, keyPath: \.self, element: 0))
+        XCTAssertEqual(angle, .zero)
+    }
+
+    func test_GivenPagerWithRotation3D_WhenAngle_ThenZero() {
+        let pager = givenPager.rotation3D()
+        let angle = pager.angle(for: .init(batchId: 1, keyPath: \.self, element: 0))
+        XCTAssertEqual(angle, .zero)
+    }
+
+    func test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero() {
+        let pager = givenPager.rotation3D().pageOffset(1.1)
+        let angle = pager.angle(for: .init(batchId: 1, keyPath: \.self, element: 0))
+        XCTAssertGreaterThan(angle.degrees, .zero)
+    }
+
+    func test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero() {
+        let pager = givenPager.rotation3D().pageOffset(-0.1)
+        let angle = pager.angle(for: .init(batchId: 1, keyPath: \.self, element: 0))
+        XCTAssertLessThan(angle.degrees, .zero)
+    }
+
+    func test_GivenPagerDragging_WhenIsEdgePage_ThenFalse() {
+        let pager = givenPager.pageOffset(0.1)
+        let isEdgePage = pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 0))
+        XCTAssertFalse(isEdgePage)
+    }
+
+    func test_GivenPager_WhenIsEdgePage_ThenTrue() {
+        let pager = givenPager.loopPages()
+        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 18)))
+        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 2)))
+        XCTAssertFalse(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 1)))
+    }
     
     static var allTests = [
+        ("test_GivenPagerDragging_WhenIsEdgePage_ThenFalse", test_GivenPagerDragging_WhenIsEdgePage_ThenFalse),
+        ("test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero", test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero),
+        ("test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero", test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero),
+        ("test_GivenPager_WhenAngle_ThenZero", test_GivenPager_WhenAngle_ThenZero),
+        ("test_GivenPagerWithRotation3D_WhenAngle_ThenZero", test_GivenPagerWithRotation3D_WhenAngle_ThenZero),
+        ("test_GivenPager_WhenXOffset_ThenExpectedValue", test_GivenPager_WhenXOffset_ThenExpectedValue),
+        ("test_GivenPagerOffset2_WhenXOffset_ThenExpectedValue", test_GivenPagerOffset2_WhenXOffset_ThenExpectedValue),
+        ("test_GivenPagerItemAlignedEnd_WhenYOffset_ThenZero", test_GivenPagerItemAlignedEnd_WhenYOffset_ThenZero),
+        ("test_GivenPagerItemAlignedEnd_WhenYOffset_ThenExpectedValue", test_GivenPagerItemAlignedEnd_WhenYOffset_ThenExpectedValue),
+        ("test_GivenPagerItemAlignedStart_WhenYOffset_ThenExpectedValue", test_GivenPagerItemAlignedStart_WhenYOffset_ThenExpectedValue),
+        ("test_GivenPagerItemAlignedJustified_WhenYOffset_ThenZero", test_GivenPagerItemAlignedJustified_WhenYOffset_ThenZero),
+        ("test_GivenHorizontalPagerStartAligned_WhenAlignmentOffset_ThenExpectedValue", test_GivenHorizontalPagerStartAligned_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenVerticalPagerStartAligned_WhenAlignmentOffset_ThenExpectedValue", test_GivenVerticalPagerStartAligned_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenHorizontalPagerEndAligned_WhenAlignmentOffset_ThenExpectedValue", test_GivenHorizontalPagerEndAligned_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenVerticalPagerEndAligned_WhenAlignmentOffset_ThenExpectedValue", test_GivenVerticalPagerEndAligned_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenHorizontalPagerStartCenter_WhenAlignmentOffset_ThenExpectedValue", test_GivenHorizontalPagerStartCenter_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenVerticalPagerStartCenter_WhenAlignmentOffset_ThenExpectedValue", test_GivenVerticalPagerStartCenter_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenHorizontalPagerStartJustified_WhenAlignmentOffset_ThenExpectedValue", test_GivenHorizontalPagerStartJustified_WhenAlignmentOffset_ThenExpectedValue),
+        ("test_GivenVerticalPagerStartJustified_WhenAlignmentOffset_ThenExpectedValue", test_GivenVerticalPagerStartJustified_WhenAlignmentOffset_ThenExpectedValue),
         ("test_GivenInfinitePager_WhenDataDisplayed_ThenExpectedValues", test_GivenInfinitePager_WhenDataDisplayed_ThenExpectedValues),
         ("test_GivenPager_WhenDataDisplayed_ThenExpectedValues", test_GivenPager_WhenDataDisplayed_ThenExpectedValues),
         ("test_GivenInfinitePagerDragging_WhenCurrentPage_Then19", test_GivenInfinitePagerDragging_WhenCurrentPage_Then19),

@@ -48,7 +48,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
         var newData = data
         if let id = newData.first?.keyPath {
             let count = max(1, count)
-            newData = (0..<count).map { it in
+            newData = (1...count).map { it in
                 data.map { PageWrapper(batchId: it, keyPath: id, element: $0.element) }
             }.flatMap { $0 }
         }
