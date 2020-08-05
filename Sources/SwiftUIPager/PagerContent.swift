@@ -109,6 +109,9 @@ extension Pager {
 
         /// Callback for every new page
         var onPageChanged: ((Int) -> Void)?
+		
+		/// Callback for when dragging begins
+		var onDraggingBegan: (() -> Void)?
 
         /*** State and Binding properties ***/
 
@@ -214,6 +217,11 @@ extension Pager.PagerContent {
         DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
                 withAnimation {
+					
+					if self.lastDraggingValue == nil {
+						onDraggingBegan?()
+					}
+					
                     let lastLocation = self.lastDraggingValue?.location ?? value.location
                     let swipeAngle = (value.location - lastLocation).angle ?? .zero
                     // Ignore swipes that aren't on the X-Axis

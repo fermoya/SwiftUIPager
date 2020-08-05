@@ -62,6 +62,9 @@ protocol PagerProxy {
 
     /// Callback for every new page
     var onPageChanged: ((Int) -> Void)?  { get }
+	
+	/// Callback for when dragging begins
+	var onDraggingBegan: (() -> Void)? { get }
 
     /// Allows to page more than one page at a time.
     ///
@@ -174,6 +177,11 @@ protocol PagerProxy {
     ///
     /// - Parameter callback: block to be called when `page` changes
     func onPageChanged(_ callback: ((Int) -> Void)?) -> Self
+	
+	/// Adds a callback to react when dragging begins. Useful for dismissing a keyboard like a scrollview
+	///
+	/// - Parameter callback: block to be called when  dragging begins
+	func onDraggingBegan(_ callback: (() -> Void)?) -> Self
 
     /// Sets some padding on the non-scroll axis
     ///
