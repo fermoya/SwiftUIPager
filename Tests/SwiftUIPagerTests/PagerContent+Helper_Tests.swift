@@ -9,6 +9,18 @@ final class PagerContent_Helper_Tests: XCTestCase {
             Text("\($0)")
         }
     }
+
+    func test_GivenPager_WhenIsFocused_ThenTrue() {
+        let pager = givenPager
+        let output = pager.isFocused(PageWrapper(batchId: 1, keyPath: \.self, element: 1))
+        XCTAssertTrue(output)
+    }
+
+    func test_GivenPager_WhenIsFocused_ThenFalse() {
+        let pager = givenPager
+        let output = pager.isFocused(PageWrapper(batchId: 1, keyPath: \.self, element: 2))
+        XCTAssertFalse(output)
+    }
     
     func test_GivenPager_WhenScaleIncrement_ThenZero() {
         let pager = givenPager
@@ -48,6 +60,8 @@ final class PagerContent_Helper_Tests: XCTestCase {
         ("test_GivenInteractivePager_WhenScaleIncrement_ThenInteractiveScaleInverse", test_GivenInteractivePager_WhenScaleIncrement_ThenInteractiveScaleInverse),
         ("test_GivenPager_WhenNumberOfPages_ThenDataCount", test_GivenPager_WhenNumberOfPages_ThenDataCount),
         ("test_GivenPager_WhenAxisForItem_ThenZero", test_GivenPager_WhenAxisForItem_ThenZero),
-        ("test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis", test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis)
+        ("test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis", test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis),
+        ("test_GivenPager_WhenIsFocused_ThenTrue", test_GivenPager_WhenIsFocused_ThenTrue),
+        ("test_GivenPager_WhenIsFocused_ThenFalse", test_GivenPager_WhenIsFocused_ThenFalse)
     ]
 }

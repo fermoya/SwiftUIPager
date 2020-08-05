@@ -8,7 +8,9 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(PagerContent_Helper_Tests.allTests),
         testCase(PositionAlignment_Tests.allTests),
         testCase(PagerWrapper_Tests.allTests),
-        testCase(CGPoint+Angle_Tests.allTests)
+        testCase(CGPoint+Angle_Tests.allTests),
+        testCase(OnDeactivateModifier_Tests.allTests),
+        testCase(PagingAnimation_Tests.allTests)
     ]
 }
 #endif

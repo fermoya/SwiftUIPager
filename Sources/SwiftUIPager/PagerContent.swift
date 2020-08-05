@@ -193,19 +193,6 @@ extension Pager {
     }
 }
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Pager.PagerContent where ID == Element.ID, Element : Identifiable {
-
-    /// Initializes a new Pager.
-    ///
-    /// - Parameter data: Array of items to populate the content
-    /// - Parameter content: Factory method to build new pages
-    init(size: CGSize, page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
-        self.init(size: size, page: page, data: data, id: \Element.id, content: content)
-    }
-
-}
-
 // MARK: Gestures
 
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
