@@ -167,7 +167,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pagerContent.isHorizontal)
     }
     
-    func test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet() {
+    func test_GivenPager_WhenInteractiveLessThanZero_ThenNotSet() {
         let pager = givenPager
         let pagerInteractive = pager.interactive(-0.7)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
@@ -301,7 +301,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pagerContent.itemAlignment.equalsIgnoreValues(.start))
     }
     
-    func test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio() {
+    func test_GivenPager_WhenItemAspectRatioLessThanZero_ThenDoNotSetItemAspectRatio() {
         var pager = givenPager
         pager = pager.itemAspectRatio(-1.2)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
@@ -452,7 +452,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pagerContent.pageSize.height.rounded(), (80 / 1.2).rounded())
     }
 
-    func test_GivenPager_WhenItemAspectRatioLesserThanOne_ThenExpectedPageSize() {
+    func test_GivenPager_WhenItemAspectRatioLessThanOne_ThenExpectedPageSize() {
         var pager = givenPager
         pager = pager
             .padding(10)
@@ -471,7 +471,7 @@ final class Pager_Buildable_Tests: XCTestCase {
 
     static var allTests = [
         ("test_GivenPager_WhenItemInteractiveItemSpacing_ThenItemSpacing", test_GivenPager_WhenItemInteractiveItemSpacing_ThenItemSpacing),
-        ("test_GivenPager_WhenItemAspectRatioLesserThanOne_ThenExpectedPageSize", test_GivenPager_WhenItemAspectRatioLesserThanOne_ThenExpectedPageSize),
+        ("test_GivenPager_WhenItemAspectRatioLessThanOne_ThenExpectedPageSize", test_GivenPager_WhenItemAspectRatioLessThanOne_ThenExpectedPageSize),
         ("test_GivenPager_WhenItemAspectRatioGreatherThanOne_ThenExpectedPageSize", test_GivenPager_WhenItemAspectRatioGreatherThanOne_ThenExpectedPageSize),
         ("test_GivenPager_WhenPadding_ThenPageSizeIsInset", test_GivenPager_WhenPadding_ThenPageSizeIsInset),
         ("test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsTrimmed", test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsTrimmed),
@@ -480,7 +480,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_ThenDefaultValues", test_GivenPager_ThenDefaultValues),
         ("test_GivenPager_WhenVertical_ThenIsVerticalTrue", test_GivenPager_WhenVertical_ThenIsVerticalTrue),
         ("test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue", test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue),
-        ("test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet", test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet),
+        ("test_GivenPager_WhenInteractiveLessThanZero_ThenNotSet", test_GivenPager_WhenInteractiveLessThanZero_ThenNotSet),
         ("test_GivenPager_WhenInteractiveGreaterThanOne_ThenNotSet", test_GivenPager_WhenInteractiveGreaterThanOne_ThenNotSet),
         ("test_GivenPager_WhenInteractive_ThenInteractiveScaleIs", test_GivenPager_WhenInteractive_ThenInteractiveScaleIs),
         ("test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged", test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged),
@@ -492,7 +492,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenPageOffset_ThenPageOffset", test_GivenPager_WhenPageOffset_ThenPageOffset),
         ("test_GivenPager_WhenItemSpacing_ThenItemSpacing", test_GivenPager_WhenItemSpacing_ThenItemSpacing),
         ("test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio", test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio),
-        ("test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio", test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio),
+        ("test_GivenPager_WhenItemAspectRatioLessThanZero_ThenDoNotSetItemAspectRatio", test_GivenPager_WhenItemAspectRatioLessThanZero_ThenDoNotSetItemAspectRatio),
         ("test_GivenPagerWithItemAspectRatio_WhenItemAspectRatioNil_ThenSetNil", test_GivenPagerWithItemAspectRatio_WhenItemAspectRatioNil_ThenSetNil),
         ("test_GivenPagerWithItemAspectRatio_WhenExpandPageToEdges_ThenItemAspectRatioNil", test_GivenPagerWithItemAspectRatio_WhenExpandPageToEdges_ThenItemAspectRatioNil),
         ("test_GivenHorizontalPager_WhenPaddingHorizontal_ThenNoInsets", test_GivenHorizontalPager_WhenPaddingHorizontal_ThenNoInsets),
