@@ -47,6 +47,9 @@ struct NestedExampleView: View {
                   id: \.self) { page in
                     self.pageView(page)
             }
+			.onDraggingBegan({
+				print("Dragging Began")
+			})
             .itemSpacing(10)
             .itemAspectRatio(0.8, alignment: .end)
             .padding(8)

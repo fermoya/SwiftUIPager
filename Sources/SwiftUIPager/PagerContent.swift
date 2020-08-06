@@ -109,6 +109,9 @@ extension Pager {
 
         /// Callback for every new page
         var onPageChanged: ((Int) -> Void)?
+		
+		/// Callback for when dragging begins
+		var onDraggingBegan: (() -> Void)?
 
         /*** State and Binding properties ***/
 
@@ -213,40 +216,48 @@ extension Pager.PagerContent {
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance)
             .onChanged({ value in
-                withAnimation {
-                    let lastLocation = self.lastDraggingValue?.location ?? value.location
-                    let swipeAngle = (value.location - lastLocation).angle ?? .zero
-                    // Ignore swipes that aren't on the X-Axis
-                    guard swipeAngle.isAlongXAxis else {
-                        self.lastDraggingValue = value
-                        return
-                    }
-
-                    let side = self.isHorizontal ? self.size.width : self.size.height
-                    let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
-                    let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
-
-                    // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
-                    let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
-                    guard self.draggingOffset != 0 || isTranslationInXAxis else {
-                        return
-                    }
-
-                    let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
-                    if timeIncrement != 0 {
-                        self.draggingVelocity = Double(offsetIncrement) / timeIncrement
-                    }
-
-                    self.draggingOffset += offsetIncrement
-                    self.lastDraggingValue = value
-                }
+                self.onDragChanged(with: value)
             })
             .onEnded({ (value) in
                 self.onDragGestureEnded()
             })
     }
 
-    private func onDragGestureEnded() {
+    func onDragChanged(with value: DragGesture.Value) {
+        withAnimation {
+            if self.lastDraggingValue == nil {
+                onDraggingBegan?()
+            }
+
+            let lastLocation = self.lastDraggingValue?.location ?? value.location
+            let swipeAngle = (value.location - lastLocation).angle ?? .zero
+            // Ignore swipes that aren't on the X-Axis
+            guard swipeAngle.isAlongXAxis else {
+                self.lastDraggingValue = value
+                return
+            }
+
+            let side = self.isHorizontal ? self.size.width : self.size.height
+            let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
+            let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
+
+            // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
+            let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
+            guard self.draggingOffset != 0 || isTranslationInXAxis else {
+                return
+            }
+
+            let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
+            if timeIncrement != 0 {
+                self.draggingVelocity = Double(offsetIncrement) / timeIncrement
+            }
+
+            self.draggingOffset += offsetIncrement
+            self.lastDraggingValue = value
+        }
+    }
+
+    func onDragGestureEnded() {
         let draggingResult = self.draggingResult
         let newPage = draggingResult.page
         let pageIncrement = draggingResult.increment
