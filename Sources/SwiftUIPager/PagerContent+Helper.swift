@@ -100,9 +100,8 @@ extension Pager.PagerContent {
         
         if itemAspectRatio > 1 {
             return CGSize(width: side, height: side / itemAspectRatio)
-        } else {
-            return CGSize(width: side * itemAspectRatio, height: side)
         }
+        return CGSize(width: side * itemAspectRatio, height: side)
     }
 
     /// Total distance between items

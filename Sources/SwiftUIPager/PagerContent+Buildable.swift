@@ -48,7 +48,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
         var newData = data
         if let id = newData.first?.keyPath {
             let count = max(1, count)
-            newData = (0..<count).map { it in
+            newData = (1...count).map { it in
                 data.map { PageWrapper(batchId: it, keyPath: id, element: $0.element) }
             }.flatMap { $0 }
         }
@@ -115,9 +115,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     /// - Parameter scale: shrink ratio
     /// - Note: `scale` must be lower than _1_ and greather than _0_, otherwise it defaults to the previous value
     func interactive(_ scale: CGFloat) -> Self {
-        guard !shouldRotate else { return self }
-        guard scale > 0, scale < 1 else { return self }
-        return mutating(keyPath: \.interactiveScale, value: scale)
+        mutating(keyPath: \.interactiveScale, value: scale)
     }
     
     /// Call this method to add a 3D rotation effect.
@@ -125,8 +123,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     /// - Parameter value: `true` if the pages should have a 3D rotation effect
     /// - Note: If you call this method, any previous or later call to `interactive` will have no effect.
     func rotation3D(_ value: Bool = true) -> Self {
-        mutating(keyPath: \.interactiveScale, value: value ? rotationInteractiveScale : 1)
-            .mutating(keyPath: \.shouldRotate, value: value)
+       mutating(keyPath: \.shouldRotate, value: value)
     }
 
     /// Provides an increment to the page index offset. Use this to modify the scroll offset
@@ -158,7 +155,6 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     /// - Note: `value` should be greater than 0
     ///
     func itemAspectRatio(_ value: CGFloat?, alignment: PositionAlignment = .center) -> Self {
-        guard (value ?? 1) > 0 else { return self }
         return mutating(keyPath: \.preferredItemSize, value: nil)
             .mutating(keyPath: \.itemAspectRatio, value: value)
             .mutating(keyPath: \.itemAlignment, value: alignment)
@@ -195,29 +191,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     ///
     /// - Parameter lenght: padding
     func padding(_ length: CGFloat) -> Self {
-        padding(.all, length)
-    }
-
-    /// Sets some padding on the non-scroll axis. It will take the minimum value passed for the vertical insets on an horizontal `Pager`,
-    /// and the horizontal insets in case `Pager` is vertical
-    ///
-    /// - Parameter insets: insets to add as padding
-    func padding(_ insets: EdgeInsets) -> Self {
-        let length = isHorizontal ? min(insets.top, insets.bottom) : min(insets.leading, insets.trailing)
-        let edges: Edge.Set = isHorizontal ? .vertical : .horizontal
-        return padding(edges, length)
-    }
-
-    /// Sets some padding on the non-scroll axis. Will be set in case edges is `.all`, `.vertical` for a horizontal `Pager`
-    /// or `.horizontal` for a horizontal `Pager`.
-    ///
-    /// - Parameter edges: edges the padding should be applied along. Defaults to `.all`
-    /// - Parameter lenght: padding to be applied. Default to `8`.
-    func padding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> Self {
-        guard preferredItemSize == nil else { return self }
-        let allowedEdges: Edge.Set = isHorizontal ? .vertical : .horizontal
-        guard edges == .all || edges == allowedEdges else { return self }
-        return mutating(keyPath: \.sideInsets, value: length ?? 8)
+        mutating(keyPath: \.sideInsets, value: length)
     }
 
 }

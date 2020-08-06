@@ -188,16 +188,4 @@ protocol PagerProxy {
     /// - Parameter lenght: padding
     func padding(_ length: CGFloat) -> Self
 
-    /// Sets some padding on the non-scroll axis. It will take the minimum value passed for the vertical insets on an horizontal `Pager`,
-    /// and the horizontal insets in case `Pager` is vertical
-    ///
-    /// - Parameter insets: insets to add as padding
-    func padding(_ insets: EdgeInsets) -> Self
-
-    /// Sets some padding on the non-scroll axis. Will be set in case edges is `.all`, `.vertical` for a horizontal `Pager`
-    /// or `.horizontal` for a horizontal `Pager`.
-    ///
-    /// - Parameter edges: edges the padding should be applied along. Defaults to `.all`
-    /// - Parameter lenght: padding to be applied. Default to `8`.
-    func padding(_ edges: Edge.Set, _ length: CGFloat?) -> Self
 }

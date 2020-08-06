@@ -2,10 +2,14 @@ import XCTest
 import SwiftUI
 @testable import SwiftUIPager
 
+extension Int: Identifiable {
+    public var id: Int { return self }
+}
+
 final class Pager_Buildable_Tests: XCTestCase {
 
     var givenPager: Pager<Int, Int, Text> {
-        Pager(page: .constant(0), data: Array(1..<20), id: \.self) {
+        Pager(page: .constant(0), data: Array(0..<20)) {
             Text("\($0)")
         }
     }
@@ -31,6 +35,10 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.contentLoadingPolicy, .default)
         XCTAssertEqual(pager.allowsMultiplePagination, false)
         XCTAssertNil(pager.pagingAnimation)
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNil(pagerContent.direction)
+        XCTAssertFalse(pagerContent.isDragging)
     }
 
     func test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil() throws {
@@ -47,6 +55,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertTrue(pagerContent.allowsMultiplePagination)
         XCTAssertEqual(pagerContent.contentLoadingPolicy, .eager)
+        XCTAssertEqual(pagerContent.maximumNumberOfPages, pagerContent.numberOfPages)
+        XCTAssertEqual(pagerContent.upperPageDisplayed, pagerContent.numberOfPages - 1)
     }
 
     func test_GivenPager_WhenContentLoadingPolicyLazy0_ThenRecyclingRatioIs1() {
@@ -105,7 +115,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         pager = pager.loopPages(repeating: 3)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertTrue(pagerContent.isInifinitePager)
-        XCTAssertGreaterThan(pagerContent.data.count, 20)
+        XCTAssertEqual(pagerContent.data.count, 60)
     }
 
     func test_GivenPager_WhenDisableDragging_ThenAllowsDraggingFalse() {
@@ -158,7 +168,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pagerContent.isHorizontal)
     }
     
-    func test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet() {
+    func test_GivenPager_WhenInteractiveLessThanZero_ThenNotSet() {
         let pager = givenPager
         let pagerInteractive = pager.interactive(-0.7)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
@@ -235,9 +245,31 @@ final class Pager_Buildable_Tests: XCTestCase {
     
     func test_GivenPager_WhenPageOffset_ThenPageOffset() {
         var pager = givenPager
-        pager = pager.pageOffset(1.2)
+        pager = pager.pageOffset(50)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
-        XCTAssertEqual(pagerContent.pageOffset, 1.2)
+        XCTAssertEqual(pagerContent.pageOffset, 50)
+    }
+
+    func test_GivenPager_WhenPageOffsetPositive_ThenDirectionForward() throws {
+        var pager = givenPager
+        pager = pager.pageOffset(50)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.pageOffset, 50)
+
+        let direction = try XCTUnwrap(pagerContent.direction)
+        XCTAssertEqual(direction, .forward)
+        XCTAssertTrue(pagerContent.isDragging)
+    }
+
+    func test_GivenPager_WhenPageOffsetNegative_ThenDirectionBackward() throws {
+        var pager = givenPager
+        pager = pager.pageOffset(-50)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.pageOffset, -50)
+
+        let direction = try XCTUnwrap(pagerContent.direction)
+        XCTAssertEqual(direction, .backward)
+        XCTAssertTrue(pagerContent.isDragging)
     }
     
     func test_GivenPager_WhenItemSpacing_ThenItemSpacing() {
@@ -270,7 +302,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pagerContent.itemAlignment.equalsIgnoreValues(.start))
     }
     
-    func test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio() {
+    func test_GivenPager_WhenItemAspectRatioLessThanZero_ThenDoNotSetItemAspectRatio() {
         var pager = givenPager
         pager = pager.itemAspectRatio(-1.2)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
@@ -383,11 +415,73 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pagerContent.page, pager.page)
     }
 
+    func test_GivenPagerWithSizeZero_WhenPageSize_ThenZero() {
+        let pager = givenPager
+        let pagerContent = pager.content(for: .zero)
+        XCTAssertEqual(pagerContent.pageSize, .zero)
+        XCTAssertEqual(pagerContent.maximumNumberOfPages, 0)
+    }
+
+    func test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsPreferredSize() {
+        var pager = givenPager
+        pager = pager.preferredItemSize(CGSize(width: 50, height: 50))
+        let pagerContent = pager.content(for: CGSize(width: 150, height: 150))
+        XCTAssertEqual(pagerContent.pageSize, CGSize(width: 50, height: 50))
+    }
+
+    func test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsTrimmed() {
+        var pager = givenPager
+        pager = pager.preferredItemSize(CGSize(width: 50, height: 50))
+        let pagerContent = pager.content(for: CGSize(width: 40, height: 40))
+        XCTAssertEqual(pagerContent.pageSize, CGSize(width: 40, height: 40))
+    }
+
+    func test_GivenPager_WhenPadding_ThenPageSizeIsInset() {
+        var pager = givenPager
+        pager = pager.padding(10)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.pageSize, CGSize(width: 80, height: 80))
+    }
+
+    func test_GivenPager_WhenItemAspectRatioGreatherThanOne_ThenExpectedPageSize() {
+        var pager = givenPager
+        pager = pager
+            .padding(10)
+            .itemAspectRatio(1.2)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 200))
+        XCTAssertEqual(pagerContent.pageSize.width, 80)
+        XCTAssertEqual(pagerContent.pageSize.height.rounded(), (80 / 1.2).rounded())
+    }
+
+    func test_GivenPager_WhenItemAspectRatioLessThanOne_ThenExpectedPageSize() {
+        var pager = givenPager
+        pager = pager
+            .padding(10)
+            .itemAspectRatio(0.7)
+        let pagerContent = pager.content(for: CGSize(width: 300, height: 200))
+        XCTAssertEqual(pagerContent.pageSize.height, 180)
+        XCTAssertEqual(pagerContent.pageSize.width.rounded(), (180 * 0.7).rounded())
+    }
+
+    func test_GivenPager_WhenItemInteractiveItemSpacing_ThenItemSpacing() {
+        let pager = givenPager
+            .itemSpacing(10)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 200))
+        XCTAssertEqual(pagerContent.interactiveItemSpacing, 10)
+    }
+
     static var allTests = [
+        ("test_GivenPager_WhenItemInteractiveItemSpacing_ThenItemSpacing", test_GivenPager_WhenItemInteractiveItemSpacing_ThenItemSpacing),
+        ("test_GivenPager_WhenItemAspectRatioLessThanOne_ThenExpectedPageSize", test_GivenPager_WhenItemAspectRatioLessThanOne_ThenExpectedPageSize),
+        ("test_GivenPager_WhenItemAspectRatioGreatherThanOne_ThenExpectedPageSize", test_GivenPager_WhenItemAspectRatioGreatherThanOne_ThenExpectedPageSize),
+        ("test_GivenPager_WhenPadding_ThenPageSizeIsInset", test_GivenPager_WhenPadding_ThenPageSizeIsInset),
+        ("test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsTrimmed", test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsTrimmed),
+        ("test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsPreferredSize", test_GivenPager_WhenPreferredItemSize_ThenPageSizeIsPreferredSize),
+        ("test_GivenPagerWithSizeZero_WhenPageSize_ThenZero", test_GivenPagerWithSizeZero_WhenPageSize_ThenZero),
         ("test_GivenPager_ThenDefaultValues", test_GivenPager_ThenDefaultValues),
         ("test_GivenPager_WhenVertical_ThenIsVerticalTrue", test_GivenPager_WhenVertical_ThenIsVerticalTrue),
         ("test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue", test_GivenVerticalPager_WhenHorizontal_ThenIsHorizontalTrue),
-        ("test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet", test_GivenPager_WhenInteractiveLesserThanZero_ThenNotSet),
+        ("test_GivenPager_WhenInteractiveLessThanZero_ThenNotSet", test_GivenPager_WhenInteractiveLessThanZero_ThenNotSet),
         ("test_GivenPager_WhenInteractiveGreaterThanOne_ThenNotSet", test_GivenPager_WhenInteractiveGreaterThanOne_ThenNotSet),
         ("test_GivenPager_WhenInteractive_ThenInteractiveScaleIs", test_GivenPager_WhenInteractive_ThenInteractiveScaleIs),
         ("test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged", test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged),
@@ -399,7 +493,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenPageOffset_ThenPageOffset", test_GivenPager_WhenPageOffset_ThenPageOffset),
         ("test_GivenPager_WhenItemSpacing_ThenItemSpacing", test_GivenPager_WhenItemSpacing_ThenItemSpacing),
         ("test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio", test_GivenPager_WhenItemAspectRatioNotNil_ThenSetItemAspectRatio),
-        ("test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio", test_GivenPager_WhenItemAspectRatioLesserThanZero_ThenDoNotSetItemAspectRatio),
+        ("test_GivenPager_WhenItemAspectRatioLessThanZero_ThenDoNotSetItemAspectRatio", test_GivenPager_WhenItemAspectRatioLessThanZero_ThenDoNotSetItemAspectRatio),
         ("test_GivenPagerWithItemAspectRatio_WhenItemAspectRatioNil_ThenSetNil", test_GivenPagerWithItemAspectRatio_WhenItemAspectRatioNil_ThenSetNil),
         ("test_GivenPagerWithItemAspectRatio_WhenExpandPageToEdges_ThenItemAspectRatioNil", test_GivenPagerWithItemAspectRatio_WhenExpandPageToEdges_ThenItemAspectRatioNil),
         ("test_GivenHorizontalPager_WhenPaddingHorizontal_ThenNoInsets", test_GivenHorizontalPager_WhenPaddingHorizontal_ThenNoInsets),
@@ -426,7 +520,9 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax", test_GivenPager_WhenContentLoadingPolicyEager_ThenRecyclingRatioIsIntMax),
         ("test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger", test_GivenPager_WhenLoopPagesRepeating3_ThenDataArrayIsLarger),
         ("test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination", test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination),
-        ("test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil", test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil)
+        ("test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil", test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil),
+        ("test_GivenPager_WhenPageOffsetPositive_ThenDirectionForward", test_GivenPager_WhenPageOffsetPositive_ThenDirectionForward),
+        ("test_GivenPager_WhenPageOffsetNegative_ThenDirectionBackward", test_GivenPager_WhenPageOffsetNegative_ThenDirectionBackward)
     ]
 }
 
