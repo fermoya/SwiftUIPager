@@ -1,0 +1,22 @@
+# This workflow will trigger on pull-request to master.
+# It will run the Swift Package tests and output the code coverage
+
+name: Unit Tests
+
+on:
+  # Trigger the workflow on push pull request or manually
+  pull_request: 
+    branches: [ master ]
+jobs:
+  run_tests:
+    name: Run tests and Get Code Coverage
+    runs-on: macos-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: swift test --enable-code-coverage
+      - name: Test coverage
+        uses: maxep/spm-lcov-action@0.3.1
+        with:
+            output-file: ./coverage/lcov.info
