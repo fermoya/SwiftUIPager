@@ -16,12 +16,12 @@ jobs:
     steps:
       - name: Dummy
         run: echo 'This is a test'
-      # - name: Run tests
-      #   run: swift test --enable-code-coverage
-      # - name: Test coverage
-      #   uses: maxep/spm-lcov-action@0.3.1
-      #   with:
-      #       output-file: ./coverage/lcov.info
+      - name: Run tests
+        run: swift test --enable-code-coverage
+      - name: Test coverage
+        uses: maxep/spm-lcov-action@0.3.1
+        with:
+            output-file: ./coverage/lcov.info
   # create_release:
   #   name: Create Release
   #   runs-on: macos-latest
