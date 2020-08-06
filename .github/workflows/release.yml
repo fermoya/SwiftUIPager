@@ -14,8 +14,10 @@ jobs:
     name: Run tests and Get Code Coverage
     runs-on: ubuntu-latest
     steps:
-      - name: Dummy
+      - name: PWD
         run: echo $(pwd)
+      - name: LS
+        run: echo $(ls)
       - name: Run tests
         run: swift test --enable-code-coverage
       - name: Test coverage
