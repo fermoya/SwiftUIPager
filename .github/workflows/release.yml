@@ -12,7 +12,7 @@ on:
 jobs:
   run_tests:
     name: Run tests and Get Code Coverage
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Dummy
         run: echo 'This is a test'
