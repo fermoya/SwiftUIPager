@@ -187,7 +187,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
 	/// Adds a callback to react when dragging begins. Useful for dismissing a keyboard like a scrollview
 	///
 	/// - Parameter callback: block to be called when  dragging begins
-	public func onDraggingBegan(_ callback: (() -> Void)?) -> Self {
+	func onDraggingBegan(_ callback: (() -> Void)?) -> Self {
 		mutating(keyPath: \.onDraggingBegan, value: callback)
 	}
 	

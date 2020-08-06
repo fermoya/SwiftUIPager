@@ -353,20 +353,33 @@ final class Pager_Buildable_Tests: XCTestCase {
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertEqual(pagerContent.sideInsets, 5)
     }
+
+    func test_GivenPager_WhenOnDraggingBegan_ThenCallback() {
+        var pager = givenPager
+        let expectation = self.expectation(description: "Callback is called")
+        pager = pager.onDraggingBegan({
+            expectation.fulfill()
+        })
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        pagerContent.onDragChanged(with: DragGesture.Value.unsafeInit())
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
     
-    func test_GivenPager_WhenOnPageChanged_ThenObservePageChanges() {
+    func test_GivenPager_WhenOnPageChanged_ThenObservePageChanges() throws {
         var pager = givenPager
         
-        var newPage: Int! = nil
+        var newPage: Int? = nil
         pager = pager.onPageChanged({ (page) in
             newPage = page
         })
 
         pager.page = 3
 
+        let newPageUnwrapped = try XCTUnwrap(newPage)
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
-        XCTAssertNotNil(newPage)
-        XCTAssertEqual(pager.page, newPage)
+        XCTAssertEqual(pager.page, newPageUnwrapped)
         XCTAssertEqual(pagerContent.page, pager.page)
     }
 
@@ -415,4 +428,17 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination", test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination),
         ("test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil", test_GivenPager_WhenPagingAnimation_ThenPagingAnimationNotNil)
     ]
+}
+
+extension DragGesture.Value {
+    struct Dummy {
+        let data: (Double, Double, Double,
+                   Double, Double, Double, Double) = (0, 0, 0, 0, 0, 0, 0)
+    }
+
+    static func unsafeInit() -> Self {
+//        let byteCount = MemoryLayout<DragGesture.Value>.size
+        return unsafeBitCast(Dummy(), to: DragGesture.Value.self)
+    }
+
 }
