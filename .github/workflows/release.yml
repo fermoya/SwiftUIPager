@@ -1,0 +1,72 @@
+# This is a basic workflow to help you get started with Actions
+
+name: NEW RELEASE
+
+on:
+  # Trigger the workflow on push pull request or manually
+  push:
+    branches: [ master, continuous_integration ]
+  pull_request: 
+    branches: [ master, continuous_integration ]
+  # workflow_dispatch:
+jobs:
+  run_tests:
+    name: Run tests and Get Code Coverage
+    runs-on: macos-latest
+    steps:
+      - name: Dummy
+        run: echo 'This is a test'
+      # - name: Run tests
+      #   run: swift test --enable-code-coverage
+      # - name: Test coverage
+      #   uses: maxep/spm-lcov-action@0.3.1
+      #   with:
+      #       output-file: ./coverage/lcov.info
+  # create_release:
+  #   name: Create Release
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout Branch
+  #       uses: actions/checkout@v2
+
+  #     - name: Create XCFramework
+  #       uses: sersoft-gmbh/xcodebuild-action@v1
+  #       with:
+  #         project: SwiftUIPager.xcodeproj
+  #         scheme: SwiftUIPager
+  #         destination: platform=macOS
+  #         action: build
+        
+  #     - name: Create Release
+  #       id: create_release
+  #       uses: actions/create-release@v1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+  #       with:
+  #         tag_name: ${{ github.ref }}
+  #         release_name: Release ${{ github.ref }}
+  #         body: |
+  #           Changes in this Release
+  #           - First Change
+  #           - Second Change
+  #         draft: true
+  #         prerelease: true
+    
+  # upload_artifacts:  
+  #   name: Upload artfifact to release
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Zip XCFramework
+  #       uses: montudor/action-zip@v0.1.0
+  #       with:
+  #         args: zip -qq -r ./SwiftUIPager.xcframework.zip ./SwiftUIPager.xcframework
+  #     - name: Upload Release Asset
+  #       id: upload-release-asset 
+  #       uses: actions/upload-release-asset@v1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+  #         asset_path: ./SwiftUIPager.xcframework.zip
+  #         asset_name: SwiftUIPager.xcframework.zip
+  #         asset_content_type: application/zip
