@@ -26,17 +26,15 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          body_path: ./release_description.md
           draft: false
           prerelease: true
     
-  # upload_artifacts:  
-  #   name: Upload artfifact to release
-  #   runs-on: macos-latest
-  #   steps:
+  upload_artifacts:  
+    name: Upload artfifact to release
+    needs: create_release
+    runs-on: ubuntu-latest
+    steps:
       - name: Zip XCFramework
         uses: montudor/action-zip@v0.1.0
         with:
@@ -48,25 +46,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./SwiftUIPager.xcframework.zip
           asset_name: SwiftUIPager.xcframework.zip
           asset_content_type: application/zip
   
-  cocoapods:
-    name: Deploy to Cocoapods
-    runs-on: macOS-latest
-    steps:
-    - uses: actions/checkout@v2
+#   cocoapods:
+#     name: Deploy to Cocoapods
+#     runs-on: macOS-latest
+#     steps:
+#     - uses: actions/checkout@v2
 
-    - name: Install Cocoapods
-      run: gem install cocoapods 
+#     - name: Install Cocoapods
+#       run: gem install cocoapods 
 
-    - name: Deploy to Cocoapods
-      run: |
-        set -eo pipefail
-        export LIB_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
-        pod lib lint --allow-warnings
-        pod trunk push --allow-warnings
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+#     - name: Deploy to Cocoapods
+#       run: |
+#         set -eo pipefail
+#         export LIB_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
+#         pod lib lint --allow-warnings
+#         pod trunk push --allow-warnings
+#       env:
+#         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
