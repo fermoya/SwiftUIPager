@@ -8,15 +8,20 @@ on:
     tags:
       - '*'
 jobs:
-  create_release:
-    name: Create Release
+  create_xcframework:
+    name: Create XCFramework
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Create XCFramework
         uses: unsignedapps/swift-create-xcframework@v1
-        
+    
+  create_release:  
+    name: Create Release and Upload artfifacts
+    needs: create_xcframework
+    runs-on: ubuntu-latest
+    steps:
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -29,17 +34,13 @@ jobs:
           body_path: ./release_description.md
           draft: false
           prerelease: true
-    
-  upload_artifacts:  
-    name: Upload artfifact to release
-    needs: create_release
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
           name: SwiftUIPager.zip
           path: SwiftUIPager.xcframework.zip
+ 
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
