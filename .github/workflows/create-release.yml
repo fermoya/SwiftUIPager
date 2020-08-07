@@ -25,7 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: ${{ github.ref }}
           body_path: ./release_description.md
           draft: false
           prerelease: true
@@ -35,10 +35,14 @@ jobs:
     needs: create_release
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: SwiftUIPager.zip
       - name: Zip XCFramework
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./SwiftUIPager.xcframework.zip .build/swift-create-xcframework/SwiftUIPager.xcframework
+          args: zip -qq -r ./SwiftUIPager.xcframework.zip ./SwiftUIPager.xcframework
 
       - name: Upload Release Asset
         id: upload-release-asset 
