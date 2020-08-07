@@ -19,7 +19,7 @@ jobs:
         with:
           project: SwiftUIPager.xcodeproj
           scheme: SwiftUIPager
-          destination: platform=macOS
+          destination: platform=iOS
           action: build
         
       - name: Create Release
@@ -35,7 +35,7 @@ jobs:
             Changes in this Release
             - First Change
             - Second Change
-          draft: true
+          draft: false
           prerelease: true
     
   # upload_artifacts:  
