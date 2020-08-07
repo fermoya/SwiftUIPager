@@ -35,7 +35,7 @@ jobs:
           release_name: ${{ github.ref }}
           body_path: ./release_description.md
           draft: false
-          prerelease: true
+          prerelease: false
 
       - name: Download artifact
         uses: actions/download-artifact@v2
@@ -44,18 +44,6 @@ jobs:
           path: ./
       
       - run: mv SwiftUIPager.zip SwiftUIPager.xcframework.zip
-      
-      - name: Quick check
-        run: |
-          echo $(pwd)
-          file=SwiftUIPager.xcframework.zip
-          if [[ -d $file ]]; then
-            echo "$file is a directory"
-          elif [[ -f $file ]]; then
-            echo "$file is a file"
-          else
-              echo "$file is not valid"
-          fi
 
       - name: Upload Release Asset
         id: upload-release-asset 
@@ -68,20 +56,20 @@ jobs:
           asset_name: SwiftUIPager.xcframework.zip
           asset_content_type: application/zip
   
-#   cocoapods:
-#     name: Deploy to Cocoapods
-#     runs-on: macOS-latest
-#     steps:
-#     - uses: actions/checkout@v2
+  cocoapods:
+    name: Deploy to Cocoapods
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
 
-#     - name: Install Cocoapods
-#       run: gem install cocoapods 
+    - name: Install Cocoapods
+      run: gem install cocoapods 
 
-#     - name: Deploy to Cocoapods
-#       run: |
-#         set -eo pipefail
-#         export LIB_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
-#         pod lib lint --allow-warnings
-#         pod trunk push --allow-warnings
-#       env:
-#         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+    - name: Deploy to Cocoapods
+      run: |
+        set -eo pipefail
+        export LIB_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
+        pod lib lint --allow-warnings
+        pod trunk push --allow-warnings
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
