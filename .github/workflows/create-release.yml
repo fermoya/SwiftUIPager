@@ -1,0 +1,77 @@
+# This workflow creates a new release from a tag, generates an xcframework,
+# attaches it as an asset and deploys to CocoaPods
+
+name: Create Release
+
+on:
+  push: 
+    tags:
+      - '*'
+jobs:
+  create_release:
+    name: Create Release
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create XCFramework
+        uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          project: SwiftUIPager.xcodeproj
+          scheme: SwiftUIPager
+          destination: platform=macOS
+          action: build
+        
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: true
+          prerelease: true
+    
+  # upload_artifacts:  
+  #   name: Upload artfifact to release
+  #   runs-on: macos-latest
+  #   steps:
+      - name: Zip XCFramework
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./SwiftUIPager.xcframework.zip ./SwiftUIPager.xcframework
+
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./SwiftUIPager.xcframework.zip
+          asset_name: SwiftUIPager.xcframework.zip
+          asset_content_type: application/zip
+  
+  cocoapods:
+    name: Deploy to Cocoapods
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Cocoapods
+      run: gem install cocoapods 
+
+    - name: Deploy to Cocoapods
+      run: |
+        set -eo pipefail
+        export LIB_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
+        pod lib lint --allow-warnings
+        pod trunk push --allow-warnings
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
