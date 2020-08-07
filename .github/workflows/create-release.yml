@@ -42,6 +42,8 @@ jobs:
         with:
           name: SwiftUIPager.zip
           path: ./
+      
+      - run: mv SwiftUIPager.zip SwiftUIPager.xcframework.zip
  
       - name: Upload Release Asset
         id: upload-release-asset 
@@ -50,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./SwiftUIPager.xcframework.zip
+          asset_path: ./
           asset_name: SwiftUIPager.xcframework.zip
           asset_content_type: application/zip
   
