@@ -1,5 +1,2 @@
-### Features
-- Features here
-
 ### Fixes
-- Fixes here
+- Continuous Integration create_relaase workflow

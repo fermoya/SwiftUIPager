@@ -1,4 +1,0 @@
-framework module SwiftUIPager {
-  header "SwiftUIPager-Swift.h"
-  requires objc
-}
