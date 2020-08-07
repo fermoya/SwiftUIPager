@@ -22,6 +22,8 @@ jobs:
     needs: create_xcframework
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
