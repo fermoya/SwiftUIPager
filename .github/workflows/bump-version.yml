@@ -19,4 +19,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         TAG_CONTEXT: branch
+        DEFAULT_BUMP: minor
         WITH_V: false
