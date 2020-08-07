@@ -13,6 +13,10 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
+    - name: Last tag
+      run: |
+        tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+        echo $tag
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
