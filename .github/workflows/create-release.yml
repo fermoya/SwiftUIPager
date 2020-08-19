@@ -7,6 +7,9 @@ on:
   push: 
     tags:
       - '*'
+
+  workflow_dispatch:
+
 jobs:
   create_xcframework:
     name: Create XCFramework

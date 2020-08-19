@@ -1,12 +1,18 @@
-# This workflow will trigger on pull-request to master.
-# It will run the Swift Package tests and output the code coverage
+# This workflow will trigger on pull-request to master or develop.
+# It will run the Swift Package tests, output the code coverage and upload it to Codecov.
 
 name: Unit Tests
 
 on:
   # Trigger the workflow on push pull request or manually
   pull_request: 
-    branches: [ master ]
+    branches: [ master, develop ]
+
+  push:
+    branches: [ develop ]
+
+  workflow_dispatch:
+
 jobs:
   run_tests:
     name: Run tests and Get Code Coverage
@@ -14,9 +20,21 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
+
       - name: Run tests
         run: swift test --enable-code-coverage
+
       - name: Test coverage
         uses: maxep/spm-lcov-action@0.3.1
         with:
             output-file: ./coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        if: ${{ github.event_name == 'push' }}
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          env_vars: SWIFT
+          name: codecov-${{ github.head_ref }}
+          fail_ci_if_error: true
