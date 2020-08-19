@@ -12,7 +12,6 @@ on:
 jobs:
   bump_version:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '#skip-ci')"
     steps:
     - uses: actions/checkout@v2
       with:
@@ -20,9 +19,9 @@ jobs:
         token: '${{ secrets.PERSONAL_TOKEN }}'
 
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
+      uses: fermoya/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         TAG_CONTEXT: branch
-        DEFAULT_BUMP: minor
+        DEFAULT_BUMP: none
         WITH_V: false
