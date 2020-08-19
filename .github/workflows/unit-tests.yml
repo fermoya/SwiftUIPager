@@ -8,6 +8,9 @@ on:
   pull_request: 
     branches: [ master, develop ]
 
+  push:
+    branches: [ develop ]
+
   workflow_dispatch:
 
 jobs:
@@ -27,6 +30,7 @@ jobs:
             output-file: ./coverage/lcov.info
 
       - name: Upload coverage to Codecov
+        if: ${{ github.event_name == 'push' }}
         uses: codecov/codecov-action@v1
         with:
           file: ./coverage/lcov.info
