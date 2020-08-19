@@ -1,4 +1,4 @@
-# This workflow will get latest tag and bump the version.
+# This workflow will get the latest tag and bump the version.
 # The version defaults to #minor unless #major or #patch are found in any commit message.
 
 name: Bump version
@@ -6,16 +6,20 @@ on:
   push:
     branches:
       - master
+
+  workflow_dispatch:
+
 jobs:
-  build:
+  bump_version:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
         token: '${{ secrets.PERSONAL_TOKEN }}'
+
     - name: Bump version and push tag
-      uses: zsedem/github-tag-action@patch-1
+      uses: anothrNick/github-tag-action@1
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         TAG_CONTEXT: branch
