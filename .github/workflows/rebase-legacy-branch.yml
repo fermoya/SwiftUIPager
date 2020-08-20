@@ -47,4 +47,4 @@ jobs:
           git push --force-with-lease origin $OUTDATED_BRANCH
 
           cd ..
-          rm -f $FOLDER
+          rm -rf $FOLDER
