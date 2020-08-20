@@ -31,11 +31,11 @@ jobs:
           echo git checkout $BASE_BRANCH
           git checkout $HEAD_BRANCH
 
-          echo DIFF
-          git --no-pager diff origin/$BASE_BRANCH $HEAD_BRANCH
-
           echo git fetch origin $BASE_BRANCH
           git fetch origin $BASE_BRANCH
+          
+          echo DIFF
+          git --no-pager diff origin/$BASE_BRANCH $HEAD_BRANCH
           
           echo git pull --rebase origin $HEAD_BRANCH
           git pull --rebase origin $HEAD_BRANCH
