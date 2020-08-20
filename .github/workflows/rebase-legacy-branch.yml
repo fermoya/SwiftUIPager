@@ -31,8 +31,8 @@ jobs:
           echo git fetch origin $BASE_BRANCH
           git fetch origin $BASE_BRANCH
           
-          echo git pull.rebase origin $HEAD_BRANCH
-          git pull.rebase origin $HEAD_BRANCH
+          echo git pull --rebase origin $HEAD_BRANCH
+          git pull --rebase origin $HEAD_BRANCH
 
           echo Rebasing $BASE_BRANCH onto $HEAD_BRANCH
           echo git rebase origin/$BASE_BRANCH
