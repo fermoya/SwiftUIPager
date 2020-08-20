@@ -5,7 +5,7 @@ name: Rebase branch legacy-projects
 on:
   # Trigger the workflow on push pull request or manually
   push: 
-    branches: [ master ]
+    branches: [ develop ]
 
   workflow_dispatch:
 
@@ -13,36 +13,38 @@ jobs:
   rebase:
     name: Checkout legacy-projects and rebase
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: 'legacy-projects'
-          
+    steps:          
       - name: Automatic Rebase
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          USER_NAME: fermoya
+          USER_EMAIL: fmdr.ct@gmail.com
+          OUTDATED_BRANCH: legacy-projects
           BASE_BRANCH: develop
         run: |
+          FOLDER=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+
+          git clone https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
+          cd $FOLDER
+          git checkout $OUTDATED_BRANCH
+
           echo Adding origin as $GITHUB_REPOSITORY
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-          HEAD_BRANCH=$(git branch --show-current)
+          git config --global user.email "$USER_EMAIL"
+          git config --global user.name "$USER_NAME"
 
-          echo git checkout $BASE_BRANCH
-          git checkout $HEAD_BRANCH
-
-          echo git fetch origin $BASE_BRANCH
           git fetch origin $BASE_BRANCH
-          
-          echo DIFF
-          git --no-pager diff origin/$BASE_BRANCH $HEAD_BRANCH
-          
-          echo git pull --rebase origin $HEAD_BRANCH
-          git pull --rebase origin $HEAD_BRANCH
 
-          echo Rebasing $BASE_BRANCH onto $HEAD_BRANCH
+          echo git pull --rebase origin $OUTDATED_BRANCH
+          git pull --rebase origin $OUTDATED_BRANCH
+
+          echo Rebasing $BASE_BRANCH onto $OUTDATED_BRANCH
           echo git rebase origin/$BASE_BRANCH
           git rebase origin/$BASE_BRANCH
 
-          echo git push --force-with-lease origin $HEAD_BRANCH
-          git push --force-with-lease origin $HEAD_BRANCH
+          echo git push --force-with-lease origin $OUTDATED_BRANCH
+          git push --force-with-lease origin $OUTDATED_BRANCH
+
+          cd ..
+          rm -rf $FOLDER

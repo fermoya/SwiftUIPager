@@ -112,11 +112,11 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Number of times the input data should be repeated in a looping `Pager`
     var loopingCount: UInt = 1
 
-    /// Whether the `Pager` should page multiple pages at once
+    /// Whether `Pager` should page multiple pages at once
     var allowsMultiplePagination: Bool = false
 
-    /// Minimum distance for `Pager` to start scrolling
-    var minimumDistance: CGFloat = 15
+    /// Wheter `Pager` delays gesture recognition
+    var delaysTouches: Bool = true
 
     /// Priority selected to add `swipeGesture`
     var gesturePriority: GesturePriority = .default
@@ -197,6 +197,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 				.onDraggingBegan(onDraggingBegan)
                 .padding(sideInsets)
                 .pagingAnimation(pagingAnimation)
+                .delaysTouches(delaysTouches)
 
         #if !os(tvOS)
           pagerContent = pagerContent
