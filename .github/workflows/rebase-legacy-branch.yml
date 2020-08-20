@@ -31,7 +31,7 @@ jobs:
           echo Rebasing $BASE_BRANCH onto $HEAD_BRANCH
 
           git fetch origin $BASE_BRANCH
-          echo Current branch after fetching is $(git branch --show-current)
+          git pull origin $HEAD_BRANCH
           git rebase origin/$BASE_BRANCH
 
           echo Force pushing to $HEAD_BRANCH
