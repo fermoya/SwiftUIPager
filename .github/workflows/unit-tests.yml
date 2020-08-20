@@ -18,8 +18,7 @@ jobs:
     name: Run tests and Get Code Coverage
     runs-on: macos-latest
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Run tests
         run: swift test --enable-code-coverage
@@ -27,7 +26,7 @@ jobs:
       - name: Test coverage
         uses: maxep/spm-lcov-action@0.3.1
         with:
-            output-file: ./coverage/lcov.info
+          output-file: ./coverage/lcov.info
 
       - name: Upload coverage to Codecov
         if: ${{ github.event_name == 'push' }}
