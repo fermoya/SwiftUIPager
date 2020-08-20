@@ -24,22 +24,14 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           BASE_BRANCH: develop
         run: |
-          echo "Forking $GITHUB_REPOSITORY"
+          echo Adding origin as $GITHUB_REPOSITORY
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-          git remote add fork https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-
-          set -o xtrace
 
           HEAD_BRANCH=$(git branch --show-current)
-          echo "Rebasing $HEAD_BRANCH on to $BASE_BRANCH"
+          echo Rebasing $HEAD_BRANCH on to $BASE_BRANCH
 
-          # make sure branches are up-to-date
           git fetch origin $BASE_BRANCH
-          git fetch fork $HEAD_BRANCH
-
-          # do the rebase
-          git checkout -b $HEAD_BRANCH fork/$HEAD_BRANCH
           git rebase origin/$BASE_BRANCH
 
-          # push back
-          git push --force-with-lease fork $HEAD_BRANCH
+          echo Force pushing to $HEAD_BRANCH
+          git push --force-with-lease origin $HEAD_BRANCH
