@@ -18,6 +18,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          USER_NAME: fermoya
+          USER_EMAIL: fmdr.ct@gmail.com
           OUTDATED_BRANCH: legacy-projects
           BASE_BRANCH: develop
         run: |
@@ -29,6 +31,8 @@ jobs:
 
           echo Adding origin as $GITHUB_REPOSITORY
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
+          git config --global user.email "$USER_EMAIL"
+          git config --global user.name "$USER_NAME"
 
           git fetch origin $BASE_BRANCH
 
