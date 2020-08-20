@@ -53,6 +53,14 @@ extension Pager: Buildable, PagerProxy {
 
     /// Disables dragging on `Pager`
     #if !os(tvOS)
+
+    /// Makes `Pager` not delay gesture recognition
+    ///
+    /// - Parameter value: whether or not touches should be delayed
+    func delaysTouches(_ value: Bool) -> Self {
+        mutating(keyPath: \.delaysTouches, value: value)
+    }
+
     public func disableDragging() -> Self {
         mutating(keyPath: \.allowsDragging, value: false)
     }
@@ -81,6 +89,7 @@ extension Pager: Buildable, PagerProxy {
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
     }
+
     #endif
 
     /// Changes the a the  alignment of the pages relative to their container
