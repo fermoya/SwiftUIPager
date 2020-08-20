@@ -1,25 +1,24 @@
-# This workflow will trigger on pull-request to master or develop.
-# It will run the Swift Package tests, output the code coverage and upload it to Codecov.
+# This workflow will rebase legacy-projects branch on new pushes to master
 
 name: Rebase branch legacy-projects
 
 on:
   # Trigger the workflow on push pull request or manually
   push: 
-    branches: [ develop ]
+    branches: [ master ]
 
   workflow_dispatch:
 
 jobs:
   rebase:
     name: Checkout legacy-projects and rebase
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           ref: 'legacy-projects'
           
-      - name: Rebase
-        run: |
-          git rebase origin/develop
-          git push --force
+      - name: Automatic Rebase
+        uses: cirrus-actions/rebase@1.3.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
