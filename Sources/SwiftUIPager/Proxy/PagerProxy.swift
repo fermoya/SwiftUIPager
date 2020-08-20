@@ -48,9 +48,6 @@ protocol PagerProxy {
     /// Whether the `Pager` should page multiple pages at once
     var allowsMultiplePagination: Bool { get }
 
-    /// Minimum distance for `Pager` to start scrolling
-    var minimumDistance: CGFloat { get }
-
     /// Priority selected to add `swipeGesture`
     var gesturePriority: GesturePriority { get }
 
@@ -90,6 +87,11 @@ protocol PagerProxy {
     func loopPages(_ value: Bool, repeating count: UInt) -> Self
 
     #if !os(tvOS)
+
+    /// Makes `Pager` not delay gesture recognition
+    ///
+    /// - Parameter value: whether or not touches should be delayed
+    func delaysTouches(_ value: Bool) -> Self
 
     /// Sets whether the dragging is enabled or not
     ///
