@@ -24,9 +24,15 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           BASE_BRANCH: develop
         run: |
+          echo git remote -v
+          git remote -v
+
           echo Adding origin as $GITHUB_REPOSITORY
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
           HEAD_BRANCH=$(git branch --show-current)
+
+          echo git remote -v
+          git remote -v
 
           echo git fetch origin $BASE_BRANCH
           git fetch origin $BASE_BRANCH
