@@ -26,13 +26,17 @@ jobs:
         run: |
           echo Adding origin as $GITHUB_REPOSITORY
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-
           HEAD_BRANCH=$(git branch --show-current)
-          echo Rebasing $BASE_BRANCH onto $HEAD_BRANCH
 
+          echo git fetch origin $BASE_BRANCH
           git fetch origin $BASE_BRANCH
-          git pull origin $HEAD_BRANCH
+          
+          echo git pull.rebase origin $HEAD_BRANCH
+          git pull.rebase origin $HEAD_BRANCH
+
+          echo Rebasing $BASE_BRANCH onto $HEAD_BRANCH
+          echo git rebase origin/$BASE_BRANCH
           git rebase origin/$BASE_BRANCH
 
-          echo Force pushing to $HEAD_BRANCH
+          echo git push --force-with-lease origin $HEAD_BRANCH
           git push --force-with-lease origin $HEAD_BRANCH
