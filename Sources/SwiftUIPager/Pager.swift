@@ -197,13 +197,13 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 				.onDraggingBegan(onDraggingBegan)
                 .padding(sideInsets)
                 .pagingAnimation(pagingAnimation)
-                .delaysTouches(delaysTouches)
 
         #if !os(tvOS)
           pagerContent = pagerContent
             .swipeInteractionArea(swipeInteractionArea)
             .allowsDragging(allowsDragging)
             .pagingPriority(gesturePriority)
+            .delaysTouches(delaysTouches)
           #endif
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent
