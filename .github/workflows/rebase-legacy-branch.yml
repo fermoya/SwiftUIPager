@@ -21,10 +21,12 @@ jobs:
       - name: Automatic Rebase
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           BASE_BRANCH: develop
         run: |
+          echo "Forking $GITHUB_REPOSITORY"
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-          git remote add fork https://x-access-token:$COMMITTER_TOKEN@github.com/$HEAD_REPO.git
+          git remote add fork https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
 
           set -o xtrace
 
