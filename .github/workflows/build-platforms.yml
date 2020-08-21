@@ -1,6 +1,10 @@
+# This workflow runs xcodebuild on every target to make sure it compiles
+
 name: Xcodebuild
 
 on:
+  pull_request: 
+    branches: [ master, develop ]
 
   push:
     branches: [ feat/workflow-xcodebuild ]
@@ -14,26 +18,29 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run tests
+      - name: Build iOS, macOS, macC
         run: |
           gem install xcpretty
 
-          xcodebuild build  -scheme SwiftUIPager_macOS \
-                            -project SwiftUIPager.xcodeproj \
-                            -destination "platform=macOS" | xcpretty
+          validate()
+          {
+            SCHEME=$1
+            DIR=$(xcodebuild -project SwiftUIPager.xcodeproj -showBuildSettings | grep -m 1 "BUILD_DIR" | grep -oEi "\/.*")
+            COUNT=$(find $DIR -maxdepth 1 -type d | wc -l)
+            if [ $COUNT -eq 2 ]; then
+              echo "$(tput setaf 2)Build succeded for target $SCHEME$(tput sgr0)"
+            else
+              echo "$(tput setaf 1)Build failed for target $SCHEME$(tput sgr0)"
+              exit 0
+            fi
+          }
 
-          xcodebuild build  -scheme SwiftUIPager_iOS \
-                            -project SwiftUIPager.xcodeproj \
-                            -destination "generic/platform=iOS" | xcpretty
+          SCHEMES=( SwiftUIPager_Catalyst SwiftUIPager_macOS SwiftUIPager_iOS SwiftUIPager_watchOS SwiftUIPager_tvOS )
+          PLATFORMS=( "platform=macOS,variant=Mac Catalyst" "platform=macOS" "generic/platform=iOS" "generic/platform=watchOS" "generic/platform=tvOS" )
 
-          xcodebuild build  -scheme SwiftUIPager_Catalyst \
-                            -project SwiftUIPager.xcodeproj \
-                            -destination "platform=macOS,variant=Mac Catalyst" | xcpretty
-
-          xcodebuild build  -scheme SwiftUIPager_watchOS \
-                            -project SwiftUIPager.xcodeproj \
-                            -destination "generic/platform=watchOS" | xcpretty
-
-          xcodebuild build  -scheme SwiftUIPager_tvOS \
-                            -project SwiftUIPager.xcodeproj \
-                            -destination "generic/platform=tvOS" | xcpretty
+          for i in ${!SCHEMES[@]}; do
+            xcodebuild clean build  -scheme ${SCHEMES[$i]} \
+                                    -project SwiftUIPager.xcodeproj \
+                                    -destination "${PLATFORMS[$i]}" | xcpretty
+            validate ${SCHEMES[$i]}
+          done
