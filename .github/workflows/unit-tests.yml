@@ -9,7 +9,7 @@ on:
     branches: [ master, develop ]
 
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
 
   workflow_dispatch:
 
@@ -36,5 +36,5 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests
           env_vars: SWIFT
-          name: codecov-${{ github.head_ref }}
+          name: codecov-${{ github.head_ref }}-${{ steps.date.outputs.date }}
           fail_ci_if_error: true
