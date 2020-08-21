@@ -1,0 +1,39 @@
+name: Xcodebuild
+
+on:
+
+  push:
+    branches: [ feat/workflow-xcodebuild ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build all supported targets
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          gem install xcpretty
+
+          xcodebuild build  -scheme SwiftUIPager_macOS \
+                            -project SwiftUIPager.xcodeproj \
+                            -destination "platform=macOS" | xcpretty
+
+          xcodebuild build  -scheme SwiftUIPager_iOS \
+                            -project SwiftUIPager.xcodeproj \
+                            -destination "generic/platform=iOS" | xcpretty
+
+          xcodebuild build  -scheme SwiftUIPager_Catalyst \
+                            -project SwiftUIPager.xcodeproj \
+                            -destination "platform=macOS,variant=Mac Catalyst" | xcpretty
+
+          xcodebuild build  -scheme SwiftUIPager_watchOS \
+                            -project SwiftUIPager.xcodeproj \
+                            -destination "generic/platform=watchOS" | xcpretty
+
+          xcodebuild build  -scheme SwiftUIPager_tvOS \
+                            -project SwiftUIPager.xcodeproj \
+                            -destination "generic/platform=tvOS" | xcpretty
