@@ -36,6 +36,6 @@ jobs:
               echo "$(tput setaf 2)Build succeded for target ${SCHEMES[$i]}$(tput sgr0)"
             else
               echo "$(tput setaf 1)Build failed for target ${SCHEMES[$i]}$(tput sgr0)"
-              exit 0
+              exit 1
             fi
           done
