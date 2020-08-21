@@ -6,9 +6,6 @@ on:
   pull_request: 
     branches: [ master, develop ]
 
-  push:
-    branches: [ feat/workflow-xcodebuild ]
-
   workflow_dispatch:
 
 jobs:

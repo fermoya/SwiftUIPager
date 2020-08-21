@@ -9,7 +9,7 @@ on:
     branches: [ master, develop ]
 
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
 
   workflow_dispatch:
 
