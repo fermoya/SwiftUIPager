@@ -57,7 +57,7 @@ extension Pager: Buildable, PagerProxy {
     /// Makes `Pager` not delay gesture recognition
     ///
     /// - Parameter value: whether or not touches should be delayed
-    func delaysTouches(_ value: Bool) -> Self {
+    public func delaysTouches(_ value: Bool) -> Self {
         mutating(keyPath: \.delaysTouches, value: value)
     }
 

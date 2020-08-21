@@ -1,2 +1,2 @@
 ### Fixes
-- New modifier to avoid delaying touches
+- New workflow to compile all platforms
