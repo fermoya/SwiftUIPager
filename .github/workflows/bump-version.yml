@@ -7,8 +7,6 @@ on:
     branches:
       - master
       - develop
-    push:
-      - feat/beta-versions
 
   workflow_dispatch:
 
