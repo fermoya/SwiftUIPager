@@ -1,2 +1,2 @@
-### Fixes
-- New workflow to compile all platforms
+### Features
+- Changes in workflows to publish Beta releases
