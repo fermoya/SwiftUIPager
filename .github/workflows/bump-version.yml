@@ -6,6 +6,9 @@ on:
   push:
     branches:
       - master
+      - develop
+    push:
+      - feat/beta-versions
 
   workflow_dispatch:
 
@@ -25,3 +28,4 @@ jobs:
         TAG_CONTEXT: branch
         DEFAULT_BUMP: none
         WITH_V: false
+        PRERELEASE_SUFFIX: beta

@@ -27,6 +27,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get tag name
+        id: get_version
+        run: |
+          name=VERSION::${GITHUB_REF/refs\/tags\//}
+          echo "Tag: $name"
+          if [[ "$name" == *"beta"* ]]; then
+            prerelease=true
+          else
+            prerelease=false
+          fi
+          echo ::set-output name=prerelease::$prerelease
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -38,7 +50,7 @@ jobs:
           release_name: ${{ github.ref }}
           body_path: ./release_description.md
           draft: false
-          prerelease: false
+          prerelease: ${{ steps.get_version.outputs.prerelease }}
 
       - name: Download artifact
         uses: actions/download-artifact@v2
