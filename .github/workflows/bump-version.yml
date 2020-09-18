@@ -23,7 +23,7 @@ jobs:
       uses: anothrNick/github-tag-action@1.29.0
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        TAG_CONTEXT: branch
+        TAG_CONTEXT: repo
         DEFAULT_BUMP: none
         WITH_V: false
         PRERELEASE_SUFFIX: beta
