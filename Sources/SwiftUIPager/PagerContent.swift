@@ -156,10 +156,8 @@ extension Pager {
             let stack = HStack(spacing: interactiveItemSpacing) {
                 ForEach(dataDisplayed, id: id) { item in
                     Group {
-                        if self.isInifinitePager {
-                            self.content(item.element)
-                                .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
-                                .animation(nil) // disable animation for opacity
+                        if self.isInifinitePager && self.isEdgePage(item) {
+                            EmptyView()
                         } else {
                             self.content(item.element)
                         }
