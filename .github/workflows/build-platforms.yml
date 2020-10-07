@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build iOS, macOS, macC
+      - name: Run script
         run: |
           gem install xcpretty
 
