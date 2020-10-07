@@ -155,14 +155,20 @@ extension Pager {
         var body: some View {
             let stack = HStack(spacing: interactiveItemSpacing) {
                 ForEach(dataDisplayed, id: id) { item in
-                    self.content(item.element)
-                        .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
-                        .animation(nil) // disable animation for opacity
-                        .frame(size: self.pageSize)
-                        .scaleEffect(self.scale(for: item))
-                        .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
-                                          axis: (0, 0, 1))
-                        .rotation3DEffect(self.angle(for: item),
+                    Group {
+                        if self.isInifinitePager {
+                            self.content(item.element)
+                                .opacity(self.isInifinitePager && self.isEdgePage(item) ? 0 : 1)
+                                .animation(nil) // disable animation for opacity
+                        } else {
+                            self.content(item.element)
+                        }
+                    }
+                    .frame(size: self.pageSize)
+                    .scaleEffect(self.scale(for: item))
+                    .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
+                                      axis: (0, 0, 1))
+                    .rotation3DEffect(self.angle(for: item),
                                           axis:  self.axis)
                 }
                 .offset(x: self.xOffset, y : self.yOffset)
