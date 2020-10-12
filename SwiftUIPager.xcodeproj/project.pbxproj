@@ -53,6 +53,11 @@
 		6B2C305F248D740800E528F9 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
 		6B2C3061248D740800E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3062248D740800E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6B362CBD2534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
+		6B362CBE2534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
+		6B362CBF2534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
+		6B362CC02534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
+		6B362CC12534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
 		6B6FAA3F24D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
 		6B6FAA4024D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
 		6B6FAA4124D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
@@ -135,6 +140,7 @@
 		6B2C3001248D592100E528F9 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6B2C3067248D740800E528F9 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2C3069248D747700E528F9 /* Info-Catalyst.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Catalyst.plist"; sourceTree = "<group>"; };
+		6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaginationSensitivity.swift; path = Sources/SwiftUIPager/PageConfiguration/PaginationSensitivity.swift; sourceTree = SOURCE_ROOT; };
 		6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingAnimation.swift; path = Sources/SwiftUIPager/PageConfiguration/PagingAnimation.swift; sourceTree = SOURCE_ROOT; };
 		6BBC3D6B2488DBE8004194BD /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +281,7 @@
 			children = (
 				6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */,
 				6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */,
+				6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */,
 				6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */,
 				6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */,
 				6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */,
@@ -561,6 +568,7 @@
 				6BEF51A624C9ED34000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138E24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
+				6B362CBF2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				172F4D5923DF830600FD2F15 /* Pager.swift in Sources */,
 				6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732224ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
@@ -585,6 +593,7 @@
 				6BEF51A724C9ED34000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138F24B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
+				6B362CC02534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
 				6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732324ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
@@ -609,6 +618,7 @@
 				6BEF51A524C9ED33000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138D24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
+				6B362CBE2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6B2C305E248D740800E528F9 /* Pager.swift in Sources */,
 				6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732124ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
@@ -633,6 +643,7 @@
 				6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */,
 				6BEF51A824C9ED35000DF66B /* PagerProxy.swift in Sources */,
 				6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
+				6B362CC12534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */,
 				6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732424ACFA00007EA8DC /* PositionAlignment.swift in Sources */,
@@ -657,6 +668,7 @@
 				6BEF51A424C9ED33000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138C24B2674E00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
+				6B362CBD2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6BDE442923DE12480022A2F7 /* Pager.swift in Sources */,
 				6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732024ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,

@@ -58,6 +58,7 @@ struct InfiniteExampleView: View {
                     }
                     .pagingPriority(.simultaneous)
                     .loopPages()
+                    .sensitivity(.high)
                     .itemSpacing(10)
                     .itemAspectRatio(1.3, alignment: .start)
                     .padding(20)
