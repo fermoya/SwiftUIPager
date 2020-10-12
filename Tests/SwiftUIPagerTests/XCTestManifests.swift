@@ -10,7 +10,8 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(PagerWrapper_Tests.allTests),
         testCase(CGPoint+Angle_Tests.allTests),
         testCase(OnDeactivateModifier_Tests.allTests),
-        testCase(PagingAnimation_Tests.allTests)
+        testCase(PagingAnimation_Tests.allTests),
+        testCase(PaginationSensitivity_Tests.allTests)
     ]
 }
 #endif

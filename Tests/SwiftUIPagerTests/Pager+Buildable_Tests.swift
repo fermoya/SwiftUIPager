@@ -35,11 +35,20 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.contentLoadingPolicy, .default)
         XCTAssertEqual(pager.allowsMultiplePagination, false)
         XCTAssertNil(pager.pagingAnimation)
+        XCTAssertEqual(pager.sensitivity, .default)
 
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertNil(pagerContent.direction)
         XCTAssertEqual(pagerContent.minimumDistance, 15)
         XCTAssertFalse(pagerContent.isDragging)
+    }
+
+    func test_GivenPager_WhenSensitivityHigh_ThenSensitivityHigh() {
+        var pager = givenPager
+        pager = pager.sensitivity(.high)
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.sensitivity, .high)
     }
 
     func test_GivenPager_WhenDelaysTouchesFalse_ThenMinimumDistanceZero() {
