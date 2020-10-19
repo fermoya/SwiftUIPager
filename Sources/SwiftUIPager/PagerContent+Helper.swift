@@ -53,10 +53,18 @@ extension Pager.PagerContent {
         return totalOffset < 0 ? .forward : .backward
     }
 
-    /// The current page index. Will equal `page` if not dragging
+    /// Current page index, sensitivity 50%. Will equal `page` if not dragging
     var currentPage: Int {
+        currentPage(sensitivity: 0.5)
+    }
+
+    /// Current page index, based on sensitivity. Will equal `page` if not dragging
+    func currentPage(sensitivity: CGFloat) -> Int {
         guard isDragging else { return page }
-        let newPage = -Int((totalOffset / pageDistance).rounded()) + page
+        let dOffset = totalOffset / pageDistance
+        let remaining = dOffset - dOffset.rounded(.towardZero)
+        let dPage = Int(dOffset.rounded(.towardZero)) + (abs(remaining) < sensitivity ? 0 : Int(remaining.rounded(.awayFromZero)))
+        let newPage = page - dPage
 
         guard isInifinitePager else { return max(min(newPage, numberOfPages - 1), 0) }
         guard numberOfPages > 0 else { return 0 }

@@ -51,7 +51,10 @@ extension Pager {
         /*** ViewModified properties ***/
 
         /// Animation to be applied when the user stops dragging
-        var pagingAnimation: ((DraggingResult) -> PagingAnimation)?
+        var pagingAnimation: ((DragResult) -> PagingAnimation)?
+
+        /// Sensitivity used to determine whether or not to swipe the page
+        var sensitivity: PaginationSensitivity = .default
 
         /// Policy to be applied when loading content
         var contentLoadingPolicy: ContentLoadingPolicy = .default
@@ -249,7 +252,7 @@ extension Pager.PagerContent {
     }
 
     func onDragGestureEnded() {
-        let draggingResult = self.draggingResult
+        let draggingResult = self.dragResult
         let newPage = draggingResult.page
         let pageIncrement = draggingResult.increment
 
@@ -272,8 +275,8 @@ extension Pager.PagerContent {
         }
     }
 
-    private var draggingResult: (page: Int, increment: Int) {
-        let currentPage = self.currentPage
+    private var dragResult: (page: Int, increment: Int) {
+        let currentPage = self.currentPage(sensitivity: sensitivity.value)
         let velocity = -self.draggingVelocity
 
         guard allowsMultiplePagination else {

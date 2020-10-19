@@ -11,12 +11,13 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager: Buildable, PagerProxy {
 
-    public typealias DraggingResult = (page: Int, newPage: Int, translation: CGFloat, velocity: Double)
+    /// Result of paginating
+    public typealias DragResult = (page: Int, newPage: Int, translation: CGFloat, velocity: Double)
 
     /// Sets the animation to be applied when the user stops dragging
     ///
     /// - Parameter value: callback to get an animation based on the result of dragging
-    public func pagingAnimation(_ value: ((DraggingResult) -> PagingAnimation)?) -> Self {
+    public func pagingAnimation(_ value: ((DragResult) -> PagingAnimation)?) -> Self {
         mutating(keyPath: \.pagingAnimation, value: value)
     }
 
@@ -51,8 +52,12 @@ extension Pager: Buildable, PagerProxy {
             .mutating(keyPath: \.loopingCount, value: count)
     }
 
-    /// Disables dragging on `Pager`
     #if !os(tvOS)
+
+    /// Sensitivity used to determine whether or not to swipe the page
+    public func sensitivity(_ value: PaginationSensitivity) -> Self {
+        mutating(keyPath: \.sensitivity, value: value)
+    }
 
     /// Makes `Pager` not delay gesture recognition
     ///
@@ -61,6 +66,7 @@ extension Pager: Buildable, PagerProxy {
         mutating(keyPath: \.delaysTouches, value: value)
     }
 
+    /// Disables dragging on `Pager`
     public func disableDragging() -> Self {
         mutating(keyPath: \.allowsDragging, value: false)
     }

@@ -110,6 +110,24 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertEqual(currentPage, 3)
     }
 
+    func test_GivenHighSensitivePager_WhenCurrentPage_ThenThree() {
+        let pager = givenPager.pageOffset(2.25)
+        let currentPage = pager.currentPage(sensitivity: PaginationSensitivity.high.value)
+        XCTAssertEqual(currentPage, 3)
+    }
+
+    func test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo() {
+        let pager = givenPager.pageOffset(2.24)
+        let currentPage = pager.currentPage(sensitivity: PaginationSensitivity.high.value)
+        XCTAssertEqual(currentPage, 2)
+    }
+
+    func test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo() {
+        let pager = givenPager.pageOffset(2.42)
+        let currentPage = pager.currentPage(sensitivity: PaginationSensitivity.custom(0.43).value)
+        XCTAssertEqual(currentPage, 2)
+    }
+
     func test_GivenInfinitePagerDragging_WhenCurrentPage_Then19() {
         let pager = givenPager.pageOffset(-1).loopPages()
         let currentPage = pager.currentPage
@@ -298,6 +316,9 @@ final class PagerContent_Helper_Tests: XCTestCase {
         ("test_GivenPager_WhenAxisForItem_ThenZero", test_GivenPager_WhenAxisForItem_ThenZero),
         ("test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis", test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis),
         ("test_GivenPager_WhenIsFocused_ThenTrue", test_GivenPager_WhenIsFocused_ThenTrue),
-        ("test_GivenPager_WhenIsFocused_ThenFalse", test_GivenPager_WhenIsFocused_ThenFalse)
+        ("test_GivenPager_WhenIsFocused_ThenFalse", test_GivenPager_WhenIsFocused_ThenFalse),
+        ("test_GivenHighSensitivePager_WhenCurrentPage_ThenThree", test_GivenHighSensitivePager_WhenCurrentPage_ThenThree),
+        ("test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo", test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo),
+        ("test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo", test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo)
     ]
 }
