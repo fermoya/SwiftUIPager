@@ -65,7 +65,10 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /*** ViewModified properties ***/
 
     /// Animation to be applied when the user stops dragging
-    var pagingAnimation: ((DraggingResult) -> PagingAnimation)?
+    var pagingAnimation: ((DragResult) -> PagingAnimation)?
+
+    /// Sensitivity used to determine whether or not to swipe the page
+    var sensitivity: PaginationSensitivity = .default
 
     /// Policy to be applied when loading content
     var contentLoadingPolicy: ContentLoadingPolicy = .default
@@ -204,6 +207,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .allowsDragging(allowsDragging)
             .pagingPriority(gesturePriority)
             .delaysTouches(delaysTouches)
+            .sensitivity(sensitivity)
           #endif
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent

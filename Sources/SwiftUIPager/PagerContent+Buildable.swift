@@ -14,7 +14,7 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     /// Sets the animation to be applied when the user stops dragging
     ///
     /// - Parameter value: callback to get an animation based on the result of dragging
-    func pagingAnimation(_ value: ((Pager.DraggingResult) -> PagingAnimation)?) -> Self {
+    func pagingAnimation(_ value: ((Pager.DragResult) -> PagingAnimation)?) -> Self {
         mutating(keyPath: \.pagingAnimation, value: value)
     }
 
@@ -57,6 +57,11 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     }
 
     #if !os(tvOS)
+
+    /// Sensitivity used to determine whether or not to swipe the page
+    func sensitivity(_ value: PaginationSensitivity) -> Self {
+        mutating(keyPath: \.sensitivity, value: value)
+    }
 
     /// Makes `Pager` not delay gesture recognition
     ///

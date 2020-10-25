@@ -17,9 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Select Xcode 12
-        run: sudo xcode-select -s /Applications/Xcode_12.app/Contents/Developer
-
       - name: Create XCFramework
         uses: unsignedapps/swift-create-xcframework@v1
     
