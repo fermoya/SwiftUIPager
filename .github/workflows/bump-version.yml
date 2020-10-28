@@ -24,6 +24,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         TAG_CONTEXT: repo
+        RELEASE_BRANCHES: master
         DEFAULT_BUMP: none
         WITH_V: false
         PRERELEASE_SUFFIX: beta
