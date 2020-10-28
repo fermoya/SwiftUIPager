@@ -51,6 +51,15 @@ whereas a value greater than one will make it look like a box:
 
 <img src="/resources/usage/page_aspect_ratio_greater_than_1.png" alt="itemAspectRatio greater than 1" height="640"/>
 
+### Pagination sensitivity
+
+By default, `Pager` will increase/decrease the current `page` if this shift is greather than 50% of its relative size. If you wish to make this transition easier or, on the contrary, make it harder to happen, use `sensitivity`  to modify this relative value. For instance, to make transitions easier:
+
+```swift
+Pager(...)
+    .sensitivity(.high)
+```
+
 ### Orientation and direction
 
 By default, `Pager` will create a horizontal container. Use `vertical` to create a vertical pager:
