@@ -59,6 +59,8 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     #if !os(tvOS)
 
     /// Sensitivity used to determine whether or not to swipe the page
+    ///
+    /// - Parameter value: sensitivity to be applied when paginating
     func sensitivity(_ value: PaginationSensitivity) -> Self {
         mutating(keyPath: \.sensitivity, value: value)
     }

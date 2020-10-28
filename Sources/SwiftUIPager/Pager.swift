@@ -165,12 +165,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Initializes a new `Pager`.
     ///
     /// - Parameter page: Binding to the page index
-    /// - Parameter data: Array of items to populate the content
+    /// - Parameter data: Collection of items to populate the content
     /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+    public init<Data: RandomAccessCollection>(page: Binding<Int>, data: Data, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
         self._page = page
-        self.data = data
+        self.data = Array(data)
         self.id = id
         self.content = content
     }
@@ -228,10 +228,10 @@ extension Pager where ID == Element.ID, Element : Identifiable {
 
     /// Initializes a new Pager.
     ///
-    /// - Parameter data: Array of items to populate the content
+    /// - Parameter data: Collection of items to populate the content
     /// - Parameter content: Factory method to build new pages
-    public init(page: Binding<Int>, data: [Element], @ViewBuilder content: @escaping (Element) -> PageView) {
-        self.init(page: page, data: data, id: \Element.id, content: content)
+    public init<Data: RandomAccessCollection>(page: Binding<Int>, data: Data, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
+        self.init(page: page, data: Array(data), id: \Element.id, content: content)
     }
 
 }
