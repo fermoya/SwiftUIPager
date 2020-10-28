@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create XCFramework
-        uses: unsignedapps/swift-create-xcframework@v1.3
+        uses: unsignedapps/swift-create-xcframework@v1.3.0
     
   create_release:  
     name: Create Release and Upload artfifacts
