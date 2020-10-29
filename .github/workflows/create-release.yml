@@ -19,6 +19,8 @@ jobs:
 
       - name: Create XCFramework
         uses: fermoya/swift-create-xcframework@v1.5.0
+        with:
+          platforms: ios, macos, maccatalyst, tvos, watchos
     
   create_release:  
     name: Create Release and Upload artfifacts
