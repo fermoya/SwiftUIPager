@@ -1,4 +1,8 @@
 FOLDER=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+TEMP_DIR=".tmp"
+
+mkdir $TEMP_DIR
+cd $TEMP_DIR
 
 git clone https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
 cd $FOLDER
@@ -21,5 +25,5 @@ git rebase origin/$BASE_BRANCH
 echo git push --force-with-lease origin $OUTDATED_BRANCH
 git push --force-with-lease origin $OUTDATED_BRANCH
 
-cd ..
-rm -rf $FOLDER
+cd ../..
+rm -rf $TEMP_DIR
