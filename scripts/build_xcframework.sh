@@ -21,9 +21,9 @@ PLATFORMS=(
 ARCHIVES=(
   "$LIB_NAME.macCatalyst.xcarchive"
   "$LIB_NAME.macos.xcarchive"
-  "$LIB_NAME.iOS.xcarchive;SwiftUIPager.iOS-simulator.xcarchive"
-  "$LIB_NAME.watchOS.xcarchive;SwiftUIPager.watchOS-simulator.xcarchive" 
-  "$LIB_NAME.tvOS.xcarchive;SwiftUIPager.tvOS-simulator.xcarchive"
+  "$LIB_NAME.iOS.xcarchive;$LIB_NAME.iOS-simulator.xcarchive"
+  "$LIB_NAME.watchOS.xcarchive;$LIB_NAME.watchOS-simulator.xcarchive" 
+  "$LIB_NAME.tvOS.xcarchive;$LIB_NAME.tvOS-simulator.xcarchive"
 )
 
 COMMAND="xcodebuild -create-xcframework "
@@ -51,5 +51,5 @@ rm -rd $FRAMEWORKS_PATH
 cd $BUILD_PATH
 zip -r -X $XCFRAMEWORK_ZIP $XCFRAMEWORK_NAME
 rm -rd $XCFRAMEWORK_NAME
-echo ::set-output name=path::$XCFRAMEWORK_ZIP_PATH
 cd ..
+echo ::set-output name=path::$XCFRAMEWORK_ZIP_PATH
