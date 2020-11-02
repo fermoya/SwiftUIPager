@@ -52,3 +52,4 @@ cd $BUILD_PATH
 zip -r -X $XCFRAMEWORK_ZIP $XCFRAMEWORK_NAME
 rm -rd $XCFRAMEWORK_NAME
 echo ::set-output name=path::$XCFRAMEWORK_ZIP_PATH
+cd ..
