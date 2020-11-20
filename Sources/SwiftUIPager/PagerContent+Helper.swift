@@ -217,6 +217,7 @@ extension Pager.PagerContent {
         let numberOfPages = CGFloat(numberOfPagesDisplayed)
         let xIncrement = pageDistance / 2
         let offset = (numberOfPages / 2 - indexOfPageFocused) * pageDistance - xIncrement + totalOffset + alignmentOffset
+        print(offset)
 
         return max(offsetUpperbound, min(offsetLowerbound, offset))
     }

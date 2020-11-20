@@ -52,6 +52,21 @@ extension Pager: Buildable, PagerProxy {
             .mutating(keyPath: \.loopingCount, value: count)
     }
 
+    /// Sets a limit to the dragging offset, affecting the pagination towards neighboring items.
+    /// When the limit is reached, items won't keep scrolling further.
+    /// This modifier is incompatible with `multiplePagination` and will modify its value.
+    ///
+    /// - Parameter ratio: max page percentage. Should be `0 < ratio < 1`
+    /// - Parameter value: sensitivity to be applied when paginating
+    /// - Note: This modifier is incompatible with `multiplePagination`
+    ///
+    /// For instance, setting this `ratio` to `0.5` will make `Pager` reveal half of the next item tops.
+    public func partialPagination(_ ratio: CGFloat, sensitivity: PaginationSensitivity) -> Self {
+        mutating(keyPath: \.paginationRatio, value: min(1, max(0, ratio)))
+            .mutating(keyPath: \.allowsMultiplePagination, value: false)
+            .mutating(keyPath: \.sensitivity, value: sensitivity)
+    }
+
     #if !os(tvOS)
 
     /// Sensitivity used to determine whether or not to swipe the page
