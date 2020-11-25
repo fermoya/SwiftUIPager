@@ -254,7 +254,6 @@ extension Pager.PagerContent {
                 newOffset = self.direction == .forward ? max(newOffset, ratio * -self.pageDistance) : min(newOffset, ratio * self.pageDistance)
             }
 
-//            print("(\(newOffset), \(self.draggingVelocity)")
             self.draggingOffset = newOffset
             self.lastDraggingValue = value
         }
@@ -274,7 +273,6 @@ extension Pager.PagerContent {
 
         let pagingAnimation = self.pagingAnimation?((pageIndex, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
 
-//        print(self.draggingOffset)
         let animation = pagingAnimation.animation.speed(speed)
         withAnimation(animation) {
             self.draggingOffset = 0
