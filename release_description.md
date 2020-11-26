@@ -1,5 +1,5 @@
 ### Features
-- New modifier to adjust pagination sensitivity
+- New modifier to switch back to `singlePagination` and provide a reveal `ratio`
 
 ### Fixes
-- Fixed `animation` disabled with infinite pagers
+- Enhancement on the pagination animation
