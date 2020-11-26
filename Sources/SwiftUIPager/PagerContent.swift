@@ -230,7 +230,7 @@ extension Pager.PagerContent {
     }
 
     func onDragChanged(with value: DragGesture.Value) {
-        withAnimation(Animation.linear(duration: 0.01)) {
+        withAnimation {
             if self.lastDraggingValue == nil {
                 onDraggingBegan?()
             }
