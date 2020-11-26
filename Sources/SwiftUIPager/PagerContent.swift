@@ -50,6 +50,9 @@ extension Pager {
 
         /*** ViewModified properties ***/
 
+        /// Max relative item size that `Pager` will scroll before determining whether to move to the next page
+        var pageRatio: CGFloat = 1
+
         /// Animation to be applied when the user stops dragging
         var pagingAnimation: ((DragResult) -> PagingAnimation)?
 
@@ -246,7 +249,12 @@ extension Pager.PagerContent {
                 self.draggingVelocity = Double(offsetIncrement) / timeIncrement
             }
 
-            self.draggingOffset += offsetIncrement
+            var newOffset = self.draggingOffset + offsetIncrement
+            if !allowsMultiplePagination {
+                newOffset = self.direction == .forward ? max(newOffset, self.pageRatio * -self.pageDistance) : min(newOffset, self.pageRatio * self.pageDistance)
+            }
+
+            self.draggingOffset = newOffset
             self.lastDraggingValue = value
         }
     }

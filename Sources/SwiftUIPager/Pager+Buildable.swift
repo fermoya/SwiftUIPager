@@ -29,6 +29,21 @@ extension Pager: Buildable, PagerProxy {
             .mutating(keyPath: \.contentLoadingPolicy, value: .eager)
     }
 
+    /// Allows to scroll one page at a time. Use `ratio` to limit next item's reveal ratio.
+    /// Once reached, items won't keep scrolling further.
+    /// `Pager` will use then `sensitivity` to determine whether to paginate to the next page.
+    ///
+    /// - Parameter ratio: max page reveal ratio. Should be `0 < ratio < 1`. `default` is `1`
+    /// - Parameter sensitivity: sensitivity to be applied when paginating. `default` is `medium` a.k.a `0.5`
+    ///
+    /// For instance, setting `ratio` to `0.33` will make `Pager` reveal up to a third of the next item.
+    /// A proper  `sensitivy` for this scenario would be `high` (a.k.a, `0.33`) or a custom value lower than `ratio`
+    public func singlePagination(ratio: CGFloat = 1, sensitivity: PaginationSensitivity = .medium) -> Self {
+        mutating(keyPath: \.pageRatio, value: min(1, max(0, ratio)))
+            .mutating(keyPath: \.allowsMultiplePagination, value: false)
+            .mutating(keyPath: \.sensitivity, value: sensitivity)
+    }
+
     /// Sets the policy followed to load `Pager` content.
     ///
     /// - Parameter value: policy to load the content.

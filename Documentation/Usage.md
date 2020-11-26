@@ -98,6 +98,21 @@ Pager(...)
 
 <img src="/resources/usage/item-alignment-start.gif" alt="Pages positioned at the start of the horizontal pager" height="640"/>
 
+### Partial pagination
+
+By default, `Pager` will reveal the neighbor items completely (100% of their relative size). If you wish to limit this _reveal ratio_, you can use `singlePatination(ratio:sensitivity)` to modify this ratio:
+
+```swift
+Pager(...)
+    .singlePagination(0.33, sensitivity: .custom(0.2))
+    .preferredItemSize(CGSize(width: 300, height: 400))
+    .itemSpacing(10)
+    .background(Color.gray.opacity(0.2))
+```
+<img src="/resources/usage/single-pagination-ratio.gif" alt="Reveal Ratio set to a third of the page" height="640"/>
+
+For more information about `sensitivity`, check out [Pagination sensitivity](#pagination-sensitivity).
+
 ### Multiple pagination
 
 It's possible for `Pager` to swipe more than one page at a time. This is especially useful if your page size is small. Use `multiplePagination`.
@@ -181,6 +196,23 @@ Transform your `Pager` into an endless sroll by using `loopPages`:
 <img src="/resources/usage/endless-pager.gif" alt="Endless pager" height="640"/>
 
 **Note**: You'll need a minimum number of elements to use this modifier based on the page size. If you need more items, use `loopPages(repeating:)` to let `Pager` know elements should be repeated in batches.
+
+## Page Tranistions
+
+Use `pagingAnimation` to customize the _transition_ to the next page once the drag has ended. This is achieve by a block with a `DragResult`which contains:
+* Current page
+* Next page
+* Total shift
+* Velocity
+
+By default, `pagingAnimation`is set to `standard`(a.k.a, `.easeOut`) for `singlePagination`and `steep`([custom bezier curve](https://cubic-bezier.com/#.2,1,.9,1)) for `multiplePagination`. If you wish to change the animation, you could do it as follows:
+
+```swift
+Pager(...)
+    .pagingAnimation({ currentPage, nextPage, totalShift, velocity in
+        return PagingAnimation.custom(animation: .easeInOut)
+    })
+```
 
 ## Events
 

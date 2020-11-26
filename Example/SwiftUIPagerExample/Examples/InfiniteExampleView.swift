@@ -28,6 +28,7 @@ struct InfiniteExampleView: View {
                           id: \.self) {
                             self.pageView($0)
                     }
+                    .singlePagination(ratio: 0.5, sensitivity: .high)
                     .onPageChanged({ page in
                         guard page == self.data1.count - 2 else { return }
                         guard let last = self.data1.last else { return }
@@ -38,7 +39,7 @@ struct InfiniteExampleView: View {
                         }
                     })
                     .pagingPriority(.simultaneous)
-                    .preferredItemSize(CGSize(width: 300, height: 50))
+                    .preferredItemSize(CGSize(width: 200, height: 100))
                     .itemSpacing(10)
                     .background(Color.gray.opacity(0.2))
                     .alert(isPresented: self.$isPresented, content: {
