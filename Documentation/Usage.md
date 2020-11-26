@@ -197,7 +197,7 @@ Transform your `Pager` into an endless sroll by using `loopPages`:
 
 **Note**: You'll need a minimum number of elements to use this modifier based on the page size. If you need more items, use `loopPages(repeating:)` to let `Pager` know elements should be repeated in batches.
 
-## Page Tranistions
+## Page Transitions
 
 Use `pagingAnimation` to customize the _transition_ to the next page once the drag has ended. This is achieve by a block with a `DragResult`which contains:
 * Current page
