@@ -113,6 +113,32 @@ extension Pager: Buildable, PagerProxy {
         mutating(keyPath: \.swipeInteractionArea, value: value)
     }
 
+    /// Sets whether `Pager` should bounce or not
+    public func bounces(_ value: Bool) -> Self {
+        mutating(keyPath: \.bounces, value: value)
+    }
+
+    /// Adds a callback to react when dragging begins
+    ///
+    /// - Parameter callback: block to be called when  dragging begins
+    public func onDraggingBegan(_ callback: (() -> Void)?) -> Self {
+        mutating(keyPath: \.onDraggingBegan, value: callback)
+    }
+
+    /// Adds a callback to react when dragging changes
+    ///
+    /// - Parameter callback: block to be called when  dragging changes. `pageInrement` is passed as argument
+    public func onDraggingChanged(_ callback: ((Double) -> Void)?) -> Self {
+        mutating(keyPath: \.onDraggingChanged, value: callback)
+    }
+
+    /// Adds a callback to react when dragging ends
+    ///
+    /// - Parameter callback: block to be called when  dragging ends. `pageInrement` is passed as argument
+    public func onDraggingEnded(_ callback: ((Double) -> Void)?) -> Self {
+        mutating(keyPath: \.onDraggingEnded, value: callback)
+    }
+
     #endif
 
     /// Changes the a the  alignment of the pages relative to their container
@@ -216,13 +242,6 @@ extension Pager: Buildable, PagerProxy {
     public func onPageChanged(_ callback: ((Int) -> Void)?) -> Self {
         mutating(keyPath: \.onPageChanged, value: callback)
     }
-	
-	/// Adds a callback to react when dragging begins. Useful for dismissing a keyboard like a scrollview
-	///
-	/// - Parameter callback: block to be called when  dragging begins
-	public func onDraggingBegan(_ callback: (() -> Void)?) -> Self {
-		mutating(keyPath: \.onDraggingBegan, value: callback)
-	}
 
     /// Sets some padding on the non-scroll axis
     ///

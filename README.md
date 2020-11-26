@@ -10,7 +10,7 @@
 
 _SwiftUIPager_ provides  a `Pager` component built with SwiftUI native components. `Pager` is a view that renders a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. `Pager` will load just a handful of items, enough to beatifully scroll along.
 
-Create vertical or horizontal pagers, align the cards, change the direction of the scroll, animate the pagintation... `Pager` lets you do anything you want.
+Create vertical or horizontal pagers, align the cards, change the direction of the scroll, animate the pagination... `Pager` lets you do anything you want.
 
 - [Requirements](#requirements)
 - [Installation](#installation)
