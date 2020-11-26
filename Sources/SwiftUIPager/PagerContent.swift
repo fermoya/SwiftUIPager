@@ -50,6 +50,9 @@ extension Pager {
 
         /*** ViewModified properties ***/
 
+        /// Whether `Pager` should bounce or not
+        var bounces: Bool = true
+
         /// Max relative item size that `Pager` will scroll before determining whether to move to the next page
         var pageRatio: CGFloat = 1
 
@@ -118,6 +121,12 @@ extension Pager {
 		
 		/// Callback for when dragging begins
 		var onDraggingBegan: (() -> Void)?
+
+        /// Callback for when dragging changes
+        var onDraggingChanged: ((Double) -> Void)?
+
+        /// Callback for when dragging ends
+        var onDraggingEnded: ((Double) -> Void)?
 
         /*** State and Binding properties ***/
 
@@ -221,7 +230,7 @@ extension Pager.PagerContent {
     }
 
     func onDragChanged(with value: DragGesture.Value) {
-        withAnimation(Animation.linear(duration: 0.01)) {
+        withAnimation {
             if self.lastDraggingValue == nil {
                 onDraggingBegan?()
             }
@@ -256,6 +265,7 @@ extension Pager.PagerContent {
 
             self.draggingOffset = newOffset
             self.lastDraggingValue = value
+            self.onDraggingChanged?(Double(-self.draggingOffset / self.pageDistance))
         }
     }
 
@@ -263,6 +273,8 @@ extension Pager.PagerContent {
         let draggingResult = self.dragResult
         let newPage = draggingResult.page
         let pageIncrement = draggingResult.increment
+
+        self.onDraggingEnded?(Double(self.direction == .forward ? pageIncrement : -pageIncrement))
 
         var defaultPagingAnimation: PagingAnimation = .standard
         var speed: Double = 1

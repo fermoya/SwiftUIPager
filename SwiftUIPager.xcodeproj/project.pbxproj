@@ -109,11 +109,6 @@
 		6BEF519F24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
 		6BEF51A024C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
 		6BEF51A124C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
-		6BEF51A424C9ED33000DF66B /* PagerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */; };
-		6BEF51A524C9ED33000DF66B /* PagerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */; };
-		6BEF51A624C9ED34000DF66B /* PagerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */; };
-		6BEF51A724C9ED34000DF66B /* PagerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */; };
-		6BEF51A824C9ED35000DF66B /* PagerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */; };
 		6BEF677224C98BFA008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
 		6BEF677324C98BFA008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
 		6BEF677424C98BFB008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
@@ -159,7 +154,6 @@
 		6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GesturePriority.swift; path = Sources/SwiftUIPager/PageConfiguration/GesturePriority.swift; sourceTree = SOURCE_ROOT; };
 		6BEF519624C9ECF2000DF66B /* PagerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerContent.swift; path = Sources/SwiftUIPager/PagerContent.swift; sourceTree = SOURCE_ROOT; };
 		6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PagerContent+Buildable.swift"; path = "Sources/SwiftUIPager/PagerContent+Buildable.swift"; sourceTree = SOURCE_ROOT; };
-		6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerProxy.swift; sourceTree = "<group>"; };
 		6BEF677124C98BED008533FE /* PageWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageWrapper.swift; path = Sources/SwiftUIPager/PageWrapper.swift; sourceTree = SOURCE_ROOT; };
 		6BEF677724C98C12008533FE /* CGPoint+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Angle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,7 +246,6 @@
 			children = (
 				6BDE442423DE12480022A2F7 /* Helpers */,
 				6BEA730D24ACF7FF007EA8DC /* PageConfiguration */,
-				6BEF51A224C9ED0C000DF66B /* Proxy */,
 				6BEA732F24ACFAB3007EA8DC /* SupportFiles */,
 				6BDE442223DE12470022A2F7 /* Pager.swift */,
 				6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */,
@@ -301,15 +294,6 @@
 				172F4D7B23DF8A6400FD2F15 /* Info-watchOS.plist */,
 			);
 			path = SupportFiles;
-			sourceTree = "<group>";
-		};
-		6BEF51A224C9ED0C000DF66B /* Proxy */ = {
-			isa = PBXGroup;
-			children = (
-				6BEF51A324C9ED2F000DF66B /* PagerProxy.swift */,
-			);
-			name = Proxy;
-			path = ../Sources/SwiftUIPager/Proxy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,7 +549,6 @@
 				6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */,
 				172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */,
-				6BEF51A624C9ED34000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138E24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
 				6B362CBF2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
@@ -590,7 +573,6 @@
 				6BEF519B24C9ECF8000DF66B /* PagerContent.swift in Sources */,
 				6BEA732D24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */,
-				6BEF51A724C9ED34000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138F24B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
 				6B362CC02534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
@@ -615,7 +597,6 @@
 				6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */,
 				6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */,
-				6BEF51A524C9ED33000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138D24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
 				6B362CBE2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
@@ -641,7 +622,6 @@
 				6BEA732E24ACFA09007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BBC3D772488DC0B004194BD /* Pager.swift in Sources */,
 				6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */,
-				6BEF51A824C9ED35000DF66B /* PagerProxy.swift in Sources */,
 				6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6B362CC12534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */,
@@ -665,7 +645,6 @@
 				6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */,
 				6BDE442B23DE12480022A2F7 /* View+Helper.swift in Sources */,
-				6BEF51A424C9ED33000DF66B /* PagerProxy.swift in Sources */,
 				6BCF138C24B2674E00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
 				6B362CBD2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,

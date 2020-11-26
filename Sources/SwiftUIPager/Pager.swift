@@ -64,6 +64,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** ViewModified properties ***/
 
+    /// Whether `Pager` should bounce or not
+    var bounces: Bool = true
+
     /// Max relative item size that `Pager` will scroll before determining whether to move to the next page
     var pageRatio: CGFloat = 1
 
@@ -139,6 +142,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 	/// Callback for when dragging begins
 	var onDraggingBegan: (() -> Void)?
 
+    /// Callback for when dragging changes
+    var onDraggingChanged: ((Double) -> Void)?
+
+    /// Callback for when dragging ends
+    var onDraggingEnded: ((Double) -> Void)?
+
     /*** State and Binding properties ***/
 
     /// Size of the view
@@ -200,7 +209,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .itemSpacing(itemSpacing)
                 .itemAspectRatio(itemAspectRatio, alignment: itemAlignment)
                 .onPageChanged(onPageChanged)
-				.onDraggingBegan(onDraggingBegan)
                 .padding(sideInsets)
                 .pagingAnimation(pagingAnimation)
                 .partialPagination(pageRatio)
@@ -212,6 +220,10 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .pagingPriority(gesturePriority)
             .delaysTouches(delaysTouches)
             .sensitivity(sensitivity)
+            .onDraggingBegan(onDraggingBegan)
+            .onDraggingChanged(onDraggingChanged)
+            .onDraggingEnded(onDraggingEnded)
+            .bounces(bounces)
           #endif
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent

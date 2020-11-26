@@ -37,6 +37,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertNil(pager.pagingAnimation)
         XCTAssertEqual(pager.sensitivity, .default)
         XCTAssertEqual(pager.pageRatio, 1)
+        XCTAssertTrue(pager.bounces)
 
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertNil(pagerContent.direction)
@@ -452,7 +453,31 @@ final class Pager_Buildable_Tests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    
+    func test_GivenPager_WhenOnDraggingChanged_ThenCallback() {
+        var pager = givenPager
+        pager = pager.onDraggingChanged({ _ in })
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNotNil(pagerContent.onDraggingChanged)
+    }
+
+    func test_GivenPager_WhenOnDraggingEnded_ThenCallback() {
+        var pager = givenPager
+        let expectation = self.expectation(description: "Callback is called")
+        pager = pager.onDraggingEnded({ _ in
+            expectation.fulfill()
+        })
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        pagerContent.onDragGestureEnded()
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_GivenPager_WhenBouncesFalse_ThenBouncesFalse() {
+        let pager = givenPager.bounces(false)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertFalse(pagerContent.bounces)
+    }
+
     func test_GivenPager_WhenOnPageChanged_ThenObservePageChanges() throws {
         var pager = givenPager
         
@@ -580,7 +605,11 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenSinglePagination_ThenRatioChanges", test_GivenPager_WhenSinglePagination_ThenRatioChanges),
         ("test_GivenPager_WhenSinglePaginationNegativeValue_ThenRatioZero", test_GivenPager_WhenSinglePaginationNegativeValue_ThenRatioZero),
         ("test_GivenPager_WhenSinglePaginationTooLarge_ThenRatio1", test_GivenPager_WhenSinglePaginationTooLarge_ThenRatio1),
-        ("test_GivenMultiplePaginationPager_WhenSinglePagination_ThenAllowsMultiplePaginationFalse", test_GivenMultiplePaginationPager_WhenSinglePagination_ThenAllowsMultiplePaginationFalse)
+        ("test_GivenMultiplePaginationPager_WhenSinglePagination_ThenAllowsMultiplePaginationFalse", test_GivenMultiplePaginationPager_WhenSinglePagination_ThenAllowsMultiplePaginationFalse),
+        ("test_GivenPager_WhenBouncesFalse_ThenBouncesFalse", test_GivenPager_WhenBouncesFalse_ThenBouncesFalse),
+        ("test_GivenPager_WhenOnDraggingBegan_ThenCallback", test_GivenPager_WhenOnDraggingBegan_ThenCallback),
+        ("test_GivenPager_WhenOnDraggingChanged_ThenCallback", test_GivenPager_WhenOnDraggingChanged_ThenCallback),
+        ("test_GivenPager_WhenOnDraggingEnded_ThenCallback", test_GivenPager_WhenOnDraggingEnded_ThenCallback)
     ]
 }
 
