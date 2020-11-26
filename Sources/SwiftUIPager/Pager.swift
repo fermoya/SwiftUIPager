@@ -64,8 +64,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** ViewModified properties ***/
 
-    /// Max relative ratio that `Pager` should scroll before determining wether to move to the next page or not
-    var paginationRatio: CGFloat?
+    /// Max relative item size that `Pager` will scroll before determining whether to move to the next page
+    var pageRatio: CGFloat = 1
 
     /// Animation to be applied when the user stops dragging
     var pagingAnimation: ((DragResult) -> PagingAnimation)?
@@ -203,7 +203,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 				.onDraggingBegan(onDraggingBegan)
                 .padding(sideInsets)
                 .pagingAnimation(pagingAnimation)
-                .partialPagination(paginationRatio)
+                .partialPagination(pageRatio)
 
         #if !os(tvOS)
           pagerContent = pagerContent

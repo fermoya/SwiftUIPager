@@ -64,8 +64,8 @@ extension Pager.PagerContent: Buildable, PagerProxy {
     /// - Note: This modifier is incompatible with `multiplePagination`
     ///
     /// For instance, setting this `ratio` to `0.5` will make `Pager` reveal half of the next item tops.
-    func partialPagination(_ ratio: CGFloat?) -> Self {
-        mutating(keyPath: \.paginationRatio, value: ratio)
+    func partialPagination(_ ratio: CGFloat) -> Self {
+        mutating(keyPath: \.pageRatio, value: ratio)
     }
 
     #if !os(tvOS)

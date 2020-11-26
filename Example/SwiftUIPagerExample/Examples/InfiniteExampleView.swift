@@ -28,7 +28,7 @@ struct InfiniteExampleView: View {
                           id: \.self) {
                             self.pageView($0)
                     }
-                    .partialPagination(0.5, sensitivity: .high)
+                    .singlePagination(ratio: 0.5, sensitivity: .high)
                     .onPageChanged({ page in
                         guard page == self.data1.count - 2 else { return }
                         guard let last = self.data1.last else { return }
