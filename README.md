@@ -28,6 +28,7 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
         - [Alignment](Documentation/Usage.md#alignment)
         - [Partial pagination](Documentation/Usage.md#partial-pagination)
         - [Multiple pagination](Documentation/Usage.md#multiple-pagination)
+        - [More modifiers](Documentation/Usage.md#more-modifiers)
     - [Paging Priority](Documentation/Usage.md#paging-priority)
     - [Animations](Documentation/Usage.md#animations)
         - [Scale](Documentation/Usage.md#scale)

@@ -127,6 +127,17 @@ Pager(...)
 
 Be aware that this modifier will change the loading policy. See [Content Loading Policy](#content-loading-policy) for more information.
 
+### More modifiers
+| **Modifier** | **Description** |
+|---|---|
+| `allowsDragging` | whether or not dragging is allowed |
+| `disableDragging` | disables dragging |
+| `bounces` | whether or not `Pager` should bounce |
+| `delaysTouches` | whether or not touches shoulf be delayed. Useful if nested in `ScrollView` |
+| `pageOffset` | allows _manual_ scroll |
+| `expandPageToEdges` | modifies `itemAspectRatio` so that the use up all the space available |
+
+
 ## Paging Priority
 
 For complex pages where a `Gesture` might be used, or any other `View` that internally holds a `Gesture` like `Button` or `NavigationLink`, you might come across issues when trying to swipe on top of certain areas within the page. For these scenarios, use `pagingPriority` to select the option that best suits your purpose. For instance, a page containing a `NavigationLink` won't be scrollable over the link area unless `pagingPrioriry(.simultaneous)` is added:
@@ -225,6 +236,8 @@ Pager(...)
      })
 ```
 
+You can also use `onDraggingBegan`, `onDraggingChanged` and  `onDragginEnded` to keep track of the dragging.
+
 ## Add pages on demand
 
 You can use `onPageChanged` to add new items on demand whenever the user is getting to the last page:
@@ -245,6 +258,30 @@ var body: some View {
             }
         })
 }
+```
+
+At the same time, items can be added at the start. Notice you'll need to update the page yourself (as you're inserting new elements) to keep `Pager` focused on the right element:
+
+```swift
+
+@State var count: Int = -1
+@State var page: Int = 3
+@State var data = Array(0..<5)
+
+Pager(page: self.$page,
+        data: self.data,
+        id: \.self) {
+    self.pageView($0)
+}
+.onPageChanged({ page in
+    guard page == 1 else { return }
+    let newData = (1...5).map { $0 * self.count }
+    withAnimation {
+        self.data1.insert(contentsOf: newData, at: 0)
+        self.page1 += 5
+        self.count -= 1
+    }
+})
 ```
 
 ## Content Loading Policy

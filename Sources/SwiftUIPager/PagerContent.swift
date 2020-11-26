@@ -274,7 +274,7 @@ extension Pager.PagerContent {
         let newPage = draggingResult.page
         let pageIncrement = draggingResult.increment
 
-        self.onDraggingEnded?(Double(pageIncrement))
+        self.onDraggingEnded?(Double(self.direction == .forward ? pageIncrement : -pageIncrement))
 
         var defaultPagingAnimation: PagingAnimation = .standard
         var speed: Double = 1
