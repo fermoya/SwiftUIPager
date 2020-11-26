@@ -34,7 +34,7 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
         - [Scale](Documentation/Usage.md#scale)
         - [Rotation](Documentation/Usage.md#rotation)
         - [Loop](Documentation/Usage.md#loop)
-    - [Page Tranistions](Documentation/Usage.md#page-transitions)
+    - [Page Transitions](Documentation/Usage.md#page-transitions)
     - [Add pages on demand](Documentation/Usage.md#add-pages-on-demand)
     - [Content Loading Policy](Documentation/Usage.md#content-loading-policy)
     - [Examples](Documentation/Usage.md#examples)
