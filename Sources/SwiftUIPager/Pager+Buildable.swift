@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Pager: Buildable, PagerProxy {
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+extension Pager: Buildable {
 
     /// Result of paginating
     public typealias DragResult = (page: Int, newPage: Int, translation: CGFloat, velocity: Double)
@@ -27,6 +27,21 @@ extension Pager: Buildable, PagerProxy {
     public func multiplePagination() -> Self {
         mutating(keyPath: \.allowsMultiplePagination, value: true)
             .mutating(keyPath: \.contentLoadingPolicy, value: .eager)
+    }
+
+    /// Allows to scroll one page at a time. Use `ratio` to limit next item's reveal ratio.
+    /// Once reached, items won't keep scrolling further.
+    /// `Pager` will use then `sensitivity` to determine whether to paginate to the next page.
+    ///
+    /// - Parameter ratio: max page reveal ratio. Should be `0 < ratio < 1`. `default` is `1`
+    /// - Parameter sensitivity: sensitivity to be applied when paginating. `default` is `medium` a.k.a `0.5`
+    ///
+    /// For instance, setting `ratio` to `0.33` will make `Pager` reveal up to a third of the next item.
+    /// A proper  `sensitivy` for this scenario would be `high` (a.k.a, `0.33`) or a custom value lower than `ratio`
+    public func singlePagination(ratio: CGFloat = 1, sensitivity: PaginationSensitivity = .medium) -> Self {
+        mutating(keyPath: \.pageRatio, value: min(1, max(0, ratio)))
+            .mutating(keyPath: \.allowsMultiplePagination, value: false)
+            .mutating(keyPath: \.sensitivity, value: sensitivity)
     }
 
     /// Sets the policy followed to load `Pager` content.
@@ -96,6 +111,32 @@ extension Pager: Buildable, PagerProxy {
     /// - Parameter value: area of interaction
     public func swipeInteractionArea(_ value: SwipeInteractionArea) -> Self {
         mutating(keyPath: \.swipeInteractionArea, value: value)
+    }
+
+    /// Sets whether `Pager` should bounce or not
+    public func bounces(_ value: Bool) -> Self {
+        mutating(keyPath: \.bounces, value: value)
+    }
+
+    /// Adds a callback to react when dragging begins
+    ///
+    /// - Parameter callback: block to be called when  dragging begins
+    public func onDraggingBegan(_ callback: (() -> Void)?) -> Self {
+        mutating(keyPath: \.onDraggingBegan, value: callback)
+    }
+
+    /// Adds a callback to react when dragging changes
+    ///
+    /// - Parameter callback: block to be called when  dragging changes. `pageInrement` is passed as argument
+    public func onDraggingChanged(_ callback: ((Double) -> Void)?) -> Self {
+        mutating(keyPath: \.onDraggingChanged, value: callback)
+    }
+
+    /// Adds a callback to react when dragging ends
+    ///
+    /// - Parameter callback: block to be called when  dragging ends. `pageInrement` is passed as argument
+    public func onDraggingEnded(_ callback: ((Double) -> Void)?) -> Self {
+        mutating(keyPath: \.onDraggingEnded, value: callback)
     }
 
     #endif
@@ -201,13 +242,6 @@ extension Pager: Buildable, PagerProxy {
     public func onPageChanged(_ callback: ((Int) -> Void)?) -> Self {
         mutating(keyPath: \.onPageChanged, value: callback)
     }
-	
-	/// Adds a callback to react when dragging begins. Useful for dismissing a keyboard like a scrollview
-	///
-	/// - Parameter callback: block to be called when  dragging begins
-	public func onDraggingBegan(_ callback: (() -> Void)?) -> Self {
-		mutating(keyPath: \.onDraggingBegan, value: callback)
-	}
 
     /// Sets some padding on the non-scroll axis
     ///

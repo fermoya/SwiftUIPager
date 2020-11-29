@@ -9,7 +9,7 @@
 import Foundation
 
 /// Swipe direction for a vertical `Pager`
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum HorizontalSwipeDirection {
 
     /// Pages move from left to right
@@ -20,7 +20,7 @@ public enum HorizontalSwipeDirection {
 }
 
 /// Swipe direction for a horizontal `Pager`
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum VerticalSwipeDirection {
 
     /// Pages move from top left to bottom

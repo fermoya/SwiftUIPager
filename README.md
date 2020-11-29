@@ -10,7 +10,7 @@
 
 _SwiftUIPager_ provides  a `Pager` component built with SwiftUI native components. `Pager` is a view that renders a scrollable container to display a handful of pages. These pages are recycled on scroll, so you don't have to worry about memory issues. `Pager` will load just a handful of items, enough to beatifully scroll along.
 
-Create vertical or horizontal pagers, align the cards, change the direction of the scroll, animate the pagintation... `Pager` lets you do anything you want.
+Create vertical or horizontal pagers, align the cards, change the direction of the scroll, animate the pagination... `Pager` lets you do anything you want.
 
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -26,12 +26,15 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
         - [Pagination sensitivity](Documentation/Usage.md#pagination-sensitivity)
         - [Orientation and direction](Documentation/Usage.md#orientation-and-direction)
         - [Alignment](Documentation/Usage.md#alignment)
+        - [Partial pagination](Documentation/Usage.md#partial-pagination)
         - [Multiple pagination](Documentation/Usage.md#multiple-pagination)
+        - [More modifiers](Documentation/Usage.md#more-modifiers)
     - [Paging Priority](Documentation/Usage.md#paging-priority)
     - [Animations](Documentation/Usage.md#animations)
         - [Scale](Documentation/Usage.md#scale)
         - [Rotation](Documentation/Usage.md#rotation)
         - [Loop](Documentation/Usage.md#loop)
+    - [Page Transitions](Documentation/Usage.md#page-transitions)
     - [Add pages on demand](Documentation/Usage.md#add-pages-on-demand)
     - [Content Loading Policy](Documentation/Usage.md#content-loading-policy)
     - [Examples](Documentation/Usage.md#examples)

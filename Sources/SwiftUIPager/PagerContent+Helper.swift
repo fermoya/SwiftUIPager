@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager.PagerContent {
 
     /// Manages the number of items that should be displayed in the screen.
@@ -23,7 +23,7 @@ extension Pager.PagerContent {
 
     /// Work around to avoid @State keeps wrong value
     var page: Int {
-        return min(pageIndex, numberOfPages - 1)
+        return min(pagerModel.page, numberOfPages - 1)
     }
 
     /// `true` if `Pager` is vertical
@@ -74,15 +74,16 @@ extension Pager.PagerContent {
     /// Minimum offset allowed. This allows a bounce offset
     var offsetLowerbound: CGFloat {
         guard currentPage == 0, !isInifinitePager else { return CGFloat(numberOfPages) * self.size.width }
-        return CGFloat(numberOfPagesDisplayed) / 2 * pageDistance - pageDistance / 4 + alignmentOffset
+        let bounceOffset = bounces ? -pageDistance / 4 : -pageDistance / 2
+        return CGFloat(numberOfPagesDisplayed) / 2 * pageDistance + bounceOffset + alignmentOffset
     }
 
     /// Maximum offset allowed. This allows a bounce offset
     var offsetUpperbound: CGFloat {
         guard currentPage == numberOfPages - 1, !isInifinitePager else { return -CGFloat(numberOfPages) * self.size.width }
         let a = -CGFloat(numberOfPagesDisplayed) / 2
-        let b = pageDistance / 4
-        return a * pageDistance + b + alignmentOffset
+        let bounceOffset = bounces ? pageDistance / 4 : pageDistance / 2
+        return a * pageDistance + bounceOffset + alignmentOffset
     }
 
     /// Addition of `draggingOffset` and `contentOffset`

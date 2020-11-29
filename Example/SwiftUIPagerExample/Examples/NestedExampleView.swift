@@ -11,6 +11,7 @@ import SwiftUI
 struct NestedExampleView: View {
 
     @State var page: Int = 0
+    @State var pageOffset: Double = 0
     @State var nestedPages: [Int] = [0, 0, 0, 0]
 
     var data = Array(0..<4)
@@ -22,6 +23,7 @@ struct NestedExampleView: View {
               id: \.self) { page in
                 self.nestedPager(page)
         }
+        .pageOffset(pageOffset)
         .swipeInteractionArea(.allAvailable)
         .background(Color.gray.opacity(0.2))
     }
@@ -47,9 +49,26 @@ struct NestedExampleView: View {
                   id: \.self) { page in
                     self.pageView(page)
             }
+            .bounces(false)
 			.onDraggingBegan({
 				print("Dragging Began")
 			})
+            .onDraggingChanged { increment in
+                withAnimation {
+                    if binding.wrappedValue == self.nestedData.count - 1, increment > 0 {
+                        pageOffset = increment
+                    } else if binding.wrappedValue == 0, increment < 0 {
+                        pageOffset = increment
+                    }
+                }
+            }
+            .onDraggingEnded { increment in
+                guard pageOffset != 0 else { return }
+                withAnimation {
+                    pageOffset = 0
+                    page += Int(increment.rounded())
+                }
+            }
             .itemSpacing(10)
             .itemAspectRatio(0.8, alignment: .end)
             .padding(8)

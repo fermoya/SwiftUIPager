@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1751176A2573D93F00D809CF /* PagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175117692573D93F00D809CF /* PagerModel.swift */; };
 		17D9E0F423D4CF6700C5AE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */; };
 		17D9E0F623D4CF6700C5AE93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */; };
 		17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F723D4CF6700C5AE93 /* ContentView.swift */; };
@@ -20,7 +21,6 @@
 		6B4EC8A8240D1182001E7490 /* BizarreExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */; };
 		6B6FAA3D24D553C8000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3C24D553C8000D1539 /* PagingAnimation.swift */; };
 		6B9C4A8A24B45F66004C06C5 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C4A8924B45F66004C06C5 /* OnDeactivateModifier.swift */; };
-		6BB1AAD324C9C9D20032B5A3 /* PagerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1AAD224C9C9D20032B5A3 /* PagerProxy.swift */; };
 		6BB1AAD524C9CA1C0032B5A3 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1AAD424C9CA1C0032B5A3 /* PagerContent.swift */; };
 		6BB1AAD724C9D0820032B5A3 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1AAD624C9D0820032B5A3 /* Pager+Buildable.swift */; };
 		6BC5EDFC24866D9500E1E78C /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF424866D9500E1E78C /* PagerContent+Buildable.swift */; };
@@ -51,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		175117692573D93F00D809CF /* PagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerModel.swift; path = ../../Sources/SwiftUIPager/PagerModel.swift; sourceTree = "<group>"; };
 		17D9E0F023D4CF6700C5AE93 /* SwiftUIPagerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPagerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9E0F323D4CF6700C5AE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D9E0F523D4CF6700C5AE93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BizarreExampleView.swift; sourceTree = "<group>"; };
 		6B6FAA3C24D553C8000D1539 /* PagingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PagingAnimation.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/PagingAnimation.swift; sourceTree = "<group>"; };
 		6B9C4A8924B45F66004C06C5 /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeactivateModifier.swift; sourceTree = "<group>"; };
-		6BB1AAD224C9C9D20032B5A3 /* PagerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerProxy.swift; sourceTree = "<group>"; };
 		6BB1AAD424C9CA1C0032B5A3 /* PagerContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PagerContent.swift; path = ../../Sources/SwiftUIPager/PagerContent.swift; sourceTree = "<group>"; };
 		6BB1AAD624C9D0820032B5A3 /* Pager+Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Pager+Buildable.swift"; path = "../../Sources/SwiftUIPager/Pager+Buildable.swift"; sourceTree = "<group>"; };
 		6BC5EDF424866D9500E1E78C /* PagerContent+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PagerContent+Buildable.swift"; path = "../../Sources/SwiftUIPager/PagerContent+Buildable.swift"; sourceTree = "<group>"; };
@@ -147,26 +147,17 @@
 			path = Examples;
 			sourceTree = "<group>";
 		};
-		6BB1AAD124C9C9370032B5A3 /* Proxy */ = {
-			isa = PBXGroup;
-			children = (
-				6BB1AAD224C9C9D20032B5A3 /* PagerProxy.swift */,
-			);
-			name = Proxy;
-			path = ../../Sources/SwiftUIPager/Proxy;
-			sourceTree = "<group>";
-		};
 		6BC5EDEB24866D6000E1E78C /* Pagination */ = {
 			isa = PBXGroup;
 			children = (
 				6BC5EDF524866D9500E1E78C /* Helpers */,
 				6BEA730E24ACF8BB007EA8DC /* PageConfiguration */,
-				6BB1AAD124C9C9370032B5A3 /* Proxy */,
 				6BC5EDFA24866D9500E1E78C /* Pager.swift */,
 				6BB1AAD624C9D0820032B5A3 /* Pager+Buildable.swift */,
 				6BB1AAD424C9CA1C0032B5A3 /* PagerContent.swift */,
 				6BC5EDF424866D9500E1E78C /* PagerContent+Buildable.swift */,
 				6BC5EDFB24866D9500E1E78C /* PagerContent+Helper.swift */,
+				175117692573D93F00D809CF /* PagerModel.swift */,
 				6BEF676F24C98B62008533FE /* PageWrapper.swift */,
 			);
 			name = Pagination;
@@ -274,7 +265,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B4EC8A2240D072B001E7490 /* ColorsExampleView.swift in Sources */,
-				6BB1AAD324C9C9D20032B5A3 /* PagerProxy.swift in Sources */,
 				17D9E0F423D4CF6700C5AE93 /* AppDelegate.swift in Sources */,
 				6BEF677024C98B62008533FE /* PageWrapper.swift in Sources */,
 				6BD3828224C97DE3007B1CF6 /* CGPoint+Angle.swift in Sources */,
@@ -287,6 +277,7 @@
 				6B9C4A8A24B45F66004C06C5 /* OnDeactivateModifier.swift in Sources */,
 				6BEA731624ACF8D7007EA8DC /* GesturePriority.swift in Sources */,
 				6B35B6C125346610000D618F /* PaginationSensitivity.swift in Sources */,
+				1751176A2573D93F00D809CF /* PagerModel.swift in Sources */,
 				6BEA731324ACF8D7007EA8DC /* PositionAlignment.swift in Sources */,
 				6BEA731424ACF8D7007EA8DC /* SwipeDirection.swift in Sources */,
 				6BC5EE0224866D9500E1E78C /* PagerContent+Helper.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 
 /// Wrapper to `Pager` elements. It allows `Pager` to replicate the input data elements if required by the user.
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 struct PageWrapper<Element, ID>: Equatable, Identifiable where Element: Equatable, ID: Hashable {
 
     /// This _id_ indicates batch iteration

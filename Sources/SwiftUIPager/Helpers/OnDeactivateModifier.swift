@@ -10,7 +10,7 @@ import SwiftUI
 
 /// This modifier allows the `View` to listen to the `UIScene.didActivateNotification` in `iOS`
 /// and perform an action when received.
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 struct OnDeactivateView<Content: View>: View {
 
     var content: Content
@@ -29,7 +29,7 @@ struct OnDeactivateView<Content: View>: View {
 
 }
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 extension View {
 
     func onDeactivate(perform: @escaping () -> Void) -> some View {

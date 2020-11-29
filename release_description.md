@@ -1,5 +1,7 @@
 ### Features
-- New modifier to adjust pagination sensitivity
+- New modifier to switch back to `singlePagination` and provide a reveal `ratio`
+- New modifiers to keep track of the dragging `onDraggingChanged` and `onDraggingEnded`
+- New modifier to disable `bounces`
 
 ### Fixes
-- Fixed `animation` disabled with infinite pagers
+- Smoother scroll
