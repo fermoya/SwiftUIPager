@@ -174,6 +174,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         }
     }
 
+    @StateInstance var pagerModel: PagerModel
+
     /// Initializes a new `Pager`.
     ///
     /// - Parameter page: Binding to the page index
@@ -182,6 +184,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// - Parameter content: Factory method to build new pages
     public init<Data: RandomAccessCollection>(page: Binding<Int>, data: Data, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
         self._page = page
+        self.pagerModel = PagerModel(page: page.wrappedValue)
         self.data = Array(data)
         self.id = id
         self.content = content
@@ -190,6 +193,10 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     public var body: some View {
         GeometryReader { proxy in
             self.content(for: proxy.size)
+                .environmentObject(pagerModel)
+                .onReceive(pagerModel.$page) { (page) in
+                    self.page = page
+                }
         }
         .clipped()
     }
@@ -197,7 +204,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     func content(for size: CGSize) -> PagerContent {
         var pagerContent =
             PagerContent(size: size,
-                         page: $page,
+                         pagerModel: pagerModel,
                          data: data,
                          id: id,
                          content: content)

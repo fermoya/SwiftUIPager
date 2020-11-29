@@ -23,7 +23,7 @@ extension Pager.PagerContent {
 
     /// Work around to avoid @State keeps wrong value
     var page: Int {
-        return min(pageIndex, numberOfPages - 1)
+        return min(pagerModel.page, numberOfPages - 1)
     }
 
     /// `true` if `Pager` is vertical

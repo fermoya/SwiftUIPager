@@ -147,21 +147,18 @@ extension Pager {
         @State var pageIncrement = 1
 
         /// Page index
-        @Binding var pageIndex: Int {
-            didSet {
-                onPageChanged?(page)
-            }
-        }
+        @ObservedObject var pagerModel: PagerModel
 
         /// Initializes a new `Pager`.
         ///
-        /// - Parameter page: Binding to the page index
+        /// - Parameter size: Available size
+        /// - Parameter pagerModel: Wrapper for the current page
         /// - Parameter data: Array of items to populate the content
         /// - Parameter id: KeyPath to identifiable property
         /// - Parameter content: Factory method to build new pages
-        init(size: CGSize, page: Binding<Int>, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+        init(size: CGSize, pagerModel: PagerModel, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
             self.size = size
-            self._pageIndex = page
+            self.pagerModel = pagerModel
             self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
             self.id = \PageWrapper<Element, ID>.id
             self.content = content
@@ -283,13 +280,13 @@ extension Pager.PagerContent {
             speed = 1 / min(4, Double(pageIncrement))
         }
 
-        let pagingAnimation = self.pagingAnimation?((pageIndex, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
+        let pagingAnimation = self.pagingAnimation?((page, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
 
         let animation = pagingAnimation.animation.speed(speed)
         withAnimation(animation) {
             self.draggingOffset = 0
             self.pageIncrement = pageIncrement
-            self.pageIndex = newPage
+            self.pagerModel.page = newPage
             self.draggingVelocity = 0
             self.lastDraggingValue = nil
         }
