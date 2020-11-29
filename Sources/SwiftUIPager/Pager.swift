@@ -174,7 +174,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         }
     }
 
-    @StateInstance var pagerModel: PagerModel
+    @ObservedObject var pagerModel: PagerModel
 
     /// Initializes a new `Pager`.
     ///
