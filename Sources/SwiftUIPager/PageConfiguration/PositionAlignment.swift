@@ -8,7 +8,7 @@
 import CoreGraphics
 
 /// `Alignment` determines the focused page alignment inside `Pager`
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum PositionAlignment {
     /// Sets the alignment to be centered
     case center

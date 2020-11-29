@@ -8,7 +8,7 @@
 import Foundation
 
 /// Policy to follow when loading content
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum ContentLoadingPolicy: Equatable {
 
     /// Content is loaded on demand by applying a recycling the ratio.

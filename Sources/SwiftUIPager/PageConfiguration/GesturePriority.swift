@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// Defines a set of priorities to interact with gestures
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum GesturePriority {
     /// Refers to `highPriorityGesture` modifier
     case high
@@ -24,7 +24,7 @@ public enum GesturePriority {
     static let `default`: GesturePriority = .normal
 }
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 extension View {
 
     func gesture<T>(_ gesture: T, priority: GesturePriority) -> some View where T : Gesture {
