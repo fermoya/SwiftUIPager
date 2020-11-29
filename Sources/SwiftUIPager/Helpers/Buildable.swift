@@ -9,10 +9,10 @@
 import Foundation
 
 /// Adds a helper function to mutate a properties and help implement _Builder_ pattern
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 protocol Buildable { }
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Buildable {
 
     /// Mutates a property of the instance

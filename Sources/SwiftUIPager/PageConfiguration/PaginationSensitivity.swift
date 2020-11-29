@@ -9,7 +9,7 @@
 import CoreGraphics
 
 /// Defines how sensitive the pagination is to determine whether or not to move to the next the page.
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum PaginationSensitivity: Equatable {
 
     /// The shift relative to container size needs to be greater than or equal to 75%
