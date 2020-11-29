@@ -17,21 +17,21 @@ import SwiftUI
 
     private var _stateObject: Any?
 
-    @available(iOS 14.0, OSX 10.16, tvOS 14.0, watchOS 7.0, *)
+    @available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
     private var stateObject: ObjectType? {
         _stateObject as? ObjectType
     }
 
     var wrappedValue: ObjectType {
         get {
-            if #available(iOS 14.0, OSX 10.16, tvOS 14.0, watchOS 7.0, *) {
+            if #available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *) {
                 return stateObject ?? observedObject
             } else {
                 return observedObject
             }
         }
         set {
-            if #available(iOS 14.0, OSX 10.16, tvOS 14.0, watchOS 7.0, *) {
+            if #available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *) {
                 self._stateObject = StateObject(wrappedValue: newValue)
             }
             observedObject = newValue
@@ -39,7 +39,7 @@ import SwiftUI
     }
 
     init(wrappedValue: ObjectType) {
-        if #available(iOS 14.0, OSX 10.16, tvOS 14.0, watchOS 7.0, *) {
+        if #available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *) {
             self._stateObject = StateObject(wrappedValue: wrappedValue)
         }
         observedObject = wrappedValue
