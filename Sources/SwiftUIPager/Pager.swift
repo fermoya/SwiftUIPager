@@ -195,6 +195,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             self.content(for: proxy.size)
                 .environmentObject(pagerModel)
                 .onReceive(pagerModel.$page) { (page) in
+                    guard self.page != page else { return }
                     self.page = page
                 }
         }
