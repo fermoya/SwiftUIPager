@@ -168,11 +168,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     @State var pageIncrement = 1
 
     /// Page index
-    @Binding var page: Int {
-        didSet {
-            onPageChanged?(page)
-        }
-    }
+    @Binding var page: Int
 
     @ObservedObject var pagerModel: PagerModel
 
@@ -195,6 +191,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             self.content(for: proxy.size)
                 .environmentObject(pagerModel)
                 .onReceive(pagerModel.$page) { (page) in
+                    self.onPageChanged?(page)
+                    guard self.page != page else { return }
                     self.page = page
                 }
         }
