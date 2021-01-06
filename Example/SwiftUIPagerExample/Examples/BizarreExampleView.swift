@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct BizarreExampleView: View {
-    @State var page1: Int = 0
-    @State var page2: Int = 0
+    @StateObject var page1 = PagerModel(page: 0)
+    @StateObject var page2 = PagerModel(page: 0)
     var data = Array(0..<10)
 
     var body: some View {
         GeometryReader { proxy in
             VStack(spacing: 10) {
                 Text("Vertical, alignment start").bold()
-                Pager(page: self.$page1,
+                Pager(page: self.page1,
                       data: self.data,
                       id: \.self) {
                         self.pageView($0)
@@ -31,7 +31,7 @@ struct BizarreExampleView: View {
                 Spacer()
 
                 Text("Right to left, interactive").bold()
-                Pager(page: self.$page2,
+                Pager(page: self.page2,
                       data: self.data,
                       id: \.self) {
                         self.pageView($0)
