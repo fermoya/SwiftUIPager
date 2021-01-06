@@ -193,6 +193,7 @@ extension Pager {
                         #endif
                     }
                 })
+                .contentShape(Rectangle())
         }
     }
 }
