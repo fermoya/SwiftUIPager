@@ -3,17 +3,18 @@
 ## Initialization
 
 Creating a `Pager` is very simple. You just need to pass:
-- `Binding` to the current page
+- `PagerModel`, a wrapper to the current page index
 - `Array` of items 
 - `KeyPath` to an identifier
 - `ViewBuilder` factory method to create each page
 
 ```swift
-@State var page: Int = 0
+@StateObject var pagerModel = PagerModel(page: 0)
+// @ObservedObject var pagerModel = PagerModel(page: 0)
 var items = Array(0..<10)
 
 var body: some View {
-    Pager(page: $page,
+    Pager(page: pagerModel,
           data: items,
           id: \.identifier,
           content: { index in
@@ -244,7 +245,8 @@ You can use `onPageChanged` to add new items on demand whenever the user is gett
 
 ```swift
 
-@State var page: Int = 0
+@StateObject var pagerModel = PagerModel(page: 0)
+// @ObservedObject var pagerModel = PagerModel(page: 0)
 @State var data = Array(0..<5)
 
 var body: some View {
@@ -265,10 +267,11 @@ At the same time, items can be added at the start. Notice you'll need to update 
 ```swift
 
 @State var count: Int = -1
-@State var page: Int = 3
+@StateObject var pagerModel = PagerModel(page: 0)
+// @ObservedObject var pagerModel = PagerModel(page: 0)
 @State var data = Array(0..<5)
 
-Pager(page: self.$page,
+Pager(page: self.pagerModel,
         data: self.data,
         id: \.self) {
     self.pageView($0)
@@ -278,7 +281,7 @@ Pager(page: self.$page,
     let newData = (1...5).map { $0 * self.count }
     withAnimation {
         self.data1.insert(contentsOf: newData, at: 0)
-        self.page1 += 5
+        self.pagerModel.page += 5
         self.count -= 1
     }
 })

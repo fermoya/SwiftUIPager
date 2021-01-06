@@ -9,6 +9,17 @@ final class PagerContent_Helper_Tests: XCTestCase {
             Text("\($0)")
         }
     }
+    
+    func test_GivenPager_WhenPagerModelHelpers_ThenSameValues() {
+        let pagerContent = givenPager
+        pagerContent.pagerModel.draggingVelocity = -100
+        pagerContent.pagerModel.lastDraggingValue = .unsafeInit()
+        pagerContent.pagerModel.draggingOffset = 200
+        
+        XCTAssertEqual(pagerContent.pagerModel.draggingVelocity, pagerContent.draggingVelocity)
+        XCTAssertEqual(pagerContent.pagerModel.lastDraggingValue, pagerContent.lastDraggingValue)
+        XCTAssertEqual(pagerContent.pagerModel.draggingOffset, pagerContent.draggingOffset)
+    }
 
     func test_GivenPager_WhenIsFocused_ThenTrue() {
         let pager = givenPager
@@ -319,6 +330,7 @@ final class PagerContent_Helper_Tests: XCTestCase {
         ("test_GivenPager_WhenIsFocused_ThenFalse", test_GivenPager_WhenIsFocused_ThenFalse),
         ("test_GivenHighSensitivePager_WhenCurrentPage_ThenThree", test_GivenHighSensitivePager_WhenCurrentPage_ThenThree),
         ("test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo", test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo),
-        ("test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo", test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo)
+        ("test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo", test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo),
+        ("test_GivenPager_WhenPagerModelHelpers_ThenSameValues", test_GivenPager_WhenPagerModelHelpers_ThenSameValues)
     ]
 }

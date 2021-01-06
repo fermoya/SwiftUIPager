@@ -10,8 +10,8 @@ import SwiftUI
 
 struct InfiniteExampleView: View {
 
-    @State var page1: Int = 0
-    @State var page2: Int = 0
+    @StateObject var page1 = PagerModel(page: 0)
+    @StateObject var page2 = PagerModel(page: 0)
     @State var data1 = Array(0..<20)
     @State var isPresented: Bool = false
     var data2 = Array(0..<20)
@@ -23,7 +23,7 @@ struct InfiniteExampleView: View {
                     Text("Appending on the fly")
                         .bold()
                         .padding(.top)
-                    Pager(page: self.$page1,
+                    Pager(page: self.page1,
                           data: self.data1,
                           id: \.self) {
                             self.pageView($0)
@@ -52,7 +52,7 @@ struct InfiniteExampleView: View {
 
                     Text("Looping Pager")
                         .bold()
-                    Pager(page: self.$page2,
+                    Pager(page: self.page2,
                           data: self.data2,
                           id: \.self) {
                             self.pageView($0)

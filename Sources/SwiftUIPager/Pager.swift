@@ -150,28 +150,24 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /*** State and Binding properties ***/
 
-    /// `swipeGesture` translation on the X-Axis
-    @State var draggingOffset: CGFloat = 0
-
-    /// `swipeGesture` last translation on the X-Axis
-    #if !os(tvOS)
-    @State var lastDraggingValue: DragGesture.Value?
-    #endif
-
-    /// `swipeGesture` velocity on the X-Axis
-    @State var draggingVelocity: Double = 0
-
-    /// Increment resulting from the last swipe
-    @State var pageIncrement = 1
-
     /// Page index
-    @Binding var page: Int {
-        didSet {
-            onPageChanged?(page)
-        }
-    }
+    @Binding var page: Int
 
     let pagerModel: PagerModel
+    
+    /// Initializes a new `Pager`.
+    ///
+    /// - Parameter page: Current page index
+    /// - Parameter data: Collection of items to populate the content
+    /// - Parameter id: KeyPath to identifiable property
+    /// - Parameter content: Factory method to build new pages
+    public init<Data: RandomAccessCollection>(page: PagerModel, data: Data, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
+        self._page = .constant(0)
+        self.pagerModel = page
+        self.data = Array(data)
+        self.id = id
+        self.content = content
+    }
 
     /// Initializes a new `Pager`.
     ///
@@ -179,6 +175,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// - Parameter data: Collection of items to populate the content
     /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
+    @available(*, deprecated, message: "Will be removed in the future. Pass `PagerModel` instead of `Binding` as page.")
     public init<Data: RandomAccessCollection>(page: Binding<Int>, data: Data, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
         self._page = page
         self.pagerModel = PagerModel(page: page.wrappedValue)
@@ -190,15 +187,15 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     public var body: some View {
         GeometryReader { proxy in
             self.content(for: proxy.size)
-                .onReceive(pagerModel.$page) { (page) in
-                    guard self.page != page else { return }
-                    self.page = page
+                .onReceive(pagerModel.objectWillChange) { _ in
+                    guard self.page != self.pagerModel.page else { return }
+                    self.page = self.pagerModel.page
                 }
         }
         .clipped()
     }
 
-    func pagerContent(_ pagerModel: PagerModel, size: CGSize) -> PagerContent {
+    func content(for size: CGSize) -> PagerContent {
         var pagerContent =
             PagerContent(size: size,
                          pagerModel: pagerModel,
@@ -241,16 +238,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         return pagerContent
     }
 
-    func content(for size: CGSize) -> some View {
-        Group {
-            if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
-                StateObjectViewProxy(property: pagerModel) { pagerContent($0, size: size) }
-            } else {
-                ObservedObjectViewProxy(property: pagerModel) { pagerContent($0, size: size) }
-            }
-        }
-    }
-
 }
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
@@ -258,9 +245,20 @@ extension Pager where ID == Element.ID, Element : Identifiable {
 
     /// Initializes a new Pager.
     ///
+    /// - Parameter page: Binding to the page index
     /// - Parameter data: Collection of items to populate the content
     /// - Parameter content: Factory method to build new pages
+    @available(*, deprecated, message: "Will be removed in the future. Pass `PagerModel` instead of `Binding` as page.")
     public init<Data: RandomAccessCollection>(page: Binding<Int>, data: Data, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
+        self.init(page: page, data: Array(data), id: \Element.id, content: content)
+    }
+    
+    /// Initializes a new Pager.
+    ///
+    /// - Parameter page: Current page index
+    /// - Parameter data: Collection of items to populate the content
+    /// - Parameter content: Factory method to build new pages
+    public init<Data: RandomAccessCollection>(page: PagerModel, data: Data, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
         self.init(page: page, data: Array(data), id: \Element.id, content: content)
     }
 
