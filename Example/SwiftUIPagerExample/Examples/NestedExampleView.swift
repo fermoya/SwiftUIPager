@@ -10,15 +10,20 @@ import SwiftUI
 
 struct NestedExampleView: View {
 
-    @State var page: Int = 0
+    @StateObject var pagerModel = PagerModel(page: 0)
     @State var pageOffset: Double = 0
-    @State var nestedPages: [Int] = [0, 0, 0, 0]
+    @State var nestedPagerModels: [PagerModel] = [
+        PagerModel(page: 0),
+        PagerModel(page: 0),
+        PagerModel(page: 0),
+        PagerModel(page: 0)
+    ]
 
     var data = Array(0..<4)
     var nestedData = Array(0..<10)
 
     var body: some View {
-        Pager(page: self.$page,
+        Pager(page: self.pagerModel,
               data: self.data,
               id: \.self) { page in
                 self.nestedPager(page)
@@ -29,22 +34,14 @@ struct NestedExampleView: View {
     }
 
     func nestedPager(_ index: Int) -> some View {
-        let binding = Binding<Int>(
-            get: {
-                self.nestedPages[index]
-        }, set: { newValue in
-            var newNestedPages = self.nestedPages
-            newNestedPages[index] = newValue
-            self.nestedPages = newNestedPages
-        })
-
+        let nestedPagerModel = nestedPagerModels[index]
         return VStack {
             Text("Parent page: \(index)")
                 .font(.system(size: 22))
                 .bold()
                 .padding(20)
             Spacer()
-            Pager(page: binding,
+            Pager(page: nestedPagerModel,
                   data: self.nestedData,
                   id: \.self) { page in
                     self.pageView(page)
@@ -55,9 +52,9 @@ struct NestedExampleView: View {
 			})
             .onDraggingChanged { increment in
                 withAnimation {
-                    if binding.wrappedValue == self.nestedData.count - 1, increment > 0 {
+                    if nestedPagerModel.page == self.nestedData.count - 1, increment > 0 {
                         pageOffset = increment
-                    } else if binding.wrappedValue == 0, increment < 0 {
+                    } else if nestedPagerModel.page == 0, increment < 0 {
                         pageOffset = increment
                     }
                 }
@@ -66,7 +63,7 @@ struct NestedExampleView: View {
                 guard pageOffset != 0 else { return }
                 withAnimation {
                     pageOffset = 0
-                    page += Int(increment.rounded())
+                    pagerModel.page += Int(increment.rounded())
                 }
             }
             .itemSpacing(10)

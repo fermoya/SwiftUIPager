@@ -117,10 +117,14 @@ extension Pager {
         var preferredItemSize: CGSize?
 
         /// Callback for every new page
-        var onPageChanged: ((Int) -> Void)?
+        var onPageChanged: ((Int) -> Void)? {
+            didSet {
+                pagerModel.onPageChanged = onPageChanged
+            }
+        }
 		
-		/// Callback for when dragging begins
-		var onDraggingBegan: (() -> Void)?
+        /// Callback for when dragging begins
+        var onDraggingBegan: (() -> Void)?
 
         /// Callback for when dragging changes
         var onDraggingChanged: ((Double) -> Void)?
@@ -129,22 +133,6 @@ extension Pager {
         var onDraggingEnded: ((Double) -> Void)?
 
         /*** State and Binding properties ***/
-
-        /// Size of the view
-
-        /// `swipeGesture` translation on the X-Axis
-        @State var draggingOffset: CGFloat = 0
-
-        /// `swipeGesture` last translation on the X-Axis
-        #if !os(tvOS)
-        @State var lastDraggingValue: DragGesture.Value?
-        #endif
-
-        /// `swipeGesture` velocity on the X-Axis
-        @State var draggingVelocity: Double = 0
-
-        /// Increment resulting from the last swipe
-        @State var pageIncrement = 1
 
         /// Page index
         @ObservedObject var pagerModel: PagerModel
@@ -236,7 +224,7 @@ extension Pager.PagerContent {
             let swipeAngle = (value.location - lastLocation).angle ?? .zero
             // Ignore swipes that aren't on the X-Axis
             guard swipeAngle.isAlongXAxis else {
-                self.lastDraggingValue = value
+                self.pagerModel.lastDraggingValue = value
                 return
             }
 
@@ -252,7 +240,7 @@ extension Pager.PagerContent {
 
             let timeIncrement = value.time.timeIntervalSince(self.lastDraggingValue?.time ?? value.time)
             if timeIncrement != 0 {
-                self.draggingVelocity = Double(offsetIncrement) / timeIncrement
+                self.pagerModel.draggingVelocity = Double(offsetIncrement) / timeIncrement
             }
 
             var newOffset = self.draggingOffset + offsetIncrement
@@ -260,9 +248,10 @@ extension Pager.PagerContent {
                 newOffset = self.direction == .forward ? max(newOffset, self.pageRatio * -self.pageDistance) : min(newOffset, self.pageRatio * self.pageDistance)
             }
 
-            self.draggingOffset = newOffset
-            self.lastDraggingValue = value
+            self.pagerModel.draggingOffset = newOffset
+            self.pagerModel.lastDraggingValue = value
             self.onDraggingChanged?(Double(-self.draggingOffset / self.pageDistance))
+            self.pagerModel.objectWillChange.send()
         }
     }
 
@@ -284,11 +273,11 @@ extension Pager.PagerContent {
 
         let animation = pagingAnimation.animation.speed(speed)
         withAnimation(animation) {
-            self.draggingOffset = 0
-            self.pageIncrement = pageIncrement
+            self.pagerModel.draggingOffset = 0
+            self.pagerModel.pageIncrement = pageIncrement
+            self.pagerModel.draggingVelocity = 0
+            self.pagerModel.lastDraggingValue = nil
             self.pagerModel.page = newPage
-            self.draggingVelocity = 0
-            self.lastDraggingValue = nil
         }
     }
 
