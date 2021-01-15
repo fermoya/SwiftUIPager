@@ -1,5 +1,5 @@
 //
-//  AnimationCompletionModifier.swift
+//  OnAnimationCompletedModifier.swift
 //  SwiftUIPagerExample
 //
 //  Created by Fernando Moya de Rivas on 14/1/21.
@@ -10,7 +10,7 @@ import SwiftUI
 
 /// `ViewModifier` used to observe the end of an animation
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-struct AnimationCompletionModifier<Value>: AnimatableModifier where Value: VectorArithmetic {
+struct OnAnimationCompletedModifier<Value>: AnimatableModifier where Value: VectorArithmetic {
 
     var animatableData: Value {
         didSet {
@@ -47,6 +47,6 @@ extension View {
     /// - Parameter value: The value to observe
     /// - Parameter completion: The completion callback
     func onAnimationCompleted<Value: VectorArithmetic>(for value: Value, completion: @escaping () -> Void) -> some View {
-        return modifier(AnimationCompletionModifier(target: value, completion: completion))
+        return modifier(OnAnimationCompletedModifier(target: value, completion: completion))
     }
 }

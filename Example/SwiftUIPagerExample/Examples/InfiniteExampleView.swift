@@ -13,7 +13,7 @@ struct InfiniteExampleView: View {
     @StateObject var page1 = Page.withIndex(2)
     @StateObject var page2 = Page.first()
     @State var count: Int = 1
-    @State var data1 = Array(0..<6)
+    @State var data1 = Array(0..<7)
     @State var isPresented: Bool = false
     var data2 = Array(0..<20)
 

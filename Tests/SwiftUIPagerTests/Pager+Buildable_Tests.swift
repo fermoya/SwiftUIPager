@@ -478,6 +478,12 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertFalse(pagerContent.bounces)
     }
 
+    func test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil() {
+        let pager = givenPager.onPageChanged { _ in }
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertNotNil(pagerContent.onPageChanged)
+    }
+
     func test_GivenPager_WhenOnPageWillChange_ThenObservePageChanges() throws {
         var pager = givenPager
         
@@ -626,7 +632,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenBouncesFalse_ThenBouncesFalse", test_GivenPager_WhenBouncesFalse_ThenBouncesFalse),
         ("test_GivenPager_WhenOnDraggingBegan_ThenCallback", test_GivenPager_WhenOnDraggingBegan_ThenCallback),
         ("test_GivenPager_WhenOnDraggingChanged_ThenCallback", test_GivenPager_WhenOnDraggingChanged_ThenCallback),
-        ("test_GivenPager_WhenOnDraggingEnded_ThenCallback", test_GivenPager_WhenOnDraggingEnded_ThenCallback)
+        ("test_GivenPager_WhenOnDraggingEnded_ThenCallback", test_GivenPager_WhenOnDraggingEnded_ThenCallback),
+        ("test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil", test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil)
     ]
 }
 
