@@ -45,9 +45,9 @@ extension Pager.PagerContent {
         }
     }
 
-    /// Work around to avoid @State keeps wrong value
+    /// Current page index
     var page: Int {
-        return min(pagerModel.page, numberOfPages - 1)
+        pagerModel.index
     }
 
     /// `true` if `Pager` is vertical

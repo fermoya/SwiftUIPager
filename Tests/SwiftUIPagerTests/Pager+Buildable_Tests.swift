@@ -9,7 +9,7 @@ extension Int: Identifiable {
 final class Pager_Buildable_Tests: XCTestCase {
 
     var givenPager: Pager<Int, Int, Text> {
-        Pager(page: PagerModel(page: 0), data: Array(0..<20)) {
+        Pager(page: .first(), data: Array(0..<20)) {
             Text("\($0)")
         }
     }
@@ -463,7 +463,7 @@ final class Pager_Buildable_Tests: XCTestCase {
     func test_GivenPager_WhenOnDraggingEnded_ThenCallback() {
         var pager = givenPager
         let expectation = self.expectation(description: "Callback is called")
-        pager = pager.onDraggingEnded({ _ in
+        pager = pager.onDraggingEnded({
             expectation.fulfill()
         })
 
@@ -478,21 +478,36 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertFalse(pagerContent.bounces)
     }
 
-    func test_GivenPager_WhenOnPageChanged_ThenObservePageChanges() throws {
+    func test_GivenPager_WhenOnPageWillChange_ThenObservePageChanges() throws {
         var pager = givenPager
         
         var newPage: Int? = nil
-        pager = pager.onPageChanged({ (page) in
+        pager = pager.onPageWillChange({ (page) in
             newPage = page
         })
         
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
-        pager.pagerModel.draggingOffset = 100
+        pager.pagerModel.draggingOffset = -pagerContent.pageSize.width
         pagerContent.onDragGestureEnded()
 
         let newPageUnwrapped = try XCTUnwrap(newPage)
-        XCTAssertEqual(pager.page, newPageUnwrapped)
-        XCTAssertEqual(pagerContent.page, pager.page)
+        XCTAssertEqual(pagerContent.page, newPageUnwrapped)
+    }
+
+    func test_GivenPager_WhenOnPageWillChange_ThenObserveNoPageChanges() throws {
+        var pager = givenPager
+
+        var newPage: Int? = nil
+        pager = pager.onPageWillChange({ (page) in
+            newPage = page
+        })
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        pager.pagerModel.draggingOffset = -pagerContent.pageSize.width / 4
+        pagerContent.onDragGestureEnded()
+
+        XCTAssertNil(newPage)
+        XCTAssertEqual(pagerContent.page, 0)
     }
 
     func test_GivenPagerWithSizeZero_WhenPageSize_ThenZero() {
@@ -583,7 +598,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenVerticalPager_WhenPaddingHorizontal_ThenMinLeadingAndTrailing", test_GivenVerticalPager_WhenPaddingHorizontal_ThenMinLeadingAndTrailing),
         ("test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets", test_GivenHorizontalPager_WhenPaddingVertical_ThenDefaultInsets),
         ("test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets", test_GivenHorizontalPager_WhenPadding_ThenDefaultLengthVerticalInsets),
-        ("test_GivenPager_WhenOnPageChanged_ThenObservePageChanges", test_GivenPager_WhenOnPageChanged_ThenObservePageChanges),
+        ("test_GivenPager_WhenOnPageWillChange_ThenObservePageChanges", test_GivenPager_WhenOnPageWillChange_ThenObservePageChanges),
+        ("test_GivenPager_WhenOnPageWillChange_ThenObserveNoPageChanges", test_GivenPager_WhenOnPageWillChange_ThenObserveNoPageChanges),
         ("test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable", test_GivenPager_WhenSwipeInteractionAreaAllAvailable_ThenAllAvailable),
         ("test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage", test_GivenAllnteractionAreaPager_WhenSwipeInteractionAreaPage_ThenPage),
         ("test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd", test_GivenPager_WhenItemAspectAlignmentEnd_ThenItemAlignmentEnd),
