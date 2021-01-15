@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct BizarreExampleView: View {
-    @StateObject var page1 = PagerModel(page: 0)
-    @StateObject var page2 = PagerModel(page: 0)
+    @StateObject var page1: Page = .first()
+    @StateObject var page2: Page = .first()
     var data = Array(0..<10)
 
     var body: some View {

@@ -116,12 +116,11 @@ extension Pager {
         /// Will try to have the items fit this size
         var preferredItemSize: CGSize?
 
-        /// Callback for every new page
-        var onPageChanged: ((Int) -> Void)? {
-            didSet {
-                pagerModel.onPageChanged = onPageChanged
-            }
-        }
+        /// Callback invoked when a new page will be set
+        var onPageWillChange: ((Int) -> Void)?
+
+        /// Callback invoked when a new page is set
+        var onPageChanged: ((Int) -> Void)?
 		
         /// Callback for when dragging begins
         var onDraggingBegan: (() -> Void)?
@@ -130,12 +129,12 @@ extension Pager {
         var onDraggingChanged: ((Double) -> Void)?
 
         /// Callback for when dragging ends
-        var onDraggingEnded: ((Double) -> Void)?
+        var onDraggingEnded: (() -> Void)?
 
         /*** State and Binding properties ***/
 
         /// Page index
-        @ObservedObject var pagerModel: PagerModel
+        @ObservedObject var pagerModel: Page
 
         /// Initializes a new `Pager`.
         ///
@@ -144,7 +143,7 @@ extension Pager {
         /// - Parameter data: Array of items to populate the content
         /// - Parameter id: KeyPath to identifiable property
         /// - Parameter content: Factory method to build new pages
-        init(size: CGSize, pagerModel: PagerModel, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+        init(size: CGSize, pagerModel: Page, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
             self.size = size
             self.pagerModel = pagerModel
             self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
@@ -183,14 +182,16 @@ extension Pager {
             return wrappedView
                 .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
                                   axis: (0, 0, 1))
-                .onAppear(perform: {
-                    self.onPageChanged?(self.page)
-                })
                 .onDeactivate(perform: {
                     if self.isDragging {
                         #if !os(tvOS)
                         self.onDragGestureEnded()
                         #endif
+                    }
+                })
+                .onAnimationCompleted(for: pagerModel.draggingOffset, completion: {
+                    if pagerModel.pageIncrement != 0 {
+                        onPageChanged?(pagerModel.index)
                     }
                 })
                 .contentShape(Rectangle())
@@ -261,7 +262,7 @@ extension Pager.PagerContent {
         let newPage = draggingResult.page
         let pageIncrement = draggingResult.increment
 
-        self.onDraggingEnded?(Double(self.direction == .forward ? pageIncrement : -pageIncrement))
+        self.onDraggingEnded?()
 
         var defaultPagingAnimation: PagingAnimation = .standard
         var speed: Double = 1
@@ -273,12 +274,16 @@ extension Pager.PagerContent {
         let pagingAnimation = self.pagingAnimation?((page, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
 
         let animation = pagingAnimation.animation.speed(speed)
+        if page != newPage {
+            onPageWillChange?(newPage)
+        }
         withAnimation(animation) {
             self.pagerModel.draggingOffset = 0
             self.pagerModel.pageIncrement = pageIncrement
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
-            self.pagerModel.page = newPage
+            self.pagerModel.index = newPage
+            self.pagerModel.objectWillChange.send()
         }
     }
 
@@ -297,7 +302,7 @@ extension Pager.PagerContent {
             }
 
             newPage = max(0, min(self.numberOfPages - 1, newPage))
-            return (newPage, 1)
+            return (newPage, newPage != page ? 1 : 0)
         }
 
         let side = self.isHorizontal ? self.size.width : self.size.height
