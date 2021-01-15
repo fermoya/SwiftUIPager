@@ -9,7 +9,7 @@ final class PagerContent_Helper_Tests: XCTestCase {
             Text("\($0)")
         }
     }
-    
+
     func test_GivenPager_WhenPagerModelHelpers_ThenSameValues() {
         let pagerContent = givenPager
         pagerContent.pagerModel.draggingVelocity = -100
@@ -19,6 +19,41 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertEqual(pagerContent.pagerModel.draggingVelocity, pagerContent.draggingVelocity)
         XCTAssertEqual(pagerContent.pagerModel.lastDraggingValue, pagerContent.lastDraggingValue)
         XCTAssertEqual(pagerContent.pagerModel.draggingOffset, pagerContent.draggingOffset)
+    }
+
+    func test_GivenMultiplePaginationPager_WhenDragResult_ThenValues() {
+        let pagerContent = givenPager.multiplePagination()
+        pagerContent.pagerModel.draggingOffset = -pagerContent.size.width * 2
+        let result = pagerContent.dragResult
+        XCTAssertEqual(result.page, 2)
+        XCTAssertEqual(result.increment, 2)
+    }
+
+    func test_GivenInfinitePager_WhenDragLeft_ThenLastPage() {
+        let pagerContent = givenPager.loopPages()
+        pagerContent.pagerModel.draggingOffset = pagerContent.size.width / 10
+        pagerContent.pagerModel.draggingVelocity = 600
+        let result = pagerContent.dragResult
+        XCTAssertEqual(result.page, pagerContent.numberOfPages - 1)
+        XCTAssertEqual(result.increment, 1)
+    }
+
+    func test_GivenInfiniteMultiplePaginationPager_WhenDragLeft_ThenRightPage() {
+        let pagerContent = givenPager.loopPages().multiplePagination()
+        pagerContent.pagerModel.draggingOffset = pagerContent.size.width * 3
+        pagerContent.pagerModel.draggingVelocity = 600
+        let result = pagerContent.dragResult
+        XCTAssertEqual(result.page, pagerContent.numberOfPages - 4)
+        XCTAssertEqual(result.increment, 4)
+    }
+
+    func test_GivenPager_WhenDragQuickly_ThenIncrementPage() {
+        let pagerContent = givenPager
+        pagerContent.pagerModel.draggingOffset = -pagerContent.size.width / 4
+        pagerContent.pagerModel.draggingVelocity = -600
+        let result = pagerContent.dragResult
+        XCTAssertEqual(result.page, 1)
+        XCTAssertEqual(result.increment, 1)
     }
 
     func test_GivenPager_WhenIsFocused_ThenTrue() {
@@ -331,6 +366,9 @@ final class PagerContent_Helper_Tests: XCTestCase {
         ("test_GivenHighSensitivePager_WhenCurrentPage_ThenThree", test_GivenHighSensitivePager_WhenCurrentPage_ThenThree),
         ("test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo", test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo),
         ("test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo", test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo),
-        ("test_GivenPager_WhenPagerModelHelpers_ThenSameValues", test_GivenPager_WhenPagerModelHelpers_ThenSameValues)
+        ("test_GivenPager_WhenPagerModelHelpers_ThenSameValues", test_GivenPager_WhenPagerModelHelpers_ThenSameValues),
+        ("test_GivenMultiplePaginationPager_WhenDragResult_ThenValues", test_GivenMultiplePaginationPager_WhenDragResult_ThenValues),
+        ("test_GivenPager_WhenDragQuickly_ThenIncrementPage", test_GivenPager_WhenDragQuickly_ThenIncrementPage),
+        ("test_GivenInfinitePager_WhenDragLeft_ThenLastPage", test_GivenInfinitePager_WhenDragLeft_ThenLastPage)
     ]
 }

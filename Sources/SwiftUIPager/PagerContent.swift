@@ -287,7 +287,7 @@ extension Pager.PagerContent {
         }
     }
 
-    private var dragResult: (page: Int, increment: Int) {
+    var dragResult: (page: Int, increment: Int) {
         let currentPage = self.currentPage(sensitivity: sensitivity.value)
         let velocity = -self.draggingVelocity
 
