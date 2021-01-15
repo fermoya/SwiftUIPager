@@ -130,8 +130,8 @@ extension Pager.PagerContent: Buildable {
 
     /// Adds a callback to react when dragging ends
     ///
-    /// - Parameter callback: block to be called when  dragging ends. `pageInrement` is passed as argument
-    func onDraggingEnded(_ callback: ((Double) -> Void)?) -> Self {
+    /// - Parameter callback: block to be called when  dragging ends. 
+    func onDraggingEnded(_ callback: (() -> Void)?) -> Self {
         mutating(keyPath: \.onDraggingEnded, value: callback)
     }
 
@@ -225,7 +225,14 @@ extension Pager.PagerContent: Buildable {
             .mutating(keyPath: \.preferredItemSize, value: value)
     }
 
-    /// Adds a callback to react to every change on the page index.
+    /// Adds a callback to react whenever the page will change
+    ///
+    /// - Parameter callback: block to be called when `page` will  change
+    public func onPageWillChange(_ callback: ((Int) -> Void)?) -> Self {
+        mutating(keyPath: \.onPageWillChange, value: callback)
+    }
+
+    /// Adds a callback to react whenever the page changes
     ///
     /// - Parameter callback: block to be called when `page` changes
     func onPageChanged(_ callback: ((Int) -> Void)?) -> Self {

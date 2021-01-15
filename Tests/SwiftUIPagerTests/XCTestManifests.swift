@@ -3,6 +3,7 @@ import XCTest
 #if !canImport(ObjectiveC)
 public func allTests() -> [XCTestCaseEntry] {
     return [
+        testCase(Page_Tests.allTests),
         testCase(Pager_Buildable_Tests.allTests),
         testCase(View_Helper_Tests.allTests),
         testCase(PagerContent_Helper_Tests.allTests),

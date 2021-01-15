@@ -34,7 +34,7 @@ final class OnDeactivateModifier_Tests: XCTestCase {
     }
 
     static var allTests = [
-        ("test_GivenView_WhenOnDeactivate_ThenPerformAction", test_GivenView_WhenOnDeactivate_ThenPerformAction),
+        ("test_GivenView_WhenOnDeactivate_ThenPerformAction", test_GivenView_WhenOnDeactivate_ThenPerformAction)
     ]
 
 }

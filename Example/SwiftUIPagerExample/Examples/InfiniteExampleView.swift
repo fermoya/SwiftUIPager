@@ -10,9 +10,10 @@ import SwiftUI
 
 struct InfiniteExampleView: View {
 
-    @StateObject var page1 = PagerModel(page: 0)
-    @StateObject var page2 = PagerModel(page: 0)
-    @State var data1 = Array(0..<20)
+    @StateObject var page1 = Page.withIndex(2)
+    @StateObject var page2 = Page.first()
+    @State var count: Int = 1
+    @State var data1 = Array(0..<6)
     @State var isPresented: Bool = false
     var data2 = Array(0..<20)
 
@@ -23,19 +24,32 @@ struct InfiniteExampleView: View {
                     Text("Appending on the fly")
                         .bold()
                         .padding(.top)
-                    Pager(page: self.page1,
-                          data: self.data1,
+                    Pager(page: page1,
+                          data: data1,
                           id: \.self) {
                             self.pageView($0)
                     }
                     .singlePagination(ratio: 0.5, sensitivity: .high)
+                    .onPageWillChange({ (page) in
+                        print("Page will change to: \(page)")
+                    })
                     .onPageChanged({ page in
-                        guard page == self.data1.count - 2 else { return }
-                        guard let last = self.data1.last else { return }
-                        let newData = (1...5).map { last + $0 }
-                        withAnimation {
-                            self.isPresented.toggle()
-                            self.data1.append(contentsOf: newData)
+                        print("Page changed to: \(page)")
+                        if page == 1 {
+                            let newData = (1...5).map { data1.first! - $0 * count }.reversed()
+                            withAnimation {
+                                page1.index += newData.count
+                                data1.insert(contentsOf: newData, at: 0)
+                                count += 1
+                                isPresented.toggle()
+                            }
+                        } else if page == self.data1.count - 2 {
+                            guard let last = self.data1.last else { return }
+                            let newData = (1...5).map { last + $0 }
+                            withAnimation {
+                                isPresented.toggle()
+                                data1.append(contentsOf: newData)
+                            }
                         }
                     })
                     .pagingPriority(.simultaneous)

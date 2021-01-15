@@ -10,20 +10,20 @@ import SwiftUI
 
 struct NestedExampleView: View {
 
-    @StateObject var pagerModel = PagerModel(page: 0)
+    @StateObject var page: Page = .first()
     @State var pageOffset: Double = 0
-    @State var nestedPagerModels: [PagerModel] = [
-        PagerModel(page: 0),
-        PagerModel(page: 0),
-        PagerModel(page: 0),
-        PagerModel(page: 0)
+    @State var nestedPages: [Page] = [
+        .first(),
+        .first(),
+        .first(),
+        .first()
     ]
 
-    var data = Array(0..<4)
-    var nestedData = Array(0..<10)
+    var data = Array(0..<3)
+    var nestedData = Array(0..<3)
 
     var body: some View {
-        Pager(page: self.pagerModel,
+        Pager(page: self.page,
               data: self.data,
               id: \.self) { page in
                 self.nestedPager(page)
@@ -34,7 +34,7 @@ struct NestedExampleView: View {
     }
 
     func nestedPager(_ index: Int) -> some View {
-        let nestedPagerModel = nestedPagerModels[index]
+        let nestedPagerModel = nestedPages[index]
         return VStack {
             Text("Parent page: \(index)")
                 .font(.system(size: 22))
@@ -52,18 +52,21 @@ struct NestedExampleView: View {
 			})
             .onDraggingChanged { increment in
                 withAnimation {
-                    if nestedPagerModel.page == self.nestedData.count - 1, increment > 0 {
+                    if nestedPagerModel.index == self.nestedData.count - 1, increment > 0 {
                         pageOffset = increment
-                    } else if nestedPagerModel.page == 0, increment < 0 {
+                    } else if nestedPagerModel.index == 0, increment < 0 {
                         pageOffset = increment
                     }
                 }
             }
-            .onDraggingEnded { increment in
+            .onDraggingEnded {
                 guard pageOffset != 0 else { return }
+                let sign = Int(pageOffset/abs(pageOffset))
+                let increment: Int = (abs(pageOffset) > 0.33 ? 1 : 0) * sign
                 withAnimation {
                     pageOffset = 0
-                    pagerModel.page += Int(increment.rounded())
+                    let newIndex = page.index + increment
+                    page.update(.new(index: newIndex))
                 }
             }
             .itemSpacing(10)

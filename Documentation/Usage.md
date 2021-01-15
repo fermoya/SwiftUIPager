@@ -3,18 +3,18 @@
 ## Initialization
 
 Creating a `Pager` is very simple. You just need to pass:
-- `PagerModel`, a wrapper to the current page index
+- `Page` with the current index
 - `Array` of items 
 - `KeyPath` to an identifier
 - `ViewBuilder` factory method to create each page
 
 ```swift
-@StateObject var pagerModel = PagerModel(page: 0)
-// @ObservedObject var pagerModel = PagerModel(page: 0)
+@StateObject var page: Page = .first()
+// @ObservedObject var page: Page = .first()
 var items = Array(0..<10)
 
 var body: some View {
-    Pager(page: pagerModel,
+    Pager(page: page,
           data: items,
           id: \.identifier,
           content: { index in
@@ -23,6 +23,8 @@ var body: some View {
      })
  }
 ```
+
+To create a `Page` use one of the convenience methods `firstPage()` or `withIndex(_:)`. Make sure that you wrap it into a `StateObject` or `ObservedObject`.
 
 > **Note:** All examples require `import SwiftUIPager` at the top of the source file.
 
@@ -228,7 +230,7 @@ Pager(...)
 
 ## Events
 
-Use `onPageChanged` to react to any change on the page index:
+Use `onPageWillChange` or `onPageChanged` to react to changes on the page index:
 
 ```swift
 Pager(...)
@@ -245,14 +247,14 @@ You can use `onPageChanged` to add new items on demand whenever the user is gett
 
 ```swift
 
-@StateObject var pagerModel = PagerModel(page: 0)
-// @ObservedObject var pagerModel = PagerModel(page: 0)
+@StateObject var page: Page = .first()
+// @ObservedObject var page: Page = .first()
 @State var data = Array(0..<5)
 
 var body: some View {
     Pager(...)
-        .onPageChanged({ page in
-            guard page == self.data.count - 2 else { return }
+        .onPageChanged({ pageIndex in
+            guard pageIndex == self.data.count - 2 else { return }
             guard let last = self.data.last else { return }
             let newData = (1...5).map { last + $0 }
             withAnimation {
@@ -267,21 +269,21 @@ At the same time, items can be added at the start. Notice you'll need to update 
 ```swift
 
 @State var count: Int = -1
-@StateObject var pagerModel = PagerModel(page: 0)
-// @ObservedObject var pagerModel = PagerModel(page: 0)
+@StateObject var page: Page = .first()
+// @ObservedObject var page: Page = .first()
 @State var data = Array(0..<5)
 
-Pager(page: self.pagerModel,
+Pager(page: self.page,
         data: self.data,
         id: \.self) {
     self.pageView($0)
 }
-.onPageChanged({ page in
-    guard page == 1 else { return }
+.onPageChanged({ pageIndex in
+    guard pageIndex == 1 else { return }
     let newData = (1...5).map { $0 * self.count }
     withAnimation {
-        self.data1.insert(contentsOf: newData, at: 0)
-        self.pagerModel.page += 5
+        self.data.insert(contentsOf: newData, at: 0)
+        self.page.index += 5
         self.count -= 1
     }
 })
