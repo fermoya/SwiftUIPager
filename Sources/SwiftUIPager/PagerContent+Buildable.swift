@@ -228,7 +228,7 @@ extension Pager.PagerContent: Buildable {
     /// Adds a callback to react whenever the page will change
     ///
     /// - Parameter callback: block to be called when `page` will  change
-    public func onPageWillChange(_ callback: ((Int) -> Void)?) -> Self {
+    func onPageWillChange(_ callback: ((Int) -> Void)?) -> Self {
         mutating(keyPath: \.onPageWillChange, value: callback)
     }
 
