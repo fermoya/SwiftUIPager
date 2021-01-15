@@ -37,6 +37,11 @@
 		17C41E9A25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
 		17C41E9B25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
 		17C41E9C25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
+		17C41EB725B223E1006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
+		17C41EBE25B223E1006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
+		17C41EBF25B223E2006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
+		17C41EC025B223E2006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
+		17C41EC125B223E3006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
 		6B0F33DE24B4A50A006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
 		6B0F33DF24B4A50B006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
 		6B0F33E024B4A50B006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
@@ -562,6 +567,7 @@
 				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
 				6B362CBF2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				172F4D5923DF830600FD2F15 /* Pager.swift in Sources */,
+				17C41EBF25B223E2006F9EC4 /* Page.swift in Sources */,
 				6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732224ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
 				6B6FAA4124D56BAC000D1539 /* PagingAnimation.swift in Sources */,
@@ -587,6 +593,7 @@
 				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
 				6B362CC02534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
+				17C41EC025B223E2006F9EC4 /* Page.swift in Sources */,
 				6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732324ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
 				6B6FAA4224D56BAC000D1539 /* PagingAnimation.swift in Sources */,
@@ -612,6 +619,7 @@
 				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
 				6B362CBE2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6B2C305E248D740800E528F9 /* Pager.swift in Sources */,
+				17C41EBE25B223E1006F9EC4 /* Page.swift in Sources */,
 				6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732124ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
 				6B6FAA4024D56BAC000D1539 /* PagingAnimation.swift in Sources */,
@@ -637,6 +645,7 @@
 				6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6B362CC12534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */,
+				17C41EC125B223E3006F9EC4 /* Page.swift in Sources */,
 				6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732424ACFA00007EA8DC /* PositionAlignment.swift in Sources */,
 				6B6FAA4324D56BAC000D1539 /* PagingAnimation.swift in Sources */,
@@ -662,6 +671,7 @@
 				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
 				6B362CBD2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
 				6BDE442923DE12480022A2F7 /* Pager.swift in Sources */,
+				17C41EB725B223E1006F9EC4 /* Page.swift in Sources */,
 				6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */,
 				6BEA732024ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
 				6B6FAA3F24D56BAC000D1539 /* PagingAnimation.swift in Sources */,
