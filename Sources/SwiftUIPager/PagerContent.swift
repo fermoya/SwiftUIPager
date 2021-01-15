@@ -189,7 +189,7 @@ extension Pager {
                         #endif
                     }
                 })
-                .onAnimationCompleted(for: pagerModel.draggingOffset, completion: {
+                .onAnimationCompleted(for: CGFloat(pagerModel.index), completion: {
                     if pagerModel.pageIncrement != 0 {
                         onPageChanged?(pagerModel.index)
                     }
