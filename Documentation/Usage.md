@@ -139,6 +139,7 @@ Be aware that this modifier will change the loading policy. See [Content Loading
 | `delaysTouches` | whether or not touches shoulf be delayed. Useful if nested in `ScrollView` |
 | `pageOffset` | allows _manual_ scroll |
 | `expandPageToEdges` | modifies `itemAspectRatio` so that the use up all the space available |
+| `animatesPositionWhileDragging` | whether or not `Pager` should animate/transition the position while dragging |
 
 
 ## Paging Priority

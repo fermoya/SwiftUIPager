@@ -61,6 +61,9 @@ extension Pager {
 
         /// Sensitivity used to determine whether or not to swipe the page
         var sensitivity: PaginationSensitivity = .default
+        
+        /// Whether `Pager` should animate the position while actively dragging
+        var animatesPositionWhileDragging: Bool = true
 
         /// Policy to be applied when loading content
         var contentLoadingPolicy: ContentLoadingPolicy = .default
@@ -217,7 +220,8 @@ extension Pager.PagerContent {
     }
 
     func onDragChanged(with value: DragGesture.Value) {
-        withAnimation {
+        
+        withAnimation(!self.animatesPositionWhileDragging ? nil : .default) {
             if self.lastDraggingValue == nil {
                 onDraggingBegan?()
             }
