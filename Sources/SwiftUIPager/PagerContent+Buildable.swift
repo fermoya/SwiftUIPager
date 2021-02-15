@@ -130,7 +130,7 @@ extension Pager.PagerContent: Buildable {
 
     /// Adds a callback to react when dragging ends
     ///
-    /// - Parameter callback: block to be called when  dragging ends.
+    /// - Parameter callback: block to be called when  dragging ends. 
     func onDraggingEnded(_ callback: (() -> Void)?) -> Self {
         mutating(keyPath: \.onDraggingEnded, value: callback)
     }
