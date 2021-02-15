@@ -76,13 +76,6 @@ extension Pager.PagerContent: Buildable {
     func sensitivity(_ value: PaginationSensitivity) -> Self {
         mutating(keyPath: \.sensitivity, value: value)
     }
-    
-    /// Makes `Pager` animate the position while actively dragging, resulting in non-instant translation of finger position
-    ///
-    /// - Parameter value: /// Whether `Pager` should animate the position while actively dragging
-    func animatesPositionWhileDragging(_ value: Bool = true) -> Self {
-        mutating(keyPath: \.animatesPositionWhileDragging, value: value)
-    }
 
     /// Makes `Pager` not delay gesture recognition
     ///
@@ -137,7 +130,7 @@ extension Pager.PagerContent: Buildable {
 
     /// Adds a callback to react when dragging ends
     ///
-    /// - Parameter callback: block to be called when  dragging ends. 
+    /// - Parameter callback: block to be called when  dragging ends.
     func onDraggingEnded(_ callback: (() -> Void)?) -> Self {
         mutating(keyPath: \.onDraggingEnded, value: callback)
     }

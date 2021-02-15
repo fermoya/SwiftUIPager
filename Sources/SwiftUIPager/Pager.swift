@@ -75,9 +75,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Sensitivity used to determine whether or not to swipe the page
     var sensitivity: PaginationSensitivity = .default
-    
-    /// Whether `Pager` should animate the position while actively dragging
-    var animatesPositionWhileDragging: Bool = true
 
     /// Policy to be applied when loading content
     var contentLoadingPolicy: ContentLoadingPolicy = .default
@@ -206,7 +203,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .pagingPriority(gesturePriority)
             .delaysTouches(delaysTouches)
             .sensitivity(sensitivity)
-            .animatesPositionWhileDragging(animatesPositionWhileDragging)
             .onDraggingBegan(onDraggingBegan)
             .onDraggingChanged(onDraggingChanged)
             .onDraggingEnded(onDraggingEnded)

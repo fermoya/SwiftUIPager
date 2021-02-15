@@ -43,13 +43,6 @@ extension Pager: Buildable {
             .mutating(keyPath: \.allowsMultiplePagination, value: false)
             .mutating(keyPath: \.sensitivity, value: sensitivity)
     }
-    
-    /// Makes `Pager` animate the position while actively dragging, resulting in non-instant translation of finger position
-    ///
-    /// - Parameter value: /// Whether `Pager` should animate the position while actively dragging
-    func animatesPositionWhileDragging(_ value: Bool = true) -> Self {
-        mutating(keyPath: \.animatesPositionWhileDragging, value: value)
-    }
 
     /// Sets the policy followed to load `Pager` content.
     ///
@@ -287,4 +280,3 @@ extension Pager: Buildable {
     }
 
 }
-
