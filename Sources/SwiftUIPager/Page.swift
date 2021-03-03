@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 /// Encapsulates `Pager` state.
 ///
@@ -14,9 +15,10 @@ import SwiftUI
 /// - `firstPage()`
 /// - `withIndex(_:)`
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-public class Page {
+public class Page: ObservableObject {
 
-    public var _index: Int
+    public var objectWillChange = PassthroughSubject<Void, Never>()
+    var _index: Int
 
     /// Current page index.
     /// - Note: Modifying its value won't trigger a `SwiftUI` update, use `update(_:)` method instead.
@@ -56,7 +58,7 @@ public class Page {
 // MARK: Public
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Page: ObservableObject {
+extension Page {
 
     /// An update to perform on a `Page` index
     public enum Update {
