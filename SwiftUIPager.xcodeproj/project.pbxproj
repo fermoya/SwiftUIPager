@@ -21,6 +21,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1706A84525F0238E003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A84425F0238E003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1706A84D25F023A7003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A84C25F023A7003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1706A84E25F023B6003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A84C25F023A7003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1706A85025F023C9003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A84F25F023C9003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1706A85225F023D6003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A85125F023D6003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		172F4D5323DF830600FD2F15 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
 		172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
@@ -132,6 +137,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1706A84425F0238E003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = System/Library/Frameworks/Combine.framework; sourceTree = SDKROOT; };
+		1706A84C25F023A7003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
+		1706A84F25F023C9003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.2.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
+		1706A85125F023D6003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.3.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
 		170B808325B0E39200E11D87 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Sources/SwiftUIPager/Page.swift; sourceTree = SOURCE_ROOT; };
 		172F4D6023DF830600FD2F15 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		172F4D6123DF830600FD2F15 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
@@ -176,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2C2FFE248D590E00E528F9 /* libswiftCore.tbd in Frameworks */,
+				1706A84E25F023B6003FF39A /* Combine.framework in Frameworks */,
 				6B2C2FE1248D37B700E528F9 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2C3000248D591800E528F9 /* libswiftCore.tbd in Frameworks */,
+				1706A85025F023C9003FF39A /* Combine.framework in Frameworks */,
 				6B2C2FE3248D37C100E528F9 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2C3061248D740800E528F9 /* libswiftCore.tbd in Frameworks */,
+				1706A84D25F023A7003FF39A /* Combine.framework in Frameworks */,
 				6B2C3062248D740800E528F9 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1706A85225F023D6003FF39A /* Combine.framework in Frameworks */,
 				6B2C3002248D592100E528F9 /* libswiftCore.tbd in Frameworks */,
 				6B2C2FE5248D37CC00E528F9 /* SwiftUI.framework in Frameworks */,
 			);
@@ -212,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2C2FFD248D590300E528F9 /* libswiftCore.tbd in Frameworks */,
+				1706A84525F0238E003FF39A /* Combine.framework in Frameworks */,
 				6B2C2FFB248D56C100E528F9 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +236,10 @@
 		6B2C2FDD248D379D00E528F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1706A84425F0238E003FF39A /* Combine.framework */,
+				1706A84C25F023A7003FF39A /* Combine.framework */,
+				1706A84F25F023C9003FF39A /* Combine.framework */,
+				1706A85125F023D6003FF39A /* Combine.framework */,
 				6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */,
 				6B2C2FFF248D591800E528F9 /* libswiftCore.tbd */,
 				6B2C3001248D592100E528F9 /* libswiftCore.tbd */,
