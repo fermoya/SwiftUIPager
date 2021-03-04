@@ -191,6 +191,19 @@ Pager(...)
 
 <img src="/resources/usage/interactive-pagers.gif" alt="Interactive pager" height="640"/>
 
+### Faded
+
+Get a interactive fading effect on your items by using `faded`:
+
+```swift
+Pager(...)
+    .faded(0.4)
+    .preferredItemSize(CGSize(width: 150, height: 150))
+    .itemSpacing(10)
+```
+
+<img src="/resources/usage/faded-pagers.gif" alt="Interactive pager" height="640"/>
+
 ### Rotation
 
 You can also use `rotation3D` to add a rotation effect to your pages:

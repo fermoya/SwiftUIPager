@@ -83,6 +83,9 @@ extension Pager {
         /// Shrink ratio that affects the items that aren't focused
         var interactiveScale: CGFloat = 1
 
+        /// Opacity increment applied to unfocused pages
+        var opacityIncrement: Double? 
+
         /// `true` if  `Pager` can be dragged
         var allowsDragging: Bool = true
 
@@ -167,6 +170,7 @@ extension Pager {
                                       axis: (0, 0, 1))
                     .rotation3DEffect(self.angle(for: item),
                                           axis:  self.axis)
+                    .opacity(opacity(for: item))
                 }
                 .offset(x: self.xOffset, y : self.yOffset)
             }

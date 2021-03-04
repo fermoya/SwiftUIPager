@@ -174,6 +174,20 @@ extension Pager: Buildable {
         return mutating(keyPath: \.interactiveScale, value: scale)
     }
 
+    /// Call this method to provide an interactive opacity effect to neighboring pages. The further they are
+    /// from the focused page, the more opacity will be applied
+    ///
+    /// - Parameter stepPercentage: opacity step increment between each index
+    ///
+    /// For instance, if the focused index is _3_ and `stepPercentage` is `0.4`,
+    /// then page _2_ and _4_ will have an opacity of `0.8`, pages _1_ and _5_ will have
+    /// an opacity of `0.4` and so on.
+    ///
+    /// - Note: `increment` must be lower than _1_ and greather than _0_
+    public func faded(_ stepPercentage: Double = 0.4) -> Self {
+        mutating(keyPath: \.opacityIncrement, value: stepPercentage)
+    }
+
     /// Call this method to add a 3D rotation effect.
     ///
     /// - Parameter value: `true` if the pages should have a 3D rotation effect

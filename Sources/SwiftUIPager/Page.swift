@@ -17,6 +17,7 @@ import Combine
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public class Page: ObservableObject {
 
+    // Needed for `iOS 13` or else it won't trigger an update
     public var objectWillChange = PassthroughSubject<Void, Never>()
     var _index: Int
 
