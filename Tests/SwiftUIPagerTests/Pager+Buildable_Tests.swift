@@ -38,11 +38,20 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.sensitivity, .default)
         XCTAssertEqual(pager.pageRatio, 1)
         XCTAssertTrue(pager.bounces)
+        XCTAssertNil(pager.opacityIncrement)
 
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertNil(pagerContent.direction)
         XCTAssertEqual(pagerContent.minimumDistance, 15)
         XCTAssertFalse(pagerContent.isDragging)
+    }
+
+    func test_GivenPager_WhenFaded_ThenOpacityIncrementChanges() {
+        var pager = givenPager
+        pager = pager.faded(0.2)
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.opacityIncrement, 0.2)
     }
 
     func test_GivenPager_WhenSinglePagination_ThenRatioChanges() {
@@ -633,7 +642,8 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenOnDraggingBegan_ThenCallback", test_GivenPager_WhenOnDraggingBegan_ThenCallback),
         ("test_GivenPager_WhenOnDraggingChanged_ThenCallback", test_GivenPager_WhenOnDraggingChanged_ThenCallback),
         ("test_GivenPager_WhenOnDraggingEnded_ThenCallback", test_GivenPager_WhenOnDraggingEnded_ThenCallback),
-        ("test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil", test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil)
+        ("test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil", test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil),
+        ("test_GivenPager_WhenFaded_ThenOpacityIncrementChanges", test_GivenPager_WhenFaded_ThenOpacityIncrementChanges)
     ]
 }
 

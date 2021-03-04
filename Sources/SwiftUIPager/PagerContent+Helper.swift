@@ -240,6 +240,17 @@ extension Pager.PagerContent {
         return (itemAlignment.equalsIgnoreValues(.start) ? -availableSpace : availableSpace) * multiplier
     }
 
+    /// Oppacity for each item when `faded` animation is chosen
+    func opacity(for item: PageWrapper<Element, ID>) -> Double {
+        guard let opacityIncrement = opacityIncrement else { return 1 }
+        guard let index = data.firstIndex(of: item) else { return 1 }
+        let totalIncrement = abs(totalOffset / pageDistance)
+        let currentPage = direction == .forward ? CGFloat(page) + totalIncrement : CGFloat(page) - totalIncrement
+
+        let distance = abs(CGFloat(index) - currentPage)
+        return Double(max(0, min(1, 1 - distance * CGFloat(opacityIncrement))))
+    }
+
     /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetUpperbound` and `offsetUpperbound`
     var xOffset: CGFloat {
         let indexOfPageFocused = CGFloat(dataDisplayed.firstIndex(where: { data.firstIndex(of: $0) == self.page }) ?? 0)

@@ -100,6 +100,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Shrink ratio that affects the items that aren't focused
     var interactiveScale: CGFloat = 1
 
+    /// Opacity increment applied to unfocused pages
+    var opacityIncrement: Double?
+
     /// `true` if  `Pager` can be dragged
     var allowsDragging: Bool = true
 
@@ -187,6 +190,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .loopPages(isInifinitePager, repeating: loopingCount)
                 .alignment(alignment)
                 .interactive(interactiveScale)
+                .faded(opacityIncrement)
                 .pageOffset(pageOffset)
                 .itemSpacing(itemSpacing)
                 .itemAspectRatio(itemAspectRatio, alignment: itemAlignment)

@@ -26,6 +26,7 @@ struct ColorsExampleView: View {
                             self.pageView($0)
                     }
                     .contentLoadingPolicy(.eager)
+                    .disableDragging()
                     .itemSpacing(10)
                     .padding(20)
                     .frame(width: min(proxy.size.height, proxy.size.width),

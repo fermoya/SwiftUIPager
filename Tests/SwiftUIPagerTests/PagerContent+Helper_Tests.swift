@@ -21,6 +21,25 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertEqual(pagerContent.pagerModel.draggingOffset, pagerContent.draggingOffset)
     }
 
+    func test_GivenPager_WhenOpacity_ThenOne() {
+        XCTAssertEqual(givenPager.opacity(for: PageWrapper(batchId: 1, keyPath: \.self, element: 1)), 1)
+    }
+
+    func test_GivenPager_WhenOpacityForNotFoundIndex_ThenOne() {
+        XCTAssertEqual(givenPager.opacity(for: PageWrapper(batchId: 0, keyPath: \.self, element: -1)), 1)
+    }
+
+    func test_GivenFadedPager_WhenOpacityForNotFoundIndex_ThenValues() {
+        let pagerContent = givenPager.faded(0.3)
+
+        let focusedItem = PageWrapper(batchId: 1, keyPath: \.self, element: 0)
+        let neighbor1 = PageWrapper(batchId: 1, keyPath: \.self, element: 1)
+        let neighbor2 = PageWrapper(batchId: 1, keyPath: \.self, element: 2)
+        XCTAssertEqual(pagerContent.opacity(for: focusedItem), 1)
+        XCTAssertEqual(pagerContent.opacity(for: neighbor1), 0.7)
+        XCTAssertEqual(pagerContent.opacity(for: neighbor2), 0.4)
+    }
+
     func test_GivenMultiplePaginationPager_WhenDragResult_ThenValues() {
         let pagerContent = givenPager.multiplePagination()
         pagerContent.pagerModel.draggingOffset = -pagerContent.size.width * 2
@@ -369,6 +388,9 @@ final class PagerContent_Helper_Tests: XCTestCase {
         ("test_GivenPager_WhenPagerModelHelpers_ThenSameValues", test_GivenPager_WhenPagerModelHelpers_ThenSameValues),
         ("test_GivenMultiplePaginationPager_WhenDragResult_ThenValues", test_GivenMultiplePaginationPager_WhenDragResult_ThenValues),
         ("test_GivenPager_WhenDragQuickly_ThenIncrementPage", test_GivenPager_WhenDragQuickly_ThenIncrementPage),
-        ("test_GivenInfinitePager_WhenDragLeft_ThenLastPage", test_GivenInfinitePager_WhenDragLeft_ThenLastPage)
+        ("test_GivenInfinitePager_WhenDragLeft_ThenLastPage", test_GivenInfinitePager_WhenDragLeft_ThenLastPage),
+        ("test_GivenPager_WhenOpacity_ThenOne", test_GivenPager_WhenOpacity_ThenOne),
+        ("test_GivenPager_WhenOpacityForNotFoundIndex_ThenOne", test_GivenPager_WhenOpacityForNotFoundIndex_ThenOne),
+        ("test_GivenFadedPager_WhenOpacityForNotFoundIndex_ThenValues", test_GivenFadedPager_WhenOpacityForNotFoundIndex_ThenValues)
     ]
 }
