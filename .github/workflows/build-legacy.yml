@@ -1,0 +1,27 @@
+# This workflow runs xcodebuild on every target to make sure it compiles
+
+name: Build iOS 12
+
+on:
+  push: 
+    branches: [ legacy-projects ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build all supported targets
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'legacy-projects'
+      
+      - uses: maxim-lobanov/setup-xcode
+        with:
+          xcode-version: '10.3'
+
+      - name: Run script
+        env:
+          SKIP_CATALYST: true
+        run: ./scripts/build_platforms.sh
