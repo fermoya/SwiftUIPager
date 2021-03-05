@@ -15,11 +15,13 @@ import SwiftUI
 ///
 /// # Example #
 ///
-///     Pager(page: $page
-///           data: data,
-///           content: { index in
-///               self.pageView(index)
-///     }).interactive(0.8)
+///     Pager(
+///         page: $page
+///         data: data,
+///         content: { index in
+///             self.pageView(index)
+///         })
+///         .interactive(scale: 0.8)
 ///         .itemSpacing(10)
 ///         .padding(30)
 ///         .itemAspectRatio(0.6)
@@ -44,9 +46,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Angle of rotation when should rotate
     let rotationDegrees: Double = 20
-
-    /// Angle of rotation when should rotate
-    let rotationInteractiveScale: CGFloat = 0.7
 
     /// Axis of rotation when should rotate
     let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0, 1, 0)
@@ -189,8 +188,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .contentLoadingPolicy(contentLoadingPolicy)
                 .loopPages(isInifinitePager, repeating: loopingCount)
                 .alignment(alignment)
-                .interactive(interactiveScale)
-                .faded(opacityIncrement)
+                .interactive(scale: interactiveScale)
+                .interactive(opacity: opacityIncrement)
+                .interactive(rotation: shouldRotate)
                 .pageOffset(pageOffset)
                 .itemSpacing(itemSpacing)
                 .itemAspectRatio(itemAspectRatio, alignment: itemAlignment)
@@ -215,7 +215,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent
         pagerContent = isHorizontal ? pagerContent.horizontal(horizontalSwipeDirection) : pagerContent.vertical(verticalSwipeDirection)
-        pagerContent = shouldRotate ? pagerContent.rotation3D() : pagerContent
 
         if let preferredItemSize = preferredItemSize {
             pagerContent = pagerContent.preferredItemSize(preferredItemSize)

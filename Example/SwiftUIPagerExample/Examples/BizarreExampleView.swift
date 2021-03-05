@@ -38,7 +38,7 @@ struct BizarreExampleView: View {
                 }
                 .itemSpacing(10)
                 .horizontal(.rightToLeft)
-                .interactive(0.8)
+                .interactive(scale: 0.8)
                 .itemAspectRatio(0.7)
                 .background(Color.gray.opacity(0.5))
             }

@@ -168,33 +168,49 @@ extension Pager: Buildable {
     ///
     /// - Parameter scale: shrink ratio
     /// - Note: `scale` must be lower than _1_ and greather than _0_, otherwise it defaults to the previous value
+    @available(*, deprecated, renamed: "interactive(scale:)")
     public func interactive(_ scale: CGFloat) -> Self {
         guard !shouldRotate else { return self }
-        guard scale > 0, scale < 1 else { return self }
-        return mutating(keyPath: \.interactiveScale, value: scale)
+        return interactive(scale: scale)
+    }
+
+    /// Call this method to provide a shrink ratio that will apply to the items that are not focused.
+    ///
+    /// - Parameter ratio: shrink ratio applied to unfocsed items
+    /// - Note: `ratio` must be lower than _1_ and greather than _0_, otherwise it defaults to the previous value
+    public func interactive(scale ratio: CGFloat) -> Self {
+        return mutating(keyPath: \.interactiveScale, value: max(0, min(1, ratio)))
     }
 
     /// Call this method to provide an interactive opacity effect to neighboring pages. The further they are
     /// from the focused page, the more opacity will be applied
     ///
-    /// - Parameter stepPercentage: opacity step increment between each index
+    /// - Parameter decrement: opacity step increment between each index
     ///
     /// For instance, if the focused index is _3_ and `stepPercentage` is `0.4`,
     /// then page _2_ and _4_ will have an opacity of `0.8`, pages _1_ and _5_ will have
     /// an opacity of `0.4` and so on.
     ///
     /// - Note: `increment` must be lower than _1_ and greather than _0_
-    public func faded(_ stepPercentage: Double = 0.4) -> Self {
-        mutating(keyPath: \.opacityIncrement, value: stepPercentage)
+    public func interactive(opacity decrement: Double) -> Self {
+        mutating(keyPath: \.opacityIncrement, value: decrement)
+    }
+
+    /// Call this method to add a 3D rotation effect.
+    ///
+    /// - Parameter value: `true` if the pages should have a 3D rotation effect
+    public func interactive(rotation shouldRotate: Bool) -> Self {
+        mutating(keyPath: \.shouldRotate, value: shouldRotate)
     }
 
     /// Call this method to add a 3D rotation effect.
     ///
     /// - Parameter value: `true` if the pages should have a 3D rotation effect
     /// - Note: If you call this method, any previous or later call to `interactive` will have no effect.
+    @available(*, deprecated, renamed: "interactive(rotation:)")
     public func rotation3D(_ value: Bool = true) -> Self {
-        mutating(keyPath: \.interactiveScale, value: value ? rotationInteractiveScale : 1)
-            .mutating(keyPath: \.shouldRotate, value: value)
+        interactive(scale: value ? 0.7 : 1)
+            .interactive(rotation: value)
     }
 
     /// Provides an increment to the page index offset. Use this to modify the scroll offset
