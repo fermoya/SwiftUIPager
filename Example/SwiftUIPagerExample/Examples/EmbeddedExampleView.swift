@@ -27,7 +27,9 @@ struct EmbeddedExampleView: View {
                               id: \.self) { page in
                                 self.pageView(page)
                         }
-                        .rotation3D()
+                        .interactive(rotation: true)
+                        .interactive(scale: 0.7)
+                        .interactive(opacity: 0.5)
                         .itemSpacing(10)
                         .itemAspectRatio(0.8, alignment: .end)
                         .padding(8)

@@ -48,7 +48,7 @@ final class Pager_Buildable_Tests: XCTestCase {
 
     func test_GivenPager_WhenFaded_ThenOpacityIncrementChanges() {
         var pager = givenPager
-        pager = pager.faded(0.2)
+        pager = pager.interactive(opacity: 0.2)
 
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertEqual(pagerContent.opacityIncrement, 0.2)
@@ -264,6 +264,17 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pagerContentInteractive.interactiveScale, pagerContentWithRotation.interactiveScale)
         XCTAssertEqual(pagerContentInteractive.shouldRotate, pagerContentWithRotation.shouldRotate)
     }
+
+    func test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive() {
+        let interactivePager = givenPager
+            .interactive(scale: 0.4)
+            .interactive(opacity: 0.3)
+            .interactive(rotation: true)
+        let pagerContent = interactivePager.content(for: CGSize(width: 100, height: 100))
+        XCTAssertEqual(pagerContent.opacityIncrement, 0.3)
+        XCTAssertEqual(pagerContent.interactiveScale, 0.4)
+        XCTAssertTrue(pagerContent.shouldRotate)
+    }
     
     func test_GivenPager_When3DRotation_ThenShouldRotate() {
         var pager = givenPager
@@ -271,7 +282,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
 
         XCTAssertTrue(pagerContent.shouldRotate)
-        XCTAssertEqual(pagerContent.interactiveScale, pagerContent.rotationInteractiveScale)
+        XCTAssertEqual(pagerContent.interactiveScale, 0.7)
     }
     
     func test_GivenPagerWith3DRotation_When3DRotationFalse_ThenShouldRotateFalse() {
@@ -643,7 +654,9 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenOnDraggingChanged_ThenCallback", test_GivenPager_WhenOnDraggingChanged_ThenCallback),
         ("test_GivenPager_WhenOnDraggingEnded_ThenCallback", test_GivenPager_WhenOnDraggingEnded_ThenCallback),
         ("test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil", test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil),
-        ("test_GivenPager_WhenFaded_ThenOpacityIncrementChanges", test_GivenPager_WhenFaded_ThenOpacityIncrementChanges)
+        ("test_GivenPager_WhenFaded_ThenOpacityIncrementChanges", test_GivenPager_WhenFaded_ThenOpacityIncrementChanges),
+        ("test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive", test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive),
+        ("test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive", test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive)
     ]
 }
 

@@ -182,22 +182,22 @@ func pageView(_ page: Int) -> some View {
 
 ### Scale
 
-Use `interactive` to add a scale animation effect to those pages that are unfocused, that is, those elements whose index is different from `pageIndex`:
+Use `interactive(scale:)` to add a scale animation effect to those pages that are unfocused, that is, those elements whose index is different from `pageIndex`:
 
 ```swift
 Pager(...)
-    .interactive(0.8)
+    .interactive(scale: 0.8)
 ```
 
 <img src="/resources/usage/interactive-pagers.gif" alt="Interactive pager" height="640"/>
 
-### Faded
+### Opacity
 
-Get a interactive fading effect on your items by using `faded`:
+Get a interactive fading effect on your items by using `interactive(opacity:)`:
 
 ```swift
 Pager(...)
-    .faded(0.4)
+    .interacive(opacity: 0.4)
     .preferredItemSize(CGSize(width: 150, height: 150))
     .itemSpacing(10)
 ```
@@ -206,12 +206,13 @@ Pager(...)
 
 ### Rotation
 
-You can also use `rotation3D` to add a rotation effect to your pages:
+You can also use `interactive(rotation:)` to add a rotation effect to your pages:
 
 ```swift
 Pager(...)
     .itemSpacing(10)
-    .rotation3D()
+    .interactive(rotation: true)
+    .interactive(scale: 0.7)
 ```
 
 <img src="/resources/usage/pager-rotation3D.gif" alt="Rotation 3D" height="640"/>

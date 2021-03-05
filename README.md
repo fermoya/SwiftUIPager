@@ -33,6 +33,7 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
     - [Animations](Documentation/Usage.md#animations)
         - [Scale](Documentation/Usage.md#scale)
         - [Rotation](Documentation/Usage.md#rotation)
+        - [Opacity](Documentation/Usage.md#opacity)
         - [Loop](Documentation/Usage.md#loop)
     - [Page Transitions](Documentation/Usage.md#page-transitions)
     - [Add pages on demand](Documentation/Usage.md#add-pages-on-demand)

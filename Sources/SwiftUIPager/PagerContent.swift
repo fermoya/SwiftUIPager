@@ -28,9 +28,6 @@ extension Pager {
         /// Angle of rotation when should rotate
         let rotationDegrees: Double = 20
 
-        /// Angle of rotation when should rotate
-        let rotationInteractiveScale: CGFloat = 0.7
-
         /// Axis of rotation when should rotate
         let rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) = (0, 1, 0)
 
