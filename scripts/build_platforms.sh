@@ -2,6 +2,9 @@ gem install xcpretty
 
 SCHEMES=( SwiftUIPager_Catalyst SwiftUIPager_macOS SwiftUIPager_iOS SwiftUIPager_watchOS SwiftUIPager_tvOS )
 PLATFORMS=( "platform=macOS,variant=Mac Catalyst" "platform=macOS" "generic/platform=iOS" "generic/platform=watchOS" "generic/platform=tvOS" )
+if $SKIP_CATALYST; then
+  PLATFORMS = ( "platform=macOS" "generic/platform=iOS" "generic/platform=watchOS" "generic/platform=tvOS" )
+fi
 
 rm -rd $DIR
 for i in ${!SCHEMES[@]}; do
