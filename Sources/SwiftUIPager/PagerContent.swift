@@ -191,8 +191,11 @@ extension Pager {
                     }
                 })
                 .onAnimationCompleted(for: CGFloat(pagerModel.index), completion: {
-                    if pagerModel.pageIncrement != 0 {
-                        onPageChanged?(pagerModel.index)
+                    // #194 AnimatableModifier symbol not found in iOS 13.0 and iOS 13.1
+                    if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
+                        if pagerModel.pageIncrement != 0 {
+                            onPageChanged?(pagerModel.index)
+                        }
                     }
                 })
                 .contentShape(Rectangle())
@@ -285,6 +288,13 @@ extension Pager.PagerContent {
             self.pagerModel.lastDraggingValue = nil
             self.pagerModel.index = newPage
             self.pagerModel.objectWillChange.send()
+        }
+
+        // #194 AnimatableModifier symbol not found in iOS 13.0 and iOS 13.1
+        if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
+            // Do nothing
+        } else if page != newPage {
+            onPageChanged?(newPage)
         }
     }
 
