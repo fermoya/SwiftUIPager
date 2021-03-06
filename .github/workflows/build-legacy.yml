@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build all supported targets
-    runs-on: macos-latest
+    runs-on: macos-10.14
     steps:
       - uses: actions/checkout@v2
         with:
