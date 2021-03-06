@@ -1,16 +1,28 @@
 gem install xcpretty
 
-SCHEMES=( SwiftUIPager_Catalyst SwiftUIPager_macOS SwiftUIPager_iOS SwiftUIPager_watchOS SwiftUIPager_tvOS )
-PLATFORMS=( "platform=macOS,variant=Mac Catalyst" "platform=macOS" "generic/platform=iOS" "generic/platform=watchOS" "generic/platform=tvOS" )
-if $SKIP_CATALYST; then
-  echo "** Skiping Building for Catalyst **"
-  SCHEMES=( SwiftUIPager_macOS SwiftUIPager_iOS SwiftUIPager_watchOS SwiftUIPager_tvOS )
-  PLATFORMS=( "platform=macOS" "generic/platform=iOS" "generic/platform=watchOS" "generic/platform=tvOS" )
-fi
+DESTINATIONS=${DESTINATION:-all}
 
-rm -rd $DIR
-for i in ${!SCHEMES[@]}; do
-  xcodebuild clean build  -scheme ${SCHEMES[$i]} \
+echo "DESTINATIONS -> $DESTINATIONS"
+
+case "$DESTINATIONS" in
+  *all*) DESTINATIONS=( catalyst macos ios watchos tvos );;
+  *) IFS=";" read -r -a DESTINATIONS <<< "$DESTINATIONS";;
+esac
+
+build_target() {
+  xcodebuild clean build  -scheme $1 \
                           -project SwiftUIPager.xcodeproj \
-                          -destination "${PLATFORMS[$i]}" || exit 1
+                          -destination "$2" || exit 1  
+}
+
+for i in ${!DESTINATIONS[@]}; do
+  echo "${DESTINATIONS[$i]}"
+  case "${DESTINATIONS[$i]}" in
+    *ios*) build_target SwiftUIPager_iOS "generic/platform=iOS";;
+    *macos*) build_target SwiftUIPager_macOS "platform=macOS";;
+    *catalyst*) build_target SwiftUIPager_Catalyst "platform=macOS,variant=Mac Catalyst";;
+    *watchos*) build_target SwiftUIPager_watchOS "generic/platform=watchOS";;
+    *tvos*) build_target SwiftUIPager_tvOS "generic/platform=tvOS";;
+    *) build_target SwiftUIPager_iOS "${DESTINATIONS[$i]}";;
+  esac
 done
