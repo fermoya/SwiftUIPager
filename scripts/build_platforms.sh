@@ -1,5 +1,3 @@
-gem install xcpretty
-
 DESTINATIONS=${DESTINATION:-all}
 
 echo "DESTINATIONS -> $DESTINATIONS"
