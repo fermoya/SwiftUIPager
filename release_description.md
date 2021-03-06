@@ -7,6 +7,7 @@
 ### Fixes
 - Items not scrolling in _iOS 13_ 
 - #193 Transitions are jumpy if fast
+- #194 `AnimatableModifier` symbol not found
 
 ### Deprecations
 - `rotation3D()` in favor of `interactive(rotation:)`
