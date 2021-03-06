@@ -17,5 +17,5 @@ jobs:
 
       - name: Run script
         env:
-          SKIP_CATALYST: false
+          DESTINATION: all
         run: ./scripts/build_platforms.sh
