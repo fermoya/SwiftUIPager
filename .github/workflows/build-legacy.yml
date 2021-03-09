@@ -11,17 +11,18 @@ on:
 jobs:
   build:
     name: Build all supported targets
-    runs-on: macos-10.14
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
         with:
           ref: 'legacy-projects'
       
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '11.3'
+      - name: Copy iOS 12.4 simruntime
+        run: |
+          sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
+          sudo ln -s /Applications/Xcode_10.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 12.4.simruntime
 
       - name: Run script
         env:
-          DESTINATION: 'platform=iOS Simulator,name=iPhone 7,OS=10.3'
+          DESTINATION: 'platform=iOS Simulator,name=iPhone 8,OS=12.4'
         run: ./scripts/build_platforms.sh
