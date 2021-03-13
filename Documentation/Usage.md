@@ -282,25 +282,25 @@ At the same time, items can be added at the start. Notice you'll need to update 
 
 ```swift
 
-@State var count: Int = -1
 @StateObject var page: Page = .first()
 // @ObservedObject var page: Page = .first()
 @State var data = Array(0..<5)
 
-Pager(page: self.page,
-        data: self.data,
-        id: \.self) {
-    self.pageView($0)
-}
-.onPageChanged({ pageIndex in
-    guard pageIndex == 1 else { return }
-    let newData = (1...5).map { $0 * self.count }
-    withAnimation {
-        self.data.insert(contentsOf: newData, at: 0)
-        self.page.index += 5
-        self.count -= 1
+var body: some View {
+    Pager(page: self.page,
+            data: self.data,
+            id: \.self) {
+        self.pageView($0)
     }
-})
+    .onPageChanged({ pageIndex in
+        guard pageIndex == 1 else { return }
+        let newData = (1...5).map { data1.first! - $0 }.reversed()
+        withAnimation {
+            page.index += newData.count
+            data.insert(contentsOf: newData, at: 0)
+        }
+    })
+}
 ```
 
 ## Content Loading Policy

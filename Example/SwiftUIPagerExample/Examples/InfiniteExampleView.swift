@@ -12,7 +12,6 @@ struct InfiniteExampleView: View {
 
     @StateObject var page1 = Page.withIndex(2)
     @StateObject var page2 = Page.first()
-    @State var count: Int = 1
     @State var data1 = Array(0..<7)
     @State var isPresented: Bool = false
     var data2 = Array(0..<20)
@@ -36,11 +35,10 @@ struct InfiniteExampleView: View {
                     .onPageChanged({ page in
                         print("Page changed to: \(page)")
                         if page == 1 {
-                            let newData = (1...5).map { data1.first! - $0 * count }.reversed()
+                            let newData = (1...5).map { data1.first! - $0 }.reversed()
                             withAnimation {
                                 page1.index += newData.count
                                 data1.insert(contentsOf: newData, at: 0)
-                                count += 1
                                 isPresented.toggle()
                             }
                         } else if page == self.data1.count - 2 {
