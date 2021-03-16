@@ -253,7 +253,7 @@ Pager(...)
      })
 ```
 
-You can also use `onDraggingBegan`, `onDraggingChanged` and  `onDragginEnded` to keep track of the dragging.
+You can also use `onDraggingBegan`, `onDraggingChanged` and  `onDraggingEnded` to keep track of the dragging.
 
 ## Add pages on demand
 
