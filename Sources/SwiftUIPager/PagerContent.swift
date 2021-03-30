@@ -56,6 +56,9 @@ extension Pager {
         /// Animation to be applied when the user stops dragging
         var pagingAnimation: ((DragResult) -> PagingAnimation)?
 
+        /// Animation used for dragging
+        var draggingAnimation: DraggingAnimation?
+
         /// Sensitivity used to determine whether or not to swipe the page
         var sensitivity: PaginationSensitivity = .default
 
@@ -222,7 +225,8 @@ extension Pager.PagerContent {
     }
 
     func onDragChanged(with value: DragGesture.Value) {
-        withAnimation(.linear(duration: 0.1)) {
+        let animation = draggingAnimation?.animation ?? .default
+        withAnimation(animation) {
             if self.lastDraggingValue == nil {
                 onDraggingBegan?()
             }
@@ -276,7 +280,7 @@ extension Pager.PagerContent {
             speed = 1 / min(4, Double(pageIncrement))
         }
 
-        let pagingAnimation = self.pagingAnimation?((page, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
+        let pagingAnimation = self.draggingAnimation ?? self.pagingAnimation?((page, newPage, draggingOffset, draggingVelocity)) ?? defaultPagingAnimation
 
         let animation = pagingAnimation.animation.speed(speed)
         if page != newPage {

@@ -17,6 +17,7 @@ extension Pager: Buildable {
     /// Sets the animation to be applied when the user stops dragging
     ///
     /// - Parameter value: callback to get an animation based on the result of dragging
+    @available(*, deprecated, message: "This method will no longer be mantained in future versions. Please use `draggingAnimation(_:)` instead")
     public func pagingAnimation(_ value: ((DragResult) -> PagingAnimation)?) -> Self {
         mutating(keyPath: \.pagingAnimation, value: value)
     }
@@ -68,6 +69,13 @@ extension Pager: Buildable {
     }
 
     #if !os(tvOS)
+
+    /// Sets the explicit animation used for dragging
+    ///
+    /// - Parameter value: explicit animation
+    public func draggingAnimation(_ value: DraggingAnimation?) -> Self {
+        mutating(keyPath: \.draggingAnimation, value: value)
+    }
 
     /// Sensitivity used to determine whether or not to swipe the page
     ///
