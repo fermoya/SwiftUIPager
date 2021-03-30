@@ -35,6 +35,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.contentLoadingPolicy, .default)
         XCTAssertEqual(pager.allowsMultiplePagination, false)
         XCTAssertNil(pager.pagingAnimation)
+        XCTAssertNil(pager.draggingAnimation)
         XCTAssertEqual(pager.sensitivity, .default)
         XCTAssertEqual(pager.pageRatio, 1)
         XCTAssertTrue(pager.bounces)
@@ -111,6 +112,14 @@ final class Pager_Buildable_Tests: XCTestCase {
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         let pagingAnimation = try XCTUnwrap(pagerContent.pagingAnimation?((0, 0, 0, 0)))
         XCTAssertEqual(pagingAnimation, PagingAnimation.steep)
+    }
+
+    func test_GivenPager_WhenDraggingAnimation_ThenDraggingAnimationNotNil() throws {
+        var pager = givenPager
+        pager = pager.draggingAnimation(.steep)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        let animation = try XCTUnwrap(pagerContent.draggingAnimation)
+        XCTAssertEqual(animation, PagingAnimation.steep)
     }
 
     func test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination() {
@@ -608,6 +617,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged", test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged),
         ("test_GivenPager_When3DRotation_ThenShouldRotate", test_GivenPager_When3DRotation_ThenShouldRotate),
         ("test_GivenPagerWith3DRotation_When3DRotationFalse_ThenShouldRotateFalse", test_GivenPagerWith3DRotation_When3DRotationFalse_ThenShouldRotateFalse),
+        ("test_GivenPager_WhenDraggingAnimation_ThenDraggingAnimationNotNil", test_GivenPager_WhenDraggingAnimation_ThenDraggingAnimationNotNil),
         ("test_GivenPager_WhenHorizontalRightToLeft_ThenScrollAngle", test_GivenPager_WhenHorizontalRightToLeft_ThenScrollAngle),
         ("test_GivenPager_WhenAlignment_ThenAlignmentSet", test_GivenPager_WhenAlignment_ThenAlignmentSet),
         ("test_GivenPager_WhenVerticalBottomToTop_ThenScrollAngle", test_GivenPager_WhenVerticalBottomToTop_ThenScrollAngle),

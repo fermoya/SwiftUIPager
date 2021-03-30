@@ -72,6 +72,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Animation to be applied when the user stops dragging
     var pagingAnimation: ((DragResult) -> PagingAnimation)?
 
+    /// Animation used for dragging
+    var draggingAnimation: DraggingAnimation?
+
     /// Sensitivity used to determine whether or not to swipe the page
     var sensitivity: PaginationSensitivity = .default
 
@@ -211,6 +214,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .onDraggingChanged(onDraggingChanged)
             .onDraggingEnded(onDraggingEnded)
             .bounces(bounces)
+            .draggingAnimation(draggingAnimation)
           #endif
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent

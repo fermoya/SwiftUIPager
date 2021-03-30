@@ -227,20 +227,14 @@ Transform your `Pager` into an endless sroll by using `loopPages`:
 
 ## Page Transitions
 
-Use `pagingAnimation` to customize the _transition_ to the next page once the drag has ended. This is achieve by a block with a `DragResult`which contains:
-* Current page
-* Next page
-* Total shift
-* Velocity
-
-By default, `pagingAnimation`is set to `standard`(a.k.a, `.easeOut`) for `singlePagination`and `steep`([custom bezier curve](https://cubic-bezier.com/#.2,1,.9,1)) for `multiplePagination`. If you wish to change the animation, you could do it as follows:
+Use `draggingAnimation(_:)`  to customize the _transition_ to the next page.
 
 ```swift
 Pager(...)
-    .pagingAnimation({ currentPage, nextPage, totalShift, velocity in
-        return PagingAnimation.custom(animation: .easeInOut)
-    })
+    .draggingAnimation(.interactive)
 ```
+
+By default, `draggingAnimation` is set to `.easeOut`.
 
 ## Events
 
