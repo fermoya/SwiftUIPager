@@ -70,6 +70,13 @@ extension Pager.PagerContent: Buildable {
 
     #if !os(tvOS)
 
+    /// Sets the explicit animation used for dragging
+    ///
+    /// - Parameter value: explicit animation
+    func draggingAnimation(_ value: DraggingAnimation?) -> Self {
+        mutating(keyPath: \.draggingAnimation, value: value)
+    }
+
     /// Sensitivity used to determine whether or not to swipe the page
     ///
     /// - Parameter value: sensitivity to be applied when paginating

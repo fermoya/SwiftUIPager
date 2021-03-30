@@ -30,6 +30,13 @@ final class PagingAnimation_Tests: XCTestCase {
         XCTAssertEqual(animation, input)
     }
 
+    func test_GivenPagingAnimationInteractive_WhenAnimation_ThenExpectedAnimationValues() {
+        let input = Animation.interactiveSpring(response: 0.3, dampingFraction: 0.8, blendDuration: 0.5)
+        let pagingAnimation: PagingAnimation = .interactive
+        let animation = pagingAnimation.animation
+        XCTAssertEqual(animation, input)
+    }
+
     static var allTests = [
         ("test_GivenPagingAnimationSteep_WhenAnimation_ThenExpectedAnimationValues", test_GivenPagingAnimationSteep_WhenAnimation_ThenExpectedAnimationValues),
         ("test_GivenPagingAnimationStandard_WhenAnimation_ThenExpectedAnimationValues", test_GivenPagingAnimationStandard_WhenAnimation_ThenExpectedAnimationValues),
