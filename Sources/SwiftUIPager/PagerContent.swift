@@ -194,6 +194,7 @@ extension Pager {
                     // #194 AnimatableModifier symbol not found in iOS 13.0 and iOS 13.1
                     if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
                         if pagerModel.pageIncrement != 0 {
+                            pagerModel.pageIncrement = 0
                             onPageChanged?(pagerModel.index)
                         }
                     }
@@ -283,17 +284,20 @@ extension Pager.PagerContent {
         }
         withAnimation(animation) {
             self.pagerModel.draggingOffset = 0
-            self.pagerModel.pageIncrement = pageIncrement
+            let sign = page > newPage ? -1 : +1
+            self.pagerModel.pageIncrement += sign * pageIncrement
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
             self.pagerModel.index = newPage
             self.pagerModel.objectWillChange.send()
+
         }
 
         // #194 AnimatableModifier symbol not found in iOS 13.0 and iOS 13.1
         if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
             // Do nothing
         } else if page != newPage {
+            self.pagerModel.pageIncrement = 0
             onPageChanged?(newPage)
         }
     }
