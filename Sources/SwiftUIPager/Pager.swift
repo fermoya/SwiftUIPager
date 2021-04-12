@@ -73,7 +73,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var pagingAnimation: ((DragResult) -> PagingAnimation)?
 
     /// Animation used for dragging
-    var draggingAnimation: DraggingAnimation?
+    var draggingAnimation: DraggingAnimation = .standard
 
     /// Sensitivity used to determine whether or not to swipe the page
     var sensitivity: PaginationSensitivity = .default

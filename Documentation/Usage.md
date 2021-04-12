@@ -227,7 +227,7 @@ Transform your `Pager` into an endless sroll by using `loopPages`:
 
 ## Page Transitions
 
-Use `draggingAnimation(_:)`  to customize the _transition_ to the next page.
+Use `draggingAnimation(onChange:, onEnded:)`  to customize the animations applied while dragging items and/or transitioning to the next element.
 
 ```swift
 Pager(...)

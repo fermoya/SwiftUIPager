@@ -35,7 +35,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.contentLoadingPolicy, .default)
         XCTAssertEqual(pager.allowsMultiplePagination, false)
         XCTAssertNil(pager.pagingAnimation)
-        XCTAssertNil(pager.draggingAnimation)
+        XCTAssertEqual(pager.draggingAnimation, PagingAnimation.standard)
         XCTAssertEqual(pager.sensitivity, .default)
         XCTAssertEqual(pager.pageRatio, 1)
         XCTAssertTrue(pager.bounces)
@@ -120,6 +120,16 @@ final class Pager_Buildable_Tests: XCTestCase {
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         let animation = try XCTUnwrap(pagerContent.draggingAnimation)
         XCTAssertEqual(animation, PagingAnimation.steep)
+    }
+
+    func test_GivenPager_WhenDraggingAnimation_ThenDraggingAndPagingAnimationNotNil() throws {
+        var pager = givenPager
+        pager = pager.draggingAnimation(onChange: .interactive, onEnded: .steep)
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        let anim1 = try XCTUnwrap(pagerContent.draggingAnimation)
+        let anim2 = try XCTUnwrap(pagerContent.pagingAnimation?((0, 0, 0, 0)))
+        XCTAssertEqual(anim1, PagingAnimation.interactive)
+        XCTAssertEqual(anim2, PagingAnimation.steep)
     }
 
     func test_GivenPager_WhenMultiplePagination_ThenAllowsMultiplePagination() {
@@ -617,6 +627,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged", test_GivenPagerWith3DRotation_WhenInteractive_ThenInteractiveScaleNotChanged),
         ("test_GivenPager_When3DRotation_ThenShouldRotate", test_GivenPager_When3DRotation_ThenShouldRotate),
         ("test_GivenPagerWith3DRotation_When3DRotationFalse_ThenShouldRotateFalse", test_GivenPagerWith3DRotation_When3DRotationFalse_ThenShouldRotateFalse),
+        ("test_GivenPager_WhenDraggingAnimation_ThenDraggingAndPagingAnimationNotNil", test_GivenPager_WhenDraggingAnimation_ThenDraggingAndPagingAnimationNotNil),
         ("test_GivenPager_WhenDraggingAnimation_ThenDraggingAnimationNotNil", test_GivenPager_WhenDraggingAnimation_ThenDraggingAnimationNotNil),
         ("test_GivenPager_WhenHorizontalRightToLeft_ThenScrollAngle", test_GivenPager_WhenHorizontalRightToLeft_ThenScrollAngle),
         ("test_GivenPager_WhenAlignment_ThenAlignmentSet", test_GivenPager_WhenAlignment_ThenAlignmentSet),
