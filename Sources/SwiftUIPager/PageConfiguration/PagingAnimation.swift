@@ -33,7 +33,7 @@ public enum PagingAnimation: Equatable {
     /// Pass your custom animation
     ///
     /// - Parameter animation: animation to be applied
-    case custom(animation: Animation)
+    case custom(animation: Animation?)
 
     /// Standard animation. Single pagination `Pager` defaults to this value. Ease-out, 0.35 seconds.
     public static var standard: PagingAnimation = .standard(duration: 0.35)
@@ -42,15 +42,18 @@ public enum PagingAnimation: Equatable {
     /// See the bezier curve [here](https://cubic-bezier.com/#.2,1,.9,1).
     public static var steep: PagingAnimation = .steep(duration: 0.2)
 
+    /// No animation applied
+    public static var none: PagingAnimation = .custom(animation: nil)
+
     /// Translates the option selected to a `SwiftUI` animation
-    var animation: Animation {
+    var animation: Animation? {
         switch self {
         case .steep(let duration):
             return Animation.timingCurve(0.2, 1, 0.9, 1, duration: duration)
         case .standard(let duration):
             return Animation.easeOut(duration: duration)
         case .interactive:
-            return .interactiveSpring(response: 0.3, dampingFraction: 0.8, blendDuration: 0.5)
+            return .interactiveSpring()
         case .custom(let animation):
             return animation
         }

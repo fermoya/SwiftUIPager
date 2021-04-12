@@ -70,11 +70,25 @@ extension Pager: Buildable {
 
     #if !os(tvOS)
 
-    /// Sets the explicit animation used for dragging
+    /// Sets the explicit animation to be used. Defaults to `.standard`
     ///
-    /// - Parameter value: explicit animation
-    public func draggingAnimation(_ value: DraggingAnimation?) -> Self {
+    /// - Parameter value: animation to use while dragging and to page
+    ///
+    /// - Warning: `spring` animations don't work well. Avoid high responses while dragging as the animation should be short
+    public func draggingAnimation(_ value: DraggingAnimation) -> Self {
         mutating(keyPath: \.draggingAnimation, value: value)
+    }
+
+    /// Sets the explicit animation to be used. Defaults to `.standard`
+    ///
+    /// - Parameter anim1: animation to use while dragging
+    /// - Parameter anim2: animation to use to page
+    ///
+    /// - Note: Setting different animations could cause unexpected behavior
+    /// - Warning: `spring` animations don't work well. Avoid high responses while dragging as the animation should be short
+    public func draggingAnimation(onChange anim1: DraggingAnimation, onEnded anim2: DraggingAnimation) -> Self {
+        mutating(keyPath: \.draggingAnimation, value: anim1)
+            .mutating(keyPath: \.pagingAnimation, value: { _ in anim2 })
     }
 
     /// Sensitivity used to determine whether or not to swipe the page
