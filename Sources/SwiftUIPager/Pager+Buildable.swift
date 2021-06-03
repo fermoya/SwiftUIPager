@@ -295,6 +295,13 @@ extension Pager: Buildable {
         mutating(keyPath: \.onPageChanged, value: callback)
     }
 
+    /// Adds a callback to react whenever the page changes
+    ///
+    /// - Parameter callback: block to be called when `page` changes
+    public func onPageWillTransition(_ callback: ((Result<Int, Error>) -> Void)?) -> Self {
+        mutating(keyPath: \.onPageWillTransition, value: callback)
+    }
+
     /// Adds a callback to react whenever the page will change
     ///
     /// - Parameter callback: block to be called when `page` will  change

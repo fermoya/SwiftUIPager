@@ -143,6 +143,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Callback invoked when a new page will be set
     var onPageWillChange: ((Int) -> Void)?
+    
+    
+    var onPageWillTransition: ((Result<Int, Error>) -> Void)?
 
     /// Callback invoked when a new page is set
     var onPageChanged: ((Int) -> Void)?
@@ -199,6 +202,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .itemAspectRatio(itemAspectRatio, alignment: itemAlignment)
                 .onPageChanged(onPageChanged)
                 .onPageWillChange(onPageWillChange)
+                .onPageWillTransition(onPageWillTransition)
                 .padding(sideInsets)
                 .pagingAnimation(pagingAnimation)
                 .partialPagination(pageRatio)

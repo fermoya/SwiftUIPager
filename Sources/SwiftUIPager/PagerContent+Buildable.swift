@@ -259,6 +259,14 @@ extension Pager.PagerContent: Buildable {
             .mutating(keyPath: \.itemAlignment, value: alignment)
             .mutating(keyPath: \.preferredItemSize, value: value)
     }
+    
+    /// Adds a callback to react whenever the page will change
+    ///
+    /// - Parameter callback: block to be called when `page` will  change
+    func onPageWillTransition(_ callback: ((Result<Int, Error>) -> Void)?) -> Self {
+        mutating(keyPath: \.onPageWillTransition, value: callback)
+    }
+
 
     /// Adds a callback to react whenever the page will change
     ///

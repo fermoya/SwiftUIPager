@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+enum PagingError: Error {
+    case canceledTransition(index: Int)
+}
+
 ///
 /// `PagerContent` is the content of `Pager`. This view is needed so that `Pager` wrapps it around a `GeometryReader ` and passes the size in its initializer.
 ///
@@ -118,6 +122,8 @@ extension Pager {
 
         /// Will try to have the items fit this size
         var preferredItemSize: CGSize?
+        
+        var onPageWillTransition: ((Result<Int, Error>) -> Void)?
 
         /// Callback invoked when a new page will be set
         var onPageWillChange: ((Int) -> Void)?
@@ -199,6 +205,8 @@ extension Pager {
                         if pagerModel.pageIncrement != 0 {
                             pagerModel.pageIncrement = 0
                             onPageChanged?(pagerModel.index)
+                        } else {
+                            onPageWillTransition?(.failure(PagingError.canceledTransition(index: pagerModel.index)))
                         }
                     }
                 })
@@ -303,6 +311,9 @@ extension Pager.PagerContent {
         } else if page != newPage {
             self.pagerModel.pageIncrement = 0
             onPageChanged?(newPage)
+            onPageWillTransition?(.success(newPage))
+        } else {
+            onPageWillTransition?(.failure(PagingError.canceledTransition(index: page)))
         }
     }
 
