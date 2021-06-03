@@ -37,6 +37,11 @@
 		172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
 		172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
 		172F4D8623DF8B4B00FD2F15 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
+		1748E8CA2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
+		1748E8CB2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
+		1748E8CC2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
+		1748E8CD2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
+		1748E8CE2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
 		17C41E9825B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
 		17C41E9925B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
 		17C41E9A25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
@@ -146,6 +151,7 @@
 		172F4D6123DF830600FD2F15 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		172F4D7823DF8A6400FD2F15 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		172F4D7B23DF8A6400FD2F15 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
+		1748E8C92669619C0016F534 /* PageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageTransition.swift; path = Sources/SwiftUIPager/PageTransition.swift; sourceTree = SOURCE_ROOT; };
 		17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnAnimationCompletedModifier.swift; sourceTree = "<group>"; };
 		6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDeactivateModifier.swift; sourceTree = "<group>"; };
 		6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
@@ -283,6 +289,7 @@
 				6BEF519624C9ECF2000DF66B /* PagerContent.swift */,
 				6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */,
 				6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */,
+				1748E8C92669619C0016F534 /* PageTransition.swift */,
 				6BEF677124C98BED008533FE /* PageWrapper.swift */,
 			);
 			path = SwiftUIPager;
@@ -576,6 +583,7 @@
 				6BEF519F24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */,
 				6BEA731D24ACF9F9007EA8DC /* GesturePriority.swift in Sources */,
 				6BEF677A24C98C17008533FE /* CGPoint+Angle.swift in Sources */,
+				1748E8CC2669619C0016F534 /* PageTransition.swift in Sources */,
 				6BEF677424C98BFB008533FE /* PageWrapper.swift in Sources */,
 				6BEF519A24C9ECF8000DF66B /* PagerContent.swift in Sources */,
 				6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
@@ -602,6 +610,7 @@
 				6BEF51A024C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */,
 				6BEA731E24ACF9FA007EA8DC /* GesturePriority.swift in Sources */,
 				172F4D8123DF8B3D00FD2F15 /* Buildable.swift in Sources */,
+				1748E8CD2669619C0016F534 /* PageTransition.swift in Sources */,
 				6BEF677C24C98C18008533FE /* CGPoint+Angle.swift in Sources */,
 				6BEF677524C98BFB008533FE /* PageWrapper.swift in Sources */,
 				6BEF519B24C9ECF8000DF66B /* PagerContent.swift in Sources */,
@@ -628,6 +637,7 @@
 				6BEF519E24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */,
 				6BEA731C24ACF9F9007EA8DC /* GesturePriority.swift in Sources */,
 				6BEF677924C98C17008533FE /* CGPoint+Angle.swift in Sources */,
+				1748E8CB2669619C0016F534 /* PageTransition.swift in Sources */,
 				6BEF677324C98BFA008533FE /* PageWrapper.swift in Sources */,
 				6BEF519924C9ECF7000DF66B /* PagerContent.swift in Sources */,
 				6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
@@ -654,6 +664,7 @@
 				6BEF51A124C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */,
 				6BEA731F24ACF9FB007EA8DC /* GesturePriority.swift in Sources */,
 				6BBC3D752488DC04004194BD /* Buildable.swift in Sources */,
+				1748E8CE2669619C0016F534 /* PageTransition.swift in Sources */,
 				6BEF677D24C98C18008533FE /* CGPoint+Angle.swift in Sources */,
 				6BEF677624C98BFB008533FE /* PageWrapper.swift in Sources */,
 				6BEF519C24C9ECF9000DF66B /* PagerContent.swift in Sources */,
@@ -680,6 +691,7 @@
 				6BEF519D24C9ECFB000DF66B /* PagerContent+Buildable.swift in Sources */,
 				6BEA731B24ACF9F8007EA8DC /* GesturePriority.swift in Sources */,
 				6BEF677824C98C16008533FE /* CGPoint+Angle.swift in Sources */,
+				1748E8CA2669619C0016F534 /* PageTransition.swift in Sources */,
 				6BEF677224C98BFA008533FE /* PageWrapper.swift in Sources */,
 				6BEF519824C9ECF7000DF66B /* PagerContent.swift in Sources */,
 				6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,

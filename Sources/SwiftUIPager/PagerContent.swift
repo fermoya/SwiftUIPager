@@ -122,6 +122,9 @@ extension Pager {
         /// Callback invoked when a new page will be set
         var onPageWillChange: ((Int) -> Void)?
 
+        /// Callback invoked when the user ends dragging and a transition will occur
+        var onPageWillTransition: ((Result<PageTransition, PageTransitionError>) -> Void)?
+
         /// Callback invoked when a new page is set
         var onPageChanged: ((Int) -> Void)?
 		
@@ -285,6 +288,9 @@ extension Pager.PagerContent {
         let animation = pagingAnimation.animation?.speed(speed)
         if page != newPage {
             onPageWillChange?(newPage)
+            onPageWillTransition?(.success(.init(currentPage: page, nextPage: newPage, pageIncrement: pageIncrement)))
+        } else {
+            onPageWillTransition?(.failure(.draggingStopped))
         }
         withAnimation(animation) {
             self.pagerModel.draggingOffset = 0

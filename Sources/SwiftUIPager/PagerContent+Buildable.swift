@@ -267,6 +267,14 @@ extension Pager.PagerContent: Buildable {
         mutating(keyPath: \.onPageWillChange, value: callback)
     }
 
+    /// Adds a callback to react whenever the page is transitioning.
+    /// The `callback` result will inform the cient whether the `PageTransition` was sucessful
+    ///
+    /// - Parameter callback: block to be called when the user ends dragging and a transition will occur
+    func onPageWillTransition(_ callback: ((Result<PageTransition, PageTransitionError>) -> Void)?) -> Self {
+        mutating(keyPath: \.onPageWillTransition, value: callback)
+    }
+
     /// Adds a callback to react whenever the page changes
     ///
     /// - Parameter callback: block to be called when `page` changes

@@ -523,6 +523,41 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertNotNil(pagerContent.onPageChanged)
     }
 
+    func test_GivenPager_WhenOnPageWillTransition_ThenSuccessfulTransition() throws {
+        var pager = givenPager
+
+        var transition: PageTransition? = nil
+        pager = pager.onPageWillTransition({ (result) in
+            transition = try? result.get()
+        })
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        let initialPage = pagerContent.page
+        pager.pagerModel.draggingOffset = -pagerContent.pageSize.width
+        pagerContent.onDragGestureEnded()
+
+        let transitionUnwrapped = try XCTUnwrap(transition)
+        XCTAssertEqual(pagerContent.page, transitionUnwrapped.nextPage)
+        XCTAssertEqual(initialPage, transitionUnwrapped.currentPage)
+        XCTAssertEqual(transitionUnwrapped.pageIncrement, 1)
+    }
+
+    func test_GivenPager_WhenOnPageWillTransition_ThenFailedTransition() throws {
+        var pager = givenPager
+
+        var error: PageTransitionError? = nil
+        pager = pager.onPageWillTransition({ (result) in
+            guard case .failure (let transitionError) = result else { return }
+            error = transitionError
+        })
+
+        let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
+        pager.pagerModel.draggingOffset = -pagerContent.pageSize.width / 10
+        pagerContent.onDragGestureEnded()
+
+        XCTAssertEqual(error, .draggingStopped)
+    }
+
     func test_GivenPager_WhenOnPageWillChange_ThenObservePageChanges() throws {
         var pager = givenPager
         
@@ -677,7 +712,9 @@ final class Pager_Buildable_Tests: XCTestCase {
         ("test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil", test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil),
         ("test_GivenPager_WhenFaded_ThenOpacityIncrementChanges", test_GivenPager_WhenFaded_ThenOpacityIncrementChanges),
         ("test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive", test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive),
-        ("test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive", test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive)
+        ("test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive", test_GivenPager_WhenCombineInteractiveModifier_ThenNoExclusive),
+        ("test_GivenPager_WhenOnPageWillTransition_ThenFailedTransition", test_GivenPager_WhenOnPageWillTransition_ThenFailedTransition),
+        ("test_GivenPager_WhenOnPageWillTransition_ThenSuccessfulTransition", test_GivenPager_WhenOnPageWillTransition_ThenSuccessfulTransition)
     ]
 }
 
