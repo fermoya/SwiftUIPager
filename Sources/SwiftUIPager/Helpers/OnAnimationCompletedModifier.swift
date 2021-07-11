@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// `ViewModifier` used to observe the end of an animation
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 struct OnAnimationCompletedModifier<Value>: AnimatableModifier where Value: VectorArithmetic {
 
     var animatableData: Value {
@@ -39,7 +39,7 @@ struct OnAnimationCompletedModifier<Value>: AnimatableModifier where Value: Vect
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 extension View {
 
     /// Calls the completion handler whenever an animation on the given value completes.
