@@ -137,11 +137,16 @@ extension Pager {
         /// Callback for when dragging ends
         var onDraggingEnded: (() -> Void)?
 
+        /// Callback for allow scrollview
+        var allowScrollView: ((Bool) -> Void)?
+        
         /*** State and Binding properties ***/
 
         /// Page index
         @ObservedObject var pagerModel: Page
 
+        @GestureState private var isPressed = false
+        
         /// Initializes a new `Pager`.
         ///
         /// - Parameter size: Available size
@@ -181,7 +186,12 @@ extension Pager {
 
             #if !os(tvOS)
             var wrappedView: AnyView = swipeInteractionArea == .page ? AnyView(stack) : AnyView(stack.contentShape(Rectangle()))
-            wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil, priority: gesturePriority))
+            wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil, priority: gesturePriority)
+                                    .onChange(of: isPressed, perform: { (pressed) in
+                                        if !pressed {
+                                            self.onDragGestureEnded()
+                                        }
+                                    }))
             #else
             let wrappedView = stack
             #endif
@@ -224,11 +234,15 @@ extension Pager.PagerContent {
     /// `DragGesture` customized to work with `Pager`
     #if !os(tvOS)
     var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: minimumDistance)
+        DragGesture()
+            .updating($isPressed) { _, gestureState, _ in
+                gestureState = true
+            }
             .onChanged({ value in
                 self.onDragChanged(with: value)
             })
             .onEnded({ (value) in
+                self.allowScrollView?(true)
                 self.onDragGestureEnded()
             })
     }
@@ -239,7 +253,9 @@ extension Pager.PagerContent {
             if self.lastDraggingValue == nil {
                 onDraggingBegan?()
             }
-
+            
+            self.allowScrollView?(abs(value.translation.height) > abs(value.translation.width) * 3)
+            
             let lastLocation = self.lastDraggingValue?.location ?? value.location
             let swipeAngle = (value.location - lastLocation).angle ?? .zero
             // Ignore swipes that aren't on the X-Axis

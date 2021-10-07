@@ -161,6 +161,13 @@ extension Pager: Buildable {
         mutating(keyPath: \.onDraggingEnded, value: callback)
     }
 
+    /// Adds a callback to react to allow scrollview
+    ///
+    /// - Parameter callback: block to be called when allow scrollview.
+    public func allowScrollView(_ callback: ((Bool) -> Void)?) -> Self {
+        mutating(keyPath: \.allowScrollView, value: callback)
+    }
+    
     #endif
 
     /// Changes the a the  alignment of the pages relative to their container

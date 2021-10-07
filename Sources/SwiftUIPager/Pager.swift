@@ -159,6 +159,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Callback for when dragging ends
     var onDraggingEnded: (() -> Void)?
 
+    /// Callback for allow scrollview
+    var allowScrollView: ((Bool) -> Void)?
+    
     /*** State and Binding properties ***/
 
     let pagerModel: Page
@@ -217,6 +220,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .onDraggingBegan(onDraggingBegan)
             .onDraggingChanged(onDraggingChanged)
             .onDraggingEnded(onDraggingEnded)
+            .allowScrollView(allowScrollView)
             .bounces(bounces)
             .draggingAnimation(draggingAnimation)
           #endif
