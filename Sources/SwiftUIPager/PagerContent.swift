@@ -184,6 +184,14 @@ extension Pager {
             wrappedView = AnyView(wrappedView.gesture(allowsDragging ? swipeGesture : nil, priority: gesturePriority))
             #else
             let wrappedView = stack
+              .focusable()
+              .onMoveCommand(perform: self.onMoveCommandSent)
+            #endif
+          
+            #if os(macOS)
+            wrappedView = wrappedView
+              .focusable()
+              .onMoveCommand(perform: self.onMoveCommandSent)
             #endif
 
             var resultView = wrappedView
@@ -220,6 +228,22 @@ extension Pager {
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Pager.PagerContent {
+  
+    #if os(tvOS) || os(macOS)
+    func onMoveCommandSent(_ command: MoveCommandDirection) {
+      let animation = self.draggingAnimation.animation ?? .default
+      switch command {
+      case .left:
+        withAnimation(animation) { self.pagerModel.update(.previous) }
+      case .right:
+        withAnimation(animation) { self.pagerModel.update(.next) }
+      case .up, .down:
+        break
+      @unknown default:
+        break
+      }
+    }
+    #endif
 
     /// `DragGesture` customized to work with `Pager`
     #if !os(tvOS)

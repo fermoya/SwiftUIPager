@@ -160,6 +160,17 @@ extension Pager: Buildable {
     public func onDraggingEnded(_ callback: (() -> Void)?) -> Self {
         mutating(keyPath: \.onDraggingEnded, value: callback)
     }
+  
+    #else
+    
+    /// Sets the explicit animation to be used. Defaults to `.standard`
+    ///
+    /// - Parameter value: animation to use while dragging and to page
+    ///
+    /// - Warning: `spring` animations don't work well. Avoid high responses while dragging as the animation should be short
+    public func draggingAnimation(_ value: DraggingAnimation) -> Self {
+        mutating(keyPath: \.draggingAnimation, value: value)
+    }
 
     #endif
 
