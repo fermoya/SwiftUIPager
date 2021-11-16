@@ -251,7 +251,7 @@ extension Pager.PagerContent {
         return Double(max(0, min(1, 1 - distance * CGFloat(opacityIncrement))))
     }
 
-    /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetUpperbound` and `offsetUpperbound`
+    /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetLowerbound` and `offsetUpperbound`
     var xOffset: CGFloat {
         let indexOfPageFocused = CGFloat(dataDisplayed.firstIndex(where: { data.firstIndex(of: $0) == self.page }) ?? 0)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)

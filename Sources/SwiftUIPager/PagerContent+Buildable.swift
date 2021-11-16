@@ -52,6 +52,7 @@ extension Pager.PagerContent: Buildable {
                 data.map { PageWrapper(batchId: it, keyPath: id, element: $0.element) }
             }.flatMap { $0 }
         }
+        self.pagerModel.isInfinite = value
         return mutating(keyPath: \.isInifinitePager, value: value)
             .mutating(keyPath: \.data, value: newData)
     }
