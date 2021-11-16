@@ -27,36 +27,106 @@
 		1706A85025F023C9003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A84F25F023C9003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		1706A85225F023D6003FF39A /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706A85125F023D6003FF39A /* Combine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		172F4D5323DF830600FD2F15 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
-		172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
-		172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
-		172F4D5923DF830600FD2F15 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
-		172F4D5A23DF830600FD2F15 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
-		172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
-		172F4D8123DF8B3D00FD2F15 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
-		172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
-		172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
-		172F4D8623DF8B4B00FD2F15 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
-		1748E8CA2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
-		1748E8CB2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
-		1748E8CC2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
-		1748E8CD2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
-		1748E8CE2669619C0016F534 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748E8C92669619C0016F534 /* PageTransition.swift */; };
-		17C41E9825B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
-		17C41E9925B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
-		17C41E9A25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
-		17C41E9B25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
-		17C41E9C25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */; };
-		17C41EB725B223E1006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
-		17C41EBE25B223E1006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
-		17C41EBF25B223E2006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
-		17C41EC025B223E2006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
-		17C41EC125B223E3006F9EC4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B808325B0E39200E11D87 /* Page.swift */; };
-		6B0F33DE24B4A50A006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
-		6B0F33DF24B4A50B006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
-		6B0F33E024B4A50B006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
-		6B0F33E124B4A50C006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
-		6B0F33E224B4A50C006031BE /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */; };
+		17C7B25C2743CB3300BC51D4 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2462743CB3300BC51D4 /* PagerContent.swift */; };
+		17C7B25D2743CB3300BC51D4 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2462743CB3300BC51D4 /* PagerContent.swift */; };
+		17C7B25E2743CB3300BC51D4 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2462743CB3300BC51D4 /* PagerContent.swift */; };
+		17C7B25F2743CB3300BC51D4 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2462743CB3300BC51D4 /* PagerContent.swift */; };
+		17C7B2602743CB3300BC51D4 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2462743CB3300BC51D4 /* PagerContent.swift */; };
+		17C7B2612743CB3300BC51D4 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2472743CB3300BC51D4 /* PageTransition.swift */; };
+		17C7B2622743CB3300BC51D4 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2472743CB3300BC51D4 /* PageTransition.swift */; };
+		17C7B2632743CB3300BC51D4 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2472743CB3300BC51D4 /* PageTransition.swift */; };
+		17C7B2642743CB3300BC51D4 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2472743CB3300BC51D4 /* PageTransition.swift */; };
+		17C7B2652743CB3300BC51D4 /* PageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2472743CB3300BC51D4 /* PageTransition.swift */; };
+		17C7B2662743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
+		17C7B2672743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
+		17C7B2682743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
+		17C7B2692743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
+		17C7B26A2743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
+		17C7B26B2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
+		17C7B26C2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
+		17C7B26D2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
+		17C7B26E2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
+		17C7B26F2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
+		17C7B2702743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
+		17C7B2712743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
+		17C7B2722743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
+		17C7B2732743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
+		17C7B2742743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
+		17C7B2752743CB3300BC51D4 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24C2743CB3300BC51D4 /* View+Helper.swift */; };
+		17C7B2762743CB3300BC51D4 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24C2743CB3300BC51D4 /* View+Helper.swift */; };
+		17C7B2772743CB3300BC51D4 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24C2743CB3300BC51D4 /* View+Helper.swift */; };
+		17C7B2782743CB3300BC51D4 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24C2743CB3300BC51D4 /* View+Helper.swift */; };
+		17C7B2792743CB3300BC51D4 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24C2743CB3300BC51D4 /* View+Helper.swift */; };
+		17C7B27A2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */; };
+		17C7B27B2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */; };
+		17C7B27C2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */; };
+		17C7B27D2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */; };
+		17C7B27E2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */; };
+		17C7B27F2743CB3300BC51D4 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24E2743CB3300BC51D4 /* Buildable.swift */; };
+		17C7B2802743CB3300BC51D4 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24E2743CB3300BC51D4 /* Buildable.swift */; };
+		17C7B2812743CB3300BC51D4 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24E2743CB3300BC51D4 /* Buildable.swift */; };
+		17C7B2822743CB3300BC51D4 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24E2743CB3300BC51D4 /* Buildable.swift */; };
+		17C7B2832743CB3300BC51D4 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24E2743CB3300BC51D4 /* Buildable.swift */; };
+		17C7B2842743CB3300BC51D4 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */; };
+		17C7B2852743CB3300BC51D4 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */; };
+		17C7B2862743CB3300BC51D4 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */; };
+		17C7B2872743CB3300BC51D4 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */; };
+		17C7B2882743CB3300BC51D4 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */; };
+		17C7B2892743CB3300BC51D4 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */; };
+		17C7B28A2743CB3300BC51D4 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */; };
+		17C7B28B2743CB3300BC51D4 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */; };
+		17C7B28C2743CB3300BC51D4 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */; };
+		17C7B28D2743CB3300BC51D4 /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */; };
+		17C7B28E2743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */; };
+		17C7B28F2743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */; };
+		17C7B2902743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */; };
+		17C7B2912743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */; };
+		17C7B2922743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */; };
+		17C7B2932743CB3300BC51D4 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */; };
+		17C7B2942743CB3300BC51D4 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */; };
+		17C7B2952743CB3300BC51D4 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */; };
+		17C7B2962743CB3300BC51D4 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */; };
+		17C7B2972743CB3300BC51D4 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */; };
+		17C7B2982743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */; };
+		17C7B2992743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */; };
+		17C7B29A2743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */; };
+		17C7B29B2743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */; };
+		17C7B29C2743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */; };
+		17C7B29D2743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */; };
+		17C7B29E2743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */; };
+		17C7B29F2743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */; };
+		17C7B2A02743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */; };
+		17C7B2A12743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */; };
+		17C7B2A22743CB3300BC51D4 /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2562743CB3300BC51D4 /* GesturePriority.swift */; };
+		17C7B2A32743CB3300BC51D4 /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2562743CB3300BC51D4 /* GesturePriority.swift */; };
+		17C7B2A42743CB3300BC51D4 /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2562743CB3300BC51D4 /* GesturePriority.swift */; };
+		17C7B2A52743CB3300BC51D4 /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2562743CB3300BC51D4 /* GesturePriority.swift */; };
+		17C7B2A62743CB3300BC51D4 /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2562743CB3300BC51D4 /* GesturePriority.swift */; };
+		17C7B2A72743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */; };
+		17C7B2A82743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */; };
+		17C7B2A92743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */; };
+		17C7B2AA2743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */; };
+		17C7B2AB2743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */; };
+		17C7B2AC2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */; };
+		17C7B2AD2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */; };
+		17C7B2AE2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */; };
+		17C7B2AF2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */; };
+		17C7B2B02743CB3300BC51D4 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */; };
+		17C7B2B12743CB3300BC51D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2592743CB3300BC51D4 /* Page.swift */; };
+		17C7B2B22743CB3300BC51D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2592743CB3300BC51D4 /* Page.swift */; };
+		17C7B2B32743CB3300BC51D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2592743CB3300BC51D4 /* Page.swift */; };
+		17C7B2B42743CB3300BC51D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2592743CB3300BC51D4 /* Page.swift */; };
+		17C7B2B52743CB3300BC51D4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2592743CB3300BC51D4 /* Page.swift */; };
+		17C7B2B62743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */; };
+		17C7B2B72743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */; };
+		17C7B2B82743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */; };
+		17C7B2B92743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */; };
+		17C7B2BA2743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */; };
+		17C7B2BB2743CB3300BC51D4 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */; };
+		17C7B2BC2743CB3300BC51D4 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */; };
+		17C7B2BD2743CB3300BC51D4 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */; };
+		17C7B2BE2743CB3300BC51D4 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */; };
+		17C7B2BF2743CB3300BC51D4 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */; };
 		6B2C2FE1248D37B700E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C2FE3248D37C100E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FE2248D37C100E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C2FE5248D37CC00E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FE4248D37CC00E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -66,79 +136,9 @@
 		6B2C3000248D591800E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFF248D591800E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3002248D592100E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C3001248D592100E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3057248D740800E528F9 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
-		6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
-		6B2C305C248D740800E528F9 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
-		6B2C305E248D740800E528F9 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
-		6B2C305F248D740800E528F9 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
 		6B2C3061248D740800E528F9 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FFC248D58F300E528F9 /* libswiftCore.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B2C3062248D740800E528F9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6B362CBD2534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
-		6B362CBE2534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
-		6B362CBF2534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
-		6B362CC02534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
-		6B362CC12534940B008DB2DF /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */; };
-		6B6FAA3F24D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
-		6B6FAA4024D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
-		6B6FAA4124D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
-		6B6FAA4224D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
-		6B6FAA4324D56BAC000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */; };
-		6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
-		6BBC3D752488DC04004194BD /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
-		6BBC3D772488DC0B004194BD /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
-		6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
-		6BBC3D792488DC11004194BD /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
-		6BCF138C24B2674E00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
-		6BCF138D24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
-		6BCF138E24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
-		6BCF138F24B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
-		6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */; };
 		6BDE441C23DE10C10022A2F7 /* SwiftUIPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6BDE442923DE12480022A2F7 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442223DE12470022A2F7 /* Pager.swift */; };
-		6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */; };
-		6BDE442B23DE12480022A2F7 /* View+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442523DE12480022A2F7 /* View+Helper.swift */; };
-		6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442623DE12480022A2F7 /* Buildable.swift */; };
-		6BDE442E23DE12480022A2F7 /* PagerContent+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */; };
-		6BEA731B24ACF9F8007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
-		6BEA731C24ACF9F9007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
-		6BEA731D24ACF9F9007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
-		6BEA731E24ACF9FA007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
-		6BEA731F24ACF9FB007EA8DC /* GesturePriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */; };
-		6BEA732024ACF9FE007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
-		6BEA732124ACF9FE007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
-		6BEA732224ACF9FF007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
-		6BEA732324ACF9FF007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
-		6BEA732424ACFA00007EA8DC /* PositionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */; };
-		6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
-		6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
-		6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
-		6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
-		6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */; };
-		6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
-		6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
-		6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
-		6BEA732D24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
-		6BEA732E24ACFA09007EA8DC /* SwipeInteractionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */; };
-		6BEF519824C9ECF7000DF66B /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519624C9ECF2000DF66B /* PagerContent.swift */; };
-		6BEF519924C9ECF7000DF66B /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519624C9ECF2000DF66B /* PagerContent.swift */; };
-		6BEF519A24C9ECF8000DF66B /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519624C9ECF2000DF66B /* PagerContent.swift */; };
-		6BEF519B24C9ECF8000DF66B /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519624C9ECF2000DF66B /* PagerContent.swift */; };
-		6BEF519C24C9ECF9000DF66B /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519624C9ECF2000DF66B /* PagerContent.swift */; };
-		6BEF519D24C9ECFB000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
-		6BEF519E24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
-		6BEF519F24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
-		6BEF51A024C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
-		6BEF51A124C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */; };
-		6BEF677224C98BFA008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
-		6BEF677324C98BFA008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
-		6BEF677424C98BFB008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
-		6BEF677524C98BFB008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
-		6BEF677624C98BFB008533FE /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677124C98BED008533FE /* PageWrapper.swift */; };
-		6BEF677824C98C16008533FE /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677724C98C12008533FE /* CGPoint+Angle.swift */; };
-		6BEF677924C98C17008533FE /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677724C98C12008533FE /* CGPoint+Angle.swift */; };
-		6BEF677A24C98C17008533FE /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677724C98C12008533FE /* CGPoint+Angle.swift */; };
-		6BEF677C24C98C18008533FE /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677724C98C12008533FE /* CGPoint+Angle.swift */; };
-		6BEF677D24C98C18008533FE /* CGPoint+Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF677724C98C12008533FE /* CGPoint+Angle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,14 +146,30 @@
 		1706A84C25F023A7003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
 		1706A84F25F023C9003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.2.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
 		1706A85125F023D6003FF39A /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.3.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
-		170B808325B0E39200E11D87 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Sources/SwiftUIPager/Page.swift; sourceTree = SOURCE_ROOT; };
 		172F4D6023DF830600FD2F15 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		172F4D6123DF830600FD2F15 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		172F4D7823DF8A6400FD2F15 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		172F4D7B23DF8A6400FD2F15 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
-		1748E8C92669619C0016F534 /* PageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageTransition.swift; path = Sources/SwiftUIPager/PageTransition.swift; sourceTree = SOURCE_ROOT; };
-		17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnAnimationCompletedModifier.swift; sourceTree = "<group>"; };
-		6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDeactivateModifier.swift; sourceTree = "<group>"; };
+		17C7B2462743CB3300BC51D4 /* PagerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerContent.swift; sourceTree = "<group>"; };
+		17C7B2472743CB3300BC51D4 /* PageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTransition.swift; sourceTree = "<group>"; };
+		17C7B2482743CB3300BC51D4 /* Pager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
+		17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDeactivateModifier.swift; sourceTree = "<group>"; };
+		17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnAnimationCompletedModifier.swift; sourceTree = "<group>"; };
+		17C7B24C2743CB3300BC51D4 /* View+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Helper.swift"; sourceTree = "<group>"; };
+		17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Angle.swift"; sourceTree = "<group>"; };
+		17C7B24E2743CB3300BC51D4 /* Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
+		17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingAnimation.swift; sourceTree = "<group>"; };
+		17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionAlignment.swift; sourceTree = "<group>"; };
+		17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeInteractionArea.swift; sourceTree = "<group>"; };
+		17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
+		17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationSensitivity.swift; sourceTree = "<group>"; };
+		17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentLoadingPolicy.swift; sourceTree = "<group>"; };
+		17C7B2562743CB3300BC51D4 /* GesturePriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GesturePriority.swift; sourceTree = "<group>"; };
+		17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PagerContent+Helper.swift"; sourceTree = "<group>"; };
+		17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pager+Buildable.swift"; sourceTree = "<group>"; };
+		17C7B2592743CB3300BC51D4 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PagerContent+Buildable.swift"; sourceTree = "<group>"; };
+		17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWrapper.swift; sourceTree = "<group>"; };
 		6B2C2FDE248D379D00E528F9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		6B2C2FE2248D37C100E528F9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		6B2C2FE4248D37CC00E528F9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
@@ -162,27 +178,11 @@
 		6B2C3001248D592100E528F9 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6B2C3067248D740800E528F9 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2C3069248D747700E528F9 /* Info-Catalyst.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Catalyst.plist"; sourceTree = "<group>"; };
-		6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaginationSensitivity.swift; path = Sources/SwiftUIPager/PageConfiguration/PaginationSensitivity.swift; sourceTree = SOURCE_ROOT; };
 		6B3F9C052488E6FE00AF5E74 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingAnimation.swift; path = Sources/SwiftUIPager/PageConfiguration/PagingAnimation.swift; sourceTree = SOURCE_ROOT; };
 		6BBC3D6B2488DBE8004194BD /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentLoadingPolicy.swift; path = Sources/SwiftUIPager/PageConfiguration/ContentLoadingPolicy.swift; sourceTree = SOURCE_ROOT; };
 		6BDE441723DE10C10022A2F7 /* SwiftUIPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDE441A23DE10C10022A2F7 /* SwiftUIPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIPager.h; sourceTree = "<group>"; };
 		6BDE441B23DE10C10022A2F7 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
-		6BDE442223DE12470022A2F7 /* Pager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pager.swift; path = Sources/SwiftUIPager/Pager.swift; sourceTree = SOURCE_ROOT; };
-		6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pager+Buildable.swift"; path = "Sources/SwiftUIPager/Pager+Buildable.swift"; sourceTree = SOURCE_ROOT; };
-		6BDE442523DE12480022A2F7 /* View+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Helper.swift"; sourceTree = "<group>"; };
-		6BDE442623DE12480022A2F7 /* Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
-		6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PagerContent+Helper.swift"; path = "Sources/SwiftUIPager/PagerContent+Helper.swift"; sourceTree = SOURCE_ROOT; };
-		6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDirection.swift; path = Sources/SwiftUIPager/PageConfiguration/SwipeDirection.swift; sourceTree = SOURCE_ROOT; };
-		6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeInteractionArea.swift; path = Sources/SwiftUIPager/PageConfiguration/SwipeInteractionArea.swift; sourceTree = SOURCE_ROOT; };
-		6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PositionAlignment.swift; path = Sources/SwiftUIPager/PageConfiguration/PositionAlignment.swift; sourceTree = SOURCE_ROOT; };
-		6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GesturePriority.swift; path = Sources/SwiftUIPager/PageConfiguration/GesturePriority.swift; sourceTree = SOURCE_ROOT; };
-		6BEF519624C9ECF2000DF66B /* PagerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerContent.swift; path = Sources/SwiftUIPager/PagerContent.swift; sourceTree = SOURCE_ROOT; };
-		6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PagerContent+Buildable.swift"; path = "Sources/SwiftUIPager/PagerContent+Buildable.swift"; sourceTree = SOURCE_ROOT; };
-		6BEF677124C98BED008533FE /* PageWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageWrapper.swift; path = Sources/SwiftUIPager/PageWrapper.swift; sourceTree = SOURCE_ROOT; };
-		6BEF677724C98C12008533FE /* CGPoint+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Angle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +239,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17C7B2492743CB3300BC51D4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */,
+				17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */,
+				17C7B24C2743CB3300BC51D4 /* View+Helper.swift */,
+				17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */,
+				17C7B24E2743CB3300BC51D4 /* Buildable.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		17C7B24F2743CB3300BC51D4 /* PageConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				17C7B2502743CB3300BC51D4 /* PagingAnimation.swift */,
+				17C7B2512743CB3300BC51D4 /* PositionAlignment.swift */,
+				17C7B2522743CB3300BC51D4 /* SwipeInteractionArea.swift */,
+				17C7B2532743CB3300BC51D4 /* SwipeDirection.swift */,
+				17C7B2542743CB3300BC51D4 /* PaginationSensitivity.swift */,
+				17C7B2552743CB3300BC51D4 /* ContentLoadingPolicy.swift */,
+				17C7B2562743CB3300BC51D4 /* GesturePriority.swift */,
+			);
+			path = PageConfiguration;
+			sourceTree = "<group>";
+		};
 		6B2C2FDD248D379D00E528F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,46 +306,19 @@
 		6BDE441923DE10C10022A2F7 /* SwiftUIPager */ = {
 			isa = PBXGroup;
 			children = (
-				6BDE442423DE12480022A2F7 /* Helpers */,
-				6BEA730D24ACF7FF007EA8DC /* PageConfiguration */,
+				17C7B2492743CB3300BC51D4 /* Helpers */,
+				17C7B2592743CB3300BC51D4 /* Page.swift */,
+				17C7B24F2743CB3300BC51D4 /* PageConfiguration */,
+				17C7B2482743CB3300BC51D4 /* Pager.swift */,
+				17C7B2582743CB3300BC51D4 /* Pager+Buildable.swift */,
+				17C7B2462743CB3300BC51D4 /* PagerContent.swift */,
+				17C7B25A2743CB3300BC51D4 /* PagerContent+Buildable.swift */,
+				17C7B2572743CB3300BC51D4 /* PagerContent+Helper.swift */,
+				17C7B2472743CB3300BC51D4 /* PageTransition.swift */,
+				17C7B25B2743CB3300BC51D4 /* PageWrapper.swift */,
 				6BEA732F24ACFAB3007EA8DC /* SupportFiles */,
-				170B808325B0E39200E11D87 /* Page.swift */,
-				6BDE442223DE12470022A2F7 /* Pager.swift */,
-				6BDE442323DE12470022A2F7 /* Pager+Buildable.swift */,
-				6BEF519624C9ECF2000DF66B /* PagerContent.swift */,
-				6BEF519724C9ECF2000DF66B /* PagerContent+Buildable.swift */,
-				6BDE442823DE12480022A2F7 /* PagerContent+Helper.swift */,
-				1748E8C92669619C0016F534 /* PageTransition.swift */,
-				6BEF677124C98BED008533FE /* PageWrapper.swift */,
 			);
 			path = SwiftUIPager;
-			sourceTree = "<group>";
-		};
-		6BDE442423DE12480022A2F7 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				6BDE442623DE12480022A2F7 /* Buildable.swift */,
-				6BEF677724C98C12008533FE /* CGPoint+Angle.swift */,
-				17C41E9725B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift */,
-				6B0F33DD24B4A4DE006031BE /* OnDeactivateModifier.swift */,
-				6BDE442523DE12480022A2F7 /* View+Helper.swift */,
-			);
-			name = Helpers;
-			path = Sources/SwiftUIPager/Helpers;
-			sourceTree = SOURCE_ROOT;
-		};
-		6BEA730D24ACF7FF007EA8DC /* PageConfiguration */ = {
-			isa = PBXGroup;
-			children = (
-				6BCF138B24B2674800AADE74 /* ContentLoadingPolicy.swift */,
-				6BEA731A24ACF9B0007EA8DC /* GesturePriority.swift */,
-				6B362CBC2534940B008DB2DF /* PaginationSensitivity.swift */,
-				6B6FAA3E24D56BAC000D1539 /* PagingAnimation.swift */,
-				6BEA731924ACF9B0007EA8DC /* PositionAlignment.swift */,
-				6BEA731724ACF9AF007EA8DC /* SwipeDirection.swift */,
-				6BEA731824ACF9AF007EA8DC /* SwipeInteractionArea.swift */,
-			);
-			name = PageConfiguration;
 			sourceTree = "<group>";
 		};
 		6BEA732F24ACFAB3007EA8DC /* SupportFiles */ = {
@@ -383,6 +382,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172F4D5D23DF830600FD2F15 /* Build configuration list for PBXNativeTarget "SwiftUIPager_macOS" */;
 			buildPhases = (
+				17C7B2D72743DF6700BC51D4 /* ShellScript */,
 				172F4D5223DF830600FD2F15 /* Headers */,
 				172F4D5423DF830600FD2F15 /* Sources */,
 				172F4D5B23DF830600FD2F15 /* Frameworks */,
@@ -401,6 +401,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172F4D7D23DF8A6400FD2F15 /* Build configuration list for PBXNativeTarget "SwiftUIPager_watchOS" */;
 			buildPhases = (
+				17C7B2D82743DF7500BC51D4 /* ShellScript */,
 				172F4D7323DF8A6400FD2F15 /* Headers */,
 				172F4D7423DF8A6400FD2F15 /* Sources */,
 				172F4D7523DF8A6400FD2F15 /* Frameworks */,
@@ -419,6 +420,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B2C3064248D740800E528F9 /* Build configuration list for PBXNativeTarget "SwiftUIPager_Catalyst" */;
 			buildPhases = (
+				17C7B2D52743DF4F00BC51D4 /* ShellScript */,
 				6B2C3056248D740800E528F9 /* Headers */,
 				6B2C3058248D740800E528F9 /* Sources */,
 				6B2C3060248D740800E528F9 /* Frameworks */,
@@ -437,6 +439,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BBC3D722488DBE8004194BD /* Build configuration list for PBXNativeTarget "SwiftUIPager_tvOS" */;
 			buildPhases = (
+				17C7B2DA2743DF8E00BC51D4 /* ShellScript */,
 				6BBC3D662488DBE8004194BD /* Headers */,
 				6BBC3D672488DBE8004194BD /* Sources */,
 				6BBC3D682488DBE8004194BD /* Frameworks */,
@@ -455,6 +458,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BDE441F23DE10C10022A2F7 /* Build configuration list for PBXNativeTarget "SwiftUIPager_iOS" */;
 			buildPhases = (
+				17C7B2D42743D84200BC51D4 /* ShellScript */,
 				6BDE441223DE10C10022A2F7 /* Headers */,
 				6BDE441323DE10C10022A2F7 /* Sources */,
 				6BDE441423DE10C10022A2F7 /* Frameworks */,
@@ -478,11 +482,19 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Fernando Moya de Rivas";
 				TargetAttributes = {
+					172F4D5123DF830600FD2F15 = {
+						LastSwiftMigration = 1300;
+					};
 					172F4D7723DF8A6400FD2F15 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1300;
+					};
+					6B2C3055248D740800E528F9 = {
+						LastSwiftMigration = 1300;
 					};
 					6BBC3D6A2488DBE8004194BD = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1300;
 					};
 					6BC5EE4E2487F5E000E1E78C = {
 						CreatedOnToolsVersion = 11.5;
@@ -490,7 +502,7 @@
 					};
 					6BDE441623DE10C10022A2F7 = {
 						CreatedOnToolsVersion = 11.3;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -556,6 +568,91 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		17C7B2D42743D84200BC51D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
+		};
+		17C7B2D52743DF4F00BC51D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
+		};
+		17C7B2D72743DF6700BC51D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
+		};
+		17C7B2D82743DF7500BC51D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
+		};
+		17C7B2DA2743DF8E00BC51D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
+		};
 		6BC5EE522487F76F00E1E78C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -580,26 +677,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BEF519F24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */,
-				6BEA731D24ACF9F9007EA8DC /* GesturePriority.swift in Sources */,
-				6BEF677A24C98C17008533FE /* CGPoint+Angle.swift in Sources */,
-				1748E8CC2669619C0016F534 /* PageTransition.swift in Sources */,
-				6BEF677424C98BFB008533FE /* PageWrapper.swift in Sources */,
-				6BEF519A24C9ECF8000DF66B /* PagerContent.swift in Sources */,
-				6BEA732C24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
-				172F4D5623DF830600FD2F15 /* Pager+Buildable.swift in Sources */,
-				172F4D5723DF830600FD2F15 /* View+Helper.swift in Sources */,
-				6BCF138E24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
-				172F4D5823DF830600FD2F15 /* Buildable.swift in Sources */,
-				6B362CBF2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
-				172F4D5923DF830600FD2F15 /* Pager.swift in Sources */,
-				17C41EBF25B223E2006F9EC4 /* Page.swift in Sources */,
-				6BEA732724ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
-				6BEA732224ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
-				6B6FAA4124D56BAC000D1539 /* PagingAnimation.swift in Sources */,
-				172F4D5A23DF830600FD2F15 /* PagerContent+Helper.swift in Sources */,
-				6B0F33E024B4A50B006031BE /* OnDeactivateModifier.swift in Sources */,
-				17C41E9A25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2952743CB3300BC51D4 /* SwipeDirection.swift in Sources */,
+				17C7B2A42743CB3300BC51D4 /* GesturePriority.swift in Sources */,
+				17C7B2682743CB3300BC51D4 /* Pager.swift in Sources */,
+				17C7B25E2743CB3300BC51D4 /* PagerContent.swift in Sources */,
+				17C7B28B2743CB3300BC51D4 /* PositionAlignment.swift in Sources */,
+				17C7B27C2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */,
+				17C7B2BD2743CB3300BC51D4 /* PageWrapper.swift in Sources */,
+				17C7B2722743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2862743CB3300BC51D4 /* PagingAnimation.swift in Sources */,
+				17C7B2AE2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */,
+				17C7B2632743CB3300BC51D4 /* PageTransition.swift in Sources */,
+				17C7B2A92743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */,
+				17C7B29F2743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */,
+				17C7B2772743CB3300BC51D4 /* View+Helper.swift in Sources */,
+				17C7B29A2743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */,
+				17C7B2B82743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */,
+				17C7B2B32743CB3300BC51D4 /* Page.swift in Sources */,
+				17C7B2812743CB3300BC51D4 /* Buildable.swift in Sources */,
+				17C7B2902743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
+				17C7B26D2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,26 +704,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BEF51A024C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */,
-				6BEA731E24ACF9FA007EA8DC /* GesturePriority.swift in Sources */,
-				172F4D8123DF8B3D00FD2F15 /* Buildable.swift in Sources */,
-				1748E8CD2669619C0016F534 /* PageTransition.swift in Sources */,
-				6BEF677C24C98C18008533FE /* CGPoint+Angle.swift in Sources */,
-				6BEF677524C98BFB008533FE /* PageWrapper.swift in Sources */,
-				6BEF519B24C9ECF8000DF66B /* PagerContent.swift in Sources */,
-				6BEA732D24ACFA08007EA8DC /* SwipeInteractionArea.swift in Sources */,
-				172F4D8423DF8B4400FD2F15 /* Pager.swift in Sources */,
-				6BCF138F24B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
-				172F4D8023DF8B3800FD2F15 /* View+Helper.swift in Sources */,
-				6B362CC02534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
-				172F4D8523DF8B4800FD2F15 /* Pager+Buildable.swift in Sources */,
-				17C41EC025B223E2006F9EC4 /* Page.swift in Sources */,
-				6BEA732824ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
-				6BEA732324ACF9FF007EA8DC /* PositionAlignment.swift in Sources */,
-				6B6FAA4224D56BAC000D1539 /* PagingAnimation.swift in Sources */,
-				172F4D8623DF8B4B00FD2F15 /* PagerContent+Helper.swift in Sources */,
-				6B0F33E124B4A50C006031BE /* OnDeactivateModifier.swift in Sources */,
-				17C41E9B25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2962743CB3300BC51D4 /* SwipeDirection.swift in Sources */,
+				17C7B2A52743CB3300BC51D4 /* GesturePriority.swift in Sources */,
+				17C7B2692743CB3300BC51D4 /* Pager.swift in Sources */,
+				17C7B25F2743CB3300BC51D4 /* PagerContent.swift in Sources */,
+				17C7B28C2743CB3300BC51D4 /* PositionAlignment.swift in Sources */,
+				17C7B27D2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */,
+				17C7B2BE2743CB3300BC51D4 /* PageWrapper.swift in Sources */,
+				17C7B2732743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2872743CB3300BC51D4 /* PagingAnimation.swift in Sources */,
+				17C7B2AF2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */,
+				17C7B2642743CB3300BC51D4 /* PageTransition.swift in Sources */,
+				17C7B2AA2743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */,
+				17C7B2A02743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */,
+				17C7B2782743CB3300BC51D4 /* View+Helper.swift in Sources */,
+				17C7B29B2743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */,
+				17C7B2B92743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */,
+				17C7B2B42743CB3300BC51D4 /* Page.swift in Sources */,
+				17C7B2822743CB3300BC51D4 /* Buildable.swift in Sources */,
+				17C7B2912743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
+				17C7B26E2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,26 +731,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BEF519E24C9ECFC000DF66B /* PagerContent+Buildable.swift in Sources */,
-				6BEA731C24ACF9F9007EA8DC /* GesturePriority.swift in Sources */,
-				6BEF677924C98C17008533FE /* CGPoint+Angle.swift in Sources */,
-				1748E8CB2669619C0016F534 /* PageTransition.swift in Sources */,
-				6BEF677324C98BFA008533FE /* PageWrapper.swift in Sources */,
-				6BEF519924C9ECF7000DF66B /* PagerContent.swift in Sources */,
-				6BEA732B24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
-				6B2C305A248D740800E528F9 /* Pager+Buildable.swift in Sources */,
-				6B2C305B248D740800E528F9 /* View+Helper.swift in Sources */,
-				6BCF138D24B2674F00AADE74 /* ContentLoadingPolicy.swift in Sources */,
-				6B2C305C248D740800E528F9 /* Buildable.swift in Sources */,
-				6B362CBE2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
-				6B2C305E248D740800E528F9 /* Pager.swift in Sources */,
-				17C41EBE25B223E1006F9EC4 /* Page.swift in Sources */,
-				6BEA732624ACFA03007EA8DC /* SwipeDirection.swift in Sources */,
-				6BEA732124ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
-				6B6FAA4024D56BAC000D1539 /* PagingAnimation.swift in Sources */,
-				6B2C305F248D740800E528F9 /* PagerContent+Helper.swift in Sources */,
-				6B0F33DF24B4A50B006031BE /* OnDeactivateModifier.swift in Sources */,
-				17C41E9925B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2942743CB3300BC51D4 /* SwipeDirection.swift in Sources */,
+				17C7B2A32743CB3300BC51D4 /* GesturePriority.swift in Sources */,
+				17C7B2672743CB3300BC51D4 /* Pager.swift in Sources */,
+				17C7B25D2743CB3300BC51D4 /* PagerContent.swift in Sources */,
+				17C7B28A2743CB3300BC51D4 /* PositionAlignment.swift in Sources */,
+				17C7B27B2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */,
+				17C7B2BC2743CB3300BC51D4 /* PageWrapper.swift in Sources */,
+				17C7B2712743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2852743CB3300BC51D4 /* PagingAnimation.swift in Sources */,
+				17C7B2AD2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */,
+				17C7B2622743CB3300BC51D4 /* PageTransition.swift in Sources */,
+				17C7B2A82743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */,
+				17C7B29E2743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */,
+				17C7B2762743CB3300BC51D4 /* View+Helper.swift in Sources */,
+				17C7B2992743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */,
+				17C7B2B72743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */,
+				17C7B2B22743CB3300BC51D4 /* Page.swift in Sources */,
+				17C7B2802743CB3300BC51D4 /* Buildable.swift in Sources */,
+				17C7B28F2743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
+				17C7B26C2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,26 +758,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BEF51A124C9ECFD000DF66B /* PagerContent+Buildable.swift in Sources */,
-				6BEA731F24ACF9FB007EA8DC /* GesturePriority.swift in Sources */,
-				6BBC3D752488DC04004194BD /* Buildable.swift in Sources */,
-				1748E8CE2669619C0016F534 /* PageTransition.swift in Sources */,
-				6BEF677D24C98C18008533FE /* CGPoint+Angle.swift in Sources */,
-				6BEF677624C98BFB008533FE /* PageWrapper.swift in Sources */,
-				6BEF519C24C9ECF9000DF66B /* PagerContent.swift in Sources */,
-				6BEA732E24ACFA09007EA8DC /* SwipeInteractionArea.swift in Sources */,
-				6BBC3D772488DC0B004194BD /* Pager.swift in Sources */,
-				6BBC3D782488DC0E004194BD /* Pager+Buildable.swift in Sources */,
-				6BCF139024B2675000AADE74 /* ContentLoadingPolicy.swift in Sources */,
-				6B362CC12534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
-				6BBC3D742488DC01004194BD /* View+Helper.swift in Sources */,
-				17C41EC125B223E3006F9EC4 /* Page.swift in Sources */,
-				6BEA732924ACFA04007EA8DC /* SwipeDirection.swift in Sources */,
-				6BEA732424ACFA00007EA8DC /* PositionAlignment.swift in Sources */,
-				6B6FAA4324D56BAC000D1539 /* PagingAnimation.swift in Sources */,
-				6BBC3D792488DC11004194BD /* PagerContent+Helper.swift in Sources */,
-				6B0F33E224B4A50C006031BE /* OnDeactivateModifier.swift in Sources */,
-				17C41E9C25B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2972743CB3300BC51D4 /* SwipeDirection.swift in Sources */,
+				17C7B2A62743CB3300BC51D4 /* GesturePriority.swift in Sources */,
+				17C7B26A2743CB3300BC51D4 /* Pager.swift in Sources */,
+				17C7B2602743CB3300BC51D4 /* PagerContent.swift in Sources */,
+				17C7B28D2743CB3300BC51D4 /* PositionAlignment.swift in Sources */,
+				17C7B27E2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */,
+				17C7B2BF2743CB3300BC51D4 /* PageWrapper.swift in Sources */,
+				17C7B2742743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2882743CB3300BC51D4 /* PagingAnimation.swift in Sources */,
+				17C7B2B02743CB3300BC51D4 /* Pager+Buildable.swift in Sources */,
+				17C7B2652743CB3300BC51D4 /* PageTransition.swift in Sources */,
+				17C7B2AB2743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */,
+				17C7B2A12743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */,
+				17C7B2792743CB3300BC51D4 /* View+Helper.swift in Sources */,
+				17C7B29C2743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */,
+				17C7B2BA2743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */,
+				17C7B2B52743CB3300BC51D4 /* Page.swift in Sources */,
+				17C7B2832743CB3300BC51D4 /* Buildable.swift in Sources */,
+				17C7B2922743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
+				17C7B26F2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,26 +785,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BEF519D24C9ECFB000DF66B /* PagerContent+Buildable.swift in Sources */,
-				6BEA731B24ACF9F8007EA8DC /* GesturePriority.swift in Sources */,
-				6BEF677824C98C16008533FE /* CGPoint+Angle.swift in Sources */,
-				1748E8CA2669619C0016F534 /* PageTransition.swift in Sources */,
-				6BEF677224C98BFA008533FE /* PageWrapper.swift in Sources */,
-				6BEF519824C9ECF7000DF66B /* PagerContent.swift in Sources */,
-				6BEA732A24ACFA07007EA8DC /* SwipeInteractionArea.swift in Sources */,
-				6BDE442A23DE12480022A2F7 /* Pager+Buildable.swift in Sources */,
-				6BDE442B23DE12480022A2F7 /* View+Helper.swift in Sources */,
-				6BCF138C24B2674E00AADE74 /* ContentLoadingPolicy.swift in Sources */,
-				6BDE442C23DE12480022A2F7 /* Buildable.swift in Sources */,
-				6B362CBD2534940B008DB2DF /* PaginationSensitivity.swift in Sources */,
-				6BDE442923DE12480022A2F7 /* Pager.swift in Sources */,
-				17C41EB725B223E1006F9EC4 /* Page.swift in Sources */,
-				6BEA732524ACFA02007EA8DC /* SwipeDirection.swift in Sources */,
-				6BEA732024ACF9FE007EA8DC /* PositionAlignment.swift in Sources */,
-				6B6FAA3F24D56BAC000D1539 /* PagingAnimation.swift in Sources */,
-				6BDE442E23DE12480022A2F7 /* PagerContent+Helper.swift in Sources */,
-				6B0F33DE24B4A50A006031BE /* OnDeactivateModifier.swift in Sources */,
-				17C41E9825B21D7A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2932743CB3300BC51D4 /* SwipeDirection.swift in Sources */,
+				17C7B2A22743CB3300BC51D4 /* GesturePriority.swift in Sources */,
+				17C7B2662743CB3300BC51D4 /* Pager.swift in Sources */,
+				17C7B25C2743CB3300BC51D4 /* PagerContent.swift in Sources */,
+				17C7B2892743CB3300BC51D4 /* PositionAlignment.swift in Sources */,
+				17C7B27A2743CB3300BC51D4 /* CGPoint+Angle.swift in Sources */,
+				17C7B2BB2743CB3300BC51D4 /* PageWrapper.swift in Sources */,
+				17C7B2702743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */,
+				17C7B2842743CB3300BC51D4 /* PagingAnimation.swift in Sources */,
+				17C7B2AC2743CB3300BC51D4 /* Pager+Buildable.swift in Sources */,
+				17C7B2612743CB3300BC51D4 /* PageTransition.swift in Sources */,
+				17C7B2A72743CB3300BC51D4 /* PagerContent+Helper.swift in Sources */,
+				17C7B29D2743CB3300BC51D4 /* ContentLoadingPolicy.swift in Sources */,
+				17C7B2752743CB3300BC51D4 /* View+Helper.swift in Sources */,
+				17C7B2982743CB3300BC51D4 /* PaginationSensitivity.swift in Sources */,
+				17C7B2B62743CB3300BC51D4 /* PagerContent+Buildable.swift in Sources */,
+				17C7B2B12743CB3300BC51D4 /* Page.swift in Sources */,
+				17C7B27F2743CB3300BC51D4 /* Buildable.swift in Sources */,
+				17C7B28E2743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
+				17C7B26B2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +878,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -803,6 +901,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
@@ -813,6 +912,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -901,6 +1001,7 @@
 		6BBC3D702488DBE8004194BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -923,6 +1024,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 13.0;
@@ -932,6 +1034,7 @@
 		6BBC3D712488DBE8004194BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
