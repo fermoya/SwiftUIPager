@@ -219,7 +219,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .onDraggingEnded(onDraggingEnded)
             .bounces(bounces)
             .draggingAnimation(draggingAnimation)
-          #endif
+        #else
+        pagerContent = pagerContent.draggingAnimation(draggingAnimation)
+        #endif
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent
         pagerContent = isHorizontal ? pagerContent.horizontal(horizontalSwipeDirection) : pagerContent.vertical(verticalSwipeDirection)
