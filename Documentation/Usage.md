@@ -197,7 +197,7 @@ Get a interactive fading effect on your items by using `interactive(opacity:)`:
 
 ```swift
 Pager(...)
-    .interacive(opacity: 0.4)
+    .interactive(opacity: 0.4)
     .preferredItemSize(CGSize(width: 150, height: 150))
     .itemSpacing(10)
 ```
