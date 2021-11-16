@@ -192,6 +192,7 @@ extension Pager {
             wrappedView = wrappedView
               .focusable()
               .onMoveCommand(perform: self.onMoveCommandSent)
+              .eraseToAny()
             #endif
 
             var resultView = wrappedView
