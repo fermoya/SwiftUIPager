@@ -9,6 +9,7 @@ import XCTest
 import SwiftUI
 @testable import SwiftUIPager
 
+@available(iOS 13.2, *)
 final class DummyTests: XCTestCase {
 
     func test_dummyGesturePriority() {
