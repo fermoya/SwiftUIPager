@@ -201,7 +201,7 @@ extension Pager {
                 .onDeactivate(perform: {
                     if self.isDragging {
                         #if !os(tvOS)
-                        self.onDragGestureEnded()
+                        self.onDragCancelled()
                         #endif
                     }
                 })
@@ -340,6 +340,15 @@ extension Pager.PagerContent {
         } else if page != newPage {
             self.pagerModel.pageIncrement = 0
             onPageChanged?(newPage)
+        }
+    }
+
+    func onDragCancelled() {
+        withAnimation {
+            pagerModel.draggingOffset = 0
+            pagerModel.lastDraggingValue = nil
+            pagerModel.draggingVelocity = 0
+            pagerModel.objectWillChange.send()
         }
     }
 
