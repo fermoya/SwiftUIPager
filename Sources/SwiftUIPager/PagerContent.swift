@@ -141,6 +141,8 @@ extension Pager {
 
         /// Page index
         @ObservedObject var pagerModel: Page
+      
+        @GestureState var isUserDragging: Bool = false
 
         /// Initializes a new `Pager`.
         ///
@@ -205,6 +207,11 @@ extension Pager {
                         #endif
                     }
                 })
+                .onChange(of: isDragging, perform: { isDragging in
+                  if !isDragging {
+                    self.onDragGestureEnded()
+                  }
+                })
                 .eraseToAny()
 
             if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
@@ -250,6 +257,9 @@ extension Pager.PagerContent {
     #if !os(tvOS)
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance)
+            .updating($isUserDragging, body: { _, state, _ in
+                state = true
+            })
             .onChanged({ value in
                 self.onDragChanged(with: value)
             })
