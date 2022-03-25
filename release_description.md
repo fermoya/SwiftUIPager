@@ -1,3 +1,4 @@
 ### Fixes
-- #237 Listen to `onMoveCommand` on `tvOS`
-- #234 Programmaticallt move infinite `Pager` past the last page
+- #244 `loopPages` fail to use right `page` if `repeating` elements
+- #253 #233 `loopPages` fades pages
+- #252 `NavigationView` swipe gestures not working if wrapping a `Pager`
