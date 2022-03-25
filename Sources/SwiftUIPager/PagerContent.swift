@@ -249,7 +249,7 @@ extension Pager.PagerContent {
     /// `DragGesture` customized to work with `Pager`
     #if !os(tvOS)
     var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: minimumDistance)
+        DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
             .onChanged({ value in
                 self.onDragChanged(with: value)
             })
@@ -265,8 +265,10 @@ extension Pager.PagerContent {
                 onDraggingBegan?()
             }
 
-            let lastLocation = self.lastDraggingValue?.location ?? value.location
-            let swipeAngle = (value.location - lastLocation).angle ?? .zero
+            let currentLocation = dragLocation(for: value)
+            let currentTranslation = dragTranslation(for: value)
+            let lastLocation = self.lastDraggingValue.flatMap(dragLocation) ?? currentLocation
+            let swipeAngle = (currentLocation - lastLocation).angle ?? .zero
             // Ignore swipes that aren't on the X-Axis
             guard swipeAngle.isAlongXAxis else {
                 self.pagerModel.lastDraggingValue = value
@@ -275,10 +277,10 @@ extension Pager.PagerContent {
 
             let side = self.isHorizontal ? self.size.width : self.size.height
             let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
-            let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
+            let offsetIncrement = (currentLocation.x - lastLocation.x) * normalizedRatio
 
             // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
-            let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
+            let isTranslationInXAxis = abs(currentTranslation.width) > abs(currentTranslation.height)
             guard self.draggingOffset != 0 || isTranslationInXAxis else {
                 return
             }
@@ -387,6 +389,36 @@ extension Pager.PagerContent {
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
         return (newPage, pageIncrement)
+    }
+
+    private func dragTranslation(for value: DragGesture.Value) -> CGSize {
+        let multiplier: CGFloat = scrollDirectionAngle == .zero ? 1 : -1
+        if isHorizontal {
+            return CGSize(
+                width: value.translation.width * multiplier,
+                height: value.translation.height * multiplier
+            )
+        } else {
+            return CGSize(
+                width: value.translation.height * multiplier,
+                height: value.translation.width * multiplier
+            )
+        }
+    }
+
+    private func dragLocation(for value: DragGesture.Value) -> CGPoint {
+        let multiplier: CGFloat = scrollDirectionAngle == .zero ? 1 : -1
+        if isHorizontal {
+            return CGPoint(
+                x: value.location.x * multiplier,
+                y: value.location.y * multiplier
+            )
+        } else {
+            return CGPoint(
+                x: value.location.y * multiplier,
+                y: value.location.x * multiplier
+            )
+        }
     }
     #endif
 
