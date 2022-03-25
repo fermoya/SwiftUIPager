@@ -243,11 +243,14 @@ extension Pager.PagerContent {
     /// Oppacity for each item when `faded` animation is chosen
     func opacity(for item: PageWrapper<Element, ID>) -> Double {
         guard let opacityIncrement = opacityIncrement else { return 1 }
-        guard let index = data.firstIndex(of: item) else { return 1 }
+        guard let index: Int = dataDisplayed.firstIndex(of: item) else { return 1 }
+        guard let displayedItem = dataDisplayed.first(where: { $0 == data[page] }) else { return 1 }
+        guard let displayedIndex: Int = dataDisplayed.firstIndex(of: displayedItem) else { return 1 }
         let totalIncrement = abs(totalOffset / pageDistance)
-        let currentPage = direction == .forward ? CGFloat(page) + totalIncrement : CGFloat(page) - totalIncrement
+        let currentIndex = direction == .forward ? CGFloat(index) + totalIncrement : CGFloat(index) - totalIncrement
 
-        let distance = abs(CGFloat(index) - currentPage)
+        let distance = abs(currentIndex - CGFloat(displayedIndex))
+        print("item: \(item.id) distance: \(distance), \(index)")
         return Double(max(0, min(1, 1 - distance * CGFloat(opacityIncrement))))
     }
 
