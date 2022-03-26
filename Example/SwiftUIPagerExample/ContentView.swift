@@ -13,7 +13,7 @@ extension Color {
 }
 
 struct ContentView: View {
-        
+    
     var body: some View {
         TabView {
             InfiniteExampleView()
@@ -36,11 +36,16 @@ struct ContentView: View {
                     Image(systemName: "rectangle.on.rectangle")
                     Text("Nested")
                 }).tag(3)
+            ForwardOnlyExampleView()
+                .tabItem({
+                    Image(systemName: "forward")
+                    Text("Forward Only")
+                }).tag(4)
             BizarreExampleView()
                 .tabItem({
                     Image(systemName: "smiley")
-                    Text("More")
-                }).tag(4)
+                    Text("Bizarre")
+                }).tag(5)
         }
     }
     

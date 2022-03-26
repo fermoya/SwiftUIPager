@@ -77,6 +77,9 @@ extension Pager {
         /// The elements alignment relative to the container
         var alignment: PositionAlignment = .center
 
+        /// Swiping back is disabled
+        var forwardOnly: Bool = false
+
         /// `true` if the pager is horizontal
         var isHorizontal: Bool = true
 
@@ -252,10 +255,25 @@ extension Pager.PagerContent {
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
             .onChanged({ value in
-                self.onDragChanged(with: value)
+                if forwardOnly {
+                    if isForwardGesture(value) {
+                        self.onDragChanged(with: value)
+                    }
+                }
+                else {
+                    self.onDragChanged(with: value)
+                }
+
             })
             .onEnded({ (value) in
-                self.onDragGestureEnded()
+                if forwardOnly {
+                    if isForwardGesture(value) {
+                        self.onDragGestureEnded()
+                    }
+                }
+                else {
+                    self.onDragGestureEnded()
+                }
             })
     }
 
@@ -390,6 +408,10 @@ extension Pager.PagerContent {
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
         return (newPage, pageIncrement)
+    }
+
+    private func isForwardGesture(_ value: DragGesture.Value) -> Bool {
+        return !((value.location.x - value.startLocation.x) > 0)
     }
 
     private func dragTranslation(for value: DragGesture.Value) -> CGSize {

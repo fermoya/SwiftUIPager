@@ -30,6 +30,11 @@ extension Pager: Buildable {
             .mutating(keyPath: \.contentLoadingPolicy, value: .eager)
     }
 
+    /// User can only swipe forward so in one direction
+    public func forwardOnly(_ enabled: Bool = false) -> Self {
+        mutating(keyPath: \.forwardOnly, value: enabled)
+    }
+
     /// Allows to scroll one page at a time. Use `ratio` to limit next item's reveal ratio.
     /// Once reached, items won't keep scrolling further.
     /// `Pager` will use then `sensitivity` to determine whether to paginate to the next page.
