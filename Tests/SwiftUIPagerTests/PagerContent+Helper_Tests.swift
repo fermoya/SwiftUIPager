@@ -54,9 +54,9 @@ final class PagerContent_Helper_Tests: XCTestCase {
         let neighbor2 = PageWrapper(batchId: 1, keyPath: \.self, element: 3)
         let neighbor3 = PageWrapper(batchId: 1, keyPath: \.self, element: 4)
         XCTAssertEqual(Int((pagerContent.opacity(for: focusedItem) * 10).rounded()), 8)
-        XCTAssertEqual(Int((pagerContent.opacity(for: neighbor1) * 10).rounded()), 8)
-        XCTAssertEqual(Int((pagerContent.opacity(for: neighbor2) * 10).rounded()), 4)
-        XCTAssertEqual(Int((pagerContent.opacity(for: neighbor3) * 10).rounded()), 0)
+        XCTAssertEqual(Int((pagerContent.opacity(for: neighbor1) * 10).rounded()), 4)
+        XCTAssertEqual(Int((pagerContent.opacity(for: neighbor2) * 10).rounded()), 8)
+        XCTAssertEqual(Int((pagerContent.opacity(for: neighbor3) * 10).rounded()), 4)
     }
 
     func test_GivenMultiplePaginationPager_WhenDragResult_ThenValues() {

@@ -247,10 +247,9 @@ extension Pager.PagerContent {
         guard let displayedItem = dataDisplayed.first(where: { $0 == data[page] }) else { return 1 }
         guard let displayedIndex: Int = dataDisplayed.firstIndex(of: displayedItem) else { return 1 }
         let totalIncrement = abs(totalOffset / pageDistance)
-        let currentIndex = direction == .forward ? CGFloat(index) + totalIncrement : CGFloat(index) - totalIncrement
+        let currentIndex = direction == .forward ? CGFloat(index) - totalIncrement : CGFloat(index) + totalIncrement
 
         let distance = abs(currentIndex - CGFloat(displayedIndex))
-        print("item: \(item.id) distance: \(distance), \(index)")
         return Double(max(0, min(1, 1 - distance * CGFloat(opacityIncrement))))
     }
 
