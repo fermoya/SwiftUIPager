@@ -82,7 +82,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var contentLoadingPolicy: ContentLoadingPolicy = .default
 
     /// User can only swipe, forward so in one direction
-    var forwardOnly: Bool = false
+    var dragForwardOnly: Bool = false
 
     /// Swipe direction for horizontal `Pager`
     var horizontalSwipeDirection: HorizontalSwipeDirection = .leftToRight
@@ -197,7 +197,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .contentLoadingPolicy(contentLoadingPolicy)
                 .loopPages(isInifinitePager, repeating: loopingCount)
                 .alignment(alignment)
-                    .forwardOnly(forwardOnly)
+                    .dragForwardOnly(dragForwardOnly)
                 .interactive(scale: interactiveScale)
                 .interactive(opacity: opacityIncrement)
                 .interactive(rotation: shouldRotate)

@@ -178,8 +178,8 @@ extension Pager.PagerContent: Buildable {
         mutating(keyPath: \.alignment, value: value)
     }
 
-    func forwardOnly(_ value: Bool) -> Self {
-        mutating(keyPath: \.forwardOnly, value: value)
+    func dragForwardOnly(_ value: Bool) -> Self {
+        mutating(keyPath: \.dragForwardOnly, value: value)
     }
 
     /// Returns a horizontal pager

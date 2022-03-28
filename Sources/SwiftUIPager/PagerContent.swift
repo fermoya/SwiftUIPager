@@ -78,7 +78,7 @@ extension Pager {
         var alignment: PositionAlignment = .center
 
         /// Swiping back is disabled
-        var forwardOnly: Bool = false
+        var dragForwardOnly: Bool = false
 
         /// `true` if the pager is horizontal
         var isHorizontal: Bool = true
@@ -255,7 +255,7 @@ extension Pager.PagerContent {
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
             .onChanged({ value in
-                if forwardOnly {
+                if dragForwardOnly {
                     if isForwardGesture(value) {
                         self.onDragChanged(with: value)
                     }
@@ -266,7 +266,7 @@ extension Pager.PagerContent {
 
             })
             .onEnded({ (value) in
-                if forwardOnly {
+                if dragForwardOnly {
                     if isForwardGesture(value) {
                         self.onDragGestureEnded()
                     }

@@ -31,8 +31,8 @@ extension Pager: Buildable {
     }
 
     /// User can only swipe forward so in one direction
-    public func forwardOnly(_ enabled: Bool = false) -> Self {
-        mutating(keyPath: \.forwardOnly, value: enabled)
+    public func dragForwardOnly(_ enabled: Bool = false) -> Self {
+        mutating(keyPath: \.dragForwardOnly, value: enabled)
     }
 
     /// Allows to scroll one page at a time. Use `ratio` to limit next item's reveal ratio.

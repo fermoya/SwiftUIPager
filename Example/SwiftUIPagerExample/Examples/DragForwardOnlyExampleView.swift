@@ -1,10 +1,10 @@
-//  ForwardOnlyExampleView.swift
+//  DragForwardOnlyExampleView.swift
 //  SwiftUIPagerExample
 //
 //  Created by  Fred Bowker on 26/03/2022..
 import SwiftUI
 
-struct ForwardOnlyExampleView: View {
+struct DragForwardOnlyExampleView: View {
     
     @StateObject var page: Page = .first()
     
@@ -24,7 +24,7 @@ struct ForwardOnlyExampleView: View {
                           .contentLoadingPolicy(.eager)
                           .itemSpacing(10)
                           .padding(20)
-                          .forwardOnly(true)
+                          .dragForwardOnly(true)
                           .frame(width: min(proxy.size.height, proxy.size.width),
                                  height: min(proxy.size.height, proxy.size.width))
                           .background(Color.gray.opacity(0.3))

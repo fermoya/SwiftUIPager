@@ -36,7 +36,7 @@ struct ContentView: View {
                     Image(systemName: "rectangle.on.rectangle")
                     Text("Nested")
                 }).tag(3)
-            ForwardOnlyExampleView()
+            DragForwardOnlyExampleView()
                 .tabItem({
                     Image(systemName: "forward")
                     Text("Forward Only")
