@@ -30,14 +30,6 @@ extension Pager: Buildable {
             .mutating(keyPath: \.contentLoadingPolicy, value: .eager)
     }
 
-    /// User can only swipe forward so in one direction
-    ///
-    /// - Parameter enabled: by default dragForwardOnly is disables so pages can be scrolled in both directions,
-    ///     set to true to disable scrolling backwards
-    public func dragForwardOnly(_ enabled: Bool = false) -> Self {
-        mutating(keyPath: \.dragForwardOnly, value: enabled)
-    }
-
     /// Allows to scroll one page at a time. Use `ratio` to limit next item's reveal ratio.
     /// Once reached, items won't keep scrolling further.
     /// `Pager` will use then `sensitivity` to determine whether to paginate to the next page.
@@ -85,6 +77,14 @@ extension Pager: Buildable {
     /// - Warning: `spring` animations don't work well. Avoid high responses while dragging as the animation should be short
     public func draggingAnimation(_ value: DraggingAnimation) -> Self {
         mutating(keyPath: \.draggingAnimation, value: value)
+    }
+
+    /// User can only swipe forward so in one direction
+    ///
+    /// - Parameter enabled: by default dragForwardOnly is disables so pages can be scrolled in both directions,
+    ///     set to true to disable scrolling backwards
+    public func dragForwardOnly(_ enabled: Bool = false) -> Self {
+        mutating(keyPath: \.dragForwardOnly, value: enabled)
     }
 
     /// Sets the explicit animation to be used. Defaults to `.standard`
