@@ -31,6 +31,9 @@ extension Pager: Buildable {
     }
 
     /// User can only swipe forward so in one direction
+    ///
+    /// - Parameter enabled: by default dragForwardOnly is disables so pages can be scrolled in both directions,
+    ///     set to true to disable scrolling backwards
     public func dragForwardOnly(_ enabled: Bool = false) -> Self {
         mutating(keyPath: \.dragForwardOnly, value: enabled)
     }
