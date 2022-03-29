@@ -53,6 +53,7 @@ extension Pager.PagerContent: Buildable {
             }.flatMap { $0 }
         }
         self.pagerModel.isInfinite = value
+        self.pagerModel.totalPages = newData.count
         return mutating(keyPath: \.isInifinitePager, value: value)
             .mutating(keyPath: \.data, value: newData)
     }

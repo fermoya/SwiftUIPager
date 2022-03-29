@@ -142,6 +142,11 @@ extension Pager {
         /// Page index
         @ObservedObject var pagerModel: Page
 
+        #if !os(tvOS)
+        /// DragGesture state to indicate whether the gesture was interrupted
+        @GestureState var isGestureFinished = true
+        #endif
+
         /// Initializes a new `Pager`.
         ///
         /// - Parameter size: Available size
@@ -197,16 +202,10 @@ extension Pager {
             #endif
 
             var resultView = wrappedView
-                .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
-                                  axis: (0, 0, 1))
-                .onDeactivate(perform: {
-                    if self.isDragging {
-                        #if !os(tvOS)
-                        self.onDragCancelled()
-                        #endif
-                    }
-                })
-                .eraseToAny()
+                .rotation3DEffect(
+                    (isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
+                    axis: (0, 0, 1)
+                ).eraseToAny()
 
             if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
                 resultView = resultView
@@ -220,6 +219,18 @@ extension Pager {
                     })
                     .eraseToAny()
             }
+
+            #if !os(tvOS)
+            if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
+                resultView = resultView
+                    .onChange(of: isGestureFinished) { value in
+                        if value {
+                            onDragGestureEnded()
+                        }
+                    }
+                    .eraseToAny()
+            }
+            #endif
 
             return resultView.contentShape(Rectangle())
         }
@@ -251,11 +262,11 @@ extension Pager.PagerContent {
     #if !os(tvOS)
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
+            .updating($isGestureFinished) { _, state, _ in
+                state = false
+            }
             .onChanged({ value in
                 self.onDragChanged(with: value)
-            })
-            .onEnded({ (value) in
-                self.onDragGestureEnded()
             })
     }
 

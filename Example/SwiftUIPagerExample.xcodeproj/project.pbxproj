@@ -22,7 +22,6 @@
 		6B4EC8A6240D0918001E7490 /* EmbeddedExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC8A5240D0918001E7490 /* EmbeddedExampleView.swift */; };
 		6B4EC8A8240D1182001E7490 /* BizarreExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */; };
 		6B6FAA3D24D553C8000D1539 /* PagingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FAA3C24D553C8000D1539 /* PagingAnimation.swift */; };
-		6B9C4A8A24B45F66004C06C5 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C4A8924B45F66004C06C5 /* OnDeactivateModifier.swift */; };
 		6BB1AAD524C9CA1C0032B5A3 /* PagerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1AAD424C9CA1C0032B5A3 /* PagerContent.swift */; };
 		6BB1AAD724C9D0820032B5A3 /* Pager+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1AAD624C9D0820032B5A3 /* Pager+Buildable.swift */; };
 		6BC5EDFC24866D9500E1E78C /* PagerContent+Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5EDF424866D9500E1E78C /* PagerContent+Buildable.swift */; };
@@ -71,7 +70,6 @@
 		6B4EC8A5240D0918001E7490 /* EmbeddedExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedExampleView.swift; sourceTree = "<group>"; };
 		6B4EC8A7240D1182001E7490 /* BizarreExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BizarreExampleView.swift; sourceTree = "<group>"; };
 		6B6FAA3C24D553C8000D1539 /* PagingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PagingAnimation.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/PagingAnimation.swift; sourceTree = "<group>"; };
-		6B9C4A8924B45F66004C06C5 /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeactivateModifier.swift; sourceTree = "<group>"; };
 		6BB1AAD424C9CA1C0032B5A3 /* PagerContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PagerContent.swift; path = ../../Sources/SwiftUIPager/PagerContent.swift; sourceTree = "<group>"; };
 		6BB1AAD624C9D0820032B5A3 /* Pager+Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Pager+Buildable.swift"; path = "../../Sources/SwiftUIPager/Pager+Buildable.swift"; sourceTree = "<group>"; };
 		6BC5EDF424866D9500E1E78C /* PagerContent+Buildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PagerContent+Buildable.swift"; path = "../../Sources/SwiftUIPager/PagerContent+Buildable.swift"; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				6BC5EDF824866D9500E1E78C /* Buildable.swift */,
 				6BD3828124C97DE3007B1CF6 /* CGPoint+Angle.swift */,
 				17C41EA925B21D9A006F9EC4 /* OnAnimationCompletedModifier.swift */,
-				6B9C4A8924B45F66004C06C5 /* OnDeactivateModifier.swift */,
 				6BC5EDF724866D9500E1E78C /* View+Helper.swift */,
 			);
 			name = Helpers;
@@ -282,7 +279,6 @@
 				17C41EAA25B21D9A006F9EC4 /* OnAnimationCompletedModifier.swift in Sources */,
 				6BC5EDFF24866D9500E1E78C /* Buildable.swift in Sources */,
 				1748E8C026695E220016F534 /* PageTransition.swift in Sources */,
-				6B9C4A8A24B45F66004C06C5 /* OnDeactivateModifier.swift in Sources */,
 				6BEA731624ACF8D7007EA8DC /* GesturePriority.swift in Sources */,
 				6B35B6C125346610000D618F /* PaginationSensitivity.swift in Sources */,
 				1751176A2573D93F00D809CF /* Page.swift in Sources */,
