@@ -3,3 +3,4 @@
 - #253 #233 `loopPages` fades pages
 - #252 `NavigationView` swipe gestures not working if wrapping a `Pager`
 - #259 `loopPages` not working well with `interactive` approaches
+- #238 finish pagination if gesture interrupted

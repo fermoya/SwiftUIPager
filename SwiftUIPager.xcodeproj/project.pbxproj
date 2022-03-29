@@ -42,11 +42,6 @@
 		17C7B2682743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
 		17C7B2692743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
 		17C7B26A2743CB3300BC51D4 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B2482743CB3300BC51D4 /* Pager.swift */; };
-		17C7B26B2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
-		17C7B26C2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
-		17C7B26D2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
-		17C7B26E2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
-		17C7B26F2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */; };
 		17C7B2702743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
 		17C7B2712743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
 		17C7B2722743CB3300BC51D4 /* OnAnimationCompletedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */; };
@@ -153,7 +148,6 @@
 		17C7B2462743CB3300BC51D4 /* PagerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerContent.swift; sourceTree = "<group>"; };
 		17C7B2472743CB3300BC51D4 /* PageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTransition.swift; sourceTree = "<group>"; };
 		17C7B2482743CB3300BC51D4 /* Pager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
-		17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDeactivateModifier.swift; sourceTree = "<group>"; };
 		17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnAnimationCompletedModifier.swift; sourceTree = "<group>"; };
 		17C7B24C2743CB3300BC51D4 /* View+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Helper.swift"; sourceTree = "<group>"; };
 		17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Angle.swift"; sourceTree = "<group>"; };
@@ -242,7 +236,6 @@
 		17C7B2492743CB3300BC51D4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				17C7B24A2743CB3300BC51D4 /* OnDeactivateModifier.swift */,
 				17C7B24B2743CB3300BC51D4 /* OnAnimationCompletedModifier.swift */,
 				17C7B24C2743CB3300BC51D4 /* View+Helper.swift */,
 				17C7B24D2743CB3300BC51D4 /* CGPoint+Angle.swift */,
@@ -696,7 +689,6 @@
 				17C7B2B32743CB3300BC51D4 /* Page.swift in Sources */,
 				17C7B2812743CB3300BC51D4 /* Buildable.swift in Sources */,
 				17C7B2902743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
-				17C7B26D2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +715,6 @@
 				17C7B2B42743CB3300BC51D4 /* Page.swift in Sources */,
 				17C7B2822743CB3300BC51D4 /* Buildable.swift in Sources */,
 				17C7B2912743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
-				17C7B26E2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +741,6 @@
 				17C7B2B22743CB3300BC51D4 /* Page.swift in Sources */,
 				17C7B2802743CB3300BC51D4 /* Buildable.swift in Sources */,
 				17C7B28F2743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
-				17C7B26C2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,7 +767,6 @@
 				17C7B2B52743CB3300BC51D4 /* Page.swift in Sources */,
 				17C7B2832743CB3300BC51D4 /* Buildable.swift in Sources */,
 				17C7B2922743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
-				17C7B26F2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,7 +793,6 @@
 				17C7B2B12743CB3300BC51D4 /* Page.swift in Sources */,
 				17C7B27F2743CB3300BC51D4 /* Buildable.swift in Sources */,
 				17C7B28E2743CB3300BC51D4 /* SwipeInteractionArea.swift in Sources */,
-				17C7B26B2743CB3300BC51D4 /* OnDeactivateModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

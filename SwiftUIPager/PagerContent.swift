@@ -142,6 +142,11 @@ extension Pager {
         /// Page index
         @ObservedObject var pagerModel: Page
 
+        #if !os(tvOS)
+        /// DragGesture state to indicate whether the gesture was interrupted
+        @GestureState var isGestureFinished = true
+        #endif
+
         /// Initializes a new `Pager`.
         ///
         /// - Parameter size: Available size
@@ -160,20 +165,21 @@ extension Pager {
         var body: some View {
             let stack = HStack(spacing: interactiveItemSpacing) {
                 ForEach(dataDisplayed, id: id) { item in
-                    Group {
-                        if self.isInifinitePager && self.isEdgePage(item) {
-                            EmptyView()
-                        } else {
-                            self.content(item.element)
-                        }
-                    }
-                    .frame(size: self.pageSize)
-                    .scaleEffect(self.scale(for: item))
-                    .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
-                                      axis: (0, 0, 1))
-                    .rotation3DEffect(self.angle(for: item),
+//                    Group {
+//                        if self.isInifinitePager && self.isEdgePage(item) {
+//                            EmptyView()
+//                        } else {
+//                            self.content(item.element)
+//                        }
+//                    }
+                    self.content(item.element)
+                        .frame(size: self.pageSize)
+                        .scaleEffect(self.scale(for: item))
+                        .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
+                                          axis: (0, 0, 1))
+                        .rotation3DEffect(self.angle(for: item),
                                           axis:  self.axis)
-                    .opacity(opacity(for: item))
+                        .opacity(opacity(for: item))
                 }
                 .offset(x: self.xOffset, y : self.yOffset)
             }
@@ -196,16 +202,10 @@ extension Pager {
             #endif
 
             var resultView = wrappedView
-                .rotation3DEffect((isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
-                                  axis: (0, 0, 1))
-                .onDeactivate(perform: {
-                    if self.isDragging {
-                        #if !os(tvOS)
-                        self.onDragGestureEnded()
-                        #endif
-                    }
-                })
-                .eraseToAny()
+                .rotation3DEffect(
+                    (isHorizontal ? .zero : Angle(degrees: 90)) + scrollDirectionAngle,
+                    axis: (0, 0, 1)
+                ).eraseToAny()
 
             if #available(iOS 13.2, macOS 10.15, tvOS 13.0, watchOS 6.0, *) {
                 resultView = resultView
@@ -219,6 +219,18 @@ extension Pager {
                     })
                     .eraseToAny()
             }
+
+            #if !os(tvOS)
+            if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
+                resultView = resultView
+                    .onChange(of: isGestureFinished) { value in
+                        if value {
+                            onDragGestureEnded()
+                        }
+                    }
+                    .eraseToAny()
+            }
+            #endif
 
             return resultView.contentShape(Rectangle())
         }
@@ -249,12 +261,12 @@ extension Pager.PagerContent {
     /// `DragGesture` customized to work with `Pager`
     #if !os(tvOS)
     var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: minimumDistance)
+        DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
+            .updating($isGestureFinished) { _, state, _ in
+                state = false
+            }
             .onChanged({ value in
                 self.onDragChanged(with: value)
-            })
-            .onEnded({ (value) in
-                self.onDragGestureEnded()
             })
     }
 
@@ -265,8 +277,10 @@ extension Pager.PagerContent {
                 onDraggingBegan?()
             }
 
-            let lastLocation = self.lastDraggingValue?.location ?? value.location
-            let swipeAngle = (value.location - lastLocation).angle ?? .zero
+            let currentLocation = dragLocation(for: value)
+            let currentTranslation = dragTranslation(for: value)
+            let lastLocation = self.lastDraggingValue.flatMap(dragLocation) ?? currentLocation
+            let swipeAngle = (currentLocation - lastLocation).angle ?? .zero
             // Ignore swipes that aren't on the X-Axis
             guard swipeAngle.isAlongXAxis else {
                 self.pagerModel.lastDraggingValue = value
@@ -275,10 +289,10 @@ extension Pager.PagerContent {
 
             let side = self.isHorizontal ? self.size.width : self.size.height
             let normalizedRatio = self.allowsMultiplePagination ? 1 : (self.pageDistance / side)
-            let offsetIncrement = (value.location.x - lastLocation.x) * normalizedRatio
+            let offsetIncrement = (currentLocation.x - lastLocation.x) * normalizedRatio
 
             // If swipe hasn't started yet, ignore swipes if they didn't start on the X-Axis
-            let isTranslationInXAxis = abs(value.translation.width) > abs(value.translation.height)
+            let isTranslationInXAxis = abs(currentTranslation.width) > abs(currentTranslation.height)
             guard self.draggingOffset != 0 || isTranslationInXAxis else {
                 return
             }
@@ -343,6 +357,15 @@ extension Pager.PagerContent {
         }
     }
 
+    func onDragCancelled() {
+        withAnimation {
+            pagerModel.draggingOffset = 0
+            pagerModel.lastDraggingValue = nil
+            pagerModel.draggingVelocity = 0
+            pagerModel.objectWillChange.send()
+        }
+    }
+
     var dragResult: (page: Int, increment: Int) {
         let currentPage = self.currentPage(sensitivity: sensitivity.value)
         let velocity = -self.draggingVelocity
@@ -378,6 +401,36 @@ extension Pager.PagerContent {
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
         return (newPage, pageIncrement)
+    }
+
+    private func dragTranslation(for value: DragGesture.Value) -> CGSize {
+        let multiplier: CGFloat = scrollDirectionAngle == .zero ? 1 : -1
+        if isHorizontal {
+            return CGSize(
+                width: value.translation.width * multiplier,
+                height: value.translation.height * multiplier
+            )
+        } else {
+            return CGSize(
+                width: value.translation.height * multiplier,
+                height: value.translation.width * multiplier
+            )
+        }
+    }
+
+    private func dragLocation(for value: DragGesture.Value) -> CGPoint {
+        let multiplier: CGFloat = scrollDirectionAngle == .zero ? 1 : -1
+        if isHorizontal {
+            return CGPoint(
+                x: value.location.x * multiplier,
+                y: value.location.y * multiplier
+            )
+        } else {
+            return CGPoint(
+                x: value.location.y * multiplier,
+                y: value.location.x * multiplier
+            )
+        }
     }
     #endif
 
