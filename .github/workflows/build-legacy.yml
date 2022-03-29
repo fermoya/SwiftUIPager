@@ -25,4 +25,6 @@ jobs:
       - name: Run script
         env:
           DESTINATION: 'platform=iOS Simulator,name=iPhone 8,OS=12.4'
-        run: ./scripts/build_platforms.sh
+        run: |
+          ls /Library/Developer/CoreSimulator/Profiles/Runtimes
+          ./scripts/build_platforms.sh

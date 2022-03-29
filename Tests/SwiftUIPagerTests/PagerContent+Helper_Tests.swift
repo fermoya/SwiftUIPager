@@ -171,12 +171,12 @@ final class PagerContent_Helper_Tests: XCTestCase {
         let pager = givenPager.interactive(scale: 0.7).pageOffset(0.1)
         let item = PageWrapper(batchId: 1, keyPath: \.self, element: 200)
         let scale = pager.scale(for: item)
-        XCTAssertEqual(scale, 0.7)
+        XCTAssertEqual(scale, 1)
     }
 
     func test_GivenPagerDragging_WhenScaleForFarItem_ThenInteractiveScale() {
         let pager = givenPager.interactive(scale: 0.7).pageOffset(-0.1)
-        let item = PageWrapper(batchId: 1, keyPath: \.self, element: 3)
+        let item = PageWrapper(batchId: 1, keyPath: \.self, element: 2)
         let scale = pager.scale(for: item)
         XCTAssertEqual(scale, 0.7)
     }

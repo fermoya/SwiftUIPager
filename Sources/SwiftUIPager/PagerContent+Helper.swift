@@ -243,13 +243,7 @@ extension Pager.PagerContent {
     /// Oppacity for each item when `faded` animation is chosen
     func opacity(for item: PageWrapper<Element, ID>) -> Double {
         guard let opacityIncrement = opacityIncrement else { return 1 }
-        guard let index: Int = dataDisplayed.firstIndex(of: item) else { return 1 }
-        guard let displayedItem = dataDisplayed.first(where: { $0 == data[page] }) else { return 1 }
-        guard let displayedIndex: Int = dataDisplayed.firstIndex(of: displayedItem) else { return 1 }
-        let totalIncrement = abs(totalOffset / pageDistance)
-        let currentIndex = direction == .forward ? CGFloat(index) - totalIncrement : CGFloat(index) + totalIncrement
-
-        let distance = abs(currentIndex - CGFloat(displayedIndex))
+        let distance = abs(distance(to: item))
         return Double(max(0, min(1, 1 - distance * CGFloat(opacityIncrement))))
     }
 
@@ -266,17 +260,8 @@ extension Pager.PagerContent {
     /// Angle for the 3D rotation effect
     func angle(for item: PageWrapper<Element, ID>) -> Angle {
         guard shouldRotate else { return .zero }
-        guard let index = data.firstIndex(of: item) else { return .zero }
-
-        let totalIncrement = abs(totalOffset / pageDistance)
-
-        let currentAngle = Angle(degrees: Double(page - index) * rotationDegrees)
-        guard isDragging else {
-            return currentAngle
-        }
-
-        let newAngle = direction == .forward ? Angle(degrees: currentAngle.degrees + rotationDegrees * Double(totalIncrement)) : Angle(degrees: currentAngle.degrees - rotationDegrees * Double(totalIncrement) )
-        return newAngle
+        let distance = distance(to: item)
+        return Angle(degrees: rotationDegrees * Double(distance))
     }
 
     /// Axis for the rotations effect
@@ -287,24 +272,19 @@ extension Pager.PagerContent {
 
     /// Scale that applies to a particular item
     func scale(for item: PageWrapper<Element, ID>) -> CGFloat {
-        guard isDragging else { return isFocused(item) ? 1 : interactiveScale }
+        let distance = abs(distance(to: item))
+        return Double(max(interactiveScale, min(1, 1 - distance * scaleIncrement)))
+    }
+
+    private func distance(to item: PageWrapper<Element, ID>) -> CGFloat {
+        guard let index: Int = dataDisplayed.firstIndex(of: item) else { return 0 }
+        guard let displayedItem = dataDisplayed.first(where: { $0 == data[page] }) else { return 0 }
+        guard let displayedIndex: Int = dataDisplayed.firstIndex(of: displayedItem) else { return 0 }
 
         let totalIncrement = abs(totalOffset / pageDistance)
-        let currentPage = direction == .forward ? CGFloat(page) + totalIncrement : CGFloat(page) - totalIncrement
+        let currentIndex = direction == .forward ? CGFloat(index) - totalIncrement : CGFloat(index) + totalIncrement
 
-        guard let indexInt = data.firstIndex(of: item) else { return interactiveScale }
-
-        let index = CGFloat(indexInt)
-        guard abs(currentPage - index) <= 1 else { return interactiveScale }
-
-        let increment = totalIncrement - totalIncrement.rounded(.towardZero)
-        let nextPage = direction == .forward ? currentPage.rounded(.awayFromZero) : currentPage.rounded(.towardZero)
-        guard currentPage > 0 else {
-            return 1 - (scaleIncrement * increment)
-        }
-
-        return index == nextPage ? interactiveScale + (scaleIncrement * increment)
-            : 1 - (scaleIncrement * increment)
+        return CGFloat(displayedIndex) - currentIndex
     }
 
     /// Returns true if the item is focused on the screen.
