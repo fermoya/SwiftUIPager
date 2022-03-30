@@ -245,16 +245,20 @@ extension Pager.PagerContent {
     #if os(tvOS) || os(macOS)
     func onMoveCommandSent(_ command: MoveCommandDirection) {
       let animation = self.draggingAnimation.animation ?? .default
-      switch command {
-      case .left:
-        withAnimation(animation) { self.pagerModel.update(.previous) }
-      case .right:
-        withAnimation(animation) { self.pagerModel.update(.next) }
-      case .up, .down:
-        break
-      @unknown default:
-        break
-      }
+        switch (command, isHorizontal) {
+        case (.left, true):
+            withAnimation(animation) { self.pagerModel.update(.previous) }
+        case (.right, true):
+            withAnimation(animation) { self.pagerModel.update(.next) }
+        case (.up, false):
+            withAnimation(animation) { self.pagerModel.update(.previous) }
+        case (.down, false):
+            withAnimation(animation) { self.pagerModel.update(.next) }
+        case (.down, true), (.up, true), (.left, false), (.right, false):
+            break
+        @unknown default:
+            break
+        }
     }
     #endif
 
