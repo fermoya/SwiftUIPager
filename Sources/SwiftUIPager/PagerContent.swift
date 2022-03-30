@@ -357,15 +357,6 @@ extension Pager.PagerContent {
         }
     }
 
-    func onDragCancelled() {
-        withAnimation {
-            pagerModel.draggingOffset = 0
-            pagerModel.lastDraggingValue = nil
-            pagerModel.draggingVelocity = 0
-            pagerModel.objectWillChange.send()
-        }
-    }
-
     var dragResult: (page: Int, increment: Int) {
         let currentPage = self.currentPage(sensitivity: sensitivity.value)
         let velocity = -self.draggingVelocity
