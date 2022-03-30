@@ -287,18 +287,13 @@ extension Pager.PagerContent {
         return CGFloat(displayedIndex) - currentIndex
     }
 
-    /// Returns true if the item is focused on the screen.
-    func isFocused(_ item: PageWrapper<Element, ID>) -> Bool {
-        data.firstIndex(of: item) == currentPage
-    }
-
     /// Returns true if the item is the first or last element in memory. Just used when `isInfinitePager` is set to `true` to hide elements being resorted.
-    func isEdgePage(_ item: PageWrapper<Element, ID>) -> Bool {
-        guard data.count >= 3 else { return false }
-        guard !isDragging else { return false }
-        guard let index = dataDisplayed.firstIndex(of: item) else { return false }
-        let limit = max(pageIncrement, 1)
-        return index < limit || index > dataDisplayed.count - 1 - limit
-    }
+//    func isEdgePage(_ item: PageWrapper<Element, ID>) -> Bool {
+//        guard data.count >= 3 else { return false }
+//        guard !isDragging else { return false }
+//        guard let index = dataDisplayed.firstIndex(of: item) else { return false }
+//        let limit = max(pageIncrement, 1)
+//        return index < limit || index > dataDisplayed.count - 1 - limit
+//    }
 
 }

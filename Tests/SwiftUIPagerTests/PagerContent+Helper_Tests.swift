@@ -93,18 +93,6 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertEqual(result.page, 1)
         XCTAssertEqual(result.increment, 1)
     }
-
-    func test_GivenPager_WhenIsFocused_ThenTrue() {
-        let pager = givenPager
-        let output = pager.isFocused(PageWrapper(batchId: 1, keyPath: \.self, element: 0))
-        XCTAssertTrue(output)
-    }
-
-    func test_GivenPager_WhenIsFocused_ThenFalse() {
-        let pager = givenPager
-        let output = pager.isFocused(PageWrapper(batchId: 1, keyPath: \.self, element: 1))
-        XCTAssertFalse(output)
-    }
     
     func test_GivenPager_WhenScaleIncrement_ThenZero() {
         let pager = givenPager
@@ -350,21 +338,21 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertLessThan(angle.degrees, .zero)
     }
 
-    func test_GivenPagerDragging_WhenIsEdgePage_ThenFalse() {
-        let pager = givenPager.pageOffset(0.1)
-        let isEdgePage = pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 0))
-        XCTAssertFalse(isEdgePage)
-    }
-
-    func test_GivenPager_WhenIsEdgePage_ThenTrue() {
-        let pager = givenPager.loopPages()
-        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 18)))
-        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 2)))
-        XCTAssertFalse(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 1)))
-    }
+//    func test_GivenPagerDragging_WhenIsEdgePage_ThenFalse() {
+//        let pager = givenPager.pageOffset(0.1)
+//        let isEdgePage = pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 0))
+//        XCTAssertFalse(isEdgePage)
+//    }
+//
+//    func test_GivenPager_WhenIsEdgePage_ThenTrue() {
+//        let pager = givenPager.loopPages()
+//        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 18)))
+//        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 2)))
+//        XCTAssertFalse(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 1)))
+//    }
     
     static var allTests = [
-        ("test_GivenPagerDragging_WhenIsEdgePage_ThenFalse", test_GivenPagerDragging_WhenIsEdgePage_ThenFalse),
+//        ("test_GivenPagerDragging_WhenIsEdgePage_ThenFalse", test_GivenPagerDragging_WhenIsEdgePage_ThenFalse),
         ("test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero", test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero),
         ("test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero", test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero),
         ("test_GivenPager_WhenAngle_ThenZero", test_GivenPager_WhenAngle_ThenZero),
@@ -399,8 +387,6 @@ final class PagerContent_Helper_Tests: XCTestCase {
         ("test_GivenPager_WhenNumberOfPages_ThenDataCount", test_GivenPager_WhenNumberOfPages_ThenDataCount),
         ("test_GivenPager_WhenAxisForItem_ThenZero", test_GivenPager_WhenAxisForItem_ThenZero),
         ("test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis", test_GivenPagerWithRotation_WhenAxisForItem_ThenRotationAxis),
-        ("test_GivenPager_WhenIsFocused_ThenTrue", test_GivenPager_WhenIsFocused_ThenTrue),
-        ("test_GivenPager_WhenIsFocused_ThenFalse", test_GivenPager_WhenIsFocused_ThenFalse),
         ("test_GivenHighSensitivePager_WhenCurrentPage_ThenThree", test_GivenHighSensitivePager_WhenCurrentPage_ThenThree),
         ("test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo", test_GivenHighSensitivePager_WhenCurrentPage_ThenTwo),
         ("test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo", test_GivenCustomSensitivePager_WhenCurrentPage_ThenTwo),
