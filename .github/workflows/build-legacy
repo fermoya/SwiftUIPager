@@ -1,0 +1,31 @@
+# This workflow runs xcodebuild on every target to make sure it compiles
+
+# https://github.com/actions/virtual-environments/issues/551#issuecomment-974816804
+name: Build iOS 12
+
+on:
+  push: 
+    branches: [ legacy-projects ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build all supported targets
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'legacy-projects'
+      
+      - name: Copy iOS 12.4 simruntime
+        run: |
+          sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
+          sudo ln -s /Applications/Xcode_10.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 12.4.simruntime
+
+      - name: Run script
+        env:
+          DESTINATION: 'platform=iOS Simulator,name=iPhone 8,OS=12.4'
+        run: |
+          ls /Library/Developer/CoreSimulator/Profiles/Runtimes
+          ./scripts/build_platforms.sh

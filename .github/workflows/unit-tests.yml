@@ -1,4 +1,4 @@
-# This workflow will trigger on pull-request to master or develop.
+# This workflow will trigger on pull-request to main
 # It will run the Swift Package tests, output the code coverage and upload it to Codecov.
 
 name: Unit Tests
@@ -6,10 +6,10 @@ name: Unit Tests
 on:
   # Trigger the workflow on push pull request or manually
   pull_request: 
-    branches: [ master, develop ]
+    branches: [ main ]
 
   push:
-    branches: [ master, develop ]
+    branches: [ main ]
 
   workflow_dispatch:
 

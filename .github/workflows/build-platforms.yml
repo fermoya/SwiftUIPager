@@ -4,7 +4,7 @@ name: Xcodebuild
 
 on:
   pull_request: 
-    branches: [ master, develop ]
+    branches: [ main ]
 
   workflow_dispatch:
 

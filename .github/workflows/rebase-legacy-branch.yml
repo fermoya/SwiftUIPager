@@ -1,10 +1,10 @@
-# This workflow will rebase legacy-projects branch on new pushes to master
+# This workflow will rebase legacy-projects branch on new pushes to main
 
 name: Rebase branch legacy-projects
 
 on:
   push: 
-    branches: [ develop ]
+    branches: [ main ]
 
   workflow_dispatch:
 
@@ -22,5 +22,5 @@ jobs:
           USER_NAME: fermoya
           USER_EMAIL: fmdr.ct@gmail.com
           OUTDATED_BRANCH: legacy-projects
-          BASE_BRANCH: develop
+          BASE_BRANCH: main
         run: ./scripts/rebase.sh
