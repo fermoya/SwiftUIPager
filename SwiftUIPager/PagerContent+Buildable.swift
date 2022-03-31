@@ -178,6 +178,10 @@ extension Pager.PagerContent: Buildable {
         mutating(keyPath: \.alignment, value: value)
     }
 
+    func dragForwardOnly(_ value: Bool) -> Self {
+        mutating(keyPath: \.dragForwardOnly, value: value)
+    }
+
     /// Returns a horizontal pager
     ///
     /// - Parameter swipeDirection: direction of the swipe. Defaults to `.leftToRight`
