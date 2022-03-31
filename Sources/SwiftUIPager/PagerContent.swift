@@ -145,11 +145,6 @@ extension Pager {
         /// Page index
         @ObservedObject var pagerModel: Page
 
-        #if !os(tvOS)
-        /// DragGesture state to indicate whether the gesture was interrupted
-        @GestureState var isGestureFinished = true
-        #endif
-
         /// Initializes a new `Pager`.
         ///
         /// - Parameter size: Available size
@@ -269,14 +264,9 @@ extension Pager.PagerContent {
     #if !os(tvOS)
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
-<<<<<<< HEAD
-            .updating($isGestureFinished) { _, state, _ in
-                state = false
-            }
-            .onChanged({ value in
-                self.onDragChanged(with: value)
-            })
-=======
+                .updating($isGestureFinished) { _, state, _ in
+                    state = false
+                }
                 .onChanged({ value in
                     if dragForwardOnly {
                         if isForwardGesture(value) {
@@ -298,7 +288,6 @@ extension Pager.PagerContent {
                         self.onDragGestureEnded()
                     }
                 })
->>>>>>> c302bcc (adding new dragForwardOnly functionality)
     }
 
     func onDragChanged(with value: DragGesture.Value) {
@@ -385,6 +374,15 @@ extension Pager.PagerContent {
         } else if page != newPage {
             self.pagerModel.pageIncrement = 0
             onPageChanged?(newPage)
+        }
+    }
+
+    func onDragCancelled() {
+        withAnimation {
+            pagerModel.draggingOffset = 0
+            pagerModel.lastDraggingValue = nil
+            pagerModel.draggingVelocity = 0
+            pagerModel.objectWillChange.send()
         }
     }
 
