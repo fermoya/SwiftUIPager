@@ -77,6 +77,9 @@ extension Pager {
         /// The elements alignment relative to the container
         var alignment: PositionAlignment = .center
 
+        /// Swiping back is disabled
+        var dragForwardOnly: Bool = false
+
         /// `true` if the pager is horizontal
         var isHorizontal: Bool = true
 
@@ -251,12 +254,27 @@ extension Pager.PagerContent {
     #if !os(tvOS)
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
-            .onChanged({ value in
-                self.onDragChanged(with: value)
-            })
-            .onEnded({ (value) in
-                self.onDragGestureEnded()
-            })
+                .onChanged({ value in
+                    if dragForwardOnly {
+                        if isForwardGesture(value) {
+                            self.onDragChanged(with: value)
+                        }
+                    }
+                    else {
+                        self.onDragChanged(with: value)
+                    }
+
+                })
+                .onEnded({ (value) in
+                    if dragForwardOnly {
+                        if isForwardGesture(value) {
+                            self.onDragGestureEnded()
+                        }
+                    }
+                    else {
+                        self.onDragGestureEnded()
+                    }
+                })
     }
 
     func onDragChanged(with value: DragGesture.Value) {
@@ -390,6 +408,13 @@ extension Pager.PagerContent {
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
         return (newPage, pageIncrement)
+    }
+
+    private func isForwardGesture(_ value: DragGesture.Value) -> Bool {
+        let currentLocation = dragLocation(for: value)
+        let currentTranslation = dragTranslation(for: value)
+        let lastLocation = self.lastDraggingValue.flatMap(dragLocation) ?? currentLocation
+        return !((currentLocation.x - lastLocation.x) > 0)
     }
 
     private func dragTranslation(for value: DragGesture.Value) -> CGSize {

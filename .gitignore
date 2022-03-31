@@ -83,3 +83,6 @@ iOSInjectionProject/
 /.DS_Store
 /Sources/.DS_Store
 .DS_Store
+
+# Jetbrains AppCode Idea folder
+.idea/

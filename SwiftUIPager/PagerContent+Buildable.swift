@@ -53,6 +53,7 @@ extension Pager.PagerContent: Buildable {
             }.flatMap { $0 }
         }
         self.pagerModel.isInfinite = value
+        self.pagerModel.totalPages = newData.count
         return mutating(keyPath: \.isInifinitePager, value: value)
             .mutating(keyPath: \.data, value: newData)
     }
@@ -175,6 +176,10 @@ extension Pager.PagerContent: Buildable {
     /// - Parameter value: alignment of the pages inside the scroll
     func alignment(_ value: PositionAlignment) -> Self {
         mutating(keyPath: \.alignment, value: value)
+    }
+
+    func dragForwardOnly(_ value: Bool) -> Self {
+        mutating(keyPath: \.dragForwardOnly, value: value)
     }
 
     /// Returns a horizontal pager
