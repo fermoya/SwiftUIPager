@@ -145,6 +145,11 @@ extension Pager {
         /// Page index
         @ObservedObject var pagerModel: Page
 
+        #if !os(tvOS)
+        /// DragGesture state to indicate whether the gesture was interrupted
+        @GestureState var isGestureFinished = true
+        #endif
+
         /// Initializes a new `Pager`.
         ///
         /// - Parameter size: Available size
@@ -425,7 +430,6 @@ extension Pager.PagerContent {
 
     private func isForwardGesture(_ value: DragGesture.Value) -> Bool {
         let currentLocation = dragLocation(for: value)
-        let currentTranslation = dragTranslation(for: value)
         let lastLocation = self.lastDraggingValue.flatMap(dragLocation) ?? currentLocation
         return !((currentLocation.x - lastLocation.x) > 0)
     }
