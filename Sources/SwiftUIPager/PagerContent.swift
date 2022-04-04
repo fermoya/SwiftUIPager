@@ -269,30 +269,14 @@ extension Pager.PagerContent {
     #if !os(tvOS)
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: minimumDistance, coordinateSpace: .global)
-                .updating($isGestureFinished) { _, state, _ in
-                    state = false
+            .updating($isGestureFinished) { _, state, _ in
+                state = false
+            }
+            .onChanged({ value in
+                if !dragForwardOnly || dragTranslation(for: value).width < 0 {
+                    self.onDragChanged(with: value)
                 }
-                .onChanged({ value in
-                    if dragForwardOnly {
-                        if isForwardGesture(value) {
-                            self.onDragChanged(with: value)
-                        }
-                    }
-                    else {
-                        self.onDragChanged(with: value)
-                    }
-
-                })
-                .onEnded({ (value) in
-                    if dragForwardOnly {
-                        if isForwardGesture(value) {
-                            self.onDragGestureEnded()
-                        }
-                    }
-                    else {
-                        self.onDragGestureEnded()
-                    }
-                })
+            })
     }
 
     func onDragChanged(with value: DragGesture.Value) {
@@ -382,15 +366,6 @@ extension Pager.PagerContent {
         }
     }
 
-    func onDragCancelled() {
-        withAnimation {
-            pagerModel.draggingOffset = 0
-            pagerModel.lastDraggingValue = nil
-            pagerModel.draggingVelocity = 0
-            pagerModel.objectWillChange.send()
-        }
-    }
-
     var dragResult: (page: Int, increment: Int) {
         let currentPage = self.currentPage(sensitivity: sensitivity.value)
         let velocity = -self.draggingVelocity
@@ -426,12 +401,6 @@ extension Pager.PagerContent {
 
         newPage = max(0, min(self.numberOfPages - 1, newPage))
         return (newPage, pageIncrement)
-    }
-
-    private func isForwardGesture(_ value: DragGesture.Value) -> Bool {
-        let currentLocation = dragLocation(for: value)
-        let lastLocation = self.lastDraggingValue.flatMap(dragLocation) ?? currentLocation
-        return !((currentLocation.x - lastLocation.x) > 0)
     }
 
     private func dragTranslation(for value: DragGesture.Value) -> CGSize {
