@@ -84,7 +84,14 @@ Pager(...)
     .itemAspectRatio(0.6)
 ```
 
-<img src="/resources/usage/orientation-alignment-start.gif" alt="Pages aligned to the start of the pager" height="640"/>
+### Constrain direction
+
+It is possible to force `Pager` to scroll forwards only. This can be done by using `dragForwardOnly` modifier:
+
+```swift
+Pager(...)
+    .dragForwardOnly()
+```
 
 ### Alignment
 

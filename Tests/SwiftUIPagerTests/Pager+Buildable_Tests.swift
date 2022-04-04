@@ -40,6 +40,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertEqual(pager.pageRatio, 1)
         XCTAssertTrue(pager.bounces)
         XCTAssertNil(pager.opacityIncrement)
+        XCTAssertFalse(pager.dragForwardOnly)
 
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertNil(pagerContent.direction)

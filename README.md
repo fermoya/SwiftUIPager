@@ -25,6 +25,7 @@ Create vertical or horizontal pagers, align the cards, change the direction of t
         - [Configure your page size](Documentation/Usage.md#configure-your-page-size)
         - [Pagination sensitivity](Documentation/Usage.md#pagination-sensitivity)
         - [Orientation and direction](Documentation/Usage.md#orientation-and-direction)
+        - [Constrain direction](Documentation/Usage.md#constrain-direction)
         - [Alignment](Documentation/Usage.md#alignment)
         - [Partial pagination](Documentation/Usage.md#partial-pagination)
         - [Multiple pagination](Documentation/Usage.md#multiple-pagination)
