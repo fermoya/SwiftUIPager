@@ -96,6 +96,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// The elements alignment relative to the container
     var alignment: PositionAlignment = .center
 
+    /// Swiping back is disabled
+    var dragForwardOnly: Bool = false
+
     /// `true` if the pager is horizontal
     var isHorizontal: Bool = true
 
@@ -194,6 +197,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .contentLoadingPolicy(contentLoadingPolicy)
                 .loopPages(isInifinitePager, repeating: loopingCount)
                 .alignment(alignment)
+                .dragForwardOnly(dragForwardOnly)
                 .interactive(scale: interactiveScale)
                 .interactive(opacity: opacityIncrement)
                 .interactive(rotation: shouldRotate)
