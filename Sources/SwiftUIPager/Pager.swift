@@ -197,7 +197,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .contentLoadingPolicy(contentLoadingPolicy)
                 .loopPages(isInifinitePager, repeating: loopingCount)
                 .alignment(alignment)
-                .dragForwardOnly(dragForwardOnly)
                 .interactive(scale: interactiveScale)
                 .interactive(opacity: opacityIncrement)
                 .interactive(rotation: shouldRotate)
@@ -223,6 +222,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .onDraggingEnded(onDraggingEnded)
             .bounces(bounces)
             .draggingAnimation(draggingAnimation)
+            .dragForwardOnly(dragForwardOnly)
         #else
         pagerContent = pagerContent.draggingAnimation(draggingAnimation)
         #endif
