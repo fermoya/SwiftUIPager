@@ -154,10 +154,7 @@ extension Pager {
 
         /// Digital Crown offset
         @State var digitalCrownPageOffset: CGFloat = 0
-
-        /// Digital Crown offset
-        @State var lastDigitalCrownPageOffset: CGFloat = 0
-
+		
         #endif
 
         /// Initializes a new `Pager`.
@@ -257,13 +254,15 @@ extension Pager {
                         sensitivity: .low
                     )
                     .onChange(of: digitalCrownPageOffset) { newValue in
-                        print(newValue)
-                        let increment = min(1, max(-1, Int(newValue - lastDigitalCrownPageOffset)))
-                        guard abs(increment) > 0 else { return }
-                        lastDigitalCrownPageOffset = newValue
-                        withAnimation {
-                            pagerModel.update(.move(increment: increment))
-                        }
+						let newOffset = newValue - CGFloat(pagerModel.index)
+						let side = isHorizontal ? size.width : size.height
+						pagerModel.draggingOffset = -newOffset * side
+						pagerModel.lastDraggingValue = nil
+						onDraggingChanged?(newOffset)
+						pagerModel.objectWillChange.send()
+						if newValue.truncatingRemainder(dividingBy: 1) == 0 {
+							onDragGestureEnded()
+						}
                     }
                     .eraseToAny()
             }
@@ -387,6 +386,9 @@ extension Pager.PagerContent {
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
             self.pagerModel.index = newPage
+			#if os(watchOS)
+			digitalCrownPageOffset = CGFloat(newPage)
+			#endif
             self.pagerModel.objectWillChange.send()
 
         }
