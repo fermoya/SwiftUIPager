@@ -150,6 +150,16 @@ extension Pager {
         @GestureState var isGestureFinished = true
         #endif
 
+        #if os(watchOS)
+
+        /// Digital Crown offset
+        @State var digitalCrownPageOffset: CGFloat = 0
+
+        /// Digital Crown offset
+        @State var lastDigitalCrownPageOffset: CGFloat = 0
+
+        #endif
+
         /// Initializes a new `Pager`.
         ///
         /// - Parameter size: Available size
@@ -233,6 +243,28 @@ extension Pager {
                     }
                     .eraseToAny()
             }
+            #endif
+
+            #if os(watchOS)
+            resultView = resultView
+                .focusable()
+                .digitalCrownRotation(
+                    $digitalCrownPageOffset,
+                    from: 0,
+                    through: CGFloat(numberOfPages - 1),
+                    by: 1,
+                    sensitivity: .low
+                )
+                .onChange(of: digitalCrownPageOffset) { newValue in
+                    print(newValue)
+                    let increment = min(1, max(-1, Int(newValue - lastDigitalCrownPageOffset)))
+                    guard abs(increment) > 0 else { return }
+                    lastDigitalCrownPageOffset = newValue
+                    withAnimation {
+                        pagerModel.update(.move(increment: increment))
+                    }
+                }
+                .eraseToAny()
             #endif
 
             return resultView.contentShape(Rectangle())
