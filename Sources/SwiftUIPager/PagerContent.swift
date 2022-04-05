@@ -246,25 +246,27 @@ extension Pager {
             #endif
 
             #if os(watchOS)
-            resultView = resultView
-                .focusable()
-                .digitalCrownRotation(
-                    $digitalCrownPageOffset,
-                    from: 0,
-                    through: CGFloat(numberOfPages - 1),
-                    by: 1,
-                    sensitivity: .low
-                )
-                .onChange(of: digitalCrownPageOffset) { newValue in
-                    print(newValue)
-                    let increment = min(1, max(-1, Int(newValue - lastDigitalCrownPageOffset)))
-                    guard abs(increment) > 0 else { return }
-                    lastDigitalCrownPageOffset = newValue
-                    withAnimation {
-                        pagerModel.update(.move(increment: increment))
+            if #available(watchOSApplicationExtension 7.0, *) {
+                resultView = resultView
+                    .focusable()
+                    .digitalCrownRotation(
+                        $digitalCrownPageOffset,
+                        from: 0,
+                        through: CGFloat(numberOfPages - 1),
+                        by: 1,
+                        sensitivity: .low
+                    )
+                    .onChange(of: digitalCrownPageOffset) { newValue in
+                        print(newValue)
+                        let increment = min(1, max(-1, Int(newValue - lastDigitalCrownPageOffset)))
+                        guard abs(increment) > 0 else { return }
+                        lastDigitalCrownPageOffset = newValue
+                        withAnimation {
+                            pagerModel.update(.move(increment: increment))
+                        }
                     }
-                }
-                .eraseToAny()
+                    .eraseToAny()
+            }
             #endif
 
             return resultView.contentShape(Rectangle())
