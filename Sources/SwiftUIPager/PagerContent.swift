@@ -131,14 +131,17 @@ extension Pager {
         /// Callback invoked when a new page is set
         var onPageChanged: ((Int) -> Void)?
 		
-        /// Callback for when dragging begins
+        /// Callback for a dragging began event
         var onDraggingBegan: (() -> Void)?
 
-        /// Callback for when dragging changes
+        /// Callback for a dragging changed event
         var onDraggingChanged: ((Double) -> Void)?
 
-        /// Callback for when dragging ends
+        /// Callback for a dragging ended event
         var onDraggingEnded: (() -> Void)?
+
+        /// Callback for a digital crown rotated event
+        var onDigitalCrownRotated: ((Double) -> Void)?
 
         /*** State and Binding properties ***/
 
@@ -154,9 +157,6 @@ extension Pager {
 
         /// Digital Crown offset
         @State var digitalCrownPageOffset: CGFloat = 0
-
-        /// Digital Crown offset
-        @State var lastDigitalCrownPageOffset: CGFloat = 0
 
         #endif
 
@@ -246,7 +246,7 @@ extension Pager {
             #endif
 
             #if os(watchOS)
-            if #available(watchOSApplicationExtension 7.0, *) {
+            if #available(watchOS 7.0, *) {
                 resultView = resultView
                     .focusable()
                     .digitalCrownRotation(
@@ -257,12 +257,21 @@ extension Pager {
                         sensitivity: .low
                     )
                     .onChange(of: digitalCrownPageOffset) { newValue in
-                        print(newValue)
-                        let increment = min(1, max(-1, Int(newValue - lastDigitalCrownPageOffset)))
-                        guard abs(increment) > 0 else { return }
-                        lastDigitalCrownPageOffset = newValue
-                        withAnimation {
-                            pagerModel.update(.move(increment: increment))
+                        let pageIncrement = min(1, max(-1, Int(newValue - pagerModel.lastDigitalCrownPageOffset)))
+                        let offset = (newValue - pagerModel.lastDigitalCrownPageOffset) - CGFloat(pageIncrement)
+                        onDigitalCrownRotated?(newValue * pageDistance)
+                        let animation = self.draggingAnimation.animation ?? .default
+                        guard abs(pageIncrement) > 0 else {
+                            withAnimation(animation) {
+                                pagerModel.draggingOffset = -offset * pageDistance
+                                pagerModel.objectWillChange.send()
+                            }
+                            return
+                        }
+                        withAnimation(animation) {
+                            pagerModel.lastDigitalCrownPageOffset = newValue - offset
+                            pagerModel.draggingOffset = -offset
+                            pagerModel.update(.move(increment: pageIncrement))
                         }
                     }
                     .eraseToAny()
@@ -284,10 +293,12 @@ extension Pager.PagerContent {
       let animation = self.draggingAnimation.animation ?? .default
         switch (command, isHorizontal) {
         case (.left, true):
+            guard !dragForwardOnly else { return }
             withAnimation(animation) { self.pagerModel.update(.previous) }
         case (.right, true):
             withAnimation(animation) { self.pagerModel.update(.next) }
         case (.up, false):
+            guard !dragForwardOnly else { return }
             withAnimation(animation) { self.pagerModel.update(.previous) }
         case (.down, false):
             withAnimation(animation) { self.pagerModel.update(.next) }

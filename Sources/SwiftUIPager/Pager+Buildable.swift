@@ -70,15 +70,6 @@ extension Pager: Buildable {
 
     #if !os(tvOS)
 
-    /// Sets the explicit animation to be used. Defaults to `.standard`
-    ///
-    /// - Parameter value: animation to use while dragging and to page
-    ///
-    /// - Warning: `spring` animations don't work well. Avoid high responses while dragging as the animation should be short
-    public func draggingAnimation(_ value: DraggingAnimation) -> Self {
-        mutating(keyPath: \.draggingAnimation, value: value)
-    }
-
     /// User can only swipe forward so in one direction
     ///
     /// - Parameter enabled: by default dragForwardOnly is disables so pages can be scrolled in both directions,
@@ -169,8 +160,19 @@ extension Pager: Buildable {
         mutating(keyPath: \.onDraggingEnded, value: callback)
     }
   
-    #else
-    
+    #endif
+
+    /// Adds a callback to react when _iWatch Digital Crown_ is rotated
+    ///
+    /// - Parameter callback: block to be called when  dragging begins
+    @available(iOS, unavailable)
+    @available(macOS, unavailable)
+    @available(tvOS, unavailable)
+    @available(watchOS 7.0, *)
+    public func onDigitalCrownRotated(_ callback: ((Double) -> Void)?) -> Self {
+        mutating(keyPath: \.onDigitalCrownRotated, value: callback)
+    }
+
     /// Sets the explicit animation to be used. Defaults to `.standard`
     ///
     /// - Parameter value: animation to use while dragging and to page
@@ -179,8 +181,6 @@ extension Pager: Buildable {
     public func draggingAnimation(_ value: DraggingAnimation) -> Self {
         mutating(keyPath: \.draggingAnimation, value: value)
     }
-
-    #endif
 
     /// Changes the a the  alignment of the pages relative to their container
     ///
