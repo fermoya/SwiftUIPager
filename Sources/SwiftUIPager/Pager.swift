@@ -153,14 +153,17 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Callback invoked when a new page is set
     var onPageChanged: ((Int) -> Void)?
 	
-	/// Callback for when dragging begins
+	/// Callback for a dragging began event
 	var onDraggingBegan: (() -> Void)?
 
-    /// Callback for when dragging changes
+    /// Callback for a dragging changed event
     var onDraggingChanged: ((Double) -> Void)?
 
-    /// Callback for when dragging ends
+    /// Callback for a dragging ended event
     var onDraggingEnded: (() -> Void)?
+
+    /// Callback for a digital crown rotated event
+    var onDigitalCrownRotated: ((Double) -> Void)?
 
     /*** State and Binding properties ***/
 
@@ -225,6 +228,12 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
             .dragForwardOnly(dragForwardOnly)
         #else
         pagerContent = pagerContent.draggingAnimation(draggingAnimation)
+        #endif
+
+        #if os(watchOS)
+        if #available(watchOS 7.0, *) {
+            pagerContent = pagerContent.onDigitalCrownRotated(onDigitalCrownRotated)
+        }
         #endif
 
         pagerContent = allowsMultiplePagination ? pagerContent.multiplePagination() : pagerContent

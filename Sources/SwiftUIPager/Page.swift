@@ -54,6 +54,8 @@ public class Page: ObservableObject {
   
     var isInfinite = false
 
+    var lastDigitalCrownPageOffset: CGFloat = 0
+
     /// Initializes a new instance
     /// 
     /// - Parameter page: Current page index
