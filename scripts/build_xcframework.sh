@@ -35,7 +35,7 @@ for i in ${!SCHEMES[@]}; do
   
   for j in ${!ARCHIVE[@]}; do
     ARCHIVE_PATH="$FRAMEWORKS_PATH/${ARCHIVE[$j]}"
-    if [ -z "${PLATFORM[$j]}"]; then
+    if [ -z "${PLATFORM[$j]}" ]; then
       xcodebuild archive  -scheme ${SCHEMES[$i]} \
                           -project $PROJ_PATH \
                           -archivePath $ARCHIVE_PATH \
