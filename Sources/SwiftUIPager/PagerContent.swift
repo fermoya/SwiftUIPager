@@ -178,21 +178,20 @@ extension Pager {
         var body: some View {
             let stack = HStack(spacing: interactiveItemSpacing) {
                 ForEach(dataDisplayed, id: id) { item in
-//                    Group {
-//                        if self.isInifinitePager && self.isEdgePage(item) {
-//                            EmptyView()
-//                        } else {
-//                            self.content(item.element)
-//                        }
-//                    }
-                    self.content(item.element)
-                        .frame(size: self.pageSize)
-                        .scaleEffect(self.scale(for: item))
-                        .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
-                                          axis: (0, 0, 1))
-                        .rotation3DEffect(self.angle(for: item),
-                                          axis:  self.axis)
-                        .opacity(opacity(for: item))
+                    Group {
+                        if self.isInifinitePager && self.isEdgePage(item) {
+                            EmptyView()
+                        } else {
+                            self.content(item.element)
+                                .frame(size: self.pageSize)
+                                .scaleEffect(self.scale(for: item))
+                                .rotation3DEffect((self.isHorizontal ? .zero : Angle(degrees: -90)) - self.scrollDirectionAngle,
+                                                  axis: (0, 0, 1))
+                                .rotation3DEffect(self.angle(for: item),
+                                                  axis:  self.axis)
+                                .opacity(opacity(for: item))
+                        }
+                    }
                 }
                 .offset(x: self.xOffset, y : self.yOffset)
             }
@@ -393,8 +392,7 @@ extension Pager.PagerContent {
         }
         withAnimation(animation) {
             self.pagerModel.draggingOffset = 0
-            let sign = page > newPage ? -1 : +1
-            self.pagerModel.pageIncrement += sign * pageIncrement
+            self.pagerModel.pageIncrement = pageIncrement
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
             self.pagerModel.index = newPage
