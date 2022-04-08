@@ -375,7 +375,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172F4D5D23DF830600FD2F15 /* Build configuration list for PBXNativeTarget "SwiftUIPager_macOS" */;
 			buildPhases = (
-				17C7B2D72743DF6700BC51D4 /* ShellScript */,
 				172F4D5223DF830600FD2F15 /* Headers */,
 				172F4D5423DF830600FD2F15 /* Sources */,
 				172F4D5B23DF830600FD2F15 /* Frameworks */,
@@ -394,7 +393,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 172F4D7D23DF8A6400FD2F15 /* Build configuration list for PBXNativeTarget "SwiftUIPager_watchOS" */;
 			buildPhases = (
-				17C7B2D82743DF7500BC51D4 /* ShellScript */,
 				172F4D7323DF8A6400FD2F15 /* Headers */,
 				172F4D7423DF8A6400FD2F15 /* Sources */,
 				172F4D7523DF8A6400FD2F15 /* Frameworks */,
@@ -413,7 +411,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B2C3064248D740800E528F9 /* Build configuration list for PBXNativeTarget "SwiftUIPager_Catalyst" */;
 			buildPhases = (
-				17C7B2D52743DF4F00BC51D4 /* ShellScript */,
 				6B2C3056248D740800E528F9 /* Headers */,
 				6B2C3058248D740800E528F9 /* Sources */,
 				6B2C3060248D740800E528F9 /* Frameworks */,
@@ -432,7 +429,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BBC3D722488DBE8004194BD /* Build configuration list for PBXNativeTarget "SwiftUIPager_tvOS" */;
 			buildPhases = (
-				17C7B2DA2743DF8E00BC51D4 /* ShellScript */,
 				6BBC3D662488DBE8004194BD /* Headers */,
 				6BBC3D672488DBE8004194BD /* Sources */,
 				6BBC3D682488DBE8004194BD /* Frameworks */,
@@ -451,7 +447,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BDE441F23DE10C10022A2F7 /* Build configuration list for PBXNativeTarget "SwiftUIPager_iOS" */;
 			buildPhases = (
-				17C7B2D42743D84200BC51D4 /* ShellScript */,
 				6BDE441223DE10C10022A2F7 /* Headers */,
 				6BDE441323DE10C10022A2F7 /* Sources */,
 				6BDE441423DE10C10022A2F7 /* Frameworks */,
@@ -561,91 +556,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17C7B2D42743D84200BC51D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
-		};
-		17C7B2D52743DF4F00BC51D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
-		};
-		17C7B2D72743DF6700BC51D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
-		};
-		17C7B2D82743DF7500BC51D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
-		};
-		17C7B2DA2743DF8E00BC51D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copying updated files...\"\ncp -rf \"$PROJECT_DIR/Sources/SwiftUIPager\" \"$PROJECT_DIR\"\n";
-		};
 		6BC5EE522487F76F00E1E78C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -873,7 +783,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-watchOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -907,7 +817,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-watchOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -940,7 +850,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-Catalyst.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-Catalyst.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -969,7 +879,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-Catalyst.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-Catalyst.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -996,7 +906,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-tvOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1029,7 +939,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-tvOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1225,7 +1135,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-iOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1254,7 +1164,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "SwiftUIPager/SupportFiles/Info-iOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftUIPager/SupportFiles/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
