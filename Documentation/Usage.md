@@ -42,7 +42,7 @@ By default, `Pager` is configured as:
 
 > **Note** `Pager` has no intrinsic size. This means that its size depends on the available space or the extrinsic size specified with `frame` modifier.
 >
-> If you're using the [leacy support](/Documentation/Legacy.md), you'll need to wrap any reference to `Pager` with `if #available(iOS 13, *)` or any other platform and version you may require.
+> If you're using the [legacy support](/Documentation/Legacy.md), you'll need to wrap any reference to `Pager` with `if #available(iOS 13, *)` or any other platform and version you may require.
 
 ### Configure your page size
 
