@@ -111,6 +111,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// `true` if  `Pager` can be dragged
     var allowsDragging: Bool = true
 
+    /// `true` if  `Pager`interacts with the digital crown
+    var allowsDigitalCrownRotation: Bool = true
+
     /// `true` if pages should have a 3D rotation effect
     var shouldRotate: Bool = false
 
@@ -153,8 +156,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// Callback invoked when a new page is set
     var onPageChanged: ((Int) -> Void)?
 	
-	/// Callback for a dragging began event
-	var onDraggingBegan: (() -> Void)?
+    /// Callback for a dragging began event
+    var onDraggingBegan: (() -> Void)?
 
     /// Callback for a dragging changed event
     var onDraggingChanged: ((Double) -> Void)?
@@ -232,7 +235,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
         #if os(watchOS)
         if #available(watchOS 7.0, *) {
-            pagerContent = pagerContent.onDigitalCrownRotated(onDigitalCrownRotated)
+            pagerContent = pagerContent
+                .onDigitalCrownRotated(onDigitalCrownRotated)
+                .allowsDigitalCrownRotation(allowsDigitalCrownRotation)
         }
         #endif
 
