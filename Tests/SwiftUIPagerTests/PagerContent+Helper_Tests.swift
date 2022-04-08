@@ -338,21 +338,22 @@ final class PagerContent_Helper_Tests: XCTestCase {
         XCTAssertLessThan(angle.degrees, .zero)
     }
 
-//    func test_GivenPagerDragging_WhenIsEdgePage_ThenFalse() {
-//        let pager = givenPager.pageOffset(0.1)
-//        let isEdgePage = pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 0))
-//        XCTAssertFalse(isEdgePage)
-//    }
-//
-//    func test_GivenPager_WhenIsEdgePage_ThenTrue() {
-//        let pager = givenPager.loopPages()
-//        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 18)))
-//        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 2)))
-//        XCTAssertFalse(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 1)))
-//    }
+    func test_GivenPagerDragging_WhenIsEdgePage_ThenFalse() {
+        let pager = givenPager.pageOffset(0.1)
+        let isEdgePage = pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 0))
+        XCTAssertFalse(isEdgePage)
+    }
+
+    func test_GivenPager_WhenIsEdgePage_ThenTrue() {
+        let pager = givenPager.loopPages()
+        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 18)))
+        XCTAssertTrue(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 2)))
+        XCTAssertFalse(pager.isEdgePage(.init(batchId: 1, keyPath: \.self, element: 1)))
+    }
     
     static var allTests = [
-//        ("test_GivenPagerDragging_WhenIsEdgePage_ThenFalse", test_GivenPagerDragging_WhenIsEdgePage_ThenFalse),
+        ("test_GivenPager_WhenIsEdgePage_ThenTrue", test_GivenPager_WhenIsEdgePage_ThenTrue),
+        ("test_GivenPagerDragging_WhenIsEdgePage_ThenFalse", test_GivenPagerDragging_WhenIsEdgePage_ThenFalse),
         ("test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero", test_GivenPagerWithRotation3DDraggingForward_WhenAngle_ThenGreaterThanZero),
         ("test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero", test_GivenPagerWithRotation3DDraggingBackward_WhenAngle_ThenLessThanZero),
         ("test_GivenPager_WhenAngle_ThenZero", test_GivenPager_WhenAngle_ThenZero),
