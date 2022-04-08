@@ -398,8 +398,11 @@ extension Pager.PagerContent {
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
             self.pagerModel.index = newPage
+            self.pagerModel.lastDigitalCrownPageOffset = CGFloat(pagerModel.index)
             self.pagerModel.objectWillChange.send()
-
+            #if os(watchOS)
+            digitalCrownPageOffset = CGFloat(pagerModel.index)
+            #endif
         }
 
         // #194 AnimatableModifier symbol not found in iOS 13.0 and iOS 13.1
