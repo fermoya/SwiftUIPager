@@ -92,6 +92,9 @@ extension Pager {
         /// `true` if  `Pager` can be dragged
         var allowsDragging: Bool = true
 
+        /// `true` if  `Pager`interacts with the digital crown
+        var allowsDigitalCrownRotation: Bool = true
+
         /// `true` if pages should have a 3D rotation effect
         var shouldRotate: Bool = false
 
@@ -245,7 +248,7 @@ extension Pager {
             #endif
 
             #if os(watchOS)
-            if #available(watchOS 7.0, *) {
+            if #available(watchOS 7.0, *), allowsDigitalCrownRotation {
                 resultView = resultView
                     .focusable()
                     .digitalCrownRotation(

@@ -173,6 +173,26 @@ extension Pager: Buildable {
         mutating(keyPath: \.onDigitalCrownRotated, value: callback)
     }
 
+    /// Disables any interaction with the digital crown
+    @available(iOS, unavailable)
+    @available(macOS, unavailable)
+    @available(tvOS, unavailable)
+    @available(watchOS 7.0, *)
+    public func disableDigitalCrownRotation() -> Self {
+        mutating(keyPath: \.allowsDigitalCrownRotation, value: false)
+    }
+
+    /// Sets whether the `Pager` interacts with the _watchOS_ digital crown
+    ///
+    /// - Parameter value: `true` if  allowed, `false`, otherwise. Defaults to `true`
+    @available(iOS, unavailable)
+    @available(macOS, unavailable)
+    @available(tvOS, unavailable)
+    @available(watchOS 7.0, *)
+    public func allowsDigitalCrownRotation(_ value: Bool = true) -> Self {
+        mutating(keyPath: \.allowsDigitalCrownRotation, value: value)
+    }
+
     /// Sets the explicit animation to be used. Defaults to `.standard`
     ///
     /// - Parameter value: animation to use while dragging and to page
