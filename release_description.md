@@ -1,3 +1,5 @@
 ### Features
-- #254 New modifier `dragForwardOnly`
-- #265 Support for _watchOS_ `digitalCrownRotation`
+- #280 Support RTL languages
+
+### Fixes
+- #279 Crash when deleting/filtering items
