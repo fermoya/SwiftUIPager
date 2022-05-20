@@ -358,7 +358,7 @@ extension Pager.PagerContent {
                 self.pagerModel.draggingVelocity = Double(offsetIncrement) / timeIncrement
             }
 
-            var newOffset = self.draggingOffset + offsetIncrement
+            var newOffset = self.draggingOffset + offsetIncrement * (Locale.current.isRightToLeft ? -1 : 1)
             if !allowsMultiplePagination {
                 newOffset = self.direction == .forward ? max(newOffset, self.pageRatio * -self.pageDistance) : min(newOffset, self.pageRatio * self.pageDistance)
             }

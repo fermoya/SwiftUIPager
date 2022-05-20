@@ -199,9 +199,9 @@ extension Pager.PagerContent: Buildable {
 
     /// Returns a horizontal pager
     ///
-    /// - Parameter swipeDirection: direction of the swipe. Defaults to `.leftToRight`
-    func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
-        let scrollDirectionAngle: Angle = swipeDirection == .leftToRight ? .zero : Angle(degrees: 180)
+    /// - Parameter swipeDirection: direction of the swipe. Defaults to `.startToEnd`
+    func horizontal(_ swipeDirection: HorizontalSwipeDirection = .startToEnd) -> Self {
+        let scrollDirectionAngle: Angle = swipeDirection == .startToEnd ? .zero : Angle(degrees: 180)
         return mutating(keyPath: \.isHorizontal, value: true)
             .mutating(keyPath: \.scrollDirectionAngle, value: scrollDirectionAngle)
     }
