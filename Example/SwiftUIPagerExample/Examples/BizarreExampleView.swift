@@ -30,14 +30,14 @@ struct BizarreExampleView: View {
 
                 Spacer()
 
-                Text("Right to left, interactive").bold()
+                Text("Start to End, interactive").bold()
                 Pager(page: self.page2,
                       data: self.data,
                       id: \.self) {
                         self.pageView($0)
                 }
                 .itemSpacing(10)
-                .horizontal(.rightToLeft)
+                .horizontal(.endToStart)
                 .interactive(scale: 0.8)
                 .itemAspectRatio(0.7)
                 .background(Color.gray.opacity(0.5))

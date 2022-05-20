@@ -20,7 +20,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         XCTAssertTrue(pager.isHorizontal)
         XCTAssertTrue(pager.allowsDragging)
         XCTAssertFalse(pager.isInifinitePager)
-        XCTAssertEqual(pager.horizontalSwipeDirection, HorizontalSwipeDirection.leftToRight)
+        XCTAssertEqual(pager.horizontalSwipeDirection, HorizontalSwipeDirection.startToEnd)
         XCTAssertEqual(pager.verticalSwipeDirection, VerticalSwipeDirection.topToBottom)
         XCTAssertEqual(pager.interactiveScale, 1)
         XCTAssertEqual(pager.alignment, .center)
@@ -316,7 +316,7 @@ final class Pager_Buildable_Tests: XCTestCase {
     
     func test_GivenPager_WhenHorizontalRightToLeft_ThenScrollAngle() {
         var pager = givenPager.vertical()
-        pager = pager.horizontal(.rightToLeft)
+        pager = pager.horizontal(.endToStart)
 
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertTrue(pagerContent.isHorizontal)

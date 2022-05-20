@@ -74,13 +74,13 @@ Pager(...)
 
 <img src="/resources/usage/vertical-pager.gif" alt="Vertical pager" height="640"/>
 
-Pass a direction to `horizontal` or `vertical` to change the scroll direction. For instance, you can have a horizontal `Pager` that scrolls right-to-left:
+Pass a direction to `horizontal` or `vertical` to change the scroll direction. For instance, you can have a horizontal `Pager` that scrolls end-to-start:
 
 ```swift
 Pager(...)
     .itemSpacing(10)
     .alignment(.start)
-    .horizontal(.rightToLeft)
+    .horizontal(.endToStart)
     .itemAspectRatio(0.6)
 ```
 

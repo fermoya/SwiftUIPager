@@ -211,8 +211,8 @@ extension Pager: Buildable {
 
     /// Returns a horizontal pager
     ///
-    /// - Parameter swipeDirection: direction of the swipe. Defaults to `.leftToRight`
-    public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .leftToRight) -> Self {
+    /// - Parameter swipeDirection: direction of the swipe. Defaults to `.startToEnd`
+    public func horizontal(_ swipeDirection: HorizontalSwipeDirection = .startToEnd) -> Self {
         mutating(keyPath: \.isHorizontal, value: true)
             .mutating(keyPath: \.horizontalSwipeDirection, value: swipeDirection)
     }

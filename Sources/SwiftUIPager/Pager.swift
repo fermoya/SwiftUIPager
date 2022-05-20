@@ -82,7 +82,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var contentLoadingPolicy: ContentLoadingPolicy = .default
 
     /// Swipe direction for horizontal `Pager`
-    var horizontalSwipeDirection: HorizontalSwipeDirection = .leftToRight
+    var horizontalSwipeDirection: HorizontalSwipeDirection = .startToEnd
 
     /// Swipe direction for vertical `Pager`
     var verticalSwipeDirection: VerticalSwipeDirection = .topToBottom
