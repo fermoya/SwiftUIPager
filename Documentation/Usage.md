@@ -114,7 +114,7 @@ By default, `Pager` will reveal the neighbor items completely (100% of their rel
 
 ```swift
 Pager(...)
-    .singlePagination(0.33, sensitivity: .custom(0.2))
+    .singlePagination(ratio: 0.33, sensitivity: .custom(0.2))
     .preferredItemSize(CGSize(width: 300, height: 400))
     .itemSpacing(10)
     .background(Color.gray.opacity(0.2))
