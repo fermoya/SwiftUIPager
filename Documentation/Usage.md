@@ -129,7 +129,7 @@ It's possible for `Pager` to swipe more than one page at a time. This is especia
 
 ```
 Pager(...)
-    .preferredItemSize(CGSize(width: 300, height: 300)
+    .preferredItemSize(CGSize(width: 300, height: 300))
     .multiplePagination()
 ```
 
