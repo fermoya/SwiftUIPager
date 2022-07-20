@@ -316,7 +316,7 @@ extension Pager.PagerContent: Buildable {
 	
     /// Sets some padding on the non-scroll axis
     ///
-    /// - Parameter lenght: padding
+    /// - Parameter length: padding
     func padding(_ length: CGFloat) -> Self {
         mutating(keyPath: \.sideInsets, value: length)
     }
