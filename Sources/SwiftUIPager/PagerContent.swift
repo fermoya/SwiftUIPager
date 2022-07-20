@@ -417,7 +417,7 @@ extension Pager.PagerContent {
 
     var dragResult: (page: Int, increment: Int) {
         let currentPage = self.currentPage(sensitivity: sensitivity.value)
-        let velocity = -self.draggingVelocity
+        let velocity = -self.draggingVelocity * (Locale.current.isRightToLeft ? -1 : 1)
 
         guard allowsMultiplePagination else {
             var newPage = currentPage
