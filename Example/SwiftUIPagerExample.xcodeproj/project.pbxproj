@@ -15,6 +15,7 @@
 		17D9E0F823D4CF6700C5AE93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9E0F723D4CF6700C5AE93 /* ContentView.swift */; };
 		17D9E0FD23D4CF6900C5AE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */; };
 		17D9E10023D4CF6900C5AE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D9E0FE23D4CF6900C5AE93 /* LaunchScreen.storyboard */; };
+		576BF5CC28E0CAAA00E73618 /* PagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576BF5CB28E0CAAA00E73618 /* PagerData.swift */; };
 		6B22DC81247E5C9A00EF95C5 /* NestedExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B22DC80247E5C9A00EF95C5 /* NestedExampleView.swift */; };
 		6B35B6C125346610000D618F /* PaginationSensitivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B35B6C025346610000D618F /* PaginationSensitivity.swift */; };
 		6B4EC8A2240D072B001E7490 /* ColorsExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EC8A1240D072B001E7490 /* ColorsExampleView.swift */; };
@@ -63,6 +64,7 @@
 		17D9E0FC23D4CF6900C5AE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		17D9E0FF23D4CF6900C5AE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D9E10123D4CF6900C5AE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		576BF5CB28E0CAAA00E73618 /* PagerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerData.swift; path = ../../Sources/SwiftUIPager/PagerData.swift; sourceTree = "<group>"; };
 		6B22DC80247E5C9A00EF95C5 /* NestedExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedExampleView.swift; sourceTree = "<group>"; };
 		6B35B6C025346610000D618F /* PaginationSensitivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaginationSensitivity.swift; path = ../../Sources/SwiftUIPager/PageConfiguration/PaginationSensitivity.swift; sourceTree = "<group>"; };
 		6B4EC8A1240D072B001E7490 /* ColorsExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExampleView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				6BC5EDFB24866D9500E1E78C /* PagerContent+Helper.swift */,
 				6BEF676F24C98B62008533FE /* PageWrapper.swift */,
 				1748E8BF26695E220016F534 /* PageTransition.swift */,
+				576BF5CB28E0CAAA00E73618 /* PagerData.swift */,
 			);
 			name = Pagination;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				6BCF139224B2677B00AADE74 /* ContentLoadingPolicy.swift in Sources */,
 				6BEA731524ACF8D7007EA8DC /* SwipeInteractionArea.swift in Sources */,
 				6BC5EE0124866D9500E1E78C /* Pager.swift in Sources */,
+				576BF5CC28E0CAAA00E73618 /* PagerData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
