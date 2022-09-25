@@ -45,13 +45,7 @@ extension Pager.PagerContent: Buildable {
     /// pages on both the screen and the sides. If your sequence is not large enough, use `count` to
     /// repeat it and pass more elements.
     func loopPages(_ value: Bool = true, repeating count: UInt = 1) -> Self {
-        var newData = data
-        if let id = newData.first?.keyPath {
-            let count = max(1, count)
-            newData = (1...count).map { it in
-                data.map { PageWrapper(batchId: it, keyPath: id, element: $0.element) }
-            }.flatMap { $0 }
-        }
+        var newData = data.withRepeating(repeating: Int(count))
         self.pagerModel.isInfinite = value
         self.pagerModel.totalPages = newData.count
         return mutating(keyPath: \.isInifinitePager, value: value)

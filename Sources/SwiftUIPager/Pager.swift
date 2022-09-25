@@ -59,7 +59,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     let id: KeyPath<Element, ID>
 
     /// Array of items that will populate each page
-    var data: [Element]
+    var data: any PagerData<Element>
 
     /*** ViewModified properties ***/
 
@@ -178,9 +178,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// - Parameter data: Collection of items to populate the content
     /// - Parameter id: KeyPath to identifiable property
     /// - Parameter content: Factory method to build new pages
-    public init<Data: RandomAccessCollection>(page: Page, data: Data, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
+    public init<Data: PagerData>(page: Page, data: Data, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Element == Element {
         self.pagerModel = page
-        self.data = Array(data)
+        self.data = data
         self.id = id
         self.content = content
         self.pagerModel.totalPages = data.count
@@ -261,8 +261,8 @@ extension Pager where ID == Element.ID, Element : Identifiable {
     /// - Parameter page: Current page index
     /// - Parameter data: Collection of items to populate the content
     /// - Parameter content: Factory method to build new pages
-    public init<Data: RandomAccessCollection>(page: Page, data: Data, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Index == Int, Data.Element == Element {
-        self.init(page: page, data: Array(data), id: \Element.id, content: content)
+    public init<Data: PagerData>(page: Page, data: Data, @ViewBuilder content: @escaping (Element) -> PageView) where Data.Element == Element {
+        self.init(page: page, data: data, id: \Element.id, content: content)
     }
 
 }

@@ -43,7 +43,7 @@ extension Pager {
         let id: KeyPath<PageWrapper<Element, ID>, String>
 
         /// Array of items that will populate each page
-        var data: [PageWrapper<Element, ID>]
+        var data: PagerWrapperData<Element, ID>
 
         /*** ViewModified properties ***/
 
@@ -170,10 +170,10 @@ extension Pager {
         /// - Parameter data: Array of items to populate the content
         /// - Parameter id: KeyPath to identifiable property
         /// - Parameter content: Factory method to build new pages
-        init(size: CGSize, pagerModel: Page, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+        init(size: CGSize, pagerModel: Page, data: some PagerData<Element>, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
             self.size = size
             self.pagerModel = pagerModel
-            self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
+            self.data = PagerWrapperData(wrapper: data, id: id)
             self.id = \PageWrapper<Element, ID>.id
             self.content = content
         }
