@@ -45,7 +45,7 @@ extension Pager.PagerContent: Buildable {
     /// pages on both the screen and the sides. If your sequence is not large enough, use `count` to
     /// repeat it and pass more elements.
     func loopPages(_ value: Bool = true, repeating count: UInt = 1) -> Self {
-        var newData = data.withRepeating(repeating: Int(count))
+        let newData = data.withRepeating(repeating: Int(count))
         self.pagerModel.isInfinite = value
         self.pagerModel.totalPages = newData.count
         return mutating(keyPath: \.isInifinitePager, value: value)
@@ -289,7 +289,7 @@ extension Pager.PagerContent: Buildable {
     /// Adds a callback to react whenever the page will change
     ///
     /// - Parameter callback: block to be called when `page` will  change
-    func onPageWillChange(_ callback: ((Int) -> Void)?) -> Self {
+    func onPageWillChange(_ callback: ((Int, Element) -> Void)?) -> Self {
         mutating(keyPath: \.onPageWillChange, value: callback)
     }
 
@@ -304,7 +304,7 @@ extension Pager.PagerContent: Buildable {
     /// Adds a callback to react whenever the page changes
     ///
     /// - Parameter callback: block to be called when `page` changes
-    func onPageChanged(_ callback: ((Int) -> Void)?) -> Self {
+    func onPageChanged(_ callback: ((Int, Element) -> Void)?) -> Self {
         mutating(keyPath: \.onPageChanged, value: callback)
     }
 	

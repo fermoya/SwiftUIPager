@@ -148,13 +148,13 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     var preferredItemSize: CGSize?
 
     /// Callback invoked when a new page will be set
-    var onPageWillChange: ((Int) -> Void)?
+    var onPageWillChange: ((Int, Element) -> Void)?
 
     /// Callback invoked when the user ends dragging and a transition will occur
     var onPageWillTransition: ((Result<PageTransition, PageTransitionError>) -> Void)?
 
     /// Callback invoked when a new page is set
-    var onPageChanged: ((Int) -> Void)?
+    var onPageChanged: ((Int, Element) -> Void)?
 	
     /// Callback for a dragging began event
     var onDraggingBegan: (() -> Void)?

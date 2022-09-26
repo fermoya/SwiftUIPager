@@ -29,10 +29,10 @@ struct InfiniteExampleView: View {
                             self.pageView($0)
                     }
                     .singlePagination(ratio: 0.5, sensitivity: .high)
-                    .onPageWillChange({ (page) in
+                    .onPageWillChange({ (page, _) in
                         print("Page will change to: \(page)")
                     })
-                    .onPageChanged({ page in
+                    .onPageChanged({ page, _ in
                         print("Page changed to: \(page)")
                         if page == 1 {
                             let newData = (1...5).map { data1.first! - $0 }.reversed()

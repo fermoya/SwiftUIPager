@@ -126,13 +126,13 @@ extension Pager {
         var preferredItemSize: CGSize?
 
         /// Callback invoked when a new page will be set
-        var onPageWillChange: ((Int) -> Void)?
+        var onPageWillChange: ((Int, Element) -> Void)?
 
         /// Callback invoked when the user ends dragging and a transition will occur
         var onPageWillTransition: ((Result<PageTransition, PageTransitionError>) -> Void)?
 
         /// Callback invoked when a new page is set
-        var onPageChanged: ((Int) -> Void)?
+        var onPageChanged: ((Int, Element) -> Void)?
 		
         /// Callback for a dragging began event
         var onDraggingBegan: (() -> Void)?
@@ -229,7 +229,7 @@ extension Pager {
 
                         if pagerModel.pageIncrement != 0 {
                             pagerModel.pageIncrement = 0
-                            onPageChanged?(pagerModel.index)
+                            onPageChanged?(pagerModel.index, data.itemFor(index: pagerModel.index).element)
                         }
                     })
                     .eraseToAny()
@@ -388,7 +388,7 @@ extension Pager.PagerContent {
 
         let animation = pagingAnimation.animation?.speed(speed)
         if page != newPage {
-            onPageWillChange?(newPage)
+            onPageWillChange?(newPage, data.itemFor(index: newPage).element)
             onPageWillTransition?(.success(.init(currentPage: page, nextPage: newPage, pageIncrement: pageIncrement)))
         } else {
             onPageWillTransition?(.failure(.draggingStopped))
@@ -411,7 +411,7 @@ extension Pager.PagerContent {
             // Do nothing
         } else if page != newPage {
             self.pagerModel.pageIncrement = 0
-            onPageChanged?(newPage)
+            onPageChanged?(newPage, data.itemFor(index: newPage).element)
         }
     }
 

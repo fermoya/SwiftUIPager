@@ -519,7 +519,7 @@ final class Pager_Buildable_Tests: XCTestCase {
     }
 
     func test_GivenPager_WhenOnPageChanged_ThenCallbackNotNil() {
-        let pager = givenPager.onPageChanged { _ in }
+        let pager = givenPager.onPageChanged { _, _ in }
         let pagerContent = pager.content(for: CGSize(width: 100, height: 100))
         XCTAssertNotNil(pagerContent.onPageChanged)
     }
@@ -563,7 +563,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         var pager = givenPager
         
         var newPage: Int? = nil
-        pager = pager.onPageWillChange({ (page) in
+        pager = pager.onPageWillChange({ (page, _) in
             newPage = page
         })
         
@@ -579,7 +579,7 @@ final class Pager_Buildable_Tests: XCTestCase {
         var pager = givenPager
 
         var newPage: Int? = nil
-        pager = pager.onPageWillChange({ (page) in
+        pager = pager.onPageWillChange({ (page, _) in
             newPage = page
         })
 
