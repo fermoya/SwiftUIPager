@@ -16,7 +16,7 @@ var items = Array(0..<10)
 var body: some View {
     Pager(page: page,
           data: items,
-          id: \.identifier,
+          id: \.self,
           content: { index in
               // create a page based on the data passed
               Text("Page: \(index)")
