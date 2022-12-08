@@ -143,7 +143,7 @@ Be aware that this modifier will change the loading policy. See [Content Loading
 | `allowsDragging` | whether or not dragging is allowed |
 | `disableDragging` | disables dragging |
 | `bounces` | whether or not `Pager` should bounce |
-| `delaysTouches` | whether or not touches shoulf be delayed. Useful if nested in `ScrollView` |
+| `delaysTouches` | whether or not touches should be delayed. Useful if nested in `ScrollView` |
 | `pageOffset` | allows _manual_ scroll |
 | `expandPageToEdges` | modifies `itemAspectRatio` so that the use up all the space available |
 
