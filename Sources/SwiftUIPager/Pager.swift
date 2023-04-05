@@ -116,6 +116,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// `true` if pages should have a 3D rotation effect
     var shouldRotate: Bool = false
+    
+    /// `true` if `Pager` is clipped
+    var isClipped: Bool = true
 
     /// Used to modify `Pager` offset outside this view
     var pageOffset: Double = 0
@@ -155,7 +158,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
     /// Callback invoked when a new page is set
     var onPageChanged: ((Int) -> Void)?
-	
+    
     /// Callback for a dragging began event
     var onDraggingBegan: (() -> Void)?
 
@@ -190,7 +193,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         GeometryReader { proxy in
             self.content(for: proxy.size)
         }
-        .clipped()
+        .if(isClipped) {
+            $0.clipped()
+        }
     }
 
     func content(for size: CGSize) -> PagerContent {
@@ -250,7 +255,6 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
 
         return pagerContent
     }
-
 }
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
