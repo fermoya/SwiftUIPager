@@ -39,8 +39,8 @@ public enum VerticalSwipeDirection {
     case bottomToTop
 }
 
-extension Locale {
-    var isRightToLeft: Bool {
-        return L102Language.isRTL
-    }
-}
+// extension Locale {
+//     var isRightToLeft: Bool {
+//         return L102Language.isRTL
+//     }
+// }
