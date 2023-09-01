@@ -16,7 +16,7 @@ var items = Array(0..<10)
 var body: some View {
     Pager(page: page,
           data: items,
-          id: \.identifier,
+          id: \.self,
           content: { index in
               // create a page based on the data passed
               Text("Page: \(index)")
@@ -129,7 +129,7 @@ It's possible for `Pager` to swipe more than one page at a time. This is especia
 
 ```
 Pager(...)
-    .preferredItemSize(CGSize(width: 300, height: 300)
+    .preferredItemSize(CGSize(width: 300, height: 300))
     .multiplePagination()
 ```
 
@@ -143,7 +143,7 @@ Be aware that this modifier will change the loading policy. See [Content Loading
 | `allowsDragging` | whether or not dragging is allowed |
 | `disableDragging` | disables dragging |
 | `bounces` | whether or not `Pager` should bounce |
-| `delaysTouches` | whether or not touches shoulf be delayed. Useful if nested in `ScrollView` |
+| `delaysTouches` | whether or not touches should be delayed. Useful if nested in `ScrollView` |
 | `pageOffset` | allows _manual_ scroll |
 | `expandPageToEdges` | modifies `itemAspectRatio` so that the use up all the space available |
 
