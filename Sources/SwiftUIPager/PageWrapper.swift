@@ -21,8 +21,17 @@ struct PageWrapper<Element, ID>: Equatable, Identifiable where Element: Equatabl
     /// Wrappes Value
     var element: Element
 
+    var indexInData: Int
+
     /// `Identifiable` _id_
     var id: String {
         "\(batchId)-\(element[keyPath: keyPath])"
+    }
+    
+    init(batchId: UInt, keyPath: KeyPath<Element, ID>, element: Element, indexInData: Int = 0) {
+        self.batchId = batchId
+        self.keyPath = keyPath
+        self.element = element
+        self.indexInData = indexInData
     }
 }

@@ -204,7 +204,7 @@ extension Pager.PagerContent {
 
     /// Extra offset to complentate the alignment
     var alignmentOffset: CGFloat {
-        let indexOfPageFocused = dataDisplayed.firstIndex(where: { data.firstIndex(of: $0) == self.page }) ?? 0
+        let indexOfPageFocused = dataDisplayed.firstIndex(where: { $0.indexInData == self.page }) ?? 0
 
         let offset: CGFloat
         switch (alignment, indexOfPageFocused) {
@@ -249,7 +249,7 @@ extension Pager.PagerContent {
 
     /// Offset applied to `HStack` along the X-Axis. It's limitted by `offsetLowerbound` and `offsetUpperbound`
     var xOffset: CGFloat {
-        let indexOfPageFocused = CGFloat(dataDisplayed.firstIndex(where: { data.firstIndex(of: $0) == self.page }) ?? 0)
+        let indexOfPageFocused = CGFloat(dataDisplayed.firstIndex(where: { $0.indexInData == self.page }) ?? 0)
         let numberOfPages = CGFloat(numberOfPagesDisplayed)
         let xIncrement = pageDistance / 2
         let offset = (numberOfPages / 2 - indexOfPageFocused) * pageDistance - xIncrement + totalOffset + alignmentOffset

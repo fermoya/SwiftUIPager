@@ -43,7 +43,7 @@ extension Pager {
         let id: KeyPath<PageWrapper<Element, ID>, String>
 
         /// Array of items that will populate each page
-        var data: [PageWrapper<Element, ID>]
+        var data: PagerWrapperData<Element, ID>
 
         /*** ViewModified properties ***/
 
@@ -126,13 +126,13 @@ extension Pager {
         var preferredItemSize: CGSize?
 
         /// Callback invoked when a new page will be set
-        var onPageWillChange: ((Int) -> Void)?
+        var onPageWillChange: ((Int, Element) -> Void)?
 
         /// Callback invoked when the user ends dragging and a transition will occur
         var onPageWillTransition: ((Result<PageTransition, PageTransitionError>) -> Void)?
 
         /// Callback invoked when a new page is set
-        var onPageChanged: ((Int) -> Void)?
+        var onPageChanged: ((Int, Element) -> Void)?
 		
         /// Callback for a dragging began event
         var onDraggingBegan: (() -> Void)?
@@ -170,10 +170,10 @@ extension Pager {
         /// - Parameter data: Array of items to populate the content
         /// - Parameter id: KeyPath to identifiable property
         /// - Parameter content: Factory method to build new pages
-        init(size: CGSize, pagerModel: Page, data: [Element], id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
+        init(size: CGSize, pagerModel: Page, data: some PagerData<Element>, id: KeyPath<Element, ID>, @ViewBuilder content: @escaping (Element) -> PageView) {
             self.size = size
             self.pagerModel = pagerModel
-            self.data = data.map { PageWrapper(batchId: 1, keyPath: id, element: $0) }
+            self.data = PagerWrapperData(wrapper: data, id: id)
             self.id = \PageWrapper<Element, ID>.id
             self.content = content
         }
@@ -229,7 +229,7 @@ extension Pager {
 
                         if pagerModel.pageIncrement != 0 {
                             pagerModel.pageIncrement = 0
-                            onPageChanged?(pagerModel.index)
+                            onPageChanged?(pagerModel.index, data.itemFor(index: pagerModel.index).element)
                         }
                     })
                     .eraseToAny()
@@ -388,7 +388,7 @@ extension Pager.PagerContent {
 
         let animation = pagingAnimation.animation?.speed(speed)
         if page != newPage {
-            onPageWillChange?(newPage)
+            onPageWillChange?(newPage, data.itemFor(index: newPage).element)
             onPageWillTransition?(.success(.init(currentPage: page, nextPage: newPage, pageIncrement: pageIncrement)))
         } else {
             onPageWillTransition?(.failure(.draggingStopped))
@@ -415,7 +415,7 @@ extension Pager.PagerContent {
             // Do nothing
         } else if page != newPage {
             self.pagerModel.pageIncrement = 0
-            onPageChanged?(newPage)
+            onPageChanged?(newPage, data.itemFor(index: newPage).element)
         }
     }
 
