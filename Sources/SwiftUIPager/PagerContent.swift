@@ -92,6 +92,9 @@ extension Pager {
         /// `true` if  `Pager` can be dragged
         var allowsDragging: Bool = true
 
+        /// `true` if  `Pager` can be controlled by the keyboard commands
+        var allowsKeyboardControl: Bool = true
+        
         /// `true` if  `Pager`interacts with the digital crown
         var allowsDigitalCrownRotation: Bool = true
 
@@ -210,7 +213,7 @@ extension Pager {
             #endif
           
             #if os(macOS)
-            wrappedView = wrappedView
+            wrappedView = !allowsKeyboardControl ? wrappedView : wrappedView
               .focusable()
               .onMoveCommand(perform: self.onMoveCommandSent)
               .eraseToAny()
@@ -395,14 +398,10 @@ extension Pager.PagerContent {
         }
         withAnimation(animation) {
             self.pagerModel.draggingOffset = 0
-            if pageIncrement != 0 {
-                self.pagerModel.pageIncrement = pageIncrement
-            }
-            if page != newPage {
-                self.pagerModel.index = newPage
-            }
+            self.pagerModel.pageIncrement = pageIncrement
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
+            self.pagerModel.index = newPage
             self.pagerModel.lastDigitalCrownPageOffset = CGFloat(pagerModel.index)
             self.pagerModel.objectWillChange.send()
             #if os(watchOS)
