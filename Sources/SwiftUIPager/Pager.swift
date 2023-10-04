@@ -111,6 +111,9 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
     /// `true` if  `Pager` can be dragged
     var allowsDragging: Bool = true
 
+    /// `true` if  `Pager` can be controlled by the keyboard commands
+    var allowsKeyboardControl: Bool = true
+    
     /// `true` if  `Pager`interacts with the digital crown
     var allowsDigitalCrownRotation: Bool = true
 
@@ -215,7 +218,8 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
                 .padding(sideInsets)
                 .pagingAnimation(pagingAnimation)
                 .partialPagination(pageRatio)
-
+                .allowsKeyboardControl(allowsKeyboardControl)
+        
         #if !os(tvOS)
           pagerContent = pagerContent
             .swipeInteractionArea(swipeInteractionArea)
@@ -245,7 +249,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         pagerContent = isHorizontal ? pagerContent.horizontal(horizontalSwipeDirection) : pagerContent.vertical(verticalSwipeDirection)
 
         if let preferredItemSize = preferredItemSize {
-            pagerContent = pagerContent.preferredItemSize(preferredItemSize, alignment: itemAlignment)
+            pagerContent = pagerContent.preferredItemSize(preferredItemSize)
         }
 
         return pagerContent
