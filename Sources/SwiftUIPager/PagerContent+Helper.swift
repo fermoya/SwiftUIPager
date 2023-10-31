@@ -52,7 +52,7 @@ extension Pager.PagerContent {
 
     /// `true` if `Pager` is vertical
     var isVertical: Bool {
-        return !isHorizontal
+        !isHorizontal
     }
 
     /// `pageOffset` converted to scrollable offset
