@@ -288,6 +288,13 @@ extension Pager: Buildable {
         mutating(keyPath: \.itemSpacing, value: value)
     }
 
+    /// Sets `Pager` is clipped. Defaults to `true`
+    ///
+    /// - Parameter value: if `Pager` is clipped
+    public func isClipped(_ value: Bool) -> Self {
+        mutating(keyPath: \.isClipped, value: value)
+    }
+
     /// Configures the aspect ratio of each page. This value is considered to be _width / height_.
     ///
     /// - Parameter value: aspect ratio to be applied to the page
