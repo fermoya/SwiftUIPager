@@ -395,10 +395,14 @@ extension Pager.PagerContent {
         }
         withAnimation(animation) {
             self.pagerModel.draggingOffset = 0
-            self.pagerModel.pageIncrement = pageIncrement
+            if pageIncrement != 0 {
+                self.pagerModel.pageIncrement = pageIncrement
+            }
+            if page != newPage {
+                self.pagerModel.index = newPage
+            }
             self.pagerModel.draggingVelocity = 0
             self.pagerModel.lastDraggingValue = nil
-            self.pagerModel.index = newPage
             self.pagerModel.lastDigitalCrownPageOffset = CGFloat(pagerModel.index)
             self.pagerModel.objectWillChange.send()
             #if os(watchOS)

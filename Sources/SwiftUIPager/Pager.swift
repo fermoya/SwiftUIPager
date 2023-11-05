@@ -250,7 +250,7 @@ public struct Pager<Element, ID, PageView>: View  where PageView: View, Element:
         pagerContent = isHorizontal ? pagerContent.horizontal(horizontalSwipeDirection) : pagerContent.vertical(verticalSwipeDirection)
 
         if let preferredItemSize = preferredItemSize {
-            pagerContent = pagerContent.preferredItemSize(preferredItemSize)
+            pagerContent = pagerContent.preferredItemSize(preferredItemSize, alignment: itemAlignment)
         }
 
         return pagerContent
