@@ -148,6 +148,8 @@ extension Pager {
 
         /*** State and Binding properties ***/
 
+        @Environment(\.layoutDirection) var layoutDirection
+
         /// Page index
         @ObservedObject var pagerModel: Page
 
@@ -358,7 +360,9 @@ extension Pager.PagerContent {
                 self.pagerModel.draggingVelocity = Double(offsetIncrement) / timeIncrement
             }
 
-            var newOffset = self.draggingOffset + offsetIncrement * (Locale.current.isRightToLeft ? -1 : 1)
+            let isRightToLeft = layoutDirection.isRightToLeft && isHorizontal
+
+            var newOffset = self.draggingOffset + offsetIncrement * (isRightToLeft ? -1 : 1)
             if !allowsMultiplePagination {
                 newOffset = self.direction == .forward ? max(newOffset, self.pageRatio * -self.pageDistance) : min(newOffset, self.pageRatio * self.pageDistance)
             }
@@ -420,8 +424,10 @@ extension Pager.PagerContent {
     }
 
     var dragResult: (page: Int, increment: Int) {
+        let isRightToLeft = layoutDirection.isRightToLeft && isHorizontal
+
         let currentPage = self.currentPage(sensitivity: sensitivity.value)
-        let velocity = -self.draggingVelocity * (Locale.current.isRightToLeft ? -1 : 1)
+        let velocity = -self.draggingVelocity * (isRightToLeft ? -1 : 1)
 
         guard allowsMultiplePagination else {
             var newPage = currentPage
