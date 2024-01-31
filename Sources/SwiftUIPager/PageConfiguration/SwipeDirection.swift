@@ -39,10 +39,8 @@ public enum VerticalSwipeDirection {
     case bottomToTop
 }
 
-extension Locale {
+extension LayoutDirection {
     var isRightToLeft: Bool {
-        guard let language = Locale.preferredLanguages.first else { return true }
-        let direction = Locale.characterDirection(forLanguage: language)
-        return direction == .rightToLeft
+        return self == .rightToLeft
     }
 }
